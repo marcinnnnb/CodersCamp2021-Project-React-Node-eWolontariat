@@ -1,10 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Tworzeniezad from './tworzeniezad';
+import Wyswietl from './wyswietlaniezad';
+import App from './App';
+import TestowyGrid from './TestowyGrid';
 
 ReactDOM.render(
-  <React.StrictMode>
-    {/* <App /> */}
-  </React.StrictMode>,
+ 
+   <Wyswietl/>,
+   
+
+  
+
   document.getElementById('root')
 );
+
+ //  
+// {<Wyswietl />}
+
+//  <Wyswietl />,
