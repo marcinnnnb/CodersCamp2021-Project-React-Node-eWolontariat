@@ -3,7 +3,7 @@
     "id":"1",
     "title":"Wyprowadzanie psa na spacer" ,
     "categories": ["Wyprowadznie psów"] ,
-    "image":"CodersCamp2021-Project-React-Node-eWolontariat/images/pies.jpg",
+    "image":["https://iv.pl/images/85ec08b82ac40a9656def5028cdb5306.jpg"],
     "amount":"1",
     "action_description":"Wczoraj złamałam nogę i bardzo ciężko mi się poruszać o kulach. Szukam kogoś kto mógłby przez tydzień wyprowadzać mojego psa- 3 razy dziennie",
     "action_short_description":"Szukam kogoś kto będzie wyprowadzać psa dopóki moja noga nie wydobrzeje"
@@ -11,7 +11,7 @@
 {   "id":"2",
     "title": "Przygotowanie do egzaminu na architekturę",
     "categories": ["Korepetycje"] ,
-    "image":"CodersCamp2021-Project-React-Node-eWolontariat/images/facet.png",
+    "image":"https://iv.pl/images/3f1a4770b5e63558b06b2475b1931004.png",
     "amount":"1",
     "action_description": "Szukamy kogoś kto poprowadzi webinarium dotyczące egzaminu na architekturę. Opowie jak to wyglądało z jego perspektywy i czego możemy się spodziwać",
     "action_short_description": "Krótkie webinarium: co trzeba wiedzieć przed egzaminem wstępnym na architekturę?"
@@ -19,7 +19,7 @@
 {   "id":"3",
     "title":"szkolne warszaty z budowania karmników dla ptaków" ,
     "categories": ["Korepetycje"] ,
-    "image": "CodersCamp2021-Project-React-Node-eWolontariat/images/facet.png",
+    "image": "https://iv.pl/images/3f1a4770b5e63558b06b2475b1931004.png",
     "amount": "25",
     "action_description":"Szkoła nr 16 organizuje serię warsztatów poświęconym pracom ręcznym. W tym miesiącu zapraszamy na warsztaty poświęcone budowaniu karmników dla ptaków",
     "action_short_description": "Pomóż nauczyć dzieci z podstawówki nr 16 budować własne karmniki!"
@@ -27,7 +27,7 @@
 {   "id":"4",
     "title":"Szukam kogoś do przetłumaczenia ogłoszenia o zaginięciu kotki na język niemiecki" ,
     "categories": ["Tłumaczenia"],
-    "image": "CodersCamp2021-Project-React-Node-eWolontariat/images/facet.png",
+    "image": "https://iv.pl/images/3f1a4770b5e63558b06b2475b1931004.png",
     "amount":"1",
     "action_description":"Wczoraj zaginęła moja kotka. 7 letnia Pysia. Z racji tego że mieszkamy blisko granicy niemieckiej, chciałąbym tam też rozwiesić parę ogłoszeń ale kompletnie nie znam niemieckiego. Pilnie poszukuję kogoś kto mi pomoże w tej sprawie",
     "action_short_description":"Szukam kogoś do przetłumaczenia ogłoszenia o zaginięciu kotki na język niemiecki"
@@ -35,7 +35,7 @@
 {   "id":"5",
     "title": "Warsztaty chemiczne dla najmłodszych" ,
     "categories": ["Korepetycje"],
-    "image":"CodersCamp2021-Project-React-Node-eWolontariat/images/facet.png",
+    "image":"https://iv.pl/images/3f1a4770b5e63558b06b2475b1931004.png",
     "amount":"3",
     "action_description":"Szkoła nr 16 organizuje serię warsztatów poświęconym poznaniu różnych zawodów co ma ułatwić im przyszły wybór pracy. Jeśli masz dobry kontakt z dziećmi i potrafisz prowadzić ciekawe zajęcia dołącz do nas!",
     "action_short_description":"Organizacja warsztatów chemicznych dla najmłodszych-stwórz własny krem!"
@@ -43,7 +43,7 @@
 {   "id":"6",
     "title": "Szukam początkującego fotografa do sesji zdjęciowej" ,
     "categories": ["Fotografia"],
-    "image":"CodersCamp2021-Project-React-Node-eWolontariat/images/facet.png",
+    "image":"https://iv.pl/images/3f1a4770b5e63558b06b2475b1931004.png",
     "amount":"1",
     "action_description":"Jestem początkującą modelką, jeśli ty jesteś początkującym fotoghrafem- możemy sobie nawzajem pomóc w stworzeniu portfolio. Ja będę Ci pozować a ty zrobisz super zdjęcia i oboje będziemy zadowoleni",
     "action_short_description":"Szukam początkującego fotografa do sesji zdjęciowej-wzbogać swoje portflio!"
