@@ -1,107 +1,107 @@
-{"wolontariusze":[{
-    "Name": "Tomek",
-    "Surname":  "Wojciechowski",
-    "Nick": "Tomek z Gór",
-    "Short_description":    "Chętnie udzielę lekcji gry na ukulele",
+[{
+    "name": "Tomek",
+    "surname":  "Wojciechowski",
+    "nick": "Tomek z Gór",
+    "short_description":    "Chętnie udzielę lekcji gry na ukulele",
     "description":  "Jestem Tomek. Od dziecka pasjonuje mnie instrument jakim jest ukulele. Bardzo lubię dzielić się swoją pasją, więc jeśli chcesz się nauczyć gry na tym wspaniałym instrumencie to pisz śmiało!",
     "image":    "https://iv.pl/images/c7af3c8b2adcdc30807547e1172728bc.jpg",
-    "Categories":   ["Korepetycje"],
-    "Actions": [ "Warszaty dla dzieci z domów dziecka-nauka gry na ukulele"],
-    "E-mail":   "t.wojciechowski@vp.pl"
+    "categories":   ["Korepetycje"],
+    "actions": [ "Warszaty dla dzieci z domów dziecka-nauka gry na ukulele"],
+    "e-mail":   "t.wojciechowski@vp.pl"
     },
 
     {    
-    "Name": "Zosia",
-    "Surname":  "Wierzbowska",
-    "Nick": "Zosia123",
-    "Short_description":    "Pomagam w nauce excela, projektuję strony www, udzielam korepetycji z matematyki",
+    "name": "Zosia",
+    "surname":  "Wierzbowska",
+    "nick": "Zosia123",
+    "short_description":    "Pomagam w nauce excela, projektuję strony www, udzielam korepetycji z matematyki",
     "description":  "Hej, nazywam się Zosia. Jestem wolontariuszką od 4 lat. Do tej pory brałam udział w wielu wydarzeniach na terenie Warszawy a od początku pandemii udzielam również korepetycji online. ",
     "image" : "https://iv.pl/images/694c4a0512a20294314bb8c76c41bad4.md.jpg",
-    "Categories":  [ "excel", "strony www", "korepetycje"],
-    "Actions":  ["Szukam korepetytora matematyki dla mojej córki (4 klasa)"],
-    "E-mail":   "zosia.wierzbowska@wp.pl"   
+    "categories":  [ "excel", "strony www", "korepetycje"],
+    "actions":  ["Szukam korepetytora matematyki dla mojej córki (4 klasa)"],
+    "e-mail":   "zosia.wierzbowska@wp.pl"   
     },
 
     {    
-    "Name": "Marek",
-    "Surname":  "Kowalski",
-    "Nick": "Kowal",
-    "Short_description":    "Złota rączka oraz miłośnik zwierząt",
+    "name": "Marek",
+    "surname":  "Kowalski",
+    "nick": "Kowal",
+    "short_description":    "Złota rączka oraz miłośnik zwierząt",
     "description":  "Jestem Marek, bardzo lubię różne prace ręczne. W moim domu naprawiłem już wszystko co się da, więc jeśli masz jakieś stare radio które nie chce już działać albo przeciekający kran- chętnie pomogę. Dodatkowo mam 2 psy które uwielbiam. Podczas spacerów mogę wyprowadzać również twoje czworonogi.",
     "image":"https://iv.pl/images/6d825b496ab29fe2a9cef83b6ce51fbc.md.jpg",
-    "Categories":  [ "wyprowadzanie psów", "złota rączka"],
-    "Actions":  ["Poszukuję pilnej pomocy przy naprawie kranu w kuchni", "szkolne warszaty z budowania karmników dla ptaków"],
-    "E-mail":   "kowal.marek44@gmail.com"
+    "categories":  [ "wyprowadzanie psów", "złota rączka"],
+    "actions":  ["Poszukuję pilnej pomocy przy naprawie kranu w kuchni", "szkolne warszaty z budowania karmników dla ptaków"],
+    "e-mail":   "kowal.marek44@gmail.com"
         
     },    
      
     {
-    "Name": "Marlena",
-    "Surname":"Karczewska",
-    "Nick": "Marla",
-    "Short_description":    "Chętnie zaprowadzę lub odbiorę twoje dzieci ze szkoły",
+    "name": "Marlena",
+    "surname":"Karczewska",
+    "nick": "Marla",
+    "short_description":    "Chętnie zaprowadzę lub odbiorę twoje dzieci ze szkoły",
     "description":  "Od 3 lat przebywam na rencie, moje dzieci już dawno zostały odchowane przez co czuję się trochę samotnie w moim domu. Jeśli długo pracujesz chętnie odbiorę twoje dzieci ze szkoły i razem poczekamy na twój powrót z pracy.",
     "image":"https://iv.pl/images/9bb5cc957107f6e0d62d3d99976c7324.jpg",
-    "Categories":   ["Opieka nad dziećmi"],
-    "Actions": [null],    
-    "E-mail":   "marla456@wp.pl"
+    "categories":   ["Opieka nad dziećmi"],
+    "actions": [null],    
+    "e-mail":   "marla456@wp.pl"
     }, 
     {    
-    "Name": "Mateusz",
-    "Surname":  "Lipowicz",
-    "Nick": "Mati L.",
-    "Short_description":    "Pomogę ci przetłumaczyć dokumenty z języka niemieckiego",
+    "name": "Mateusz",
+    "surname":  "Lipowicz",
+    "nick": "Mati L.",
+    "short_description":    "Pomogę ci przetłumaczyć dokumenty z języka niemieckiego",
     "description":  "Od 15 lat mieszkam w Niemczech, więc bardzo dobrze poznałem język niemiecki. Jeśli masz problem z jakimś tłumaczeniem chętnie pomogę",
     "image":    "https://iv.pl/images/ae4a8717d6c0bf4b6257017603f06026.jpg",
-    "Categories":   ["tłumaczenia"],
-    "Actions":  ["Szukam kogoś do przetłumaczenia ogłoszenia o zaginięciu kotki na język niemiecki"],
-    "E-mail":   "mateusz.lipowicz45@wp.pl"
+    "categories":   ["tłumaczenia"],
+    "actions":  ["Szukam kogoś do przetłumaczenia ogłoszenia o zaginięciu kotki na język niemiecki"],
+    "e-mail":   "mateusz.lipowicz45@wp.pl"
     },    
     {    
-    "Name": "Justyna",
-    "Surname":  "Kosińska",
-    "Nick": "Justyna Kosińska",
-    "Short_description":"Udzielam korepatycji z chemii",
+    "name": "Justyna",
+    "surname":  "Kosińska",
+    "nick": "Justyna Kosińska",
+    "short_description":"Udzielam korepatycji z chemii",
     "description":  "Na co dzień pracuję w laboratorium chemicznym. Chemia to moja pasja. Prowadziłam już różne warsztaty, m.in. Z tworzenia własnych kosmetyków. Jeśli twoje dziecko ma problem ze zrozumieniem zagadnień chemicznych napisz do mnie",
     "image":    "https://iv.pl/images/6b54d0252ecf74e48ccc91ec9d92532d.jpg",
-    "Categories":   ["korepetycje"],
-    "Actions":  ["Szukam kogoś kto przerobi testy szóstoklasisty z moim synem (chemia, matematyka)", "Warsztaty chemiczne dla najmłodszych"],
-    "E-mail":   "justyna.kosa5@vp.pl"
+    "categories":   ["korepetycje"],
+    "actions":  ["Szukam kogoś kto przerobi testy szóstoklasisty z moim synem (chemia, matematyka)", "Warsztaty chemiczne dla najmłodszych"],
+    "e-mail":   "justyna.kosa5@vp.pl"
     },   
     {    
-    "Name": "Robert",
-    "Surname":  "Pawłowski",
-    "Nick": "Robson",
-    "Short_description":    "Udzielam korepetycji z fizyki, matematyki. Mogę cię przygotować do egzaminów wstępnych z architektury",
+    "name": "Robert",
+    "surname":  "Pawłowski",
+    "nick": "Robson",
+    "short_description":    "Udzielam korepetycji z fizyki, matematyki. Mogę cię przygotować do egzaminów wstępnych z architektury",
     "description":  "Jestem na 4 roku architektury. Pamiętam ten stres przeg egzaminem ! Jeśli wiesz czego się spodziewać nie jest on już taki straszny ;) Prowadzę krótkie webinaria opisujące proces przygotowania do egzaminu oraz jak wygląda taki egzamin",
     "image":    "https://iv.pl/images/3f1a4770b5e63558b06b2475b1931004.png",
-    "Categories":   ["Korepetycje"],
-    "Actions":  ["Krótkie webinarium: co trzeba wiedzieć przed egzaminem wstępnym na architekturę?"],
-    "E-mail":   "robson@gmail.com"
+    "categories":   ["Korepetycje"],
+    "actions":  ["Krótkie webinarium: co trzeba wiedzieć przed egzaminem wstępnym na architekturę?"],
+    "e-mail":   "robson@gmail.com"
     },   
     {    
-    "Name": "Monika",
-    "Surname":  "Majchrzak",
-    "Nick": "Monia",
-    "Short_description":    "Robię sesje zdjęciowe zarówno w plenerze jak i domowym studio",
+    "name": "Monika",
+    "surname":  "Majchrzak",
+    "nick": "Monia",
+    "short_description":    "Robię sesje zdjęciowe zarówno w plenerze jak i domowym studio",
     "description":  "Zaczynam swoją przygodę z fotografią portretową. Jeśli jesteś początkującą modelką i chcesz rozbudować swoje portfolio, możemy sobie pomóc nawzajem ! ;) Napisz do mnie i umówimy się na sesję zdjęciową",
     "image" :"https://iv.pl/images/694c4a0512a20294314bb8c76c41bad4.md.jpg",
-    "Categories":   ["fotografia"],
-    "Actions":  ["Szukam początkującego fotografa do sesji zdjęciowej"],
-    "E-mail":   "moniafoto@op.pl"
+    "categories":   ["fotografia"],
+    "actions":  ["Szukam początkującego fotografa do sesji zdjęciowej"],
+    "e-mail":   "moniafoto@op.pl"
     } ,  
     {    
-    "Name": "Paulina",
-    "Surname"   :"Miłańska",
-    "Nick": "Paulina23",
-    "Short_description" :"Wyprowadzam psy na dłuuugie spacery",
+    "name": "Paulina",
+    "surname"   :"Miłańska",
+    "nick": "Paulina23",
+    "short_description" :"Wyprowadzam psy na dłuuugie spacery",
     "description":  "Uwielbiam zwierzęta. W swoim rodzinnym domu miałam 4 psy, teraz mieszkam w wynajętym mieszkaniu i nie mam warunków do trzmania zwierząt. Bardzo mi brakuje kontaktu z nimi dlatego jeśli nie czujesz się na siłąch na długie spacery a twój czworonożny przyjaciel patrzy na ciebie smutnymi oczami, napisz do mnie ! Chętnie się przejdziemy na długi spacer po lesie",
     "image":    "https://iv.pl/images/ad6fc7be5e1a1762ca6c517f5a674076.jpg",
-    "Categories":   ["wyprowadzanie psów"],
-    "Actions":[null], 
-    "E-mail":"paula9222@gmail.com"  
+    "categories":   ["wyprowadzanie psów"],
+    "actions":[null], 
+    "e-mail":"paula9222@gmail.com"  
     }
     
     ]
-    } 
+    
 
