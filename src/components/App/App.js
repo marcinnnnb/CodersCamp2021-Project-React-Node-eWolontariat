@@ -1,8 +1,8 @@
 import './App.css';
-import { AppBar, Box, Toolbar, Button, IconButton } from "@material-ui/core";
-import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import { AppBar, Box, Toolbar, Button, Container, Grid, Link, Typography, List, ListItem } from "@material-ui/core";
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { theme } from '../../theme/theme.js';
-import { ThemeProvider} from '@mui/material/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import HomePage  from '../HomePage/HomePage';
 import OrganizationForm from '../OrganizationForm/OrganizationForm';
 import OrganizationPage from '../OrganizationPage/OrganizationPage';
@@ -13,26 +13,37 @@ import UserProfile from '../UserProfile/UserProfile';
 import VolunteerForm from '../VolunteerForm/VolunteerForm';
 import VolunteerPage from '../VolunteerPage/VolunteerPage';
 import VolunteersPage from '../VolunteersPage/VolunteersPage';
+import LogoPomocny from '../../assets/img/logo-pomocny.svg';
+import CodersCampLogo from '../../assets/img/coder-camp.svg';
+import GitHubLogo from '../../assets/img/github-logo.png';
 
 function App() {
     return (
+        <ThemeProvider theme={theme}>
         <Box height={"100%"} display={"flex"} flexDirection={"column"}>
              <Box sx={{ flexGrow: 1 }}>
-                <AppBar position='static' color={'#fff'}>
+            
+                <AppBar position='static' color={'inherit'} height='76px'>
                         <Toolbar>
-                            <IconButton>
-                                <Link to={"/"}> pomocny.pl</Link>
-                            </IconButton>
-                            <ThemeProvider theme={theme}>
-                                <Button variant="contained" color = "primary">
-                                    <Link to={"/"}> Stwórz zadanie</Link>
-                                </Button>
-                            </ThemeProvider>
+                            <Box
+                                component="img"
+                                sx={{
+                                height: "60px",
+                                }}
+                                alt="Logo pomocny.pl"
+                                src={LogoPomocny}
+                                padding={"1rem 0"}
+                            />
+                            <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
+                                <Button variant="contained" color='primary' href={"/"}>Stwórz zadanie</Button>
+                                <Button variant="text">Zaloguj się</Button>
+                                <Button variant="text">Zarejestruj się</Button>
+                            </Box>
                             
-                            <Button>Zaloguj się</Button>
-                            <Button>Zarejestruj się</Button>
+                                
                         </Toolbar>
                 </AppBar>
+               
                 <Box padding={2} flex={1} overflow={"auto"}>
                     <Routes>
                     <Route path="/" element={<HomePage/>} />
@@ -50,20 +61,71 @@ function App() {
                 </Box>
                 
              </Box>
-            
 
              <Box 
                 display={"flex"}
                 justifyContent={"center"} 
                 alignItems={"center"} 
-                height={"50px"} 
                 bgcolor={"#F8F8F8"}
-                
+                padding={"2rem 1rem"}
                 flex-shrink={"0"}>
-                Footer
+
+            <Container padding={"0"}>
+                <Grid container spacing={1}>
+                    <Grid item sm={3}>
+                    <Box
+                            component="img"
+                            sx={{
+                            height: "60px",
+                            }}
+                            alt="Logo pomocny.pl"
+                            src={LogoPomocny}
+                            
+                            />
+                    <Typography variant={'caption'} paragraph={true}>Projekt został zrealizowany w ramach:</Typography>
+                    <Link href={"https://www.coderscamp.edu.pl/"}>
+                        <Box
+                            component="img"
+                            sx={{
+                            height: "20px",
+                            }}
+                            alt="Logo Coders Camp"
+                            src={CodersCampLogo}
+                        />
+                    </Link>
+                    
+                    </Grid>
+                    <Grid item sm={1}></Grid>
+                    <Grid item sm={3}>
+                        <Typography variant='h3' color='secondary'>Informacje</Typography>
+                        <List padding={"0"}>
+                            <ListItem ><Link to="/">Zostań wolontariuszem</Link></ListItem>
+                            <ListItem><Link to="/">Znajdź wolontariusza</Link></ListItem>
+                            <ListItem><Link to="/">Jak znaleźć pomoc</Link></ListItem>
+                        </List>                       
+                    </Grid>
+                    <Grid item sm={3}>
+                        <Typography variant='h3' color='secondary'>Popularne kategorie</Typography>
+                    </Grid>
+                    <Grid item sm={2}>
+                    <Link href={"https://github.com/marcinnnnb/CodersCamp2021-Project-React-Node-eWolontariat"}>
+                        <Box
+                            component={"img"}
+                            display={"flex"}
+                            justifyContent={"flex-end"}
+                            sx={{
+                            height: "20px",
+                            }}
+                            alt={"Logo Coders Camp"}
+                            src={GitHubLogo}
+                        />
+                    </Link>
+                    </Grid>
+                </Grid>
+            </Container>
             </Box>
-            
         </Box>
+        </ThemeProvider>
     )
 
     

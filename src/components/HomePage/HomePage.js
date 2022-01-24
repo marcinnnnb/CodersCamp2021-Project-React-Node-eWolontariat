@@ -1,15 +1,20 @@
-import { Box } from "@material-ui/core";
+import SectionHero from "./SectionHero";
+import SectionTheBestVolunteers from "./SectionTheBestVolunteers";
+import SectionHowFindHelp from "./SectionHowFindHelp";
+import SectionInNumbers from "./SectionInNumbers";
+import SectionHowItWorks from "./SectionHowItWorks";
+import SectionNewTasks from "./SectionNewTasks";
 
 const HomePage = () => {
     return(
-        <Box
-            display={"flex:"}
-            height = {"100%"}
-            justifyContent={"center"}
-            alignItems={"center"}
-            >
-                <h1>Hello</h1>
-        </Box>
+        <>
+        <SectionHero/>
+        <SectionHowItWorks/>
+        <SectionNewTasks/>
+        <SectionTheBestVolunteers/>
+        <SectionHowFindHelp/>
+        <SectionInNumbers/>
+        </>
     )
 }
 
