@@ -1,9 +1,9 @@
-import SectionHero from "./SectionHero";
-import SectionTheBestVolunteers from "./SectionTheBestVolunteers";
-import SectionHowFindHelp from "./SectionHowFindHelp";
-import SectionInNumbers from "./SectionInNumbers";
-import SectionHowItWorks from "./SectionHowItWorks";
-import SectionNewTasks from "./SectionNewTasks";
+import SectionHero from "./Sections/SectionHero";
+import SectionTheBestVolunteers from "./Sections/SectionTheBestVolunteers";
+import SectionHowFindHelp from "./Sections/SectionHowFindHelp";
+import SectionInNumbers from "./Sections/SectionInNumbers";
+import SectionHowItWorks from "./Sections/SectionHowItWorks";
+import SectionNewTasks from "./Sections/SectionNewTasks";
 
 const HomePage = () => {
     return(

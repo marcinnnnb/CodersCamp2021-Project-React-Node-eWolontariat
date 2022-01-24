@@ -1,7 +1,7 @@
 import { Box, Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
-import LogoPomocny from "../../assets/img/logo-pomocny.svg";
-import HeroImg from "../../assets/img/hero-img.svg";
+import LogoPomocny from "../../../assets/img/logo-pomocny.svg";
+import HeroImg from "../../../assets/img/hero-img.svg";
 
 const SectionHero = () => {
     return(

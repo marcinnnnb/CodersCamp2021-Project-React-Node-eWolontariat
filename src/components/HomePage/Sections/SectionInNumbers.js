@@ -1,6 +1,7 @@
 import { Box, Button,Typography } from "@material-ui/core";
-import LogoPomocny from "../../assets/img/logo-pomocny.svg";
-import ImgGlobe from "../../assets/img/globe-mask.svg";
+import LogoPomocny from "../../../assets/img/logo-pomocny.svg";
+import ImgGlobe from "../../../assets/img/globe-mask.svg";
+import LogoSignet from "../../../assets/img/hand-peace-solid.svg";
 
 const SectionInNumbers = () => {
     return(
@@ -34,10 +35,12 @@ const SectionInNumbers = () => {
                     <Typography variant={'body1'} paragraph={true}>
                         Imponujące? Dołącz do nas już dziś i bądź pomocny!
                     </Typography>
-                    <Button variant="contained" color='success' href={"/"}>Zostań wolontariuszem</Button>
+                    <Button variant="contained" size={'small'} color='palette.success' href={"/"}>Zostań wolontariuszem</Button>
 
                 </Box>
+                <Box component="img" maxWidth={'80px'} alt="" src={LogoSignet} alignSelf={'flex-end'}/>
                 <Box component="img" maxWidth={'400px'} alt="" src={ImgGlobe}/>
+                
             </Box>
         </Box>
     )

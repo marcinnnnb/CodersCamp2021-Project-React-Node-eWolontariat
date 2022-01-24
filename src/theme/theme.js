@@ -7,21 +7,23 @@ export const theme = createTheme({
         contrastText: '#fff',
         dark: '#868AE0'
       },
+      secondary: {
+        main: '#868AE0',
+        contrastText: '#fff'
+      },
       success: {
         main: '#4DAF7B',
         contrastText: '#fff'
       },
-      secondary: {
-        main: '#868AE0',
-        contrastText: '#fff'
-      }
+      
     },
     typography: {
       fontFamily: "'Quicksand', sans-serif", 
       h1: {
-        fontSize: '2.2rem',
+        fontSize: '2rem',
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
+        margin: '2rem',
       },
       h2: {
         fontWeight: 'bold',
