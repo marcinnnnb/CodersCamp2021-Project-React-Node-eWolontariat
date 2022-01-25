@@ -9,29 +9,31 @@ export const theme = createTheme({
       },
       secondary: {
         main: '#868AE0',
-        contrastText: '#fff'
+        contrastText: '#fff',
+        dark:'#857AE0',
       },
-      success: {
+      tertiary: {
         main: '#4DAF7B',
         contrastText: '#fff'
-      },
-      
+      }
     },
     typography: {
       fontFamily: "'Quicksand', sans-serif", 
       h1: {
-        fontSize: '2rem',
-        fontWeight: 'bold',
+        fontSize: '2.2rem',
+        fontWeight: '700',
         textAlign: 'center',
         margin: '2rem',
+        letterSpacing: '2px',
+        fontWeight: 900
       },
       h2: {
-        fontWeight: 'bold',
-        fontSize: '1.6rem'
+        fontWeight: '900',
+        fontSize: '1.8rem'
       },
       h3: {
         fontSize: '1.2rem',
-        fontWeight: 'bold',
+        fontWeight: '500',
         lineHeight: '1.7'
       },
       h4: {
@@ -49,14 +51,16 @@ export const theme = createTheme({
         fontWeight: 400,
         lineHeight: 4
       },
+      body1: {
+        fontSize: '1.3rem',
+        lineHeight: '1.7'
+      },
       button: {
         textTransform: 'none',
-        letterSpacing: '2px',
+        letterSpacing: '1.5px',
         fontSize: '1rem',
-        '&:hover': {
-          fontWeight: 'bold',
-         },
-      }
-    }
+        fontWeight: 'bold'
+      },
+    },  
 });
   

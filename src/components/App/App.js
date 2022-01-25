@@ -23,21 +23,21 @@ function App() {
         <Box height={"100%"} display={"flex"} flexDirection={"column"}>
              <Box sx={{ flexGrow: 1 }}>
             
-                <AppBar position='static' color={'inherit'} height='76px'>
+                <AppBar position='static' color={'inherit'}>
                         <Toolbar>
                             <Box
                                 component="img"
                                 sx={{
-                                height: "60px",
+                                height: "46px",
                                 }}
                                 alt="Logo pomocny.pl"
                                 src={LogoPomocny}
                                 padding={"1rem 0"}
                             />
                             <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
-                                <Button variant="contained" color='primary' href={"/"}>Stwórz zadanie</Button>
-                                <Button variant="text">Zaloguj się</Button>
-                                <Button variant="text">Zarejestruj się</Button>
+                                <Button variant="contained" color='primary' href={"/TaskForm"} size={'medium'}>Stwórz zadanie</Button>
+                                <Button variant="text" size={'medium'}>Zaloguj się</Button>
+                                <Button variant="text" size={'medium'}>Zarejestruj się</Button>
                             </Box>
                             
                                 
@@ -99,9 +99,9 @@ function App() {
                     <Grid item sm={3}>
                         <Typography variant='h3' color='secondary'>Informacje</Typography>
                         <List padding={"0"}>
-                            <ListItem ><Link to="/">Zostań wolontariuszem</Link></ListItem>
-                            <ListItem><Link to="/">Znajdź wolontariusza</Link></ListItem>
-                            <ListItem><Link to="/">Jak znaleźć pomoc</Link></ListItem>
+                            <ListItem component={'a'} href="/VolunteerForm">Zostań wolontariuszem</ListItem>
+                            <ListItem component={'a'} href="/VolunteersPage">Znajdź wolontariusza</ListItem>
+                            <ListItem component={'a'} href="/TasksPage">Jak znaleźć pomoc</ListItem>
                         </List>                       
                     </Grid>
                     <Grid item sm={3}>
