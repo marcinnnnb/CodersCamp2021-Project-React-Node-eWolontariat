@@ -3,7 +3,9 @@ import LogoPomocny from "../../../assets/img/logo-pomocny.svg";
 import ImgGlobe from "../../../assets/img/globe-mask.svg";
 import LogoSignet from "../../../assets/img/hand-peace-solid.svg";
 import CustomButton from "../../CustomButton";
-import {makeStyles} from '@material-ui/core'
+import {makeStyles} from '@material-ui/core';
+import { useState } from "react";
+import CountUp from 'react-countup';
 
 const useStyles = makeStyles({
     bigNumber: {
@@ -11,10 +13,16 @@ const useStyles = makeStyles({
         fontWeight: '700',
         color: '#4DAF7B'
     }
-})
+});
 
 const SectionInNumbers = () => {
     const classes = useStyles();
+    const [loadingNumber, setLoading] = useState(false);
+    const onStart = () => {setLoading(true)};
+    const onEnd = () => {setLoading(false)};
+    const containerProps = {
+        'aria-busy': loadingNumber
+    };
     return(
         <Box id={"section-in-numbers"}
             display={"flex:"}
@@ -29,18 +37,23 @@ const SectionInNumbers = () => {
             </Box>
             <Box display={'flex'} padding={'4rem'} justifyContent={'space-evenly'} mr={'2rem'}>
                 <Box alignSelf={'center'} textAlign={'center'}>
-                    <Typography className={classes.bigNumber}>100</Typography>
+                    <Typography className={classes.bigNumber}>
+                        <CountUp end={100} onStart={onStart} onEnd={onEnd} containerProps={containerProps} />
+                    </Typography>
                     <Typography variant="body1">Tylu osobom pomogliśmy</Typography>
                 </Box>
                 <Box alignSelf={'center'} textAlign={'center'}>
-                    <Typography className={classes.bigNumber}>12334</Typography>
+                    <Typography className={classes.bigNumber}>
+                        <CountUp end={1234} onStart={onStart} onEnd={onEnd} containerProps={containerProps} />
+                    </Typography>
                     <Typography variant="body1">Tyle zadań zakończyło się sukcesem</Typography>
                 </Box>
                 <Box alignSelf={'center'} textAlign={'center'}>
-                    <Typography className={classes.bigNumber}>345</Typography>
+                    <Typography className={classes.bigNumber}>
+                        <CountUp end={56} onStart={onStart} onEnd={onEnd} containerProps={containerProps} />
+                    </Typography>
                     <Typography variant="body1">Tyle zgłosiło się wolontariuszy</Typography>
-                </Box>
-                
+                </Box>    
             </Box>
             <Box display={'flex'} padding={'4rem'} justifyContent={'space-evenly'} mr={'2rem'}>
                 <Box display={'flex'} flexDirection={'column'} alignSelf={'center'} justifyContent={'center'} alignItems={'center'}>
@@ -48,11 +61,9 @@ const SectionInNumbers = () => {
                         Imponujące? Dołącz do nas już dziś i bądź pomocny!
                     </Typography>
                     <CustomButton variant="contained" color="tertiary" size={'medium'} href={"/VolunteerForm"} style={{maxWidth: '50%'}}>Zostań wolontariuszem</CustomButton>
-
                 </Box>
                 <Box component="img" maxWidth={'100px'} alt="" src={LogoSignet} alignSelf={'flex-end'}/>
                 <Box component="img" maxWidth={'460px'} alt="" src={ImgGlobe}/>
-                
             </Box>
         </Box>
     )
