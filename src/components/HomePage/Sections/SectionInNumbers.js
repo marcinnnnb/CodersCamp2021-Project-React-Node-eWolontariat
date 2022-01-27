@@ -6,6 +6,7 @@ import CustomButton from "../../CustomButton";
 import {makeStyles} from '@material-ui/core';
 import { useState } from "react";
 import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 const useStyles = makeStyles({
     bigNumber: {
@@ -38,19 +39,37 @@ const SectionInNumbers = () => {
             <Box display={'flex'} padding={'4rem'} justifyContent={'space-evenly'} mr={'2rem'}>
                 <Box alignSelf={'center'} textAlign={'center'}>
                     <Typography className={classes.bigNumber}>
-                        <CountUp end={100} onStart={onStart} onEnd={onEnd} containerProps={containerProps} />
+                    <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
+                        {({ isVisible }) => (
+                        <div style={{ height: 100 }}>
+                            {isVisible ?  <CountUp end={100} onStart={onStart} onEnd={onEnd} containerProps={containerProps} /> : null}
+                        </div>
+                        )}
+                    </VisibilitySensor>
                     </Typography>
                     <Typography variant="body1">Tylu osobom pomogliśmy</Typography>
                 </Box>
                 <Box alignSelf={'center'} textAlign={'center'}>
                     <Typography className={classes.bigNumber}>
-                        <CountUp end={1234} onStart={onStart} onEnd={onEnd} containerProps={containerProps} />
+                    <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
+                        {({ isVisible }) => (
+                        <div style={{ height: 100 }}>
+                            {isVisible ?  <CountUp end={1234} onStart={onStart} onEnd={onEnd} containerProps={containerProps} /> : null}
+                        </div>
+                        )}
+                    </VisibilitySensor>
                     </Typography>
                     <Typography variant="body1">Tyle zadań zakończyło się sukcesem</Typography>
                 </Box>
                 <Box alignSelf={'center'} textAlign={'center'}>
                     <Typography className={classes.bigNumber}>
-                        <CountUp end={56} onStart={onStart} onEnd={onEnd} containerProps={containerProps} />
+                    <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
+                        {({ isVisible }) => (
+                        <div style={{ height: 100 }}>
+                            {isVisible ?  <CountUp end={568} onStart={onStart} onEnd={onEnd} containerProps={containerProps} /> : null}
+                        </div>
+                        )}
+                    </VisibilitySensor>
                     </Typography>
                     <Typography variant="body1">Tyle zgłosiło się wolontariuszy</Typography>
                 </Box>    
