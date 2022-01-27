@@ -99,9 +99,9 @@ function App() {
                     <Grid item sm={3}>
                         <Typography variant='h3' color='secondary'>Informacje</Typography>
                         <List padding={"0"}>
-                            <ListItem component={'a'} href="/VolunteerForm">Zostań wolontariuszem</ListItem>
-                            <ListItem component={'a'} href="/VolunteersPage">Znajdź wolontariusza</ListItem>
-                            <ListItem component={'a'} href="/TasksPage">Jak znaleźć pomoc</ListItem>
+                            <ListItem component={'a'} href="/VolunteerForm" disableGutters>Zostań wolontariuszem</ListItem>
+                            <ListItem component={'a'} href="/VolunteersPage" disableGutters>Znajdź wolontariusza</ListItem>
+                            <ListItem component={'a'} href="/TasksPage" disableGutters>Jak znaleźć pomoc</ListItem>
                         </List>                       
                     </Grid>
                     <Grid item sm={3}>
@@ -111,10 +111,8 @@ function App() {
                     <Link href={"https://github.com/marcinnnnb/CodersCamp2021-Project-React-Node-eWolontariat"}>
                         <Box
                             component={"img"}
-                            display={"flex"}
-                            justifyContent={"flex-end"}
-                            sx={{
-                            height: "20px",
+                            style={{
+                                height: "20px",
                             }}
                             alt={"Logo Coders Camp"}
                             src={GitHubLogo}
