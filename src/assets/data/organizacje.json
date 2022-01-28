@@ -1,0 +1,52 @@
+[
+    {
+        "id":"1",
+        "title":"Schronisko dla bezdomnych zwierząt" ,
+        "KRS_number": "000356982356" ,
+        "image":["https://iv.pl/images/85ec08b82ac40a9656def5028cdb5306.jpg"],
+        "amount":"3",
+        "action_description":"W naszym schronisku znajduje się wiele spragnionych uczucia i domu psów i kotów , które z utęsknieniem czkają na ludzi chcących dać im prawdziwy dom i opiekę. W schronisku przebywa przeciętnie około 200-300 psów i 100- 300 (w zależności od pory roku) kotów różnych ras i wielkości. Schronisko dla Bezdomnych Zwierząt przyjmuje zwierzęta przez całą dobę, a wydaje nowym opiekunom w godzinach 10.00 - 14.00 i 15.00 - 17.00 przez wszystkie dni tygodnia (w niedziele i święta także)",
+        "tasks":["Wyprowadzanie psów na spacery", "Pomoc w organizacji zbiórki karmy", "Pomoc przy budowie nowych boksów"]
+    },
+    {
+        "id":"2",
+        "title":"Fundacja Centrum Rozwoju Nil Desperandum " ,
+        "KRS_number": "000486235235" ,
+        "image":["https://api.ngo.pl/media/get/172312"],
+        "amount":"1",
+        "action_description":"Kryzys psychiczny, niskie poczucie własnej wartości, trudności w odnalezieniu się w codziennych kontaktach, obowiązkach, pracy, poczucie wstydu i wyobcowania z powodu choroby psychicznej. Wszystko to jest udziałem osób, które przeszły kryzys psychiczny. Może ktoś z Twojego otoczenia boryka się z tymi problemami.Jeśli chcesz pomóc i uczestniczyć we wspieraniu tych osób i potrafisz działać w nowych technologiach, czy pozyskiwać fundusze dla działań pomocowych, dołącz do nas jako wolontariusz. Możesz przez swoje działania mieć wpływ na pozytywne zmiany w życiu tych osób",
+        "tasks":["Pozyskiwanie funduszy dla działań - wolontariat zdalny"]
+    },
+    {   "id":"3",
+        "title":"Stowarzyszenie PORANEK" ,
+        "KRS_number": "000898655235" ,
+        "image":["https://iv.pl/images/85ec08b82ac40a9656def5028cdb5306.jpg"],
+        "amount":"1",
+        "action_description":"Stowarzyszenie poszukuje copywriterów do tworzenia internetowej encyklopedii fauny i flory dla projektu ekologicznego.",
+        "tasks":["Tworzenie tekstów na stronę www"]
+    },
+    {   "id":"4",
+        "title":"Stowarzyszenie Twoje Miejsce" ,
+        "KRS_number": "000666233355" ,
+        "image":["https://api.ngo.pl/media/get/172265"],
+        "amount":"3",
+        "action_description":"Szukamy osoby, która pomoże nam kompleksowo i sprawnie zorganizować aukcje na allegro.Środki finansowe z przeprowadzonych aukcji będą przeznaczone na cele statutowe Stowarzyszenia Twoje Miejsce.",
+        "tasks":["Przygotowanie przedmiotów do sprzedaży - fotografowanie", "Tworzenie opisów wystawianych przedmiotów","Odpisywanie na wiadomości osób zainteresowanych"]
+    },
+    {   "id":"5",
+        "title":"Szkolna świetlica" ,
+        "KRS_number": "000666233355" ,
+        "image":["https://api.ngo.pl/media/get/172265"],
+        "amount":"2",
+        "action_description":"Świetlica przyjmie studentów lub emerytowanych nauczycieli na wolontariuszy, chętnych do pomocy dzieciom i młodzieży.",
+        "tasks":["Pomaganie w odrabianiu lekcji", "Nauka gry na instrumentach"]
+    },
+    {   "id":"6",
+        "title":"Komitet Ochrony Praw Dziecka" ,
+        "KRS_number": "000558996323" ,
+        "image":["https://api.ngo.pl/media/get/172738"],
+        "amount":"3",
+        "action_description":"Ogólnopolska organizacja pożytku publicznego, działająca kompleksowo i bezpłatnie na rzecz dzieci, kończy w tym roku 40 lat. W związku z Jubileuszem, nowymi projektami oraz stałymi działaniami: szukamy dodatkowego wsparcia. A szukamy… osoby mogącej nam pomóc czasowo przy planowanej promocji zakończonego etapu projektu (chodzi o tworzenie prezentacji i grafiki). Wspiera nas agencja marketingowa, ale z uwagi na konieczne dodatkowe działania, dodatkowe formy promocji i nowe pomysły- szukamy wsparcia. Kogo szukamy?osobę znającą oczywiście świetnie PP,  zaangażowaną, chętną do czasowej, acz dość intensywnej pomocy przy tworzeniu prezentacji. Materiały udostępnimy, wyjaśnimy.",
+        "tasks":["Tworzenie prezentacji i grafiki"]
+    }
+]

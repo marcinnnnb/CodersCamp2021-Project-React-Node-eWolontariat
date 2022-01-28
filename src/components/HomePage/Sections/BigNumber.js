@@ -32,6 +32,7 @@ const BigNumber = React.forwardRef(function BigNumber(
                     </Typography>
                 )}
             </VisibilitySensor>
+            
         )
     }
 );
