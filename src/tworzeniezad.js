@@ -1,17 +1,15 @@
 import React from "react";
+import { useState } from "react";
 import {useForm} from 'react-hook-form';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {ThemeProvider } from '@mui/material/styles';
+import theme from "./Theme";
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
 import Select from 'react-select'
 import Categories from "./Kategorie";
 import Box from '@mui/material/Box';
-import Input from '@mui/material/Input';
 import Typography from '@mui/material/Typography';
-
-import './tworzeniezad.css';
 
 const tytulValidation={
     required:true, minLength:5, maxLength:80
@@ -20,79 +18,52 @@ const amountValidation={
     required:true, pattern:[0-9], maxLength:1000
 } 
 
-const theme = createTheme({
-    palette: {
-      primary: {
-          main:'#FF7A82',
-          contrastText: "#fff"
-    },
-    secondary:{
-        main:'#4DAF7B'
-    }
-  },
-  typography: {
-    button: {
-      textTransform: 'none',
-    }
-  }
-});
-
-export default function Tworzeniezad() {
+export default function Tworzeniezad2() {
     const{register,handleSubmit} =useForm();
     const onSubmit = data => console.log(data);
+
+    // const [categories, setCategories] = useState('');
+    // const handleChange = (event) => {
+    //   setCategories(event.target.value);}
 
 return (
     <ThemeProvider theme={theme}>
     <form onSubmit={handleSubmit(onSubmit)}>
     
-    <Grid container
-    spacing={2}
-    justify="center"
-    align="flex-start"
-    margin="10px"
-    >
-    <Grid item xs={12}>
+    <Box sx={{display:"grid", gridTemplateColumns: "3fr 2fr", gap: 2, justifyItems: 'center', alignItems: 'space-evenly', gridTemplateRows: 'auto',
+    gridTemplateAreas: `"header header"
+  "main img"
+  "main2 main2"
+  "button button"
+  "footer footer"`}}>
+  
+    <Box sx={{ gridArea: 'header'}}> 
     <Typography variant="h3" align="center" color="secondary.light" >Tworzenie zadania dla wolontariusza </Typography>
-    </Grid>
+    </Box>
 
-    <Grid item xs={7}>
+    <Box sx={{ gridArea: 'main', display:"flex",  flexDirection:"column", alignItems: 'stretch', justifyContent: 'space-around',width: '100%', marginLeft:"30px"}}>
     <TextField fullWidth label="Tytuł zadania" {...register('title', tytulValidation)} {...tytulValidation}/>
-    </Grid>
-
-    <Grid item xs={7}>
-    <label>
-    Wybierz kategorie:
-    <Select  options={Categories} isMulti isSearchable {...register("categories")} >
-    </Select>
-    </label>
-    </Grid>
-
-    <Grid item xs={4} >
-    <Box  sx={{  backgroundColor: 'primary', p: 2, border: '1px dashed grey' }}>
+    <TextField type="number" fullWidth label="Ilu wolontariuszy potrzebujesz?" {...register('amount', amountValidation)} {...amountValidation}/>
+    </Box>
+    
+    <Box sx={{ gridArea: 'img', alignItems:"center", justifyContent:"center",  backgroundColor: 'primary', p: 2, border: '1px dashed grey', width:"70%", height:"120px"}}>
     <input name="image" type="file" accept="image/png, image/jpeg"  />
     </Box>
-    </Grid>
-  
-    <Grid item xs={7}>
-    <TextField type="number" fullWidth label="Ilu wolontariuszy potrzebujesz?" {...register('amount', amountValidation)} {...amountValidation}/>
-    </Grid>
 
-    <Grid item xs={10}>
-    <TextField multiline rows={4} fullWidth label="Dodaj opis zadania" {...register("action_description")} />
-    </Grid>
-
-    <Grid item xs={10}>
+    <Box sx={{ gridArea: 'main2', display:"flex", gap:3, flexDirection:"column", justifyContent: 'space-around', width:"97%"}}>
+    <TextField multiline rows={4} fullWidth label="Dodaj opis zadania" {...register("action_description")} />   
     <TextField fullWidth multiline rows={2} label="Dodaj krótki opis widoczny na miniaturze" {...register("action_short_description")} />
-    </Grid>
+    <Typography variant="body">Wybierz kategorie: </Typography>
+    <Select label="Kategorie" options={Categories} isMulti isSearchable {...register("categories")} />
     
-    <Grid item xs={12}>
-    <Button type="submit" variant="contained" endIcon={<SendIcon />} color="primary" > Opublikuj zadanie</Button>
-    </Grid>
-
-    </Grid>
+    </Box>
+    <Box sx={{ gridArea: 'button'}}>
+    <Button size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary" justifySelf="flex-end" > Opublikuj zadanie</Button>
+    </Box>
+    </Box>
     </form>
     </ThemeProvider>
-)
+
+
+    )
 }
-
-
