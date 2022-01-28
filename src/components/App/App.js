@@ -25,15 +25,18 @@ function App() {
             
                 <AppBar position='static' color={'inherit'}>
                         <Toolbar>
+                        <a href="/">
                             <Box
-                                component="img"
-                                sx={{
-                                height: "46px",
-                                }}
-                                alt="Logo pomocny.pl"
-                                src={LogoPomocny}
-                                padding={"1rem 0"}
+                                    component="img"
+                                    sx={{
+                                    height: "46px",
+                                    }}
+                                    alt="Logo pomocny.pl"
+                                    src={LogoPomocny}
+                                    padding={"1rem 0"}
                             />
+                        </a>
+                            
                             <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
                                 <Button variant="contained" color='primary' href={"/TaskForm"} size={'medium'}>Stwórz zadanie</Button>
                                 <Button variant="text" size={'medium'}>Zaloguj się</Button>
@@ -73,7 +76,8 @@ function App() {
             <Container padding={"0"}>
                 <Grid container spacing={1}>
                     <Grid item sm={3}>
-                    <Box
+                    <a href="/">
+                        <Box
                             component="img"
                             sx={{
                             height: "60px",
@@ -81,7 +85,9 @@ function App() {
                             alt="Logo pomocny.pl"
                             src={LogoPomocny}
                             
-                            />
+                        />
+                    </a>
+                   
                     <Typography variant={'caption'} paragraph={true}>Projekt został zrealizowany w ramach:</Typography>
                     <Link href={"https://www.coderscamp.edu.pl/"}>
                         <Box
@@ -101,7 +107,7 @@ function App() {
                         <List padding={"0"}>
                             <ListItem component={'a'} href="/VolunteerForm" disableGutters>Zostań wolontariuszem</ListItem>
                             <ListItem component={'a'} href="/VolunteersPage" disableGutters>Znajdź wolontariusza</ListItem>
-                            <ListItem component={'a'} href="/TasksPage" disableGutters>Jak znaleźć pomoc</ListItem>
+                            <ListItem component={'a'} href="/#section-how-find-help" disableGutters>Jak znaleźć pomoc</ListItem>
                         </List>                       
                     </Grid>
                     <Grid item sm={3}>
@@ -126,7 +132,6 @@ function App() {
         </ThemeProvider>
     )
 
-    
 };
 
 export default App;
