@@ -1,44 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   width="670"
-   height="200"
-   viewBox="0 0 177.27084 52.916668"
-   version="1.1"
-   id="svg2906"
-   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
-   sodipodi:docname="plane.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview2908"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="false"
-     inkscape:zoom="0.72337261"
-     inkscape:cx="198.37632"
-     inkscape:cy="404.35592"
-     inkscape:window-width="1920"
-     inkscape:window-height="1001"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
-     units="px" />
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="670px" y="200px"
+	 viewBox="0 0 177.27084 52.916668" xml:space="preserve">
   <defs
      id="defs2903" />
-  <g
-     inkscape:label="Warstwa 1"
-     inkscape:groupmode="layer"
-     id="layer1">
+  <g id="layer1">
     <path
        class="st7"
        d="m 137.2714,48.456869 c 0,0 -1.07173,-5.874271 -0.77306,-5.970711 l 40.35684,-13.01107 z"

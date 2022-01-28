@@ -37,12 +37,12 @@ function TasksCard({task}){
     const classes = useStyles();
 
     return(
-        <Card style={{marginTop:'2rem'}}>
+        <Card raised={true}  style={{marginTop:'2rem'}}>
             <CardContent className={classes.content}>
-                <Typography paragraph variant='h5'>
+                <Typography paragraph variant='h5' align={'justify'} >
                    {task.title}
                 </Typography>
-                <Typography>
+                <Typography align={'center'} >
                     {task.action_short_description}
                 </Typography>
             </CardContent>

@@ -14,7 +14,8 @@ export const theme = createTheme({
       },
       tertiary: {
         main: '#4DAF7B',
-        contrastText: '#fff'
+        contrastText: '#fff',
+        dark: '#857AE0',
       }
     },
     typography: {
