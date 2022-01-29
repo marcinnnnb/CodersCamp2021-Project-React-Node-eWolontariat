@@ -37,6 +37,7 @@ function TasksCard({task}){
     const classes = useStyles();
 
     return(
+        <Button>
         <Card raised={true}  style={{marginTop:'2rem'}}>
             <CardContent className={classes.content}>
                 <Typography paragraph variant='h5' align={'justify'} >
@@ -50,6 +51,7 @@ function TasksCard({task}){
                 <Button className={classes.btnPurple} variant="contained">Pomagam</Button>
             </Box>
         </Card>
+        </Button>
     )
 }
 export default TasksCard;
