@@ -1,8 +1,8 @@
 import { Box, Typography } from "@material-ui/core";
-import LogoPomocny from "../../../assets/img/logo-pomocny.svg";
-import ImgGlobe from "../../../assets/img/globe-mask.svg";
-import LogoSignet from "../../../assets/img/hand-peace-solid.svg";
-import CustomButton from "../../CustomButton";
+import LogoPomocny from "../../../../assets/img/logo-pomocny.svg";
+import ImgGlobe from "../../../../assets/img/globe-mask.svg";
+import LogoSignet from "../../../../assets/img/hand-peace-solid.svg";
+import CustomButton from "../../../CustomButton";
 import BigNumber from "./BigNumber";
 
 const SectionInNumbers = () => {

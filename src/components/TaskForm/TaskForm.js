@@ -47,7 +47,7 @@ return (
     
     </Box>
     <Box sx={{ gridArea: 'button'}}>
-    <Button size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary" justifySelf="flex-end" > Opublikuj zadanie</Button>
+    <Button size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary" justifySelf="flex-end" href={"/TaskPage"}> Opublikuj zadanie</Button>
     </Box>
     </Box>
     </form>
