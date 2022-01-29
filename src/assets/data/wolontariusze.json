@@ -1,4 +1,5 @@
-[{
+[
+    {
     "name": "Tomek",
     "surname":  "Wojciechowski",
     "nick": "Tomek z Gór",
@@ -7,9 +8,8 @@
     "image":    "https://iv.pl/images/c7af3c8b2adcdc30807547e1172728bc.jpg",
     "categories":   ["Korepetycje"],
     "actions": [ "Warszaty dla dzieci z domów dziecka-nauka gry na ukulele"],
-    "e-mail":   "t.wojciechowski@vp.pl"
+    "email":   "t.wojciechowski@vp.pl"
     },
-
     {    
     "name": "Zosia",
     "surname":  "Wierzbowska",
@@ -19,9 +19,8 @@
     "image" : "https://iv.pl/images/694c4a0512a20294314bb8c76c41bad4.md.jpg",
     "categories":  [ "excel", "strony www", "korepetycje"],
     "actions":  ["Szukam korepetytora matematyki dla mojej córki (4 klasa)"],
-    "e-mail":   "zosia.wierzbowska@wp.pl"   
+    "email":   "zosia.wierzbowska@wp.pl"   
     },
-
     {    
     "name": "Marek",
     "surname":  "Kowalski",
@@ -31,10 +30,8 @@
     "image":"https://iv.pl/images/6d825b496ab29fe2a9cef83b6ce51fbc.md.jpg",
     "categories":  [ "wyprowadzanie psów", "złota rączka"],
     "actions":  ["Poszukuję pilnej pomocy przy naprawie kranu w kuchni", "szkolne warszaty z budowania karmników dla ptaków"],
-    "e-mail":   "kowal.marek44@gmail.com"
-        
+    "email":   "kowal.marek44@gmail.com" 
     },    
-     
     {
     "name": "Marlena",
     "surname":"Karczewska",
@@ -44,7 +41,7 @@
     "image":"https://iv.pl/images/9bb5cc957107f6e0d62d3d99976c7324.jpg",
     "categories":   ["Opieka nad dziećmi"],
     "actions": [null],    
-    "e-mail":   "marla456@wp.pl"
+    "email":   "marla456@wp.pl"
     }, 
     {    
     "name": "Mateusz",
@@ -55,7 +52,7 @@
     "image":    "https://iv.pl/images/ae4a8717d6c0bf4b6257017603f06026.jpg",
     "categories":   ["tłumaczenia"],
     "actions":  ["Szukam kogoś do przetłumaczenia ogłoszenia o zaginięciu kotki na język niemiecki"],
-    "e-mail":   "mateusz.lipowicz45@wp.pl"
+    "email":   "mateusz.lipowicz45@wp.pl"
     },    
     {    
     "name": "Justyna",
@@ -66,7 +63,7 @@
     "image":    "https://iv.pl/images/6b54d0252ecf74e48ccc91ec9d92532d.jpg",
     "categories":   ["korepetycje"],
     "actions":  ["Szukam kogoś kto przerobi testy szóstoklasisty z moim synem (chemia, matematyka)", "Warsztaty chemiczne dla najmłodszych"],
-    "e-mail":   "justyna.kosa5@vp.pl"
+    "email":   "justyna.kosa5@vp.pl"
     },   
     {    
     "name": "Robert",
@@ -77,7 +74,7 @@
     "image":    "https://iv.pl/images/3f1a4770b5e63558b06b2475b1931004.png",
     "categories":   ["Korepetycje"],
     "actions":  ["Krótkie webinarium: co trzeba wiedzieć przed egzaminem wstępnym na architekturę?"],
-    "e-mail":   "robson@gmail.com"
+    "email":   "robson@gmail.com"
     },   
     {    
     "name": "Monika",
@@ -88,7 +85,7 @@
     "image" :"https://iv.pl/images/694c4a0512a20294314bb8c76c41bad4.md.jpg",
     "categories":   ["fotografia"],
     "actions":  ["Szukam początkującego fotografa do sesji zdjęciowej"],
-    "e-mail":   "moniafoto@op.pl"
+    "email":   "moniafoto@op.pl"
     } ,  
     {    
     "name": "Paulina",
@@ -99,6 +96,6 @@
     "image":    "https://iv.pl/images/ad6fc7be5e1a1762ca6c517f5a674076.jpg",
     "categories":   ["wyprowadzanie psów"],
     "actions":[null], 
-    "e-mail":"paula9222@gmail.com"  
+    "email":"paula9222@gmail.com"  
     }
-    ]
+]
