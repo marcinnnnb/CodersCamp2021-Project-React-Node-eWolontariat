@@ -3,7 +3,7 @@ import { Button, Box, Typography, TextField } from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import Select from 'react-select'
 import Categories from '../../assets/data/Categories';
-import './TaskForm.css';
+
 
 const tytulValidation={
     required:true, minLength:5, maxLength:80
