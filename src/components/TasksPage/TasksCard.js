@@ -45,7 +45,7 @@ function TasksCard({tasks}){
                 key={task.id} 
                 lg={4} md={6} sx={12}>
                     <Card style={{marginTop:'2rem'}}>
-                        <SvgIcon color={getColor(task.id)} style={{width:'30%', height:'30%', display:'block', margin: 'auto'}} component={getIcon(task.categories)}/>
+                        <SvgIcon color={getColor(task.id)} style={{width:'30%', height:'30%', display:'block', margin: 'auto'}} component={getIcon(task.categories[0])}/>
                         <CardContent className={classes.content}>
                             <Typography paragraph variant='h5'>
                                 {task.title}
@@ -64,9 +64,9 @@ function TasksCard({tasks}){
             
     )
 }
-export default TasksCard;
 
-function getIcon(nameCat){
+
+export function getIcon(nameCat){
 
     switch (nameCat){
         case 'Korepetycje':
@@ -87,8 +87,10 @@ function getIcon(nameCat){
     }
 }
 
-function getColor(id){
+export function getColor(id){
     if(id % 2 === 0){
         return 'secondary'}
     else return 'primary'
 }
+
+export default TasksCard;
