@@ -4,7 +4,6 @@ import SendIcon from '@material-ui/icons/Send';
 import Select from 'react-select'
 import Categories from '../../assets/data/Categories';
 
-
 const tytulValidation={
     required:true, minLength:5, maxLength:80
 }  
