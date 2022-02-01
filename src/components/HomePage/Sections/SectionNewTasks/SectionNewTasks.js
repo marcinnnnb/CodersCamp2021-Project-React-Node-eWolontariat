@@ -52,7 +52,6 @@ const SectionNewTasks = () => {
                 <SearchInput/>
             </Box>
             <PopularCategories data = {data}/>
-            <NewestTasks data = {data} start={0} end={6}/>
             <Box align={"center"}>
                 <Button 
                     variant="outlined" 
