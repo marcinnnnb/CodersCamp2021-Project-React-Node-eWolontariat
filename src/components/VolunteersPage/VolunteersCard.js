@@ -40,7 +40,7 @@ function VolunteersCard({vol}){
                 </Typography>
             </CardContent>
             <Box className={classes.center}>
-                <Button className={classes.btnPurple} variant="outlined" endIcon={<TelegramIcon/>}>Napisz wiadomość </Button>
+                <Button className={classes.btnPurple} variant="outlined" endIcon={<TelegramIcon/>} href="/VolunteerPage">Napisz wiadomość </Button>
             </Box>
         </Card>
     )

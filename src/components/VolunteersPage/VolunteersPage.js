@@ -8,8 +8,8 @@ import Grid from '@material-ui/core/Grid'
 import VolunteersCard from './VolunteersCard';
 import { useEffect, useState } from 'react';
 import Box from '@material-ui/core/Box'
-import CatButtons from '../TasksPage/CatButtons';
 import ChooseCat from '../TasksPage/ChooseCat';
+import PopularCategories from '../PopularCategories';
 
 
 
@@ -46,7 +46,7 @@ const VolunteersPage = () => {
     return(
         <Container>
             <Typography variant='h4'>Wolontariusze</Typography>
-            <CatButtons/>
+            <PopularCategories data = {vols}/>
             <Box className={classes.flex}>
             <ChooseCat/> 
             </Box>

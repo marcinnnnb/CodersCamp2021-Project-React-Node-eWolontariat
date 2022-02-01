@@ -1,29 +1,34 @@
-import TextField from '@material-ui/core/TextField'
+import { TextField, MenuItem, FormControl, Select, InputLabel } from '@material-ui/core';
+import { useState } from 'react';
 import Categories from '../../assets/data/Categories';
-import { MenuItem } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography'
-
-
 
 const ChooseCat = () => {
-
+    const [category, setCategory] = useState('');
+    const handleChange = (event) => {
+      setCategory(event.target.value);
+    }
 
   return (
-    <>
-        <Typography style={{marginRight:'3rem'}} variant='h5'>Wybierz wg kategorii:</Typography>
-        <TextField
-            select
-            label='Kliknij, aby rozwinąć'
-            variant='outlined'
-            style={{width:'20%', height: '2rem'}}
-        >
-        {Categories.map (cat =>(
-            <MenuItem key={cat.label} value={cat.value}>
-                {cat.label}
-            </MenuItem>
+        <FormControl variant="standard">
+                <InputLabel id="demo-simple-select-standard-label">Wybierz kategorię</InputLabel>
+                <Select
+                labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard"
+                value={category}
+                onChange={handleChange}
+                label="Wybierz kategorię"
+                style={{width: "260px", fontSize: "1rem"}}
+                >
+                <MenuItem value="" style={{fontSize: "1rem"}}>
+                    <em>Wszystkie kategorie</em>
+                </MenuItem>
+                {Categories.map (cat =>(
+                <MenuItem key={cat.label} value={cat.value} style={{fontSize: "1rem"}}>
+                    {cat.label} 
+                </MenuItem>
         ))}
-        </TextField>
-    </>
+                </Select>
+            </FormControl>
     )
 }
 

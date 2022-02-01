@@ -1,90 +1,84 @@
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
-import {makeStyles} from '@material-ui/core'
+import { Button, Box, Typography, CircularProgress } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { useEffect, useState } from 'react';
 import TasksCard from './TasksCard';
-import CatButtons from './CatButtons';
 import ChooseCat from './ChooseCat';
 import Zadania from '../../assets/data/zadania.json'
+import PopularCategories from '../PopularCategories';
+import CasinoIcon from '@material-ui/icons/Casino';
+import Api from '../HomePage/Sections/SectionNewTasks/ApiTasks';
+import NewestTasks from '../NewestTasks';
 
-
-const useStyles = makeStyles({
-     btnLong:{
-        paddingLeft: '5rem',
-        paddingRight: '5rem',
-     },
-    btnPurple:{
-        backgroundColor: '#868AE0',
-        marginBottom: '2rem', 
-        paddingRight: '2rem',
-        paddingLeft: '2rem',
-        maxHeight: '2rem',
-        fontWeight: '2rem',
-        marginLeft: '2rem',
-        color: '#fff',
-        position: 'relative',
-        left: '25rem'
-    },
-    flex:{
-        display: 'flex',
-        marginBottom: '3rem',
-    },
-    center:{
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: '2rem',
-        marginTop: '2rem'
-    }
-  }) 
-
-const tasksPerPage = 6;
+let tasksPerPage = 6;
 let arrayForHoldingTasks = [];
 
 
 const TasksPage = () => {
     
     const [tasks, setTasks] = useState([]);
-    const [next, setNext] = useState(6);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+    const [next, setNext] = useState(0);
     const [showButton, setShowButton] = useState(true);
 
-    const loopWithSlice = (start, end) => {
-        const slicedTasks = Zadania.slice(start, end);
-        arrayForHoldingTasks = [...arrayForHoldingTasks, ...slicedTasks];
-        setTasks(arrayForHoldingTasks);
-      };
+    useEffect(() => {
+      async function fetchData() {
+          try {
+              const response = await Api.getData();
+              const json = await response.json();
 
-      useEffect(() => {
-        loopWithSlice(0, tasksPerPage );
+              setTasks(json);
+          } catch (e) {
+              setError(e.message || 'Unexpected error');
+          }
+          setLoading(false);
+      }
+          fetchData();
       }, []);
+      
+      if (loading) {
+          return (
+              <Box align={"center"}>
+                  <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
+              </Box>
+          )}
+      
+      if (error) {
+          return( 
+                <Box align={"center"}>
+                    <div style={{color: 'red'}}>ERROR: {error}</div>
+                </Box>
+          )}
 
     const handleShowMoreTasks = () => {
-        loopWithSlice(next, next + tasksPerPage);
         setNext(next + tasksPerPage);
         setShowButton(false)
+        arrayForHoldingTasks = tasks.slice(next, next+tasksPerPage);
+        arrayForHoldingTasks = [arrayForHoldingTasks, tasks];
       };
 
-    
-    const classes = useStyles();
-
-  
     return(
-        <Container>
-            <Typography variant='h4'>Wszystkie zadania</Typography>
-            <CatButtons/>
-            <Box className={classes.flex}>
-               <ChooseCat/>
-               <Button className={classes.btnPurple} variant="contained">Szczęśliwy traf</Button>
+        <Box  id={"page-all-tasks"}
+              height = {"100%"}
+              alignItems={"center"}
+              >
+            <Typography variant='h1' align={"center"}>Wszystkie zadania</Typography>
+            
+            <Box margin={"0 3rem"} display={"flex"} justifyContent={'flex-start'}>
+                <Box display={"flex"} >
+                  <ChooseCat/>
+                </Box>
+                <Box  display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
+                  <Button variant={"contained"} color={"secondary"} startIcon={<CasinoIcon/>}>Szczęśliwy traf</Button>
+                </Box>
             </Box>
-            <TasksCard tasks = {tasks}/>
-            <Box className={classes.center}>
-                {showButton && <Button onClick={handleShowMoreTasks} className={classes.btnLong} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
+            <PopularCategories data = {tasks}/>
+            <NewestTasks data = {tasks} start={0} end={tasksPerPage+next}/>
+            <Box  align={"center"} marginBottom={"2rem"}>
+                {showButton && <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
             </Box>
-        </Container>
+        </Box>
     )
-
 }
 
 export default TasksPage;

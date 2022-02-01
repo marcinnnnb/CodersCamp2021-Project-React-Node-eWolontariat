@@ -5,7 +5,7 @@ export const theme = createTheme({
       primary: {
         main: '#FF7A82',
         contrastText: '#fff',
-        dark: '#868AE0'
+        dark: '#e9626a'
       },
       secondary: {
         main: '#868AE0',
@@ -15,7 +15,7 @@ export const theme = createTheme({
       tertiary: {
         main: '#4DAF7B',
         contrastText: '#fff',
-        dark: '#857AE0',
+        dark: '#42a772',
       }
     },
     typography: {
@@ -38,17 +38,17 @@ export const theme = createTheme({
         lineHeight: '1.7'
       },
       h4: {
-        fontSize: 36,
+        fontSize: "0.9rem",
         fontWeight: 700,
-        lineHeight: 2
+        lineHeight: 1.4
       },
       h5: {
-        fontSize: 20,
+        fontSize: "0.8rem",
         fontWeight: 500,
-        lineHeight: 2
+        lineHeight: 1.4
       },
       h6: {
-        fontSize: 18,
+        fontSize: "0.6rem",
         fontWeight: 400,
         lineHeight: 4
       },
