@@ -14,8 +14,8 @@ const SectionHowItWorks = () => {
             alignItems={"center"}
         >
             <Typography variant="h1">Zobacz jak to działa</Typography>
-            <Box display={'flex'} py={'4rem'} justifyContent={'space-evenly'} mr={'2rem'}>
-                <Card raised={true} style={{ padding: '3rem 2rem', height: '380px', display:'flex', flexDirection:'column', justifyContent:'flex-end', alignItems: 'center'}}>
+            <Box display={'flex'} py={'4rem'} justifyContent={'space-evenly'}>
+                <Card raised={true} style={{ padding: '3rem 2rem', height: '380px', borderRadius:'12px', display:'flex', flexDirection:'column', justifyContent:'flex-end', alignItems: 'center'}}>
                         <Box 
                             component={'img'}
                             alt=""
@@ -52,11 +52,10 @@ const SectionHowItWorks = () => {
                         </Box>
                         <CardContent>
                         <Typography gutterBottom variant="h2"align={'center'}>
-                            Znajdź wolontariusza
+                            Zostań wolontariuszem
                         </Typography>
                         <Typography variant='body2' paragraph gutterBottom={true} align={'center'}>
-                            Napisz czego Ci potrzeba i stwórz zadanie
-                        </Typography>
+                            Załóż profil wolontariusza i zacznij pomagać                        </Typography>
                         </CardContent>
                     <CardActions>
                         <CustomButton size="medium" variant="contained" color='tertiary' href={"/VolunteerForm"}>

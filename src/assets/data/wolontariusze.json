@@ -1,5 +1,6 @@
 [
     {
+    "id": 1,
     "name": "Tomek",
     "surname":  "Wojciechowski",
     "nick": "Tomek z Gór",
@@ -10,7 +11,8 @@
     "actions": [ "Warszaty dla dzieci z domów dziecka-nauka gry na ukulele"],
     "email":   "t.wojciechowski@vp.pl"
     },
-    {    
+    {
+    "id": 2, 
     "name": "Zosia",
     "surname":  "Wierzbowska",
     "nick": "Zosia123",
@@ -22,6 +24,7 @@
     "email":   "zosia.wierzbowska@wp.pl"   
     },
     {    
+    "id": 3,
     "name": "Marek",
     "surname":  "Kowalski",
     "nick": "Kowal",
@@ -33,6 +36,7 @@
     "email":   "kowal.marek44@gmail.com" 
     },    
     {
+    "id": 4,
     "name": "Marlena",
     "surname":"Karczewska",
     "nick": "Marla",
@@ -44,6 +48,7 @@
     "email":   "marla456@wp.pl"
     }, 
     {    
+    "id": 5,
     "name": "Mateusz",
     "surname":  "Lipowicz",
     "nick": "Mati L.",
@@ -54,7 +59,8 @@
     "actions":  ["Szukam kogoś do przetłumaczenia ogłoszenia o zaginięciu kotki na język niemiecki"],
     "email":   "mateusz.lipowicz45@wp.pl"
     },    
-    {    
+    {  
+    "id": 6,  
     "name": "Justyna",
     "surname":  "Kosińska",
     "nick": "Justyna Kosińska",
@@ -65,7 +71,8 @@
     "actions":  ["Szukam kogoś kto przerobi testy szóstoklasisty z moim synem (chemia, matematyka)", "Warsztaty chemiczne dla najmłodszych"],
     "email":   "justyna.kosa5@vp.pl"
     },   
-    {    
+    { 
+    "id": 7,   
     "name": "Robert",
     "surname":  "Pawłowski",
     "nick": "Robson",
@@ -76,7 +83,8 @@
     "actions":  ["Krótkie webinarium: co trzeba wiedzieć przed egzaminem wstępnym na architekturę?"],
     "email":   "robson@gmail.com"
     },   
-    {    
+    {  
+    "id": 8,  
     "name": "Monika",
     "surname":  "Majchrzak",
     "nick": "Monia",
@@ -88,6 +96,7 @@
     "email":   "moniafoto@op.pl"
     } ,  
     {    
+    "id": 9,
     "name": "Paulina",
     "surname"   :"Miłańska",
     "nick": "Paulina23",
