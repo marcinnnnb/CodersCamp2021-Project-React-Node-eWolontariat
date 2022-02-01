@@ -1,3 +1,6 @@
+import pies from '../assets/img/pies.jpg';
+
+
 export default function Tasks(){
     return [
         {
@@ -6,7 +9,7 @@ export default function Tasks(){
             "categories": [
               "Wyprowadznie psów"
             ],
-            "image": "../images/pies.jpg",
+            image: "{pies}",
             "amount": "16",
             "sign":"4",
             "action_description": "Szukamy osób kochająych zwierzęta i chętnych do wyprowadzania naszych podopiecznych na spacery. W naszym schronisku znajduje się ok. 120 psów i 50 kotów. Niestety nasi pracownicy nie są w stanie wyprowadzić każdego z nich na spacer codziennie przez co zwierzęta załatwiają się w boksach. Codzienny spacer dla naszych milisińskich to naprawdę wielka radość. Zapraszamy do zgłaszania się! ",

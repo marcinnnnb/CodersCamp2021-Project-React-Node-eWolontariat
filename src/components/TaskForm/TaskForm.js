@@ -3,6 +3,12 @@ import { Button, Box, Typography, TextField } from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import Select from 'react-select'
 import Categories from '../../assets/data/Categories';
+import savedTask from '../../store/SavedTask';
+import TaskReducer from '../../reducers/reducers_tasks'
+import TaskPagestore from '../TaskPage/TaskPagestore';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+console.log(TaskReducer);
 
 const tytulValidation={
     required:true, minLength:5, maxLength:80
@@ -13,7 +19,8 @@ const amountValidation={
 
 const TaskForm = () => {
     const{register,handleSubmit} =useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {savedTask(data)}
+    
 
 return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -26,7 +33,7 @@ return (
   "footer footer"`}}>
   
     <Box sx={{ gridArea: 'header'}}> 
-    <Typography variant="h3" align="center" color="secondary.light" >Tworzenie zadania dla wolontariusza </Typography>
+    <Typography variant="h3" align="center" color="primary" >Tworzenie zadania dla wolontariusza </Typography>
     </Box>
 
     <Box sx={{ gridArea: 'main', display:"flex",  flexDirection:"column", alignItems: 'stretch', justifyContent: 'space-around',width: '100%', marginLeft:"30px"}}>
@@ -41,18 +48,22 @@ return (
     <Box sx={{ gridArea: 'main2', display:"flex", gap:3, flexDirection:"column", justifyContent: 'space-around', width:"97%"}}>
     <TextField multiline rows={4} fullWidth label="Dodaj opis zadania" {...register("action_description")} />   
     <TextField fullWidth multiline rows={2} label="Dodaj krótki opis widoczny na miniaturze" {...register("action_short_description")} />
-    <Typography variant="body">Wybierz kategorie: </Typography>
+    <Typography variant="body1">Wybierz kategorie: </Typography>
     <Select label="Kategorie" options={Categories} isMulti isSearchable {...register("categories")} />
     
     </Box>
     <Box sx={{ gridArea: 'button'}}>
-    <Button size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary" justifySelf="flex-end" > Opublikuj zadanie</Button>
+    <Routes>
+    <Route path="/TaskPage" element={<TaskPagestore/>} />
+    </Routes>
+    <Button href={"/TaskPage"} size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary" > Opublikuj zadanie</Button>
     </Box>
     </Box>
     </form>
    
     
     )
+    
 }
 
 export default TaskForm;

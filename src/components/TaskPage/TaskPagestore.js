@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { bindActionCreators } from '@reduxjs/toolkit';
 import {connect} from 'react-redux';
 import TasksPage from '../TasksPage/TasksPage';
 import { Button, Typography, Box, TextField } from "@material-ui/core";
@@ -8,6 +7,8 @@ import liscik from "../../assets/img/plane.svg";
 import skrzynka from "../../assets/img/mailbox.svg";
 import avatar from "../../assets/img/facet.png";
 import CustomButton from "../CustomButton";
+
+
 
 
 
@@ -35,7 +36,7 @@ class TaskPage2 extends Component {
                 <Box>
                     <Button variant="contained" color="primary" size="large">Zobacz wszystkie zadania </Button>
                 </Box>
-                <Box sx={{   borderRadius: 3,  boxShadow: 5, width: '90%', display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'flex-start'}}>
+                <Box sx={{ borderRadius: 3,  boxShadow: 5, width: '90%', display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'flex-start'}}>
                     <Typography variant="h6" align="center">Ilu wolontariuszy potrzebujemy?</Typography>
                     <p>{task.amount}</p>
                     <p>Ilu się zapisało: {task.sign}</p>
@@ -60,11 +61,11 @@ class TaskPage2 extends Component {
             <Box sx={{ gridArea: 'main', alignItems:"center", width:'90%', justifyContent:"center"}}>
                 <Typography variant={"subtitle1"}>Kategorie: </Typography><Button  variant="contained" color="secondary">{task.categories}</Button>
                 <p align="center"><img width="400px" src={task.image} alt=""/></p>
-                <p>{task.action_description}</p>  
+                <Typography variant="body2">{task.action_description}</Typography>  
                 <img width="300px" src={liscik} alt=""/>
                 <Box sx={{gridArea:"main", borderRadius: 1,  boxShadow: 5,  display:"flex", flexDirection:"column", justifyContent: 'space-evenly', marginTop:"10px", marginBottom:"20px"}} >
-                    <Typography borderBottom="1px solid " variant="h5" align="center" >Komentarze</Typography>  
-                    <Typography marginLeft="20px" variant="body" align="left" ><img height="45px" src={avatar} alt=""/>{task.comments}</Typography>
+                    <Typography variant="h5" align="center" >Komentarze</Typography>  
+                    <Typography variant="body2" align="left" ><img height="45px" src={avatar} alt=""/>{task.comments}</Typography>
                 </Box>
                 <TextField label="Napisz komentarz" multiline rows={3} fullWidth/>
             </Box>

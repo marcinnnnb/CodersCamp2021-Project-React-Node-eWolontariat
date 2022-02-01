@@ -53,7 +53,7 @@ function App() {
                     <Route path="/" element={<HomePage/>} />
                     <Route path="/OrganizationForm" element={<OrganizationForm/>} />
                     <Route path="/OrganizationPage" element={<OrganizationPage/>} />
-                    <Route path="/TaskForm" element={<TaskForm/>} />
+                    <Route path="/TaskForm/*" element={<TaskForm/>} />
                     <Route path="/TaskPage" element={<TaskPagestore/>} />
                     <Route path="/TasksPage" element={<TasksPage/>} />
                     <Route path="/UserProfile" element={<UserProfile/>} />
