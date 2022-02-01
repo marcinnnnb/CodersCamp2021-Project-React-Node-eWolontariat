@@ -9,6 +9,7 @@ import LanguageIcon from '@material-ui/icons/Language';
 import PetsIcon from '@material-ui/icons/Pets';
 import Categories from '../../assets/data/Categories';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 
 
 const useStyles = makeStyles({
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
       maxHeight: '2rem',
       fontWeight: 700,
       marginLeft: '1rem',
-      width: '15rem'
+      width: '18rem'
      },
      text:{
         color: '#868686',
@@ -44,7 +45,10 @@ function CatButtons({task}){
         <Box className={classes.buttons}>
         {Categories.splice(4)}
          {Categories.map (cat =>(
-            <Button  key={cat.id} className={classes.btn} variant="contained" color={getColor(cat.id)} startIcon={getIcon(cat.value)}>{cat.value}</Button>
+            <Button  key={cat.id} className={classes.btn} variant="contained" color={getColor(cat.id)} startIcon={getIcon(cat.value)}>
+            <Divider style={{color:'#FFFFFF', width: '0.1rem', marginRight:'0.5rem'}} orientation="vertical" flexItem />
+            {cat.value}
+            </Button>
          ))}
         </Box>
     </>
