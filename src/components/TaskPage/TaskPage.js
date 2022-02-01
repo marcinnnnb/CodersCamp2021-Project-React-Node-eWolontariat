@@ -39,7 +39,7 @@ const TaskPage = () => {
           
             <Box sx={{gridArea:'sidebar' , display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around'}}>
                 <Box>
-                    <Button variant="contained" color="primary" size="large">Zobacz wszystkie zadania </Button>
+                    <Button variant="contained" color="primary" size="large" href="/TasksPage">Zobacz wszystkie zadania </Button>
                 </Box>
                 <Box sx={{   borderRadius: 3,  boxShadow: 5, width: '90%', display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'flex-start'}}>
                     <Typography variant="h6" align="center">Ilu wolontariuszy potrzebujemy?</Typography>

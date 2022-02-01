@@ -7,7 +7,7 @@ import SchoolIcon from '@material-ui/icons/School';
 import ComputerIcon from '@material-ui/icons/Computer';
 import LanguageIcon from '@material-ui/icons/Language';
 import PetsIcon from '@material-ui/icons/Pets';
-import Categories from '../assets/data/Categories';
+import Categories from '../../assets/data/Categories';
 import Typography from '@material-ui/core/Typography';
 
 

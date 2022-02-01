@@ -1,14 +1,14 @@
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import {makeStyles} from '@material-ui/core'
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { useEffect, useState } from 'react';
-import TasksCard from '../TasksCard';
-import CatButtons from '../CatButtons';
-import ChooseCat from '../ChooseCat';
+import TasksCard from './TasksCard';
+import CatButtons from './CatButtons';
+import ChooseCat from './ChooseCat';
+import Zadania from '../../assets/data/zadania.json'
 
 
 const useStyles = makeStyles({
@@ -40,16 +40,31 @@ const useStyles = makeStyles({
     }
   }) 
 
+const tasksPerPage = 6;
+let arrayForHoldingTasks = [];
+
 
 const TasksPage = () => {
     
     const [tasks, setTasks] = useState([]);
+    const [next, setNext] = useState(6);
+    const [showButton, setShowButton] = useState(true);
 
-    useEffect(()=>{
-        fetch('https://api.npoint.io/3f77545257d8fcd44ade')
-        .then(res => res.json())
-        .then(data => setTasks(data))
-    }, [])
+    const loopWithSlice = (start, end) => {
+        const slicedTasks = Zadania.slice(start, end);
+        arrayForHoldingTasks = [...arrayForHoldingTasks, ...slicedTasks];
+        setTasks(arrayForHoldingTasks);
+      };
+
+      useEffect(() => {
+        loopWithSlice(0, tasksPerPage );
+      }, []);
+
+    const handleShowMoreTasks = () => {
+        loopWithSlice(next, next + tasksPerPage);
+        setNext(next + tasksPerPage);
+        setShowButton(false)
+      };
 
     
     const classes = useStyles();
@@ -63,21 +78,13 @@ const TasksPage = () => {
                <ChooseCat/>
                <Button className={classes.btnPurple} variant="contained">Szczęśliwy traf</Button>
             </Box>
-            <Grid container spacing={8}>
-                {tasks.splice(6)}
-                {tasks.map(task => (
-                    <Grid item 
-                    key={task.id} 
-                    lg={4} md={6} sx={12}>
-                        <TasksCard task = {task}/>
-                    </Grid>  
-                ))}  
-            </Grid>
+            <TasksCard tasks = {tasks}/>
             <Box className={classes.center}>
-                <Button className={classes.btnLong} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>
+                {showButton && <Button onClick={handleShowMoreTasks} className={classes.btnLong} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
             </Box>
         </Container>
     )
+
 }
 
 export default TasksPage;

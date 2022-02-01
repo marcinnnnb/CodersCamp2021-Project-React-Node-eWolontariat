@@ -2,6 +2,7 @@ import { Box, Typography} from "@material-ui/core";
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@mui/material/InputBase';
+import TasksPage from '../../TasksPage/TasksPage';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -60,7 +61,6 @@ const SectionNewTasks = () => {
                 inputProps={{ 'aria-label': 'search' }}
                 />
             </Search>
-               
             </Box>
         </Box>
     )

@@ -1,6 +1,5 @@
-import React from 'react';
 import TextField from '@material-ui/core/TextField'
-import Categories from '../assets/data/Categories';
+import Categories from '../../assets/data/Categories';
 import { MenuItem } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography'
 

@@ -50,7 +50,6 @@ const useStyles = makeStyles({
   },
   })
 
-
 const UserProfile = () => {
     const classes = useStyles();
   
@@ -78,17 +77,17 @@ const UserProfile = () => {
             <Button className={classes.text}>Załaduj więcej</Button>
             <Typography variant='h6' className={classes.text}>Aby dołączyć do jakieś akcji musisz założyć profil wolontariusza</Typography>
         
-             <Button className={classes.btn} variant="contained" color="secondary">Zakładam sobie profil wolonratiusza</Button>
+             <Button className={classes.btn} variant="contained" color="secondary" href={"VolunteerForm"}>Zakładam sobie profil wolonratiusza</Button>
         
           </Box>
           <Box>
             <Typography variant='h5'>Organizacje, do których należę: [number]</Typography>
             <Typography variant='h6' className={classes.text}>[liczba organizacji]</Typography>
-            <Button className={classes.btn} variant="contained" color="primary">Tworzę stronę organizacji</Button>
+            <Button className={classes.btn} variant="contained" color="primary" href={"/OrganizationForm"}>Tworzę stronę organizacji</Button>
           </Box>
         </Box>
       </Container>
-    )
+    );
 }
 
 export default UserProfile;

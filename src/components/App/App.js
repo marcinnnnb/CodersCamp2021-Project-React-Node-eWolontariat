@@ -84,7 +84,6 @@ function App() {
                             }}
                             alt="Logo pomocny.pl"
                             src={LogoPomocny}
-                            
                         />
                     </a>
                    
@@ -108,6 +107,7 @@ function App() {
                             <ListItem component={'a'} href="/VolunteerForm" disableGutters>Zostań wolontariuszem</ListItem>
                             <ListItem component={'a'} href="/VolunteersPage" disableGutters>Znajdź wolontariusza</ListItem>
                             <ListItem component={'a'} href="/#section-how-find-help" disableGutters>Jak znaleźć pomoc</ListItem>
+                            <ListItem component={'a'} href="/TasksPage" disableGutters>Znajdź zadanie</ListItem>
                         </List>                       
                     </Grid>
                     <Grid item sm={3}>
