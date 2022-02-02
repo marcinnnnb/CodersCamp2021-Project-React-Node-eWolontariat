@@ -1,6 +1,3 @@
-import pies from '../assets/img/pies.jpg';
-
-
 export default function Tasks(){
     return [
         {

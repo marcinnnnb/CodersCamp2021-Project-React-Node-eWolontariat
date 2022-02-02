@@ -1,6 +1,6 @@
 import {ADD_TASK} from '../actions/ADD_TASK';
 import TaskReducer from '../reducers/reducers_tasks';
-const initialTaskState= TaskReducer;
+const initialTaskState= TaskReducer();
 
 export default function savedTask(state=initialTaskState, action) {
     console.log(TaskReducer)

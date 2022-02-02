@@ -1,6 +1,6 @@
 export const ADD_TASK= (task)=>{
     return{
-        type:"newItem",
+        type:"ADD_TASK",
         payload:task
     }
 }

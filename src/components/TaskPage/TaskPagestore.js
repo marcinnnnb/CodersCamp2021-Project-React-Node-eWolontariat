@@ -1,21 +1,20 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import TasksPage from '../TasksPage/TasksPage';
 import { Button, Typography, Box, TextField } from "@material-ui/core";
 import ProgressBar from "./ProgressBar";
 import liscik from "../../assets/img/plane.svg";
 import skrzynka from "../../assets/img/mailbox.svg";
 import avatar from "../../assets/img/facet.png";
 import CustomButton from "../CustomButton";
+import tasks from '../../reducers/reducers_tasks';
+import taskSlice from '../Tasks/taskSlice';
 
 
-
-
-
-class TaskPage2 extends Component {
+ class TaskPage2 extends Component {
     createTaskPage(){
-        return this.props.tasks.map((task)=>{
-            return(
+
+        return this.props.taskSlice.map((task)=>{
+            (
                 <Box key={task.id} 
             display={"flex:"}
             height = {"100%"}
@@ -80,9 +79,9 @@ class TaskPage2 extends Component {
 
     render() {
         return (
-            <ul>
+            <div>
             {this.createTaskPage()}
-            </ul>
+            </div>
         )
     }
 }

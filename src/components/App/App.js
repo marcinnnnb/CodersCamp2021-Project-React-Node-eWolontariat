@@ -18,6 +18,7 @@ import CodersCampLogo from '../../assets/img/coder-camp.svg';
 import GitHubLogo from '../../assets/img/github-logo.png';
 import TaskPagestore from '../TaskPage/TaskPagestore';
 
+
 function App() {
     return (
         <ThemeProvider theme={theme}>
@@ -51,7 +52,7 @@ function App() {
                 <Box padding={2} flex={1} overflow={"auto"}>
                     <Routes>
                     <Route path="/" element={<HomePage/>} />
-                    <Route path="/OrganizationForm" element={<OrganizationForm/>} />
+                    <Route path="/OrganizationForm/*" element={<OrganizationForm/>} />
                     <Route path="/OrganizationPage" element={<OrganizationPage/>} />
                     <Route path="/TaskForm/*" element={<TaskForm/>} />
                     <Route path="/TaskPage" element={<TaskPagestore/>} />
