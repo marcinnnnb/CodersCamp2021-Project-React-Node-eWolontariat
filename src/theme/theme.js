@@ -58,9 +58,9 @@ export const theme = createTheme({
       },
       button: {
         textTransform: 'none',
-        letterSpacing: '1.5px',
+        letterSpacing: '1.2px',
         fontSize: '1rem',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
       },
     },  
 });

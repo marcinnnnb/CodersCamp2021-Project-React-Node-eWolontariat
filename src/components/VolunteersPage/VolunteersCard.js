@@ -28,7 +28,6 @@ function VolunteersCard({vol}){
     const classes = useStyles();
 
     return(
-        
         <Card style={{marginTop:'2rem'}}>
             <CardMedia component='img' style={{width:'30%', height:'30%', margin:'auto'}} image={vol.image} />
             <CardContent className={classes.content}>
