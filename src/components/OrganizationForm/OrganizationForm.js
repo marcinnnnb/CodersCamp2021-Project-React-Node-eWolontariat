@@ -44,7 +44,7 @@ return (
     
     <Box display={"flex"} padding={"1rem 0"} justifyContent={"flex-end"}>
     <Routes>
-    <Route path="/TaskPage" element={<OrganizationPage/>} />
+    <Route path="/OrganizationPage" element={<OrganizationPage/>} />
     </Routes>
     <Button href={"/OrganizationPage"} size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary" > Opublikuj profil organizacji</Button>
     </Box>

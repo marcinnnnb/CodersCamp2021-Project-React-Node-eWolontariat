@@ -8,7 +8,6 @@ import TaskPagestore from '../TaskPage/TaskPagestore';
 import { Route, Routes } from 'react-router-dom';
 import { addNewTask, selectTask } from "../Tasks/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { ContactsOutlined } from '@material-ui/icons';
 import { DisplayTaskPage } from '../TaskPage/TaskPagestore2';
 
 
@@ -68,16 +67,17 @@ return (
     <Routes>
     <Route path="/TaskPage2" element={<DisplayTaskPage />} />
     </Routes>
-    <Button  href={"/TaskPage2"} size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary"  > Opublikuj zadanie</Button>
+    <Button   size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary"  > Opublikuj zadanie</Button>
     </Box>
     </Box>
-    </form>
 
-   
+    </form>
+    
+    
     </div>
     //href={"/TaskPage2"}
     
     )
-  
+    
 }
 
