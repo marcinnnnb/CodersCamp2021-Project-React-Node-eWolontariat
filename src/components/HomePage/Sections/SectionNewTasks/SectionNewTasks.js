@@ -49,7 +49,7 @@ const SectionNewTasks = () => {
         >
             <Typography variant="h1">Zobacz jakiej pomocy potrzebują inni</Typography>
             <Box display={'flex'} justifyContent={'center'}>
-                <SearchInput/>
+                <SearchInput data={data}/>
             </Box>
             <PopularCategories data = {data}/>
             <Box align={"center"}>
