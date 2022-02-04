@@ -1,9 +1,7 @@
 import { Button, Box, Typography, CircularProgress } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { useEffect, useState } from 'react';
-import TasksCard from './TasksCard';
 import ChooseCat from './ChooseCat';
-import Zadania from '../../assets/data/zadania.json'
 import PopularCategories from '../PopularCategories';
 import CasinoIcon from '@material-ui/icons/Casino';
 import Api from '../HomePage/Sections/SectionNewTasks/ApiTasks';

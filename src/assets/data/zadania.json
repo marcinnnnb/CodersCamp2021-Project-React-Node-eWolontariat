@@ -106,9 +106,28 @@
        "sign":"0",
        "action_description": "Jestem początkującą modelką, jeśli ty jesteś początkującym fotoghrafem- możemy sobie nawzajem pomóc w stworzeniu portfolio. Ja będę Ci pozować a ty zrobisz super zdjęcia i oboje będziemy zadowoleni",
        "action_short_description": "Szukam początkującego fotografa do sesji zdjęciowej-wzbogać swoje portflio!",
-       "comments":"Udostępniłam koleżance :)",
-       "date": "2022-01-31T13:49:51.141Z",
-       "organization": "",
-       "dateExpired":""
-     }
+       "comments":"Udostępniłam koleżance :)"
+     },
+     {
+      "id": 8,
+      "title": "Pomoc przy odrabianiu lekcji",
+      "categories":["Korepetycje"],
+      "image": "https://iv.pl/images/03cc9258af8d7bbefaf7c687b1af3af6.jpg",
+      "amount": "1",
+      "sign":"0",
+      "action_description": "Szukam osoby, która pomoże mi w przygotowaniu do matury z matematyki. Głównie chodzi o odrabianie zadań domowych co wiąże się z przygotowaniem do matury. Jestem na profilu himanistycznym, potrzebuję pomocy w zakresie podstawowym z tego działu.",
+      "action_short_description": "Pomoc przy odrabianiu lekcji z matematyki",
+      "comments":"Udostępniłam koleżance :)"
+    },
+    {
+      "id":9,
+      "title": "Poszukiwana modelka",
+      "categories":["Fotografia"],
+      "image": "https://iv.pl/images/03cc9258af8d7bbefaf7c687b1af3af6.jpg",
+      "amount": "1",
+      "sign":"0",
+      "action_description": "Szukam modelki do sesji ślubnej sesji zdjęciowej. Jestem początkującym forografem i potrzebuję zbudować swoje portfolio",
+      "action_short_description": "Poszukiwana modelka do sesji ślubnej",
+      "comments":"Chętnie pomogę"
+    }
    ]
