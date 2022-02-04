@@ -4,6 +4,7 @@ import { Box, Button, Typography, CircularProgress } from "@material-ui/core";
 import ChooseCat from '../../components/TasksPage/ChooseCat';
 import VolunteersCard from './VolunteersCard'
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import VolunteersButtons from './VolunteersButtons';
 
 
 
@@ -71,7 +72,7 @@ const VolunteersPage = () => {
                 </Box>
             </Box>
          
-            <VolunteersCard vols={vols} start={0} end={volsPerPage+next}/>
+            <VolunteersButtons data={vols} start={0} end={volsPerPage+next}/>
             <Box  align={"center"} marginBottom={"2rem"}>
             {showButton && <Button onClick={handleShowMoreVols} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
             </Box>

@@ -1,12 +1,11 @@
-import Categories from "../assets/data/Categories";
-import CustomButton from "./CustomButton";
-import setCategoryIcon from "./setCategoryIcon";
+import Categories from "../../assets/data/Categories";
+import CustomButton from "../CustomButton";
+import setCategoryIcon from "../setCategoryIcon";
 import { Box, Typography, Divider } from '@material-ui/core';
 import { useState } from "react"; 
-import NewestTasks from "./NewestTasks";
+import VolunteersCard from "./VolunteersCard";
 
-
-function PopularCategories ({data, start, end}){
+function VolunteersButtons ({data, start, end}){
     const [filteredTasks, setTasks] = useState(data);
 
     const thePopularCategories = (Categories.map(category=>{
@@ -64,12 +63,12 @@ function PopularCategories ({data, start, end}){
                     </CustomButton>
                 ))}
             </Box>
-            <NewestTasks data={filteredTasks} start={start} end={end}/>
+            <VolunteersCard data = {filteredTasks} start={start} end={end}/>
             </>
     )
 }
 
-export default PopularCategories;
+export default VolunteersButtons;
 
 function compare( a, b ) {
     if ( a.rate > b.rate  ){

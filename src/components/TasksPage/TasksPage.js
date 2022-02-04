@@ -2,10 +2,9 @@ import { Button, Box, Typography, CircularProgress } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { useEffect, useState } from 'react';
 import ChooseCat from './ChooseCat';
-import PopularCategories from '../PopularCategories';
 import CasinoIcon from '@material-ui/icons/Casino';
 import Api from '../HomePage/Sections/SectionNewTasks/ApiTasks';
-import NewestTasks from '../NewestTasks';
+import CatButton from './CatButton';
 
 let tasksPerPage = 6;
 let arrayForHoldingTasks = [];
@@ -55,6 +54,7 @@ const TasksPage = () => {
         arrayForHoldingTasks = [arrayForHoldingTasks, tasks];
       };
 
+
     return(
         <Box  id={"page-all-tasks"}
               height = {"100%"}
@@ -67,11 +67,15 @@ const TasksPage = () => {
                   <ChooseCat/>
                 </Box>
                 <Box  display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
-                  <Button variant={"contained"} color={"secondary"} startIcon={<CasinoIcon/>}>Szczęśliwy traf</Button>
+                  <Button variant={"contained"} color={"secondary"} startIcon={<CasinoIcon/>}
+                    onClick={()=>{
+                        setTasks(tasks.sort(function(a, b){return 0.5 - Math.random()}))
+                        console.log(tasks)
+                        }}
+                  >Szczęśliwy traf</Button>
                 </Box>
             </Box>
-            <PopularCategories data = {tasks}/>
-            <NewestTasks data = {tasks} start={0} end={tasksPerPage+next}/>
+            <CatButton data = {tasks} start={0} end={tasksPerPage+next}/>
             <Box  align={"center"} marginBottom={"2rem"}>
                 {showButton && <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
             </Box>
@@ -80,3 +84,4 @@ const TasksPage = () => {
 }
 
 export default TasksPage;
+

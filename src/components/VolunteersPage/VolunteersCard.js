@@ -4,9 +4,9 @@ import TelegramIcon from '@material-ui/icons/Telegram';
 import { Rating } from '@mui/material';
 
 
-function VolunteersCard({vols, start, end}){
+function VolunteersCard({data, start, end}){
     
-    const vol = vols.slice(start,end)
+    const vol = data.slice(start,end)
 
     return(
         <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>

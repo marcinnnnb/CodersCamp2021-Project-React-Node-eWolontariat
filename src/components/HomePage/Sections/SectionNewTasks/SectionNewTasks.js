@@ -4,7 +4,6 @@ import Api from "./ApiTasks";
 import SearchInput from "../../../SearchInput";
 import ArrowRightRounded from '@material-ui/icons/ArrowRightRounded';
 import PopularCategories from "../../../PopularCategories";
-import NewestTasks from "../../../NewestTasks";
 
 const SectionNewTasks = () => {
 

@@ -2,7 +2,10 @@ import { Box, Button, Typography, Card, CardContent, CardActions } from "@materi
 import CustomAvatar from "../CustomAvatar";
 import CustomTypography from "../CustomTypography";
 
-function TasksCard({tasks}){
+function TasksCard({data, start, end}){
+
+    const tasks = data.slice(start,end)
+
     return(
         <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
         {tasks.map((task,id) =>(
