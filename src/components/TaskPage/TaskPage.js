@@ -46,7 +46,7 @@ const TaskPage = () => {
                 </Box>
                 <Card  style={{ margin:'0,8rem', padding: '2.0rem',  display:'flex',  flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
                 <Box >
-                    <Typography variant="h5" align="center">Ilu wolontariuszy potrzebujemy?</Typography>
+                    <Typography variant="h3" align="center">Ilu wolontariuszy potrzebujemy?</Typography>
                     <Typography variant="body1" align={'center'}>{zadania.amount}</Typography>
                     <Typography variant="body1" align={'center'}>Ilu się zapisało: {zadania.sign}</Typography>
                     <ProgressBar const completed={zadania.sign/zadania.amount*100}/>
@@ -79,12 +79,12 @@ const TaskPage = () => {
 
                 <Card raised={true} style={{ margin:'1rem', padding: '0.5rem 0.1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
                 <Box sx={{gridArea:"main"}}  mx='0.5rem'  >
-                    <Typography variant="h5" align="center" >Komentarze</Typography>  
-                    <Typography  variant="body2" ><img height="45px" src={avatar} alt=""/>{zadania.comments}</Typography>
+                    <Typography variant="h3" align="center" >Komentarze</Typography>  
+                    <Typography  variant="body2"  ><img height="45px" src={avatar} alt=""/>{zadania.comments}</Typography>
                     </Box>
                     </Card>
 
-                    <Card raised={true} style={{ margin:'1rem', padding: '0.8rem 0.1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
+                    <Card raised={true} style={{ margin:'1rem', padding: '0.8rem 0.5rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
                     <TextField label="Napisz komentarz" multiline rows={2} fullWidth/>
                     </Card>
             </Box>

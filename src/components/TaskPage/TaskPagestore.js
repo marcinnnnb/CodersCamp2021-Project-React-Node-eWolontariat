@@ -45,7 +45,7 @@ import { useDispatch, useSelector } from "react-redux";
                     </Box>
                     <Card  style={{ margin:'0,7rem', padding: '2.0rem',  display:'flex',  flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
                     <Box >
-                        <Typography variant="h5" align="center">Ilu wolontariuszy potrzebujemy?</Typography>
+                        <Typography variant="h3" align="center">Ilu wolontariuszy potrzebujemy?</Typography>
                         <Typography variant="body1" align={'center'}>{task.amount}</Typography>
                         <Typography variant="body1" align={'center'}>Ilu się zapisało: {task.sign}</Typography>
                         <ProgressBar const completed={task.sign/task.amount*100}/>
@@ -78,7 +78,7 @@ import { useDispatch, useSelector } from "react-redux";
     
                     <Card raised={true} style={{ margin:'1rem', padding: '0.5rem 0.1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
                 <Box sx={{gridArea:"main"}}  mx='0.5rem'  >
-                    <Typography variant="h5" align="center" >Komentarze</Typography>  
+                    <Typography variant="h3" align="center" >Komentarze</Typography>  
                     <Typography  variant="body2" ><img height="45px" src={avatar} alt=""/>{task.comments}</Typography>
                     </Box>
                     </Card>
