@@ -17,6 +17,7 @@ import LogoPomocny from '../../assets/img/logo-pomocny.svg';
 import CodersCampLogo from '../../assets/img/coder-camp.svg';
 import GitHubLogo from '../../assets/img/github-logo.png';
 import TaskPagestore from '../TaskPage/TaskPagestore';
+import { DisplayTaskPage } from '../TaskPage/TaskPagestore2';
 
 
 function App() {
@@ -55,7 +56,8 @@ function App() {
                     <Route path="/OrganizationForm/*" element={<OrganizationForm/>} />
                     <Route path="/OrganizationPage" element={<OrganizationPage/>} />
                     <Route path="/TaskForm/*" element={<TaskForm/>} />
-                    <Route path="/TaskPage" element={<TaskPagestore/>} />
+                    <Route path="/TaskPage" element={<TaskPage/>} />
+                    <Route path="/TaskPage2" element={<DisplayTaskPage/>} />
                     <Route path="/TasksPage" element={<TasksPage/>} />
                     <Route path="/UserProfile" element={<UserProfile/>} />
                     <Route path="/VolunteerForm" element={<VolunteerForm/>} />

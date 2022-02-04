@@ -11,6 +11,7 @@ import pies from "../../assets/img/pies.jpg"
 const TaskPage = () => {
     
     const [zadania,setZadania]=useState([])
+    let n=Math.floor(Math.random()*6);
 
     useEffect(()=>{
     
@@ -20,6 +21,7 @@ const TaskPage = () => {
       .catch(err=>{console.error(err)});
        },[]);
 
+
     return (
         <Box id={"task-page"}
             display={"flex:"}
@@ -28,12 +30,11 @@ const TaskPage = () => {
             alignItems={"center"}
             p={"2rem"}
         >
-        {zadania.slice(0,1).map((zadania)=>(
+        {zadania.slice(n,n+1).map((zadania)=>(
             <div key={zadania.id}>
             <Box sx={{display:"grid",gridTemplateColumns: {xl:"(3fr, 1fr)", xs:"1fr"}, gap: 2, justifyItems: 'center', alignItems: 'space-evenly', gridTemplateRows: 'auto',
               gridTemplateAreas: `"header ."
             "main sidebar"
-            " . ."
             "footer footer"`}}>
             <Box sx={{ gridArea: 'header'}}>
                 <Typography variant="h1" align="center"> {zadania.title}</Typography>
@@ -43,7 +44,7 @@ const TaskPage = () => {
                 <Box>
                     <Button variant="contained" color="primary" size="large">Zobacz wszystkie zadania </Button>
                 </Box>
-                <Card  style={{ margin:'0,7rem', padding: '2.0rem',  display:'flex',  flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
+                <Card  style={{ margin:'0,8rem', padding: '2.0rem',  display:'flex',  flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
                 <Box >
                     <Typography variant="h5" align="center">Ilu wolontariuszy potrzebujemy?</Typography>
                     <Typography variant="body1" align={'center'}>{zadania.amount}</Typography>
@@ -74,12 +75,12 @@ const TaskPage = () => {
                 <Button  variant="contained" color="secondary">{zadania.categories}</Button>
                 <p align="center"><img width="400px" src={zadania.image} alt=""/></p>
                 <Typography variant="body1">{zadania.action_description}</Typography>  
-                <img width="300px" src={liscik} alt=""/>
+                <img width="300px" height="200px" src={liscik} alt=""/>
 
                 <Card raised={true} style={{ margin:'1rem', padding: '0.5rem 0.1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
                 <Box sx={{gridArea:"main"}}  mx='0.5rem'  >
                     <Typography variant="h5" align="center" >Komentarze</Typography>  
-                    <Typography  variant="body2"  alignSelf={'left'}><img height="45px" src={avatar} alt=""/>{zadania.comments}</Typography>
+                    <Typography  variant="body2" ><img height="45px" src={avatar} alt=""/>{zadania.comments}</Typography>
                     </Box>
                     </Card>
 
@@ -88,6 +89,7 @@ const TaskPage = () => {
                     </Card>
             </Box>
             </Box>
+         
             </div>
         
         ))}</Box>
