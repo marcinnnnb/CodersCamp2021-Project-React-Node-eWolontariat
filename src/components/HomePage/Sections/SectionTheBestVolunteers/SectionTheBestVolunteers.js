@@ -69,7 +69,7 @@ const SectionTheBestVolunteers = () => {
         
            {theBestVolunteersArray?.map((volunteer,id) =>
            
-            <Card key={`item-${id}`} raised={true} style={{ padding: '1.4rem 1.5rem', height: '370px', width: '280px', display:'flex', flexDirection:'column', justifyContent:'flex-end', alignItems: 'center', borderRadius:'12px'}}>
+            <Card key={`item-${id}`} raised={true} style={{ padding: '1.4rem 1.5rem', height: '380px', width: '280px', display:'flex', flexDirection:'column', justifyContent:'flex-end', alignItems: 'center', borderRadius:'12px'}}>
                 <CardActionArea style = {{borderRadius:"50%", width: "150px", height: "150px", display: "flex"}} href="/VolunteerPage">
                 <CardMedia
                     component="img"
