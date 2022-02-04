@@ -56,6 +56,10 @@ export const theme = createTheme({
         fontSize: '1.3rem',
         lineHeight: '1.7'
       },
+      body2: {
+        fontSize: '1.1rem',
+        lineHeight: '1.4'
+      },
       button: {
         textTransform: 'none',
         letterSpacing: '1.5px',
