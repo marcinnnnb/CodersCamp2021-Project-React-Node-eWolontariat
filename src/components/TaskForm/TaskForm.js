@@ -6,9 +6,10 @@ import Select from 'react-select'
 import Categories from '../../assets/data/Categories';
 import TaskPagestore from '../TaskPage/TaskPagestore';
 import { Route, Routes } from 'react-router-dom';
-import { addNewTask } from "../Tasks/taskSlice";
-import NewTask from '../Tasks/NewTask'
+import { addNewTask, selectTask } from "../Tasks/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { ContactsOutlined } from '@material-ui/icons';
+import { DisplayTaskPage } from '../TaskPage/TaskPagestore2';
 
 
 const tytulValidation={
@@ -20,14 +21,13 @@ const amountValidation={
 
 export default function TaskForm() {
     const{register,handleSubmit} =useForm();
-    // const task= useSelector((state)=>state.tasks.tasks);
-    // console.log(task)
     const dispatch = useDispatch();
-    const onSubmit = (data,e) => {
+   const onSubmit = (data,e) => {
         e.preventDefault()
         console.log(data)
-        dispatch(addNewTask(data))};
-
+        dispatch(addNewTask(data))
+         };
+ 
     const [categories, setCategories] = useState([]);
     const handleChange = (event) => {
       setCategories(event.target.value);}
@@ -66,16 +66,16 @@ return (
     </Box>
     <Box sx={{  gridArea: 'button', padding:"1rem 0"}}>
     <Routes>
-    <Route path="/TaskPage" element={<TaskPagestore/>} />
+    <Route path="/TaskPage2" element={<DisplayTaskPage />} />
     </Routes>
-    <Button href={"/TaskPage"} size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary"  > Opublikuj zadanie</Button>
+    <Button  href={"/TaskPage2"} size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary"  > Opublikuj zadanie</Button>
     </Box>
     </Box>
     </form>
 
    
     </div>
-    //
+    //href={"/TaskPage2"}
     
     )
   

@@ -1,5 +1,5 @@
-export default function Tasks(){
-    return [
+ const Tasks =
+     [
         {
             "id": 1,
             "title": "Pomoc przy wyprowadzaniu psów ze schroniska Promyk",
@@ -92,4 +92,5 @@ export default function Tasks(){
             "comments":"Udostępniłam koleżance :)"
           }
     ]
-}
+
+    export default Tasks;

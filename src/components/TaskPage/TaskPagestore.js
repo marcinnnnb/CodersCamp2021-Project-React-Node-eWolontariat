@@ -8,13 +8,17 @@ import avatar from "../../assets/img/facet.png";
 import CustomButton from "../CustomButton";
 import tasks from '../../reducers/reducers_tasks';
 import taskSlice from '../Tasks/taskSlice';
+import { selectTask } from '../Tasks/taskSlice';
+import { useDispatch, useSelector } from "react-redux";
 
+// const task= useSelector((state)=>state.tasks.tasks);
+//     console.log(task)
 
  class TaskPage2 extends Component {
     createTaskPage(){
 
-        return this.props.taskSlice.map((task)=>{
-            (
+        return this.props.tasks.map((task)=>{
+            return(
                 <Box key={task.id} 
             display={"flex:"}
             height = {"100%"}
