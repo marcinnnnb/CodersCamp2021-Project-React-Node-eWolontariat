@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewVolunteer Should render correctly 1`] = `
+<Styled(MuiBox)>
+  <WithStyles(ForwardRef(TextField))
+    onChange={[Function]}
+    value=""
+    variant="outlined"
+  />
+  <WithStyles(ForwardRef(Button))
+    disabled={true}
+    onClick={[Function]}
+  >
+    Add
+  </WithStyles(ForwardRef(Button))>
+</Styled(MuiBox)>
+`;
