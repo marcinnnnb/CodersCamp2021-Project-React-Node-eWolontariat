@@ -26,7 +26,6 @@ export const theme = createTheme({
         textAlign: 'center',
         margin: '2rem',
         letterSpacing: '2px',
-        fontWeight: 900
       },
       h2: {
         fontWeight: '900',
