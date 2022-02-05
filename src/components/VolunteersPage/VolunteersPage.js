@@ -1,16 +1,16 @@
 import {useState, useEffect} from 'react';
 import Api from "../../components/HomePage/Sections/SectionTheBestVolunteers/ApiVolunteers";
 import { Box, Button, Typography, CircularProgress } from "@material-ui/core";
-import ChooseCat from '../../components/TasksPage/ChooseCat';
-import VolunteersCard from './VolunteersCard'
+import ChooseCat from '../../components/ChooseCat';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import VolunteersButtons from './VolunteersButtons';
+import PopularCategories from "../PopularCategories"
 
 
 
 let volsPerPage = 6;
 let arrayForHoldingVols = [];
-
+const isCompVol=true;
+     
 
 
 const VolunteersPage = () => {
@@ -19,7 +19,7 @@ const VolunteersPage = () => {
     const [showButton, setShowButton] = useState(true);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-     
+    
     useEffect(() => {
         async function fetchData() {
             try {
@@ -68,11 +68,11 @@ const VolunteersPage = () => {
             <Typography variant='h1' align={"center"}>Wolontariusze</Typography>
             <Box margin={"0 3rem"} display={"flex"} justifyContent={'flex-start'}>
                 <Box display={"flex"} >
-                    <ChooseCat/>
+                    <ChooseCat data={vols}/>
                 </Box>
             </Box>
          
-            <VolunteersButtons data={vols} start={0} end={volsPerPage+next}/>
+            <PopularCategories data={vols} start={0} end={volsPerPage+next} isCompVol={isCompVol}/>
             <Box  align={"center"} marginBottom={"2rem"}>
             {showButton && <Button onClick={handleShowMoreVols} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
             </Box>

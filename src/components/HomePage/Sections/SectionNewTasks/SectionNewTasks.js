@@ -4,12 +4,21 @@ import Api from "./ApiTasks";
 import SearchInput from "../../../SearchInput";
 import ArrowRightRounded from '@material-ui/icons/ArrowRightRounded';
 import PopularCategories from "../../../PopularCategories";
+import { useNavigate } from 'react-router';
+
+
 
 const SectionNewTasks = () => {
+
+const isCompVol = false;
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  let navigate = useNavigate();
+  const start= 0;
+  const end = 3;
+  
    
   useEffect(() => {
       async function fetchData() {
@@ -50,11 +59,11 @@ const SectionNewTasks = () => {
             <Box display={'flex'} justifyContent={'center'}>
                 <SearchInput data={data}/>
             </Box>
-            <PopularCategories data = {data}/>
+            <PopularCategories data = {data} start={start} end={end} isCompVol={isCompVol}/>
             <Box align={"center"}>
                 <Button 
                     variant="outlined" 
-                    href="/TasksPage" 
+                    onClick={()=>{navigate("/TasksPage")}} 
                     endIcon={<ArrowRightRounded style={{fontSize: "2rem"}}/>}
                     >
                     Wszystkie zadania

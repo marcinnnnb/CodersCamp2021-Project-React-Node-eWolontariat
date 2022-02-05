@@ -1,10 +1,12 @@
 import { Box, Button, Typography, Card, CardContent, CardActions } from "@material-ui/core";
 import CustomAvatar from "../CustomAvatar";
 import CustomTypography from "../CustomTypography";
+import { useNavigate } from 'react-router';
 
 function TasksCard({data, start, end}){
 
     const tasks = data.slice(start,end)
+    let navigate = useNavigate();
 
     return(
         <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
@@ -37,7 +39,6 @@ function TasksCard({data, start, end}){
                     <Typography variant='h4' style={{margin: "0.6rem 0", position: "absolute", padding: "0.4rem 1.2rem 0.4rem 0", top:"110px", left: "24px", borderTop: "1px solid #eee"}}>
                         {task.title}
                     </Typography>
-
                     <Typography variant='caption' paragraph gutterBottom={true} style={{margin:"1rem",  position: "absolute", top:"160px", left: "10px"}}>
                         {task.action_short_description}
                     </Typography>
@@ -51,7 +52,7 @@ function TasksCard({data, start, end}){
                             }} 
                             variant={"contained"} 
                             color={"secondary"} 
-                            href="/TaskPage">
+                            onClick={()=>{navigate("/TaskPage")}}>
                             Pomagam
                         </Button>
                     </CardActions> 
