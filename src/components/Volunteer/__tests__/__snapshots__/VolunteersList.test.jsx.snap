@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VolunteersList Should render correctly 1`] = `
+<Styled(MuiBox)>
+  <div
+    key="item-0"
+  >
+    <Component />
+  </div>
+  <div
+    key="item-1"
+  >
+    <Component />
+  </div>
+  <div
+    key="item-2"
+  >
+    <Component />
+  </div>
+  <div
+    key="item-3"
+  >
+    <Component />
+  </div>
+  <div
+    key="item-4"
+  >
+    <Component />
+  </div>
+  <div
+    key="item-5"
+  >
+    <Component />
+  </div>
+  <div
+    key="item-6"
+  >
+    <Component />
+  </div>
+  <div
+    key="item-7"
+  >
+    <Component />
+  </div>
+  <div
+    key="item-8"
+  >
+    <Component />
+  </div>
+</Styled(MuiBox)>
+`;
