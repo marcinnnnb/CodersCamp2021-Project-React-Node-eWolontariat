@@ -12,7 +12,7 @@ const taskSlice = createSlice({
     initialState,
     reducers: {
         addNewTask: (state, action) => {
-         state.tasks.push(action.payload)
+         state.tasks.unshift(action.payload)
          console.log(current(state))
          console.log(current(state.tasks).length)
          
