@@ -1,23 +1,15 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React from 'react';
 import { Button, Typography, Box, TextField, Card} from "@material-ui/core";
 import ProgressBar from "./ProgressBar";
 import liscik from "../../assets/img/plane.svg";
 import skrzynka from "../../assets/img/mailbox.svg";
-import avatar from "../../assets/img/facet.png";
 import CustomButton from "../CustomButton";
-import TaskForm from '../TaskForm/TaskForm';
-import tasks from '../../reducers/reducers_tasks';
-import { selectTask } from '../Tasks/taskSlice';
-import { useDispatch, useSelector } from "react-redux";
-
-
+import { useSelector } from "react-redux";
 
     export function DisplayTaskPage()  {
         
         const list= useSelector((state)=>state.task.tasks);
         console.log(list)
-        // const dispatch=useDispatch
         
             return(
                 <Box id={"task-page"}
@@ -48,7 +40,7 @@ import { useDispatch, useSelector } from "react-redux";
                         <Typography variant="h3" align="center">Ilu wolontariuszy potrzebujemy?</Typography>
                         <Typography variant="body1" align={'center'}>{task.amount}</Typography>
                         <Typography variant="body1" align={'center'}>Ilu się zapisało: {task.sign}</Typography>
-                        <ProgressBar const completed={task.sign/task.amount*100}/>
+                        <ProgressBar const completed={0/task.amount*100}/>
                         <Box sx={{display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around', height:"100px"}} >
                             <CustomButton variant="outlined" color="primary" size="large" >Udostępnij</CustomButton>
                             <Button  variant="contained" color="secondary" size="large" > Pomagam </Button>
@@ -79,7 +71,6 @@ import { useDispatch, useSelector } from "react-redux";
                     <Card raised={true} style={{ margin:'1rem', padding: '0.5rem 0.1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
                 <Box sx={{gridArea:"main"}}  mx='0.5rem'  >
                     <Typography variant="h3" align="center" >Komentarze</Typography>  
-                    <Typography  variant="body2"  ><img height="45px" src={avatar} alt=""/>{task.comments}</Typography>
                     </Box>
                     </Card>
 

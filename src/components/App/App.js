@@ -7,7 +7,6 @@ import HomePage  from '../HomePage/HomePage';
 import OrganizationForm from '../OrganizationForm/OrganizationForm';
 import OrganizationPage from '../OrganizationPage/OrganizationPage';
 import TaskForm from '../TaskForm/TaskForm';
-import TaskPage from '../TaskPage/TaskPage';
 import TasksPage from '../TasksPage/TasksPage';
 import UserProfile from '../UserProfile/UserProfile';
 import VolunteerForm from '../VolunteerForm/VolunteerForm';
@@ -16,7 +15,7 @@ import VolunteersPage from '../VolunteersPage/VolunteersPage';
 import LogoPomocny from '../../assets/img/logo-pomocny.svg';
 import CodersCampLogo from '../../assets/img/coder-camp.svg';
 import GitHubLogo from '../../assets/img/github-logo.png';
-import TaskPagestore from '../TaskPage/TaskPagestore';
+import {TaskPagestore} from '../TaskPage/TaskPagestore';
 import { DisplayTaskPage } from '../TaskPage/TaskPagestore2';
 
 
@@ -56,7 +55,7 @@ function App() {
                     <Route path="/OrganizationForm/*" element={<OrganizationForm/>} />
                     <Route path="/OrganizationPage" element={<OrganizationPage/>} />
                     <Route path="/TaskForm/*" element={<TaskForm/>} />
-                    <Route path="/TaskPage" element={<TaskPage/>} />
+                    <Route path="/TaskPage" element={<TaskPagestore/>} />
                     <Route path="/TaskPage2" element={<DisplayTaskPage/>} />
                     <Route path="/TasksPage" element={<TasksPage/>} />
                     <Route path="/UserProfile" element={<UserProfile/>} />
