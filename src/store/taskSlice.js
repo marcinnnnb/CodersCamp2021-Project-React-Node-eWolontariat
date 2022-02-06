@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Tasks from '../../reducers/reducers_tasks';
+import Tasks from '../reducers/reducers_tasks';
 import { current } from '@reduxjs/toolkit'
 
 const initialState = {
@@ -16,9 +16,6 @@ const taskSlice = createSlice({
          console.log(current(state))
          console.log(current(state.tasks).length)
          
-        },
-        selectTask:(state, action) => {
-            return action.payload
         }
     },
 
