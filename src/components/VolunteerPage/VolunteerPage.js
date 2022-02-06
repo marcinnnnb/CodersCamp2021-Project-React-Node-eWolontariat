@@ -54,7 +54,7 @@ const VolunteerPage = () => {
                     <Box style={{width: '80%'}}>
                         <Box style={{ display:'flex'}}>
                             <Box style={{display:'block', width:'20%', margin:'0', padding:'0'}}>
-                                <Box component="img" src={Avatar} style = {{borderRadius:"50%", width:"150px", height: "150px"}} />
+                                <Box component="img" src={Avatar} style = {{borderRadius:"50%", width:"150px", height: "150px", objectFit: "cover"}} />
                                 <Rating name="half-rating-read" defaultValue={3.5} precision={0.5}  style={{color:"#F0D43F", fontSize: "1.7rem"}} />
                             </Box>
                             <Box>
