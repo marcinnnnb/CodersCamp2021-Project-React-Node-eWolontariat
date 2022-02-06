@@ -23,12 +23,11 @@ export default function TaskForm() {
     const dispatch = useDispatch();
    const onSubmit = (data,e) => {
         e.preventDefault()
-        console.log(data)
         dispatch(addNewTask(data))
         navigate('/TaskPage2')
          };
  
-    const [categories, setCategories] = useState([]);      
+    const categories = []; 
 
 return (
     <div>

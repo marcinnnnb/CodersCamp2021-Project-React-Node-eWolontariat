@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
     export function DisplayTaskPage()  {
         
         const list= useSelector((state)=>state.task.tasks);
-        console.log(list)
         
             return(
                 <Box id={"task-page"}
@@ -20,8 +19,8 @@ import { useSelector } from "react-redux";
                 p={"2rem"}
             >
             
-            {list.map((task)=>(
-                <div key={task.id}>
+            {list.slice(0,1).map((task)=>(
+                <div key={task.title}>
                 <Box sx={{display:"grid",gridTemplateColumns: {xl:"(3fr, 1fr)", xs:"1fr"}, gap: 2, justifyItems: 'center', alignItems: 'space-evenly', gridTemplateRows: 'auto',
                   gridTemplateAreas: `"header ."
                 "main sidebar"
@@ -48,7 +47,7 @@ import { useSelector } from "react-redux";
                         </Box>
                         </Card>
     
-                        <Card raised={true} style={{ padding: '0.8rem 2.4rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
+                        <Card raised={true} style={{ margin:'1rem', padding: '0.8rem 2.4rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
                     <Box >
                         <Typography margin="10px" variant="h5" align="center">Zgłoszeni wolontariusze</Typography>
                         <Button  mb="10px" variant="outlined" size="medium" align="center">Kasia z Gdańska</Button>
@@ -62,8 +61,15 @@ import { useSelector } from "react-redux";
                 </Box>
               
                 <Box sx={{ gridArea: 'main', alignItems:"center", width:'90%', justifyContent:"center"}}>
+                <Box sx={{display:"flex", gap:4}}>
                     <Typography variant={"subtitle1"}>Kategorie: </Typography>
-                    <Button  variant="contained" color="secondary">{task.categories}</Button>
+
+                    {task.categories.map((cat)=>
+                        (<div key={cat.id}> 
+                            <Button  variant="contained" color="secondary"> {cat.value}</Button> 
+                    </div> ))}
+                    </Box>
+
                     <p align="center"><img width="400px" src={task.image} alt=""/></p>
                     <Typography variant="body1">{task.action_description}</Typography>  
                     <img width="300px" height="200px" src={liscik} alt=""/>
