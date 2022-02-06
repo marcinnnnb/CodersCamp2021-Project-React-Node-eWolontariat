@@ -25,7 +25,7 @@ export default function TaskForm() {
         e.preventDefault()
         console.log(data)
         dispatch(addNewTask(data))
-        // navigate('/TaskPage2')
+        navigate('/TaskPage2')
          };
  
     const [categories, setCategories] = useState([]);      
