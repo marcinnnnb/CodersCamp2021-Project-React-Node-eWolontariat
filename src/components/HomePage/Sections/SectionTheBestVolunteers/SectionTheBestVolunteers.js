@@ -4,12 +4,14 @@ import { Box, Button, Typography, Card, CardContent, CardActions, CardActionArea
 import Avatar from "../../../../assets/img/girl1.jpg";
 import TelegramIcon from '@material-ui/icons/Telegram';
 import { Rating } from '@mui/material';
+import { useNavigate } from 'react-router';
 
 const SectionTheBestVolunteers = () => {
 
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    let navigate = useNavigate();
      
     useEffect(() => {
         async function fetchData() {
@@ -69,8 +71,8 @@ const SectionTheBestVolunteers = () => {
         
            {theBestVolunteersArray?.map((volunteer,id) =>
            
-            <Card key={`item-${id}`} raised={true} style={{ padding: '1.4rem 1.5rem', height: '380px', width: '280px', display:'flex', flexDirection:'column', justifyContent:'flex-end', alignItems: 'center', borderRadius:'12px'}}>
-                <CardActionArea style = {{borderRadius:"50%", width: "150px", height: "150px", display: "flex"}} href="/VolunteerPage">
+            <Card key={`item-${id}`} raised={true} style={{ padding: '1.4rem 1.5rem', height: '380px', width: '280px', display:'flex', flexDirection:'column', justifyContent:'center', alignItems: 'center', borderRadius:'12px'}}>
+                <CardActionArea style = {{borderRadius:"50%", width: "150px", height: "150px", display: "flex"}} onClick={()=>{navigate("/VolunteerPage")}}>
                 <CardMedia
                     component="img"
                     height={"150px"}
@@ -80,24 +82,24 @@ const SectionTheBestVolunteers = () => {
                     />
                 </CardActionArea>
                         <CardContent>
-                        <Typography gutterBottom variant="h3" align={'center'} href="/VolunteerPage">
+                        <Typography gutterBottom variant="h3" align={'center'} onClick={()=>{navigate("/VolunteerPage")}}>
                             {volunteer.nick}
                         </Typography>
                         <Rating name="half-rating-read" defaultValue={3.5} precision={0.5} readOnly style={{color:"#F0D43F", fontSize: "1.7rem"}} />
-                        <Typography variant='body2' align={'center'} paragraph gutterBottom={true} style={{marginTop:"1rem"}}>
+                        <Typography variant='caption' align={'center'} paragraph gutterBottom={true} style={{marginTop:"1rem"}}>
                             {volunteer.short_description}
                         </Typography>
                        
                         </CardContent>
                         
                     <CardActions>
-                        <Button variant={"outlined"} color={"secondary"} endIcon={<TelegramIcon/>} href="/VolunteerPage">Napisz wiadomość </Button>
+                        <Button variant={"outlined"} color={"secondary"} endIcon={<TelegramIcon/>} onClick={()=>{navigate("/VolunteerPage")}}>Napisz wiadomość </Button>
                     </CardActions>
                     
                 </Card>
            )}
             </Box>
-            <Button variant="outlined" href="/VolunteersPage">Zobacz więcej</Button>
+            <Button variant="outlined" onClick={()=>{navigate("/VolunteersPage")}}>Zobacz więcej</Button>
         </Box>
     )
 }

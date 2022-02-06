@@ -19,7 +19,7 @@ function NewestTasks ({data,start,end}){
     })).sort(compareDate).slice(start,end);
     
     return(
-        <TasksCard data = {theNewestTasks} start ={start} end={6}/>
+        <TasksCard data = {theNewestTasks} start ={start} end={end}/>
     )
 };
 

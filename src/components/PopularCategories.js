@@ -4,9 +4,10 @@ import setCategoryIcon from "./setCategoryIcon";
 import { Box, Typography, Divider } from '@material-ui/core';
 import { useState } from "react"; 
 import NewestTasks from "./NewestTasks";
+import VolunteersCard from "../components/VolunteersPage/VolunteersCard"
 
 
-function PopularCategories ({data, start, end}){
+function PopularCategories ({data, start, end, isCompVol}){
     const [filteredTasks, setTasks] = useState(data);
 
     const thePopularCategories = (Categories.map(category=>{
@@ -64,7 +65,8 @@ function PopularCategories ({data, start, end}){
                     </CustomButton>
                 ))}
             </Box>
-            <NewestTasks data={filteredTasks} start={start} end={end}/>
+            {isCompVol?(<VolunteersCard data = {filteredTasks} start={start} end={end}/>):(<NewestTasks data={filteredTasks} start={start} end={end}/>)}
+            
             </>
     )
 }

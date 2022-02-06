@@ -25,7 +25,7 @@ export const theme = createTheme({
         fontWeight: '700',
         textAlign: 'center',
         margin: '2rem',
-        letterSpacing: '2px'
+        letterSpacing: '2px',
       },
       h2: {
         fontWeight: '900',
@@ -67,4 +67,3 @@ export const theme = createTheme({
       },
     },  
 });
-  
