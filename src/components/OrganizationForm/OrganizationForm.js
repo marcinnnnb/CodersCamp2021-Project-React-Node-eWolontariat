@@ -1,21 +1,32 @@
-import {useForm} from 'react-hook-form';
+import {useForm, Controller} from 'react-hook-form';
+import {useState} from 'react';
 import { Button, Box, Typography, TextField } from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import Select from 'react-select'
 import Categories from '../../assets/data/Categories';
-import { Route, Routes } from 'react-router-dom';
+import { useNavigate, Route, Routes} from 'react-router-dom';
+import { addNewOrganization } from "../../store/organizationSlice";
+import { useDispatch } from "react-redux";
 import OrganizationPage from '../OrganizationPage/OrganizationPage';
 import { Input } from '@material-ui/core';
 import './Organization.css'
 
-
 const tytulValidation={
     required:true, minLength:5, maxLength:80
 }  
-const TaskForm = () => {
-    const{register,handleSubmit} =useForm();
-    const onSubmit = data => console.log(data)
-    
+
+const OrganizationForm = () => {
+    const{register,handleSubmit,control} =useForm();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+   const onSubmit = (data,e) => {
+        e.preventDefault()
+        console.log(data)
+        dispatch(addNewOrganization(data))
+        navigate('/OrganizationPage')
+         };
+ 
+    const [categories, setCategories] = useState([]);  
 
 return (
     <form onSubmit={handleSubmit(onSubmit)}>  
@@ -37,7 +48,22 @@ return (
   <Input name="KRS_number" type="number" {...register("KRS_number")}  />
   </label>
   <Typography variant="body1">Wybierz kategorie: </Typography>
-    <Select label="Kategorie" options={Categories} isMulti isSearchable {...register("categories")} />
+  <Controller
+  control={control}
+  defaultValue={categories[0]}
+  name='categories'
+  render={({ field: { onChange, value, ref } }) => (
+    <Select
+      inputRef={ref}
+      label='Kategorie'
+      options={Categories}
+      value={value}
+      onChange={onChange}
+      isMulti
+      isSearchable
+    />
+  )}
+/>
     <TextField fullWidth label="Nazwa organizacji" {...register('title', tytulValidation)} {...tytulValidation}/>
     <TextField multiline rows={4} fullWidth label="Opis organizacji" {...register("action_description")} />   
     </Box>
@@ -46,20 +72,10 @@ return (
     <Routes>
     <Route path="/OrganizationPage" element={<OrganizationPage/>} />
     </Routes>
-    <Button href={"/OrganizationPage"} size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary" > Opublikuj profil organizacji</Button>
-    </Box>
-
- 
-
-
-    
- 
-    
+    <Button size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary" > Opublikuj profil organizacji</Button>
+    </Box>   
     </form>
-   
-    
     )
-    
 }
 
-export default TaskForm;
+export default OrganizationForm;

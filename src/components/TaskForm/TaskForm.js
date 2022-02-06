@@ -5,7 +5,7 @@ import SendIcon from '@material-ui/icons/Send';
 import Select from 'react-select'
 import Categories from '../../assets/data/Categories';
 import { useNavigate, Route, Routes} from 'react-router-dom';
-import { addNewTask } from "../Tasks/taskSlice";
+import { addNewTask } from "../../store/taskSlice";
 import { useDispatch } from "react-redux";
 import { DisplayTaskPage } from '../TaskPage/TaskPagestore2';
 
@@ -25,7 +25,7 @@ export default function TaskForm() {
         e.preventDefault()
         console.log(data)
         dispatch(addNewTask(data))
-        navigate('/TaskPage2')
+        // navigate('/TaskPage2')
          };
  
     const [categories, setCategories] = useState([]);      
