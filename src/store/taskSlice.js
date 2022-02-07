@@ -52,7 +52,7 @@ export const { sortTasks, addNewTask, selectTask, filterTasks } = taskSlice.acti
 
 export default taskSlice.reducer;
 
-export const selectAllTasks = state => state.tasks;
+export const selectAllTasks = state => state;
 
 export const selectTasksId = (state, taskId) =>
   state.tasks.find(task => task.id === taskId);

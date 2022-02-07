@@ -9,14 +9,13 @@ import CustomButton from "../CustomButton";
 import { fetchTasks } from "../../store/fetchTasks";
 
 const TasksList = () => {
-  
+  const dispatch = useDispatch();
   const tasksList = useSelector(selectAllTasks);
   const tasksStatus = useSelector(state => state.status);
-  console.log(tasksStatus);
-  const dispatch = useDispatch();
   const error = useSelector(state => state.error);
   const [filteredTasks, setTasks] = useState([]);
   let orderedTasks =[];
+  console.log(tasksList)
 
   useEffect(() => {
     if (tasksStatus === 'idle') {
