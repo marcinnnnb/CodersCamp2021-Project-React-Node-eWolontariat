@@ -2,7 +2,7 @@ import { Box, Button, Typography } from "@material-ui/core";
 import SearchInput from "../../../SearchInput";
 import ArrowRightRounded from '@material-ui/icons/ArrowRightRounded';
 import { useNavigate } from 'react-router';
-import TasksList from "../../../Tasks/TasksList";
+import TasksList from ''
 
 const SectionNewTasks = () => {
   const isCompVol = false;
