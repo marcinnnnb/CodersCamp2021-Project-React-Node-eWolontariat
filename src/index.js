@@ -5,6 +5,9 @@ import App from './components/App/App';
 import { Provider } from 'react-redux';
 import {store} from './store/store';
 import {BrowserRouter} from 'react-router-dom';
+import { fetchTasks } from './store/fetchTasks';
+
+store.dispatch(fetchTasks());
 
 ReactDOM.render(
   <React.StrictMode>

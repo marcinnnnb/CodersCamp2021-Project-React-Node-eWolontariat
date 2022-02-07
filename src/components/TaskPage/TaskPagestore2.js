@@ -8,7 +8,7 @@ import avatar from "../../assets/img/facet.png";
 import CustomButton from "../CustomButton";
 import TaskForm from '../TaskForm/TaskForm';
 import tasks from '../../reducers/reducers_tasks';
-import { selectTask } from '../Tasks/taskSlice';
+import { selectTask } from "../../store/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 

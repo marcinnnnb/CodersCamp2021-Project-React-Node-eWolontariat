@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { current } from '@reduxjs/toolkit';
-import setCategoryIcon from "../components/setCategoryIcon";
-import { fetchTasks } from "../components/Tasks/fetchTasks";
+import { fetchTasks } from "./fetchTasks";
 
 const initialState = {
     tasks: [],
@@ -49,14 +48,14 @@ const taskSlice = createSlice({
       }
 });
 
-export const { sortTasks, addNewTask, selectTask, filterTasks} = taskSlice.actions;
+export const { sortTasks, addNewTask, selectTask, filterTasks } = taskSlice.actions;
 
 export default taskSlice.reducer;
 
 export const selectAllTasks = state => state.tasks;
 
 export const selectTasksId = (state, taskId) =>
-  state.tasks.find(task => task.id === taskId)
+  state.tasks.find(task => task.id === taskId);
 
 
 function compareDate( a, b ) {

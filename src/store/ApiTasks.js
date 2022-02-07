@@ -1,7 +1,7 @@
 export default class Api {
    
     static getData() {
-        const uri = 'https://api.npoint.io/8407c4b849944036bc26';
+        const uri = 'https://api.npoint.io/8d11637b99831903048a';
         return fetch(uri, {
             method: 'GET'
         });

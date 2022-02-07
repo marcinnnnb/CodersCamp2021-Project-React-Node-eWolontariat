@@ -3,43 +3,39 @@ import { useEffect, useState  } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { sortTasks,  selectAllTasks  } from "../../store/taskSlice";
 import TasksCard from "../TasksPage/TasksCard";
-import fetchData from "../../store/fetchData";
 import Categories from "../../assets/data/Categories";
 import setCategoryIcon from "../setCategoryIcon";
 import CustomButton from "../CustomButton";
+import { fetchTasks } from "../../store/fetchTasks";
 
-const TasksList = (props, end, start) => {
+const TasksList = () => {
   const dispatch = useDispatch();
   const tasksList = Object.assign(useSelector(selectAllTasks));
-  const taskStatus = useSelector(state => state.tasks.status);
+  const tasksStatus = useSelector(state => state.tasks.status);
   const error = useSelector(state => state.tasks.error);
   const [filteredTasks, setTasks] = useState([]);
   let orderedTasks =[];
 
-  console.log(tasksList);
-  console.log(filteredTasks);
-  console.log(orderedTasks);
-
   useEffect(() => {
-    if (taskStatus === 'idle') {
-      dispatch(fetchData())
+    if (tasksStatus === 'idle') {
+      dispatch(fetchTasks())
     }
-  }, [taskStatus, dispatch]);
+  }, [tasksStatus, dispatch]);
 
   let content;
 
-  if (taskStatus === 'loading') {
+  if (tasksStatus === 'loading...') {
     content = 
         (<CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>)
     
-  } else if (taskStatus === 'succeeded (:') {
+  } else if (tasksStatus === 'succeeded (:') {
     orderedTasks = (dispatch(sortTasks(tasksList.tasks))).payload.slice(0,6);
      
     content = orderedTasks.map((task,id) =>{
        return <TasksCard key={id} task={task} id={task.id}/>
     });
     
-  } else if (taskStatus === 'failed') {
+  } else if (tasksStatus === 'failed') {
     content = (
         <div style={{color: 'red'}}>ERROR: {error}</div>
     )

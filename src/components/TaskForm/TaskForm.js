@@ -6,7 +6,7 @@ import Select from 'react-select'
 import Categories from '../../assets/data/Categories';
 import TaskPagestore from '../TaskPage/TaskPagestore';
 import { Route, Routes } from 'react-router-dom';
-import { addNewTask, selectTask } from "../Tasks/taskSlice";
+import { addNewTask, selectTask } from "../../store/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { DisplayTaskPage } from '../TaskPage/TaskPagestore2';
 

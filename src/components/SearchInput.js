@@ -57,7 +57,7 @@ const Search = styled('div')(({ theme }) => ({
 
   const SearchInput = () => {
     const dispatch = useDispatch();
-    const tasksList = Object.assign(useSelector(selectAllTasks));
+    const tasksList = useSelector(selectAllTasks);
     const [value, setValue] = useState('');
     const [filteredResults, setFilteredResults] = useState();
     const [displaySearchIcon, setdisplaySearchIcon] = useState(true);
