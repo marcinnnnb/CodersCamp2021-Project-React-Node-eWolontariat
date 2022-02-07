@@ -2,13 +2,11 @@ import { Box, Button, Typography } from "@material-ui/core";
 import SearchInput from "../../../SearchInput";
 import ArrowRightRounded from '@material-ui/icons/ArrowRightRounded';
 import { useNavigate } from 'react-router';
-import TasksList from ''
+import TasksList from '../../../Tasks/TasksList';
 
 const SectionNewTasks = () => {
   const isCompVol = false;
   let navigate = useNavigate();
-  const start= 0;
-  const end = 3;
           
     return(
         <Box id={"section-new-tasks"}

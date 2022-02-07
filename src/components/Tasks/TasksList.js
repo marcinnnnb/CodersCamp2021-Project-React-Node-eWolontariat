@@ -3,7 +3,7 @@ import { useEffect, useState  } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { sortTasks,  selectAllTasks  } from "../../store/taskSlice";
 import TasksCard from "../TasksPage/TasksCard";
-import { fetchTasks } from "./fetchTasks";
+import fetchData from "../../store/fetchData";
 import Categories from "../../assets/data/Categories";
 import setCategoryIcon from "../setCategoryIcon";
 import CustomButton from "../CustomButton";
@@ -22,7 +22,7 @@ const TasksList = (props, end, start) => {
 
   useEffect(() => {
     if (taskStatus === 'idle') {
-      dispatch(fetchTasks())
+      dispatch(fetchData())
     }
   }, [taskStatus, dispatch]);
 
