@@ -8,7 +8,7 @@ import Categories from "../../assets/data/Categories";
 import setCategoryIcon from "../setCategoryIcon";
 import CustomButton from "../CustomButton";
 
-const VolunteersList = (props, end, start) => {
+const TasksList = (props, end, start) => {
   const dispatch = useDispatch();
   const tasksList = Object.assign(useSelector(selectAllTasks));
   const taskStatus = useSelector(state => state.tasks.status);
@@ -49,7 +49,7 @@ const VolunteersList = (props, end, start) => {
 
   const thePopularCategories = (Categories.map(category=>{
     let rate=0;
-    tasksList.tasks?.map(task=>{
+    orderedTasks.tasks?.map(task=>{
         (task.categories).forEach(taskCategory=>{
             if(taskCategory===category.value){
                 rate++;
@@ -120,4 +120,4 @@ function compare( a, b ) {
     return 0;
   };
 
-export default VolunteersList;
+export default TasksList;

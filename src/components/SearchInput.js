@@ -7,6 +7,9 @@ import CustomAvatar from './CustomAvatar';
 import { ListItemButton } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material';
 import { makeStyles} from '@mui/styles';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { selectAllTasks } from '../store/taskSlice';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -52,13 +55,15 @@ const Search = styled('div')(({ theme }) => ({
     }
  }) 
 
-  const SearchInput = ({data}) => {
-      const [value, setValue] = useState('');
-      const [filteredResults, setFilteredResults] = useState();
-      const [displaySearchIcon, setdisplaySearchIcon] = useState(true);
-
-      function  findMatches(wordToMatch,data) {
-        return( data.filter(task=>{
+  const SearchInput = () => {
+    const dispatch = useDispatch();
+    const tasksList = Object.assign(useSelector(selectAllTasks));
+    const [value, setValue] = useState('');
+    const [filteredResults, setFilteredResults] = useState();
+    const [displaySearchIcon, setdisplaySearchIcon] = useState(true);
+      
+      function  findMatches(wordToMatch) {
+        return( tasksList.tasks?.filter((task)=>{
           const regex = new RegExp(wordToMatch,"gi");
           return task.title.toLowerCase().match(regex) || task.action_short_description.toLowerCase().match(regex)
         }));
@@ -91,11 +96,11 @@ const Search = styled('div')(({ theme }) => ({
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={(e)=>{
                   setValue(e.target.value);
-                  displayMatches({value,data});
+                  displayMatches({value,tasksList});
                 }}
                 onKeyUp={(e)=>{
                   setValue(e.target.value);
-                  displayMatches({value,data});
+                  displayMatches({value,tasksList});
                 }}
                 value={value}
                 >
@@ -104,7 +109,7 @@ const Search = styled('div')(({ theme }) => ({
               const regex = new RegExp(value,'gi'); 
               return (
                     <Box key={`item-${id}`} style={{ border: "1px #eee solid"}} width = {"800px"} >
-                      <ListItemButton key={`listitembutton-${id}`}  display={"flex"} style={{width: "100%"}} disableGutters href={"/TasksPage"}>
+                      <ListItemButton key={`listitembutton-${id}`}  display={"flex"} style={{width: "100%"}} disableGutters>
                           <CustomAvatar 
                             variant={"avatarBackground"} 
                             backgroundcolor={el.avatarColor}
@@ -139,7 +144,6 @@ const Search = styled('div')(({ theme }) => ({
                                         })}
                               >
                               </ListItemText>
-                           
                   </ListItemButton>
                 </Box>
                 )

@@ -1,11 +1,10 @@
-import { Button, Box, Typography, CircularProgress } from '@material-ui/core';
+import { Button, Box, Typography } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ChooseCat from '../ChooseCat';
 import CasinoIcon from '@material-ui/icons/Casino';
-import Api from '../HomePage/Sections/SectionNewTasks/ApiTasks';
-import PopularCategories from '../PopularCategories';
 import { useNavigate } from 'react-router';
+import TasksList from '../Tasks/TasksList';
 
 let tasksPerPage = 6;
 let arrayForHoldingTasks = [];
@@ -15,40 +14,11 @@ const isCompVol=false;
 const TasksPage = () => {
     
     const [tasks, setTasks] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
     const [next, setNext] = useState(0);
     const [showButton, setShowButton] = useState(true);
     let navigate = useNavigate();
 
-    useEffect(() => {
-      async function fetchData() {
-          try {
-              const response = await Api.getData();
-              const json = await response.json();
-
-              setTasks(json);
-          } catch (e) {
-              setError(e.message || 'Unexpected error');
-          }
-          setLoading(false);
-      }
-          fetchData();
-      }, []);
-      
-      if (loading) {
-          return (
-              <Box align={"center"}>
-                  <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
-              </Box>
-          )}
-      
-      if (error) {
-          return( 
-                <Box align={"center"}>
-                    <div style={{color: 'red'}}>ERROR: {error}</div>
-                </Box>
-          )}
+  
 
     const handleShowMoreTasks = () => {
         setNext(next + tasksPerPage);
@@ -74,7 +44,7 @@ const TasksPage = () => {
                   >Szczęśliwy traf</Button>
                 </Box>
             </Box>
-            <PopularCategories data={tasks} start={0} end={tasksPerPage+next} isCompVol={isCompVol}/>
+            <TasksList isCompVol={isCompVol}/>
             <Box  align={"center"} marginBottom={"2rem"}>
                 {showButton && <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
             </Box>
@@ -83,4 +53,3 @@ const TasksPage = () => {
 }
 
 export default TasksPage;
-

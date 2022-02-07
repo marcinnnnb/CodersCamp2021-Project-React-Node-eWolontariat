@@ -1,29 +1,21 @@
-import { Box, Button, Typography, Card, CardContent, CardActions } from "@material-ui/core";
+import { Button, Typography, Card, CardContent, CardActions, SvgIcon, Icon } from "@material-ui/core";
 import CustomAvatar from "../CustomAvatar";
 import CustomTypography from "../CustomTypography";
 import { useNavigate } from 'react-router';
 
-function TasksCard({data, start, end}){
-
-    const tasks = data.slice(start,end)
+function TasksCard(tasks,id){
     let navigate = useNavigate();
-
     return(
-        <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
-        {tasks.map((task,id) =>(
-            
-            <Card key={`item-${id}`} raised={true} style={{ position: "relative", height: "270px", maxWidth: "300px", padding: '2.4rem 0.4rem', margin: '1.6rem', width: '22%', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems: 'center', borderRadius:'12px'}}>
-                
+            <Card key={`item-${id}`} raised={true} style={{ position: "relative", height: "270px", maxWidth: "350px", padding: '2.4rem 0.4rem', margin: '1.6rem', width: '22%', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems: 'center', borderRadius:'12px'}}>
                 <CustomAvatar 
                 variant={"avatarBackground"} 
-                backgroundcolor={task.avatarColor} >
-                    {task.categorieIcon}
+                backgroundcolor={tasks.task.avatarColor} >
+                    {tasks.task.categorieIcon}
                 </CustomAvatar>
-                
                 <CustomTypography 
                     variantcolor={"typographycolor"} 
                     margin={"4rem 0"} 
-                    color= {task.avatarColor} 
+                    color= {tasks.task.avatarColor}
                     style={{
                         textTransform: "uppercase", 
                         fontSize: "0.8rem", 
@@ -32,17 +24,15 @@ function TasksCard({data, start, end}){
                         margin: "10px 0"
                         }}
                         >
-                        {task.categories}
+                        {tasks.task.categories}
                 </CustomTypography>
-
                 <CardContent>
                     <Typography variant='h4' style={{margin: "0.6rem 0", position: "absolute", padding: "0.4rem 1.2rem 0.4rem 0", top:"110px", left: "24px", borderTop: "1px solid #eee"}}>
-                        {task.title}
+                        {tasks.task.title}
                     </Typography>
                     <Typography variant='caption' paragraph gutterBottom={true} style={{margin:"1rem",  position: "absolute", top:"160px", left: "10px"}}>
-                        {task.action_short_description}
+                        {tasks.task.action_short_description}
                     </Typography>
-                
                 </CardContent>    
                     <CardActions>
                         <Button style={{
@@ -57,9 +47,6 @@ function TasksCard({data, start, end}){
                         </Button>
                     </CardActions> 
             </Card>
-       ))}
-        </Box>
-            
     )
 }
 
