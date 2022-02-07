@@ -9,10 +9,12 @@ import CustomButton from "../CustomButton";
 import { fetchTasks } from "../../store/fetchTasks";
 
 const TasksList = () => {
+  
+  const tasksList = useSelector(selectAllTasks);
+  const tasksStatus = useSelector(state => state.status);
+  console.log(tasksStatus);
   const dispatch = useDispatch();
-  const tasksList = Object.assign(useSelector(selectAllTasks));
-  const tasksStatus = useSelector(state => state.tasks.status);
-  const error = useSelector(state => state.tasks.error);
+  const error = useSelector(state => state.error);
   const [filteredTasks, setTasks] = useState([]);
   let orderedTasks =[];
 
@@ -41,7 +43,7 @@ const TasksList = () => {
     )
   }  
 
-  console.log(orderedTasks)
+  console.log(tasksList)
 
   const thePopularCategories = (Categories.map(category=>{
     let rate=0;

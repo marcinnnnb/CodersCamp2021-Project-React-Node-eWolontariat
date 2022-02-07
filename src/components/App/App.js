@@ -23,7 +23,7 @@ export function App() {
         <Box height={"100%"} display={"flex"} flexDirection={"column"}>
              <Box sx={{ flexGrow: 1 }}> 
                 <AppHeader/>
-                <Box padding={2} flex={1} overflow={"auto"}>
+                <Box padding={"0 2"} flex={1} overflow={"auto"}>
                     <Routes>
                     <Route path="/" element={<HomePage/>} />
                     <Route path="/OrganizationForm/*" element={<OrganizationForm/>} />
