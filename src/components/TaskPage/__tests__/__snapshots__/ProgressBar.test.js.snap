@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar Should render correctly 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "#e0e0de",
+      "borderRadius": 10,
+      "height": 20,
+      "margin": 15,
+      "width": "90%",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "backgroundColor": "#FF7A82",
+        "borderRadius": "inherit",
+        "height": "100%",
+        "textAlign": "right",
+        "width": "undefined%",
+      }
+    }
+  >
+    <span
+      style={
+        Object {
+          "color": "white",
+          "fontWeight": "bold",
+          "padding": 5,
+        }
+      }
+    >
+      undefined%
+    </span>
+  </div>
+</div>
+`;

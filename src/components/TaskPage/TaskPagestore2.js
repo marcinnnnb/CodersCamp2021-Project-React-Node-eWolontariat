@@ -5,8 +5,9 @@ import liscik from "../../assets/img/plane.svg";
 import skrzynka from "../../assets/img/mailbox.svg";
 import CustomButton from "../CustomButton";
 import { useSelector } from "react-redux";
+import zdj from '../../assets/img/zdj.jpg';
 
-    export function DisplayTaskPage()  {
+export function DisplayTaskPage()  {
         
         const list= useSelector((state)=>state.task.tasks);
         
@@ -70,7 +71,7 @@ import { useSelector } from "react-redux";
                     </div> ))}
                     </Box>
 
-                    <p align="center"><img width="400px" src={task.image} alt=""/></p>
+                    <p align="center"><img width="500px" src={zdj} alt=""/></p>
                     <Typography variant="body1">{task.action_description}</Typography>  
                     <img width="300px" height="200px" src={liscik} alt=""/>
     
@@ -90,4 +91,4 @@ import { useSelector } from "react-redux";
             ))}</Box>
             )}
 
-
+            export default DisplayTaskPage;

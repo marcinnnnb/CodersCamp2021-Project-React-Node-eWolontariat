@@ -62,7 +62,6 @@ return (
     name='categories'
     render={({ field: { onChange, value, ref } }) => (
       <Select
-      
         {...register('categories', {required:true})}
         label='Kategorie'
         options={Categories}
@@ -80,7 +79,7 @@ return (
   <Routes>
   <Route path="/TaskPage2" element={<DisplayTaskPage />} />
   </Routes>
-  <Button   size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary"  > Opublikuj zadanie</Button>
+  <Button  id="submit" size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="primary"  > Opublikuj zadanie</Button>
   </Box>
 
   </Box>

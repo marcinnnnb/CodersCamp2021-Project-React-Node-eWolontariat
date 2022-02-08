@@ -218,7 +218,7 @@ exports[`App Should render correctly 1`] = `
         "h1": Object {
           "fontFamily": "'Quicksand', sans-serif",
           "fontSize": "2.2rem",
-          "fontWeight": 900,
+          "fontWeight": "700",
           "letterSpacing": "2px",
           "lineHeight": 1.167,
           "margin": "2rem",
@@ -361,7 +361,7 @@ exports[`App Should render correctly 1`] = `
             path="/"
           />
           <Route
-            element={<TaskForm />}
+            element={<OrganizationForm />}
             path="/OrganizationForm/*"
           />
           <Route
@@ -373,7 +373,7 @@ exports[`App Should render correctly 1`] = `
             path="/TaskForm/*"
           />
           <Route
-            element={<TaskPage />}
+            element={<TaskPagestore />}
             path="/TaskPage"
           />
           <Route

@@ -7,12 +7,12 @@ import avatar from "../../assets/img/facet.png";
 import CustomButton from "../CustomButton";
 import { useSelector } from "react-redux";
 
-export function TaskPagestore()  {
+const TaskPagestore= ()  => {
     
     let n=Math.floor(Math.random()*6);
 
         const list= useSelector((state)=>state.task.tasks);
-        console.log(list)
+        
      
             return(
                 <Box id={"task-page"}
@@ -89,3 +89,4 @@ export function TaskPagestore()  {
             )}
 
 
+            export default TaskPagestore;

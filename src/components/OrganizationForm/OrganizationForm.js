@@ -26,7 +26,7 @@ const OrganizationForm = () => {
         navigate('/OrganizationPage')
          };
  
-    const [categories, setCategories] = useState([]);  
+    const[categories, setCategories] = useState([]);  
 
 return (
     <form onSubmit={handleSubmit(onSubmit)}>  

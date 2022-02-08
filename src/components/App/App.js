@@ -15,8 +15,8 @@ import VolunteersPage from '../VolunteersPage/VolunteersPage';
 import LogoPomocny from '../../assets/img/logo-pomocny.svg';
 import CodersCampLogo from '../../assets/img/coder-camp.svg';
 import GitHubLogo from '../../assets/img/github-logo.png';
-import {TaskPagestore} from '../TaskPage/TaskPagestore';
-import { DisplayTaskPage } from '../TaskPage/TaskPagestore2';
+import TaskPagestore from '../TaskPage/TaskPagestore';
+import DisplayTaskPage from '../TaskPage/TaskPagestore2';
 
 
 function App() {

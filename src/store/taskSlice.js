@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Tasks from '../reducers/reducers_tasks';
-import { current } from '@reduxjs/toolkit'
+
 
 const initialState = {
     tasks:Tasks
 };
-console.log(initialState);
 
 const taskSlice = createSlice({
     name: 'task',
