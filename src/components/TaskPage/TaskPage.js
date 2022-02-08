@@ -6,7 +6,7 @@ import liscik from "../../assets/img/plane.svg";
 import skrzynka from "../../assets/img/mailbox.svg";
 import avatar from "../../assets/img/facet.png";
 import CustomButton from "../../theme/CustomButton";
-import pies from "../../assets/img/pies.jpg"
+import pies from "../../assets/img/tasks/pies.jpg";
 
 const TaskPage = () => {
     

@@ -4,9 +4,7 @@ import Api from "../../store/ApiVolunteers";
 import { Rating } from '@mui/material';
 import PersonIcon from '@material-ui/icons/Person';
 import CustomAvatar from "../../theme/CustomAvatar";
-import Avatar from "../../assets/img/girl1.jpg";
-
-
+import Avatar from "../../assets/img/volunteers/monikaMajchrzak.jpg";
 
 const VolunteerPage = () => {
 

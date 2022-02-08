@@ -8,9 +8,10 @@ import { ListItemButton } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material';
 import { makeStyles} from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectAllTasks } from '../store/taskSlice';
 import CustomTypography from '../theme/CustomTypography';
+import setCategoryIcon from '../theme/setCategoryIcon';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -57,7 +58,6 @@ const Search = styled('div')(({ theme }) => ({
  }) 
 
   const SearchInput = () => {
-    const dispatch = useDispatch();
     const tasksList = useSelector(selectAllTasks);
     const [value, setValue] = useState('');
     const [filteredResults, setFilteredResults] = useState();
@@ -113,11 +113,11 @@ const Search = styled('div')(({ theme }) => ({
                       <ListItemButton key={`listitembutton-${id}`}  display={"flex"} style={{width: "100%"}} disableGutters>
                           <CustomAvatar 
                             variant={"avatarBackground"} 
-                            backgroundcolor={el.avatarColor}
+                            backgroundcolor={setCategoryIcon(el.categories[0])[1]}
                             style={{margin: "0.8rem"}}
                             key={`item-${id}`} 
                             >
-                              {el.categorieIcon}
+                              {setCategoryIcon(el.categories[0])[0]}
                             </CustomAvatar>
                             <Divider key={`divideritem-${id}`}  orientation="vertical" flexItem/>
                               <ListItemText className={"searchList"} key={`listitem-${id}`} 

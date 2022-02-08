@@ -13,22 +13,18 @@ const volunteersSlice = createSlice({
     initialState,
     reducers: {
         sortVolunteers: (state,action) => {
-            state.volunteers.sort(compareDate);
+          const volunteersActions = state.volunteers.map((volunteer, id)=>{
+            let par = volunteer.actions;
+            volunteer.numberActions= par.length;
+            return volunteer;
+          })
+            state.volunteers.sort(compare);
             return state;
         },
         addNewVolunteer: (state, action) => {
          state.volunteers.push(action.payload);
-         console.log(current(state));
-         console.log(current(state.volunteers).length);
-         
         },
         selectVolunteers:(state, action) => {
-            return action.payload;
-        },
-        filterVolunteers: (state, action) => {
-            return action.payload;
-        },
-        searchVolunteers: (state,action) => {
             return action.payload;
         }
     },
@@ -57,14 +53,13 @@ export const selectAllVolunteers = state => state.volunteers;
 export const selectVolunteerId = (state, volunteerId) =>
   state.volunteers.find(volunteer => volunteer.id === volunteerId);
 
-
-function compareDate( a, b ) {
-    if ( a.date > b.date  ){
+function compare( a, b ) {
+  if ( a.numberActions > b.numberActions ){
       return -1;
-    }
-    if ( a.date < b.date ){
+  }
+  if ( a.numberActions < b.numberActions ){
       return 1;
-    }
+  }
     return 0;
-}  
+}
 

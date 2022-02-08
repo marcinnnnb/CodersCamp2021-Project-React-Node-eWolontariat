@@ -2,23 +2,21 @@ import { Button, Typography, Card, CardContent, CardActions } from "@material-ui
 import CustomAvatar from "../../theme/CustomAvatar";
 import CustomTypography from "../../theme/CustomTypography";
 import { useNavigate } from 'react-router';
-import { addCategoryIcon } from "../../store/taskSlice";
-import { useDispatch } from "react-redux";
+import setCategoryIcon from "../../theme/setCategoryIcon";
 
 function TaskCard(task,id){
-    const dispatch = useDispatch();
     let navigate = useNavigate();
     return(
             <Card raised={true} style={{ position: "relative", height: "270px", maxWidth: "350px", padding: '2.4rem 0.4rem', margin: '1.6rem', width: '22%', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems: 'center', borderRadius:'12px'}}>
                 <CustomAvatar 
                 variant={"avatarBackground"} 
-                backgroundcolor={task.task.avatarColor} >
-                    {task.task.categorieIcon}
+                backgroundcolor={setCategoryIcon(task.task.categories[0])[1]} >
+                    {setCategoryIcon(task.task.categories[0])[0]}
                 </CustomAvatar>
                 <CustomTypography 
                     variantcolor={"typographycolor"} 
                     margin={"4rem 0"} 
-                    color= {task.task.avatarColor}
+                    color= {setCategoryIcon(task.task.categories[0])[1]}
                     style={{
                         textTransform: "uppercase", 
                         fontSize: "0.8rem", 

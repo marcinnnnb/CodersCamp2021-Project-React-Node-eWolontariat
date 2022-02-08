@@ -1,57 +1,55 @@
 import { Box, CircularProgress, Typography, Divider } from "@material-ui/core";
 import { useEffect, useState  } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { sortTasks,  selectAllTasks  } from "../../store/taskSlice";
-import TaskCard from "../TasksPage/TaskCard";
+import { sortVolunteers,  selectAllVolunteers  } from "../../store/volunteerSlice";
 import { fetchVolunteers } from "../../store/fetchVolunteers";
 import Categories from "../../assets/data/Categories";
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import CustomButton from "../../theme/CustomButton";
+import VolunteerCard from "../VolunteersPage/VolunteerCard";
+import SearchInput from "../SearchInput";
 
-const VolunteersList = (props, end, start) => {
+const VolunteersList = () => {
   const dispatch = useDispatch();
-  const tasksList = Object.assign(useSelector(selectAllTasks));
-  const taskStatus = useSelector(state => state.tasks.status);
-  const error = useSelector(state => state.tasks.error);
-  const [filteredTasks, setTasks] = useState([]);
-  let orderedTasks =[];
+  const volunteersList = useSelector(selectAllVolunteers);
+  const volunteerstatus = useSelector(state => state.volunteers.status);
+  const error = useSelector(state => state.volunteers.error);
+  const [filteredVolunteers, setVolunteers] = useState([]);
+  const [isFilterVolunteers, setFilterVolunteers] = useState(false);
+  let orderedVolunteers =[];
 
-  console.log(tasksList);
-  console.log(filteredTasks);
-  console.log(orderedTasks);
+  console.log(volunteersList);
+  console.log(filteredVolunteers);
+  console.log(orderedVolunteers);
 
   useEffect(() => {
-    if (taskStatus === 'idle') {
+    if (volunteerstatus === 'idle') {
       dispatch(fetchVolunteers())
     }
-  }, [taskStatus, dispatch]);
+  }, [volunteerstatus, dispatch]);
 
   let content;
 
-  if (taskStatus === 'loading') {
+  if (volunteerstatus === 'loading') {
     content = 
         (<CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>)
     
-  } else if (taskStatus === 'succeeded (:') {
-    orderedTasks = (dispatch(sortTasks(tasksList.tasks))).payload.slice(0,6);
-     
-    content = orderedTasks.map((task,id) =>{
-       return <TaskCard key={id} task={task} id={task.id}/>
-    });
+  } else if (volunteerstatus === 'succeeded (:') {
+    orderedVolunteers = dispatch(sortVolunteers(volunteersList.volunteers)).payload.slice(0,3);
     
-  } else if (taskStatus === 'failed') {
+  } else if (volunteerstatus === 'failed') {
     content = (
         <div style={{color: 'red'}}>ERROR: {error}</div>
     )
   }  
 
-  console.log(orderedTasks)
+  console.log(orderedVolunteers)
 
   const thePopularCategories = (Categories.map(category=>{
     let rate=0;
-    tasksList.tasks?.map(task=>{
-        (task.categories).forEach(taskCategory=>{
-            if(taskCategory===category.value){
+    volunteersList.volunteers?.map(volunteer=>{
+        (volunteer.categories).forEach(volunteerCategory=>{
+            if(volunteerCategory===category.value){
                 rate++;
             }
         });
@@ -65,22 +63,34 @@ const VolunteersList = (props, end, start) => {
 
     function getFilteredTextFromButton(text) {
         return (
-          orderedTasks?.filter(element => 
+          volunteersList.volunteers?.filter(element => 
                 element.categories.includes(text))
             )
-      };
+    };
+
+    function getVolunteersCards(){
+      if (isFilterVolunteers===false) return (
+          orderedVolunteers?.map((volunteer,id) =>{
+                return <VolunteerCard key={`item-${volunteer.id}`} volunteer={volunteer} id={volunteer.id}/>
+              })
+      )
+      if (isFilterVolunteers===true) return (
+          filteredVolunteers?.map((volunteer,id) =>{
+                return <VolunteerCard key={`item-${volunteer.id}`} volunteer={volunteer} id={volunteer.id}/>
+            })
+      )
+    };
 
     return (
-      <>
-        <Box id="filtering-buttons" display={"flex"} justifyContent={'space-evenly'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem 3rem 0 3rem"} alignItems={"flex-end"}>
-               <Box justifyContent={"flex-start"} flexGrow={"1"} >
-                    <Typography variant="body2" align={"left"}>Najpopularniejsze kategorie:</Typography>
-               </Box>
+      <Box>
+         <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem"} alignItems={"center"} flexWrap={"wrap"}>
+              <Typography variant="subtitle2" align={"left"} style={{marginTop: "1rem"}}>Najpopularniejsze <br/>kategorie:</Typography>
                     <CustomButton 
                         variant="outlined" 
-                        color={"primary"}  
+                        color={"primary"} 
+                        style={{marginTop: "1rem"}} 
                         onClick={()=>{
-                            setTasks(tasksList);
+                            setVolunteers(volunteersList.volunteers.slice(0,3));
                         }}        
                     >
                     Wszystkie</CustomButton>
@@ -91,22 +101,23 @@ const VolunteersList = (props, end, start) => {
                         key={`item-${id}`} 
                         id= {category.value}
                         variant="contained" 
+                        style={{marginTop: "1rem"}}
                         color={category.buttonColor}
                         startIcon={category.icon}
                         onClick={()=>{
-                            const filteredTasks = getFilteredTextFromButton(category.value);
-                            setTasks(filteredTasks);
-                            console.log(filteredTasks);
+                          setVolunteers(getFilteredTextFromButton(category.value));
+                            setFilterVolunteers(true);
                         }}                           
                     >
                         <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {category.value}
                     </CustomButton>
                 ))}
+          </Box>
+           {content}
+            <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 0 4rem'} justifyContent={'center'}>
+                  {getVolunteersCards()}
             </Box>
-            <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
-            {content}
-            </Box>
-         </>
+      </Box>
     )
 }
 

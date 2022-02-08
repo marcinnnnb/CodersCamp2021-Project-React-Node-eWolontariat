@@ -17,22 +17,10 @@ const taskSlice = createSlice({
             state.tasks.sort(compareDate);
             return state;
         },
-        addCategoryIcon: (state, taskId) => {
-          const task = state.tasks.find(task => task.id === taskId)
-          task.categorieIcon = setCategoryIcon(task.categories[0])[0];
-          task.avatarColor = setCategoryIcon(task.categories[0])[1];
-          return task;
-        },
         addNewTask: (state, action) => {
          state.tasks.push(action.payload);
         },
         selectTask:(state, action) => {
-            return action.payload;
-        },
-        filterTasks: (state, action) => {
-            return action.payload;
-        },
-        searchTasks: (state,action) => {
             return action.payload;
         }
     },
@@ -52,7 +40,7 @@ const taskSlice = createSlice({
       }
 });
 
-export const { sortTasks, addNewTask, selectTask, filterTasks, addCategoryIcon } = taskSlice.actions;
+export const { sortTasks, addNewTask, selectTask } = taskSlice.actions;
 
 export default taskSlice.reducer;
 

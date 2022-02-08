@@ -4,7 +4,7 @@ import setCategoryIcon from "../theme/setCategoryIcon";
 import { Box, Typography, Divider } from '@material-ui/core';
 import { useState } from "react"; 
 import NewestTasks from "./NewestTasks";
-import VolunteersCard from "../components/VolunteersPage/VolunteersCard"
+import VolunteerCard from "../components/VolunteersPage/VolunteerCard"
 
 
 function PopularCategories ({data, start, end, isCompVol}){
@@ -65,7 +65,7 @@ function PopularCategories ({data, start, end, isCompVol}){
                     </CustomButton>
                 ))}
             </Box>
-            {isCompVol?(<VolunteersCard data = {filteredTasks} start={start} end={end}/>):(<NewestTasks data={filteredTasks} start={start} end={end}/>)}
+            {isCompVol?(<VolunteerCard data = {filteredTasks} start={start} end={end}/>):(<NewestTasks data={filteredTasks} start={start} end={end}/>)}
             
             </>
     )

@@ -1,7 +1,7 @@
 import { Box, CircularProgress, Typography, Divider } from "@material-ui/core";
 import { useEffect, useState  } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { sortTasks,  selectAllTasks, addCategoryIcon  } from "../../store/taskSlice";
+import { sortTasks,  selectAllTasks } from "../../store/taskSlice";
 import TaskCard from "../TasksPage/TaskCard";
 import Categories from "../../assets/data/Categories";
 import setCategoryIcon from "../../theme/setCategoryIcon";
@@ -15,6 +15,7 @@ const TasksList = () => {
   const tasksStatus = useSelector(state => state.task.status);
   const error = useSelector(state => state.task.error);
   const [filteredTasks, setTasks] = useState([]);
+  const [isFilterTasks, setFilterTasks] = useState(false);
   let orderedTasks =[];
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const TasksList = () => {
     }
   }, [tasksStatus, dispatch]);
 
-  let content;
+  let content, searchInput;
 
   if (tasksStatus === 'loading...') {
        content = (
@@ -33,14 +34,12 @@ const TasksList = () => {
       );
   } else if (tasksStatus === 'succeeded (:') {
       orderedTasks = dispatch(sortTasks(tasksList.tasks)).payload.slice(0,6);
-      //orderedTasks = dispatch(addCategoryIcon(tasksList.tasks)).payload;
-      content = ( 
-        <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
-            {orderedTasks?.map((task,id) =>{
-                return <TaskCard key={`item-${task.id}`} task={task} id={task.id}/>
-            })};
+      searchInput = (
+        <Box display={'flex'} justifyContent={'center'}>
+          <SearchInput />
         </Box>
-      );
+      )
+  
   } else if (tasksStatus === 'failed :(') {
        content = <Box style={{color: 'red'}} padding={2} align={"center"}>ERROR: {error}</Box>;
   }  
@@ -63,16 +62,27 @@ const TasksList = () => {
 
     function getFilteredTextFromButton(text) {
         return (
-          orderedTasks?.filter(element => 
+          tasksList.tasks?.filter(element => 
                 element.categories.includes(text))
             )
       };
 
+    function getTasksCards(){
+      if (isFilterTasks===false) return (
+          orderedTasks?.map((task,id) =>{
+                return <TaskCard key={`item-${task.id}`} task={task} id={task.id}/>
+              })
+      )
+      if (isFilterTasks===true) return (
+          filteredTasks?.map((task,id) =>{
+                return <TaskCard key={`item-${task.id}`} task={task} id={task.id}/>
+            })
+      )
+    };
+
     return (
       <Box>
-        <Box display={'flex'} justifyContent={'center'}>
-          <SearchInput />
-        </Box>
+        {searchInput}
         <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem"} alignItems={"center"} flexWrap={"wrap"}>
                     <Typography variant="subtitle2" align={"left"} style={{marginTop: "1rem"}}>Najpopularniejsze <br/>kategorie:</Typography>
                     <CustomButton 
@@ -80,7 +90,7 @@ const TasksList = () => {
                         style={{marginTop: "1rem"}}
                         color={"primary"}  
                         onClick={()=>{
-                            setTasks(tasksList);
+                          setFilterTasks(false);
                         }}        
                     >
                     Wszystkie</CustomButton>
@@ -93,9 +103,8 @@ const TasksList = () => {
                         color={category.buttonColor}
                         startIcon={category.icon}
                         onClick={()=>{
-                            const filteredTasks = getFilteredTextFromButton(category.value);
-                            setTasks(filteredTasks);
-                            console.log(filteredTasks);
+                            setTasks(getFilteredTextFromButton(category.value));
+                            setFilterTasks(true);
                         }}                           
                     >
                         <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {category.value}
@@ -103,6 +112,11 @@ const TasksList = () => {
                 ))}
             </Box>
               {content}
+              <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
+                  {getTasksCards()}
+              </Box>
+            
+
          </Box>
     )
 }

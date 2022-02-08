@@ -1,5 +1,5 @@
 [
-    {
+  {
        "id": 1,
        "title": "Pomoc przy wyprowadzaniu psów ze schroniska Promyk",
        "categories": [
@@ -10,7 +10,7 @@
        "sign":"4",
        "action_description": "Szukamy osób kochających zwierzęta i chętnych do wyprowadzania naszych podopiecznych na spacery. W naszym schronisku znajduje się ok. 120 psów i 50 kotów. Niestety nasi pracownicy nie są w stanie wyprowadzić każdego z nich na spacer codziennie przez co zwierzęta załatwiają się w boksach. Codzienny spacer dla naszych milisińskich to naprawdę wielka radość. Zapraszamy do zgłaszania się! ",
        "action_short_description": "Wyprowadzanie psów ze schroniska",
-       "comments":"Byłem wolontrariuszem w zeszłym roku i polecam wszystkim ! w tym roku też się zapisuje!",
+       "comments":"Byłem wolontariuszem w zeszłym roku i polecam wszystkim ! w tym roku też się zapisuje!",
        "date": "2021-12-10T13:49:51.141Z",
        "organization": "Schronisko dla bezdomnych zwierząt",
        "dateExpired":""
@@ -106,28 +106,149 @@
        "sign":"0",
        "action_description": "Jestem początkującą modelką, jeśli ty jesteś początkującym fotoghrafem- możemy sobie nawzajem pomóc w stworzeniu portfolio. Ja będę Ci pozować a ty zrobisz super zdjęcia i oboje będziemy zadowoleni",
        "action_short_description": "Szukam początkującego fotografa do sesji zdjęciowej-wzbogać swoje portflio!",
-       "comments":"Udostępniłam koleżance :)"
+       "comments":"Udostępniłam koleżance :)",
+       "date": "2022-02-01T13:49:51.141Z",
+       "organization": "",
+       "dateExpired":""
      },
      {
       "id": 8,
       "title": "Pomoc przy odrabianiu lekcji",
       "categories":["Korepetycje"],
-      "image": "https://iv.pl/images/03cc9258af8d7bbefaf7c687b1af3af6.jpg",
+      "image": "ksiazki.png",
       "amount": "1",
       "sign":"0",
       "action_description": "Szukam osoby, która pomoże mi w przygotowaniu do matury z matematyki. Głównie chodzi o odrabianie zadań domowych co wiąże się z przygotowaniem do matury. Jestem na profilu himanistycznym, potrzebuję pomocy w zakresie podstawowym z tego działu.",
       "action_short_description": "Pomoc przy odrabianiu lekcji z matematyki",
-      "comments":"Udostępniłam koleżance :)"
+      "comments":"Udostępniłam koleżance :)",
+      "date": "2022-01-10T13:49:51.141Z",
+       "organization": "Schronisko dla bezdomnych zwierząt",
+       "dateExpired":""
     },
     {
       "id":9,
       "title": "Poszukiwana modelka",
       "categories":["Fotografia"],
-      "image": "https://iv.pl/images/03cc9258af8d7bbefaf7c687b1af3af6.jpg",
+      "image": "photographer.jpg",
       "amount": "1",
       "sign":"0",
       "action_description": "Szukam modelki do sesji ślubnej sesji zdjęciowej. Jestem początkującym forografem i potrzebuję zbudować swoje portfolio",
       "action_short_description": "Poszukiwana modelka do sesji ślubnej",
-      "comments":"Chętnie pomogę"
-    }
-   ]
+      "comments":"Chętnie pomogę",
+      "date": "2021-02-06T13:49:51.141Z",
+       "organization": "",
+       "dateExpired":""
+    },
+        {
+            "id": 10,
+            "title": "Pomoc przy wyprowadzaniu psów ze schroniska Promyk",
+            "categories": [
+              "Wyprowadzanie psów"
+            ],
+            "image": "pies.jpg",
+            "amount": "16",
+            "sign":"4",
+            "action_description": "Szukamy osób kochająych zwierzęta i chętnych do wyprowadzania naszych podopiecznych na spacery. W naszym schronisku znajduje się ok. 120 psów i 50 kotów. Niestety nasi pracownicy nie są w stanie wyprowadzić każdego z nich na spacer codziennie przez co zwierzęta załatwiają się w boksach. Codzienny spacer dla naszych milisińskich to naprawdę wielka radość. Zapraszamy do zgłaszania się! ",
+            "action_short_description": "Wyprowadzanie psów ze schroniska",
+            "comments":"Byłem wolontrariuszem w zeszłym roku i polecam wszystkim ! w tym roku też się zapisuje!",
+            "date": "2020-12-10T13:49:51.141Z",
+            "organization": "Schronisko dla bezdomnych zwierząt",
+            "dateExpired":""
+          },
+          {
+            "id": 11,
+            "title": "Wyprowadzanie psa na spacer",
+            "categories": [
+              "Wyprowadzanie psów"
+            ],
+            "image": "pies.jpg",
+            "amount": "1",
+            "sign":"0",
+            "action_description": "Wczoraj złamałam nogę i bardzo ciężko mi się poruszać o kulach. Szukam kogoś kto mógłby przez tydzień wyprowadzać mojego psa- 3 razy dziennie",
+            "action_short_description": "Szukam kogoś kto będzie wyprowadzać psa dopóki moja noga nie wydobrzeje",
+            "comments":"Pani Asia to złota kobieta, chętnie bym pomógł gdybym nie był w tym czasie w delegacji :(",
+            "date": "2022-02-07T13:49:51.141Z",
+            "organization": "",
+            "dateExpired":""
+          },
+          {
+            "id": 12,
+            "title": "Przygotowanie do egzaminu na architekturę",
+            "categories": [
+              "Korepetycje"
+            ],
+            "image": "książki.png",
+            "amount": "1",
+            "sign":"0",
+            "action_description": "Szukamy kogoś kto poprowadzi webinarium dotyczące egzaminu na architekturę. Opowie jak to wyglądało z jego perspektywy i czego możemy się spodziewać",
+            "action_short_description": "Krótkie webinarium: co trzeba wiedzieć przed egzaminem wstępnym na architekturę?",
+            "comments":"Wow, super pomysł",
+            "date": "2021-11-10T13:49:51.141Z",
+            "organization": "",
+            "dateExpired":""
+          },
+          {
+            "id": 13,
+            "title": "Szkolne warszaty z budowania karmników dla ptaków",
+            "categories": [
+              "Korepetycje"
+            ],
+            "image": "karmnik.png",
+            "amount": "25",
+            "sign":"10",
+            "action_description": "Szkoła nr 16 organizuje serię warsztatów poświęconym pracom ręcznym. W tym miesiącu zapraszamy na warsztaty poświęcone budowaniu karmników dla ptaków",
+            "action_short_description": "Pomóż nauczyć dzieci z podstawówki nr 16 budować własne karmniki!",
+            "comments":"Wow, super pomysł!",
+            "date": "2021-12-15T13:49:51.141Z",
+            "organization": "Szkoła Podstawowa nr 16",
+            "dateExpired":""
+          },
+          {
+            "id": 14,
+            "title": "Szukam kogoś do przetłumaczenia ogłoszenia na język niemiecki",
+            "categories": [
+              "Tłumaczenia"
+            ],
+            "image": "ksiazki.png",
+            "amount": "1",
+            "sign":"1",
+            "action_description": "Wczoraj zaginęła moja kotka. 7 letnia Pysia. Z racji tego że mieszkamy blisko granicy niemieckiej, chciałąbym tam też rozwiesić parę ogłoszeń ale nie znam niemieckiego. Pilnie poszukuję kogoś kto mi pomoże w tej sprawie",
+            "action_short_description": "Szukam kogoś do przetłumaczenia ogłoszenia o zaginięciu kotki na język niemiecki",
+            "comments":"Chętnie pomogę",
+            "date": "2022-02-05T13:49:51.141Z",
+            "organization": "",
+            "dateExpired":""
+          },
+          {
+            "id": 15,
+            "title": "Warsztaty chemiczne dla najmłodszych",
+            "categories": [
+              "Korepetycje"
+            ],
+            "image": "chemia.png",
+            "amount": "3",
+            "sign":"1",
+            "action_description": "Szkoła nr 16 organizuje serię warsztatów poświęconym poznaniu różnych zawodów co ma ułatwić im przyszły wybór pracy. Jeśli masz dobry kontakt z dziećmi i potrafisz prowadzić ciekawe zajęcia dołącz do nas!",
+            "action_short_description": "Organizacja warsztatów chemicznych dla najmłodszych-stwórz własny krem!",
+            "comments":"Wow, super pomysł!",
+            "date": "2022-01-15T13:49:51.141Z",
+            "organization": "Szkoła Podstawowa nr 16",
+            "dateExpired":""
+          },
+          {
+            "id": 16,
+            "title": "Szukam początkującego fotografa do sesji zdjęciowej",
+            "categories": [
+              "Fotografia"
+            ],
+            "image": "sesja.png",
+            "amount": "1",
+            "sign":"0",
+            "action_description": "Jestem początkującą modelką, jeśli ty jesteś początkującym fotoghrafem- możemy sobie nawzajem pomóc w stworzeniu portfolio. Ja będę Ci pozować a ty zrobisz super zdjęcia i oboje będziemy zadowoleni",
+            "action_short_description": "Szukam początkującego fotografa do sesji zdjęciowej-wzbogać swoje portflio!",
+            "comments":"Udostępniłam koleżance :)",
+            "date": "2022-02-03T13:49:51.141Z",
+            "organization": "",
+            "dateExpired":""
+          }
+    ]
