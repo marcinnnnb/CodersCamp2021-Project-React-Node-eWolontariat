@@ -26,7 +26,7 @@ const TasksList = () => {
   let content;
 
   if (tasksStatus === 'loading...') {
-      return content = (
+       content = (
         <Box style={{color: 'red'}} padding={2} align={"center"}>
             <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
         </Box>
@@ -34,25 +34,20 @@ const TasksList = () => {
   } else if (tasksStatus === 'succeeded (:') {
       orderedTasks = dispatch(sortTasks(tasksList.tasks)).payload.slice(0,6);
       //orderedTasks = dispatch(addCategoryIcon(tasksList.tasks)).payload;
-      return content = ( 
-        <>
-        <Box display={'flex'} justifyContent={'center'}>
-                <SearchInput />
-            </Box>
+      content = ( 
         <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
             {orderedTasks?.map((task,id) =>{
                 return <TaskCard key={`item-${task.id}`} task={task} id={task.id}/>
             })};
         </Box>
-        </>
       );
   } else if (tasksStatus === 'failed :(') {
-      return content = <Box style={{color: 'red'}} padding={2} align={"center"}>ERROR: {error}</Box>;
+       content = <Box style={{color: 'red'}} padding={2} align={"center"}>ERROR: {error}</Box>;
   }  
 
   const thePopularCategories = (Categories.map(category=>{
     let rate=0;
-    orderedTasks.tasks?.map(task=>{
+    orderedTasks?.map(task=>{
         (task.categories).forEach(taskCategory=>{
             if(taskCategory===category.value){
                 rate++;
@@ -75,25 +70,26 @@ const TasksList = () => {
 
     return (
       <Box>
-        <Box id="filtering-buttons" display={"flex"} justifyContent={'space-evenly'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem 3rem 0 3rem"} alignItems={"flex-end"}>
-               <Box justifyContent={"flex-start"} flexGrow={"1"} >
-                    <Typography variant="body2" align={"left"}>Najpopularniejsze kategorie:</Typography>
-               </Box>
+        <Box display={'flex'} justifyContent={'center'}>
+          <SearchInput />
+        </Box>
+        <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem"} alignItems={"center"} flexWrap={"wrap"}>
+                    <Typography variant="subtitle2" align={"left"} style={{marginTop: "1rem"}}>Najpopularniejsze <br/>kategorie:</Typography>
                     <CustomButton 
                         variant="outlined" 
+                        style={{marginTop: "1rem"}}
                         color={"primary"}  
                         onClick={()=>{
                             setTasks(tasksList);
                         }}        
                     >
                     Wszystkie</CustomButton>
-
                 {thePopularCategories.map((category,id)=>(
-                    
                     <CustomButton 
                         key={`item-${id}`} 
                         id= {category.value}
                         variant="contained" 
+                        style={{marginTop: "1rem"}}
                         color={category.buttonColor}
                         startIcon={category.icon}
                         onClick={()=>{
