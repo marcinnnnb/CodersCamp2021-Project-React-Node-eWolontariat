@@ -5,7 +5,7 @@ import ProgressBar from "./ProgressBar";
 import liscik from "../../assets/img/plane.svg";
 import skrzynka from "../../assets/img/mailbox.svg";
 import avatar from "../../assets/img/facet.png";
-import CustomButton from "../CustomButton";
+import CustomButton from "../../theme/CustomButton";
 import TaskForm from '../TaskForm/TaskForm';
 import tasks from '../../reducers/reducers_tasks';
 import { selectTask } from "../../store/taskSlice";

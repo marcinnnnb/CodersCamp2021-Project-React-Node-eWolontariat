@@ -1,8 +1,7 @@
-import { Box, Button, Typography,Card, CardMedia, CardContent, CardActions} from "@material-ui/core";
+import { Box, Button, Typography,Card, CardContent, CardActions} from "@material-ui/core";
 import ImgFindCard from '../../../assets/img/find-volunteer.svg';
 import ImgBeVolunteer from '../../../assets/img/be-volunteer.svg';
-import CustomButton from "../../CustomButton";
-
+import CustomButton from "../../../theme/CustomButton";
 
 const SectionHowItWorks = () => {
     return(

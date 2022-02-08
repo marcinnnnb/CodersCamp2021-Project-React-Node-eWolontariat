@@ -1,9 +1,9 @@
 import { Button, Typography, Container, Box, CircularProgress, Card } from '@material-ui/core'
 import {useState, useEffect} from 'react';
-import Api from "../../components/HomePage/Sections/SectionTheBestVolunteers/ApiVolunteers";
+import Api from "../../store/ApiVolunteers";
 import { Rating } from '@mui/material';
 import PersonIcon from '@material-ui/icons/Person';
-import CustomAvatar from "../CustomAvatar";
+import CustomAvatar from "../../theme/CustomAvatar";
 import Avatar from "../../assets/img/girl1.jpg";
 
 

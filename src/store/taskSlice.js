@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { current } from '@reduxjs/toolkit';
+import setCategoryIcon from "../theme/setCategoryIcon";
 import { fetchTasks } from "./fetchTasks";
 
 const initialState = {
@@ -16,11 +17,14 @@ const taskSlice = createSlice({
             state.tasks.sort(compareDate);
             return state;
         },
+        addCategoryIcon: (state, taskId) => {
+          const task = state.tasks.find(task => task.id === taskId)
+          task.categorieIcon = setCategoryIcon(task.categories[0])[0];
+          task.avatarColor = setCategoryIcon(task.categories[0])[1];
+          return task;
+        },
         addNewTask: (state, action) => {
          state.tasks.push(action.payload);
-         console.log(current(state));
-         console.log(current(state.tasks).length);
-         
         },
         selectTask:(state, action) => {
             return action.payload;
@@ -48,11 +52,11 @@ const taskSlice = createSlice({
       }
 });
 
-export const { sortTasks, addNewTask, selectTask, filterTasks } = taskSlice.actions;
+export const { sortTasks, addNewTask, selectTask, filterTasks, addCategoryIcon } = taskSlice.actions;
 
 export default taskSlice.reducer;
 
-export const selectAllTasks = state => state;
+export const selectAllTasks = state => state.task;
 
 export const selectTasksId = (state, taskId) =>
   state.tasks.find(task => task.id === taskId);

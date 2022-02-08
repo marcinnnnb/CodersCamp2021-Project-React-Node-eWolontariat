@@ -1,8 +1,11 @@
-import {configureStore} from "@reduxjs/toolkit";
+import {applyMiddleware, configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 import taskReducer from "./taskSlice"
 import volunteerReducer from "./volunteerSlice";
+import thunkMiddleware from 'redux-thunk';
 //import organizationReducer from './organizationSlice'
-import { getDefaultMiddleware } from '@reduxjs/toolkit';
+//import { composeWithDevTools } from "@reduxjs/toolkit/dist/devtoolsExtension";
+
+//const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
 
 export const store = configureStore({
     middleware: getDefaultMiddleware({
@@ -12,7 +15,8 @@ export const store = configureStore({
         volunteers: volunteerReducer,
         task: taskReducer,
         //organization: organizationReducer,
-    }
+    },
+    //composedEnhancer
 });
 
 

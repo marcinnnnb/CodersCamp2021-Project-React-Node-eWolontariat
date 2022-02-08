@@ -1,5 +1,5 @@
 import SectionHero from "./Sections/SectionHero";
-import SectionTheBestVolunteers from "./Sections/SectionTheBestVolunteers/SectionTheBestVolunteers";
+import SectionTheBestVolunteers from "./Sections/SectionTheBestVolunteers";
 import SectionHowFindHelp from "./Sections/SectionHowFindHelp";
 import SectionInNumbers from "./Sections/SectionInNumbers/SectionInNumbers";
 import SectionHowItWorks from "./Sections/SectionHowItWorks";

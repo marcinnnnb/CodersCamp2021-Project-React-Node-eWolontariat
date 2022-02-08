@@ -3,13 +3,14 @@ import { styled } from '@mui/material/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import React, { useState } from 'react';
 import { Box, Divider, Typography, ListItemText } from '@material-ui/core';
-import CustomAvatar from './CustomAvatar';
+import CustomAvatar from '../theme/CustomAvatar';
 import { ListItemButton } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material';
 import { makeStyles} from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllTasks } from '../store/taskSlice';
+import CustomTypography from '../theme/CustomTypography';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -120,15 +121,15 @@ const Search = styled('div')(({ theme }) => ({
                             </CustomAvatar>
                             <Divider key={`divideritem-${id}`}  orientation="vertical" flexItem/>
                               <ListItemText className={"searchList"} key={`listitem-${id}`} 
-                                style={{marginLeft: "1rem", fontSize: "0.8rem"}}
+                                style={{marginLeft: "1rem", fontSize: "0.8rem", fontWeight: "600"}}
                                 primary= 
                                           {el.title.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
                           
                                               if (item.match(regex)) return (
-                                                <Typography variant= 'spanColor' className={classes.spanColor} key={`spancolortititem-${id}`}>{item}</Typography>
+                                                <CustomTypography component="span" variantcolor= 'spanColor' className={classes.spanColor} key={`spancolortititem-${id}`}>{item}</CustomTypography>
                                               )
                                               else return (
-                                                <Typography variant= 'spanwithoutColor' key={`typotititem-${id}`} component="span">{item}</Typography>
+                                                <Typography variantcolor= 'spanwithoutColor' key={`typotititem-${id}`} component="span">{item}</Typography>
                                               )
                                           })}
                                 
@@ -136,10 +137,10 @@ const Search = styled('div')(({ theme }) => ({
                                           {el.action_short_description.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
                                             
                                             if (item.match(regex)) return (
-                                              <Typography variant= 'spanColor' component="span" className={classes.spanColor} key={`spancolordesc-${id}`}>{item}</Typography>
+                                              <CustomTypography variant="subtitle2" variantcolor= 'spanColor' component="span" className={classes.spanColor} key={`spancolordesc-${id}`}>{item}</CustomTypography>
                                             )
                                             else return (
-                                              <Typography variant= 'spanwithoutColor' key={`typodesc-${id}`} component="span" >{item}</Typography>
+                                              <Typography variant="subtitle2" variantcolor= 'spanwithoutColor' key={`typodesc-${id}`} component="span" >{item}</Typography>
                                             )
                                         })}
                               >

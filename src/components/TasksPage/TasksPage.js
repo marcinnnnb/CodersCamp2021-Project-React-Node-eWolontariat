@@ -4,12 +4,11 @@ import { useState } from 'react';
 import ChooseCat from '../ChooseCat';
 import CasinoIcon from '@material-ui/icons/Casino';
 import { useNavigate } from 'react-router';
-import TasksList from '../Tasks/TasksList';
+import TasksList from '../Task/TasksList';
 
 let tasksPerPage = 6;
 let arrayForHoldingTasks = [];
 const isCompVol=false;
-
 
 const TasksPage = () => {
     

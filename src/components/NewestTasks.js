@@ -1,5 +1,5 @@
-import setCategoryIcon from "./setCategoryIcon";
-import TasksCard from "./TasksPage/TasksCard";
+import setCategoryIcon from "./../theme/setCategoryIcon";
+import TaskCard from "./TasksPage/TaskCard";
 
 function NewestTasks ({data,start,end}){
     function compareDate( a, b ) {
@@ -19,7 +19,7 @@ function NewestTasks ({data,start,end}){
     })).sort(compareDate).slice(start,end);
     
     return(
-        <TasksCard data = {theNewestTasks} start ={start} end={end}/>
+        <TaskCard data = {theNewestTasks} start ={start} end={end}/>
     )
 };
 

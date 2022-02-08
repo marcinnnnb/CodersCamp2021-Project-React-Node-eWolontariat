@@ -7,9 +7,11 @@ import {store} from './store/store';
 import {BrowserRouter} from 'react-router-dom';
 import { fetchTasks } from './store/fetchTasks';
 import { fetchVolunteers } from './store/fetchVolunteers';
+import { fetchOrganizations } from './store/fetchOrganizations';
 
 store.dispatch(fetchTasks());
 store.dispatch(fetchVolunteers());
+store.dispatch(fetchOrganizations());
 
 ReactDOM.render(
   <React.StrictMode>

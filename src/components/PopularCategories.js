@@ -1,6 +1,6 @@
 import Categories from "../assets/data/Categories";
-import CustomButton from "./CustomButton";
-import setCategoryIcon from "./setCategoryIcon";
+import CustomButton from "./../theme/CustomButton";
+import setCategoryIcon from "../theme/setCategoryIcon";
 import { Box, Typography, Divider } from '@material-ui/core';
 import { useState } from "react"; 
 import NewestTasks from "./NewestTasks";

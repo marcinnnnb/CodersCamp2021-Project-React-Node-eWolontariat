@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
-import Api from "./ApiVolunteers";
+import Api from "../../../store/ApiVolunteers";
 import { Box, Button, Typography, Card, CardContent, CardActions, CardActionArea, CardMedia, CircularProgress } from "@material-ui/core";
-import Avatar from "../../../../assets/img/girl1.jpg";
+import Avatar from "../../../assets/img/girl1.jpg";
 import TelegramIcon from '@material-ui/icons/Telegram';
 import { Rating } from '@mui/material';
 import { useNavigate } from 'react-router';

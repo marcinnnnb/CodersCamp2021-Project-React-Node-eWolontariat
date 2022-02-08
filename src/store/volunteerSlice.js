@@ -52,7 +52,7 @@ export const { sortVolunteers, addNewVolunteers, selectVolunteers, filterVolunte
 
 export default volunteersSlice.reducer;
 
-export const selectAllVolunteers = state => state;
+export const selectAllVolunteers = state => state.volunteers;
 
 export const selectVolunteerId = (state, volunteerId) =>
   state.volunteers.find(volunteer => volunteer.id === volunteerId);

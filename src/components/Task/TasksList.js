@@ -1,21 +1,21 @@
 import { Box, CircularProgress, Typography, Divider } from "@material-ui/core";
 import { useEffect, useState  } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { sortTasks,  selectAllTasks  } from "../../store/taskSlice";
-import TasksCard from "../TasksPage/TasksCard";
+import { sortTasks,  selectAllTasks, addCategoryIcon  } from "../../store/taskSlice";
+import TaskCard from "../TasksPage/TaskCard";
 import Categories from "../../assets/data/Categories";
-import setCategoryIcon from "../setCategoryIcon";
-import CustomButton from "../CustomButton";
+import setCategoryIcon from "../../theme/setCategoryIcon";
+import CustomButton from "../../theme/CustomButton";
 import { fetchTasks } from "../../store/fetchTasks";
+import SearchInput from "../SearchInput";
 
 const TasksList = () => {
   const dispatch = useDispatch();
   const tasksList = useSelector(selectAllTasks);
-  const tasksStatus = useSelector(state => state.status);
-  const error = useSelector(state => state.error);
+  const tasksStatus = useSelector(state => state.task.status);
+  const error = useSelector(state => state.task.error);
   const [filteredTasks, setTasks] = useState([]);
   let orderedTasks =[];
-  console.log(tasksList)
 
   useEffect(() => {
     if (tasksStatus === 'idle') {
@@ -26,23 +26,29 @@ const TasksList = () => {
   let content;
 
   if (tasksStatus === 'loading...') {
-    content = 
-        (<CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>)
-    
+      return content = (
+        <Box style={{color: 'red'}} padding={2} align={"center"}>
+            <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
+        </Box>
+      );
   } else if (tasksStatus === 'succeeded (:') {
-    orderedTasks = (dispatch(sortTasks(tasksList.tasks))).payload.slice(0,6);
-     
-    content = orderedTasks.map((task,id) =>{
-       return <TasksCard key={id} task={task} id={task.id}/>
-    });
-    
-  } else if (tasksStatus === 'failed') {
-    content = (
-        <div style={{color: 'red'}}>ERROR: {error}</div>
-    )
+      orderedTasks = dispatch(sortTasks(tasksList.tasks)).payload.slice(0,6);
+      //orderedTasks = dispatch(addCategoryIcon(tasksList.tasks)).payload;
+      return content = ( 
+        <>
+        <Box display={'flex'} justifyContent={'center'}>
+                <SearchInput />
+            </Box>
+        <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
+            {orderedTasks?.map((task,id) =>{
+                return <TaskCard key={`item-${task.id}`} task={task} id={task.id}/>
+            })};
+        </Box>
+        </>
+      );
+  } else if (tasksStatus === 'failed :(') {
+      return content = <Box style={{color: 'red'}} padding={2} align={"center"}>ERROR: {error}</Box>;
   }  
-
-  console.log(tasksList)
 
   const thePopularCategories = (Categories.map(category=>{
     let rate=0;
@@ -68,7 +74,7 @@ const TasksList = () => {
       };
 
     return (
-      <>
+      <Box>
         <Box id="filtering-buttons" display={"flex"} justifyContent={'space-evenly'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem 3rem 0 3rem"} alignItems={"flex-end"}>
                <Box justifyContent={"flex-start"} flexGrow={"1"} >
                     <Typography variant="body2" align={"left"}>Najpopularniejsze kategorie:</Typography>
@@ -100,10 +106,8 @@ const TasksList = () => {
                     </CustomButton>
                 ))}
             </Box>
-            <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
-            {content}
-            </Box>
-         </>
+              {content}
+         </Box>
     )
 }
 

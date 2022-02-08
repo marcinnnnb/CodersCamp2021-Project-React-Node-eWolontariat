@@ -1,8 +1,7 @@
 import { Box, Button, Typography } from "@material-ui/core";
-import SearchInput from "../../../SearchInput";
 import ArrowRightRounded from '@material-ui/icons/ArrowRightRounded';
 import { useNavigate } from 'react-router';
-import TasksList from '../../../Tasks/TasksList';
+import TasksList from '../../../Task/TasksList';
 
 const SectionNewTasks = () => {
   const isCompVol = false;
@@ -15,9 +14,6 @@ const SectionNewTasks = () => {
             margin={"3rem 3rem 0 3rem"}
         >
             <Typography variant="h1">Zobacz jakiej pomocy potrzebują inni</Typography>
-            <Box display={'flex'} justifyContent={'center'}>
-                <SearchInput />
-            </Box>
             <TasksList isCompVol={isCompVol}/>
             <Box align={"center"}>
                 <Button 

@@ -1,9 +1,9 @@
 import { Button, Typography, Container, Box, CircularProgress } from '@material-ui/core'
 import PersonIcon from '@material-ui/icons/Person';
 import {useState, useEffect} from 'react';
-import Api from "../../components/HomePage/Sections/SectionTheBestVolunteers/ApiVolunteers";
+import Api from "../../store/ApiVolunteers";
 import { useNavigate } from 'react-router';
-import CustomButton from '../CustomButton'
+import CustomButton from '../../theme/CustomButton';
 
 
 const UserProfile = () => {

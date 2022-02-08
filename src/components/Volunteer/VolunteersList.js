@@ -2,11 +2,11 @@ import { Box, CircularProgress, Typography, Divider } from "@material-ui/core";
 import { useEffect, useState  } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { sortTasks,  selectAllTasks  } from "../../store/taskSlice";
-import TasksCard from "../TasksPage/TasksCard";
+import TaskCard from "../TasksPage/TaskCard";
 import { fetchVolunteers } from "../../store/fetchVolunteers";
 import Categories from "../../assets/data/Categories";
-import setCategoryIcon from "../setCategoryIcon";
-import CustomButton from "../CustomButton";
+import setCategoryIcon from "../../theme/setCategoryIcon";
+import CustomButton from "../../theme/CustomButton";
 
 const VolunteersList = (props, end, start) => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const VolunteersList = (props, end, start) => {
     orderedTasks = (dispatch(sortTasks(tasksList.tasks))).payload.slice(0,6);
      
     content = orderedTasks.map((task,id) =>{
-       return <TasksCard key={id} task={task} id={task.id}/>
+       return <TaskCard key={id} task={task} id={task.id}/>
     });
     
   } else if (taskStatus === 'failed') {
