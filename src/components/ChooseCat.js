@@ -9,8 +9,8 @@ const ChooseCat = (data) => {
     }
     
   return (
-      <Box style={{margin: "2rem"}}>
-        <FormControl variant="standard">
+      
+        <FormControl variant="standard" style={{bottom: "10px"}}>
             <InputLabel id="demo-simple-select-standard-label">Wybierz kategorię</InputLabel>
             <Select
             labelId="demo-simple-select-standard-label"
@@ -33,7 +33,6 @@ const ChooseCat = (data) => {
         ))}
             </Select>
         </FormControl>
-    </Box>
     )
 }
 

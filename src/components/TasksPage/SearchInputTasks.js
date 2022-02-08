@@ -3,15 +3,15 @@ import { styled } from '@mui/material/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import React, { useState } from 'react';
 import { Box, Divider, Typography, ListItemText } from '@material-ui/core';
-import CustomAvatar from '../theme/CustomAvatar';
+import CustomAvatar from '../../theme/CustomAvatar';
 import { ListItemButton } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material';
 import { makeStyles} from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { selectAllTasks } from '../store/taskSlice';
-import CustomTypography from '../theme/CustomTypography';
-import setCategoryIcon from '../theme/setCategoryIcon';
+import { selectAllTasks } from '../../store/taskSlice';
+import CustomTypography from '../../theme/CustomTypography';
+import setCategoryIcon from '../../theme/setCategoryIcon';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',

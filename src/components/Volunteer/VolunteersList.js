@@ -98,10 +98,11 @@ const VolunteersList = ({startSlice,endSlice}) => {
                     </CustomButton>
                 ))}
            </Box>
+         
            {content}
-           <Box display={"flex"} justifyContent={'flex-start'} flexWrap={"wrap"} paddingLeft={'16rem'}>
-                    <ChooseCat/>
-            </Box>
+           <Box display={"flex"} justifyContent={"flex-start"} alignItems={"center"} flexWrap={"wrap"}>
+              <ChooseCat/>
+           </Box>
             <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 0 4rem'} justifyContent={'center'}>
                 {getVolunteersCards(isFilterVolunteers, orderedVolunteers, filteredVolunteers, startSlice, endSlice)}
             </Box>

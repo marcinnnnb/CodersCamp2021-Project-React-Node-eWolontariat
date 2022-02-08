@@ -3,7 +3,6 @@ import { Box, Button, Typography } from "@material-ui/core";
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { useNavigate } from 'react-router-dom';
 import VolunteersList from '../Volunteer/VolunteersList';
-import SearchInput from '../SearchInputTasks';
 import SearchInputVolunteers from './SearchInputVolunteers';
 
 let volsPerPage = 6;

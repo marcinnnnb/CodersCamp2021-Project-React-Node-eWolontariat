@@ -6,9 +6,9 @@ import Categories from "../../assets/data/Categories";
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import CustomButton from "../../theme/CustomButton";
 import { fetchTasks } from "../../store/fetchTasks";
-import SearchInput from "../SearchInputTasks";
 import getTasksCards from "./getTasksCards";
-import SearchInputTasks from "../SearchInputTasks";
+import SearchInputTasks from "../TasksPage/SearchInputTasks";
+import ChooseCat from "../ChooseCat";
 
 const TasksList = ({startSlice,endSlice}) => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const TasksList = ({startSlice,endSlice}) => {
     }
   }, [tasksStatus, dispatch]);
 
-  let content, searchInput;
+  let content;
 
   if (tasksStatus === 'loading...') {
        content = (
@@ -36,12 +36,6 @@ const TasksList = ({startSlice,endSlice}) => {
       );
   } else if (tasksStatus === 'succeeded (:') {
       orderedTasks = dispatch(sortTasks(tasksList.tasks)).payload;
-      searchInput = (
-        <Box display={'flex'} justifyContent={'center'}>
-          <SearchInputTasks />
-        </Box>
-      )
-  
   } else if (tasksStatus === 'failed :(') {
        content = <Box style={{color: 'red'}} padding={2} align={"center"}>ERROR: {error}</Box>;
   }  
@@ -71,9 +65,11 @@ const TasksList = ({startSlice,endSlice}) => {
 
     return (
       <Box>
-        {searchInput}
+        <Box display={"flex"} justifyContent={"center"}>
+                <SearchInputTasks/>
+        </Box>
         <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem"} alignItems={"center"} flexWrap={"wrap"}>
-                    <Typography variant="subtitle2" align={"left"} style={{marginTop: "1rem"}}>Najpopularniejsze <br/>kategorie:</Typography>
+                    <Typography variant="subtitle2" align={"left"} style={{marginTop: "1rem"}}>Najpopularniejsze <br/>kategorie:</Typography> 
                     <CustomButton 
                         variant="outlined" 
                         style={{marginTop: "1rem"}}
@@ -98,7 +94,11 @@ const TasksList = ({startSlice,endSlice}) => {
                     >
                         <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {category.value}
                     </CustomButton>
+                    
                 ))}
+            </Box>
+            <Box display={"flex"} justifyContent={"flex-start"} alignItems={"center"} flexWrap={"wrap"} style={{marginLeft: "6rem"}}>
+              <ChooseCat/>
             </Box>
               {content}
               <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>

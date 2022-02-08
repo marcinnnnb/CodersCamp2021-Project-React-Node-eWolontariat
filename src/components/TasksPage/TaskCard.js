@@ -7,7 +7,7 @@ import setCategoryIcon from "../../theme/setCategoryIcon";
 function TaskCard(task,id){
     let navigate = useNavigate();
     return(
-            <Card raised={true} style={{ position: "relative", height: "270px", maxWidth: "350px", padding: '2.4rem 0.4rem', margin: '1.6rem', width: '22%', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems: 'center', borderRadius:'12px'}}>
+            <Card raised={true} style={{ position: "relative", height: "270px", maxWidth: "280px", padding: '2.4rem 0.4rem', margin: '1.6rem', width: '22%', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems: 'center', borderRadius:'12px'}}>
                 <CustomAvatar 
                 variant={"avatarBackground"} 
                 backgroundcolor={setCategoryIcon(task.task.categories[0])[1]} >
