@@ -12,18 +12,18 @@ const isCompVol=false;
 
 const TasksPage = () => {
     
-    const [tasks, setTasks] = useState([]);
-    const [next, setNext] = useState(0);
+    //const [tasks, setTasks] = useState([]);
+    //const [next, setNext] = useState(0);
     const [showButton, setShowButton] = useState(true);
     let navigate = useNavigate();
 
   
 
     const handleShowMoreTasks = () => {
-        setNext(next + tasksPerPage);
-        setShowButton(false)
-        arrayForHoldingTasks = tasks.slice(next, next+tasksPerPage);
-        arrayForHoldingTasks = [arrayForHoldingTasks, tasks];
+    //    setNext(next + tasksPerPage);
+    //    setShowButton(false)
+    //    arrayForHoldingTasks = tasks.slice(next, next+tasksPerPage);
+    //    arrayForHoldingTasks = [arrayForHoldingTasks, tasks];
       };
 
     return(
