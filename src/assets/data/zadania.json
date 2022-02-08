@@ -5,7 +5,7 @@
        "categories": [
          "Wyprowadzanie psów"
        ],
-       "image": "dog_walk.png",
+       "image": "dog_walk",
        "amount": "16",
        "sign":"4",
        "action_description": "Szukamy osób kochających zwierzęta i chętnych do wyprowadzania naszych podopiecznych na spacery. W naszym schronisku znajduje się ok. 120 psów i 50 kotów. Niestety nasi pracownicy nie są w stanie wyprowadzić każdego z nich na spacer codziennie przez co zwierzęta załatwiają się w boksach. Codzienny spacer dla naszych milisińskich to naprawdę wielka radość. Zapraszamy do zgłaszania się! ",
@@ -21,7 +21,7 @@
        "categories": [
          "Wyprowadzanie psów"
        ],
-       "image": "doggy.jpg",
+       "image": "doggy",
        "amount": "1",
        "sign":"0",
        "action_description": "Wczoraj złamałam nogę i bardzo ciężko mi się poruszać o kulach. Szukam kogoś kto mógłby przez tydzień wyprowadzać mojego psa- 3 razy dziennie",
@@ -37,7 +37,7 @@
        "categories": [
          "Korepetycje"
        ],
-       "image": "webinar.jpg",
+       "image": "webinar",
        "amount": "1",
        "sign":"0",
        "action_description": "Szukamy kogoś kto poprowadzi webinarium dotyczące egzaminu na architekturę. Opowie jak to wyglądało z jego perspektywy i czego możemy się spodziwać",
@@ -53,7 +53,7 @@
        "categories": [
          "Korepetycje"
        ],
-       "image": "feeder.jpg",
+       "image": "feeder",
        "amount": "25",
        "sign":"10",
        "action_description": "Szkoła nr 16 organizuje serię warsztatów poświęconym pracom ręcznym. W tym miesiącu zapraszamy na warsztaty poświęcone budowaniu karmników dla ptaków",
@@ -69,7 +69,7 @@
        "categories": [
          "Tłumaczenia"
        ],
-       "image": "cat.jpg",
+       "image": "cat",
        "amount": "1",
        "sign":"1",
        "action_description": "Wczoraj zaginęła moja kotka. 7 letnia Pysia. Z racji tego że mieszkamy blisko granicy niemieckiej, chciałąbym tam też rozwiesić parę ogłoszeń ale nie znam niemieckiego. Pilnie poszukuję kogoś kto mi pomoże w tej sprawie",
@@ -85,7 +85,7 @@
        "categories": [
          "Korepetycje"
        ],
-       "image": "chemistry.jpg",
+       "image": "chemistry",
        "amount": "3",
        "sign":"1",
        "action_description": "Szkoła nr 16 organizuje serię warsztatów poświęconym poznaniu różnych zawodów co ma ułatwić im przyszły wybór pracy. Jeśli masz dobry kontakt z dziećmi i potrafisz prowadzić ciekawe zajęcia dołącz do nas!",
@@ -101,7 +101,7 @@
        "categories": [
          "Fotografia"
        ],
-       "image": "photographer.jpg",
+       "image": "photographer",
        "amount": "1",
        "sign":"0",
        "action_description": "Jestem początkującą modelką, jeśli ty jesteś początkującym fotoghrafem- możemy sobie nawzajem pomóc w stworzeniu portfolio. Ja będę Ci pozować a ty zrobisz super zdjęcia i oboje będziemy zadowoleni",
@@ -115,7 +115,7 @@
       "id": 8,
       "title": "Pomoc przy odrabianiu lekcji",
       "categories":["Korepetycje"],
-      "image": "ksiazki.png",
+      "image": "ksiazki",
       "amount": "1",
       "sign":"0",
       "action_description": "Szukam osoby, która pomoże mi w przygotowaniu do matury z matematyki. Głównie chodzi o odrabianie zadań domowych co wiąże się z przygotowaniem do matury. Jestem na profilu himanistycznym, potrzebuję pomocy w zakresie podstawowym z tego działu.",
@@ -129,7 +129,7 @@
       "id":9,
       "title": "Poszukiwana modelka",
       "categories":["Fotografia"],
-      "image": "photographer.jpg",
+      "image": "photographer",
       "amount": "1",
       "sign":"0",
       "action_description": "Szukam modelki do sesji ślubnej sesji zdjęciowej. Jestem początkującym forografem i potrzebuję zbudować swoje portfolio",
@@ -145,7 +145,7 @@
             "categories": [
               "Wyprowadzanie psów"
             ],
-            "image": "pies.jpg",
+            "image": "pies",
             "amount": "16",
             "sign":"4",
             "action_description": "Szukamy osób kochająych zwierzęta i chętnych do wyprowadzania naszych podopiecznych na spacery. W naszym schronisku znajduje się ok. 120 psów i 50 kotów. Niestety nasi pracownicy nie są w stanie wyprowadzić każdego z nich na spacer codziennie przez co zwierzęta załatwiają się w boksach. Codzienny spacer dla naszych milisińskich to naprawdę wielka radość. Zapraszamy do zgłaszania się! ",
@@ -161,7 +161,7 @@
             "categories": [
               "Wyprowadzanie psów"
             ],
-            "image": "pies.jpg",
+            "image": "pies",
             "amount": "1",
             "sign":"0",
             "action_description": "Wczoraj złamałam nogę i bardzo ciężko mi się poruszać o kulach. Szukam kogoś kto mógłby przez tydzień wyprowadzać mojego psa- 3 razy dziennie",
@@ -177,7 +177,7 @@
             "categories": [
               "Korepetycje"
             ],
-            "image": "książki.png",
+            "image": "książki",
             "amount": "1",
             "sign":"0",
             "action_description": "Szukamy kogoś kto poprowadzi webinarium dotyczące egzaminu na architekturę. Opowie jak to wyglądało z jego perspektywy i czego możemy się spodziewać",
@@ -193,7 +193,7 @@
             "categories": [
               "Korepetycje"
             ],
-            "image": "karmnik.png",
+            "image": "karmnik",
             "amount": "25",
             "sign":"10",
             "action_description": "Szkoła nr 16 organizuje serię warsztatów poświęconym pracom ręcznym. W tym miesiącu zapraszamy na warsztaty poświęcone budowaniu karmników dla ptaków",
@@ -209,7 +209,7 @@
             "categories": [
               "Tłumaczenia"
             ],
-            "image": "ksiazki.png",
+            "image": "ksiazki",
             "amount": "1",
             "sign":"1",
             "action_description": "Wczoraj zaginęła moja kotka. 7 letnia Pysia. Z racji tego że mieszkamy blisko granicy niemieckiej, chciałąbym tam też rozwiesić parę ogłoszeń ale nie znam niemieckiego. Pilnie poszukuję kogoś kto mi pomoże w tej sprawie",
@@ -225,7 +225,7 @@
             "categories": [
               "Korepetycje"
             ],
-            "image": "chemia.png",
+            "image": "chemia",
             "amount": "3",
             "sign":"1",
             "action_description": "Szkoła nr 16 organizuje serię warsztatów poświęconym poznaniu różnych zawodów co ma ułatwić im przyszły wybór pracy. Jeśli masz dobry kontakt z dziećmi i potrafisz prowadzić ciekawe zajęcia dołącz do nas!",
@@ -241,7 +241,7 @@
             "categories": [
               "Fotografia"
             ],
-            "image": "sesja.png",
+            "image": "sesja",
             "amount": "1",
             "sign":"0",
             "action_description": "Jestem początkującą modelką, jeśli ty jesteś początkującym fotoghrafem- możemy sobie nawzajem pomóc w stworzeniu portfolio. Ja będę Ci pozować a ty zrobisz super zdjęcia i oboje będziemy zadowoleni",

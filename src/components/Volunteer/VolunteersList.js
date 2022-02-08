@@ -6,10 +6,11 @@ import { fetchVolunteers } from "../../store/fetchVolunteers";
 import Categories from "../../assets/data/Categories";
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import CustomButton from "../../theme/CustomButton";
-import VolunteerCard from "../VolunteersPage/VolunteerCard";
 import SearchInput from "../SearchInput";
+import getVolunteersCards from "./getVolunteersCards";
+import ChooseCat from "../ChooseCat";
 
-const VolunteersList = () => {
+const VolunteersList = ({startSlice,endSlice}) => {
   const dispatch = useDispatch();
   const volunteersList = useSelector(selectAllVolunteers);
   const volunteerstatus = useSelector(state => state.volunteers.status);
@@ -28,15 +29,13 @@ const VolunteersList = () => {
     }
   }, [volunteerstatus, dispatch]);
 
-  let content;
-
+  let content, searchInput;
   if (volunteerstatus === 'loading') {
     content = 
         (<CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>)
     
   } else if (volunteerstatus === 'succeeded (:') {
     orderedVolunteers = dispatch(sortVolunteers(volunteersList.volunteers)).payload;
-    
   } else if (volunteerstatus === 'failed') {
     content = (
         <div style={{color: 'red'}}>ERROR: {error}</div>
@@ -68,29 +67,16 @@ const VolunteersList = () => {
             )
     };
 
-    function getVolunteersCards(){
-      if (isFilterVolunteers===false) return (
-          orderedVolunteers?.slice(0,3).map((volunteer,id) =>{
-                return <VolunteerCard key={`item-${volunteer.id}`} volunteer={volunteer} id={volunteer.id}/>
-              })
-      )
-      if (isFilterVolunteers===true) return (
-          filteredVolunteers?.slice(0,3).map((volunteer,id) =>{
-                return <VolunteerCard key={`item-${volunteer.id}`} volunteer={volunteer} id={volunteer.id}/>
-            })
-      )
-    };
-
     return (
       <Box>
-         <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem"} alignItems={"center"} flexWrap={"wrap"}>
+         <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem"} flexWrap={"wrap"}>
               <Typography variant="subtitle2" align={"left"} style={{marginTop: "1rem"}}>Najpopularniejsze <br/>kategorie:</Typography>
                     <CustomButton 
                         variant="outlined" 
                         color={"primary"} 
                         style={{marginTop: "1rem"}} 
                         onClick={()=>{
-                            setVolunteers(volunteersList.volunteers.slice(0,3));
+                            setVolunteers(volunteersList.volunteers.slice(startSlice,endSlice));
                         }}        
                     >
                     Wszystkie</CustomButton>
@@ -112,10 +98,13 @@ const VolunteersList = () => {
                         <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {category.value}
                     </CustomButton>
                 ))}
-          </Box>
+           </Box>
            {content}
+           <Box display={"flex"} justifyContent={'flex-start'} flexWrap={"wrap"} paddingLeft={'12rem'}>
+                    <ChooseCat/>
+            </Box>
             <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 0 4rem'} justifyContent={'center'}>
-                  {getVolunteersCards()}
+                {getVolunteersCards(isFilterVolunteers, orderedVolunteers, filteredVolunteers, startSlice, endSlice)}
             </Box>
       </Box>
     )

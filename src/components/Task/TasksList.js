@@ -2,14 +2,14 @@ import { Box, CircularProgress, Typography, Divider } from "@material-ui/core";
 import { useEffect, useState  } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { sortTasks,  selectAllTasks } from "../../store/taskSlice";
-import TaskCard from "../TasksPage/TaskCard";
 import Categories from "../../assets/data/Categories";
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import CustomButton from "../../theme/CustomButton";
 import { fetchTasks } from "../../store/fetchTasks";
 import SearchInput from "../SearchInput";
+import getTasksCards from "./getTasksCards";
 
-const TasksList = () => {
+const TasksList = ({startSlice,endSlice}) => {
   const dispatch = useDispatch();
   const tasksList = useSelector(selectAllTasks);
   const tasksStatus = useSelector(state => state.task.status);
@@ -17,6 +17,7 @@ const TasksList = () => {
   const [filteredTasks, setTasks] = useState([]);
   const [isFilterTasks, setFilterTasks] = useState(false);
   let orderedTasks =[];
+ 
 
   useEffect(() => {
     if (tasksStatus === 'idle') {
@@ -67,19 +68,6 @@ const TasksList = () => {
             )
       };
 
-    function getTasksCards(){
-      if (isFilterTasks===false) return (
-          orderedTasks?.slice(0,6).map((task,id) =>{
-                return <TaskCard key={`item-${task.id}`} task={task} id={task.id}/>
-              })
-      )
-      if (isFilterTasks===true) return (
-          filteredTasks?.slice(0,6).map((task,id) =>{
-                return <TaskCard key={`item-${task.id}`} task={task} id={task.id}/>
-            })
-      )
-    };
-
     return (
       <Box>
         {searchInput}
@@ -113,10 +101,8 @@ const TasksList = () => {
             </Box>
               {content}
               <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
-                  {getTasksCards()}
+                  {getTasksCards(isFilterTasks, orderedTasks, filteredTasks, startSlice, endSlice)}
               </Box>
-            
-
          </Box>
     )
 }

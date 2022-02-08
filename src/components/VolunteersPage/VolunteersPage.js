@@ -1,64 +1,34 @@
-import {useState, useEffect} from 'react';
-import Api from "../../store/ApiVolunteers";
-import { Box, Button, Typography, CircularProgress } from "@material-ui/core";
-import ChooseCat from '../../components/ChooseCat';
+import { useState } from 'react';
+import { Box, Button, Typography } from "@material-ui/core";
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import PopularCategories from "../PopularCategories"
-
-
+import { useNavigate } from 'react-router-dom';
+import VolunteersList from '../Volunteer/VolunteersList';
+import SearchInput from '../SearchInput';
 
 let volsPerPage = 6;
-let arrayForHoldingVols = [];
-const isCompVol=true;
-     
-
 
 const VolunteersPage = () => {
-    const [vols, setVols] = useState([]);
-    const [next, setNext] = useState(0);
-    const [showButton, setShowButton] = useState(true);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
-    
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await Api.getData();
-                const json = await response.json();
- 
-             setVols(json);
-            } catch (e) {
-                setError(e.message || 'Unexpected error');
-            }
- 
-            setLoading(false);
-        }
- 
-        fetchData();
-    }, []);
-     
-    if (loading) {
-        return (
-            <Box align={"center"}>
-                <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
-            </Box>
-        )
-    }
-     
-    if (error) {
-        return <div style={{color: 'red'}}>ERROR: {error}</div>
-    }
-
-
+    let navigate = useNavigate();
+    const [next, setNext] = useState(6);
+    const [showNextCards, setNextCards] = useState(false);
+  
     const handleShowMoreVols = () => {
         setNext(next + volsPerPage);
-        setShowButton(false)
-        arrayForHoldingVols = vols.slice(next, next+volsPerPage);
-        arrayForHoldingVols = [arrayForHoldingVols, vols];
+        setNextCards(true);
       };
 
-    
-  
+    let content;
+
+    if (showNextCards===true) {
+        content = (
+            
+          <VolunteersList startSlice={0} endSlice={next}/>
+        );
+      } else if (showNextCards===false) {
+        content = (
+          <VolunteersList startSlice={0} endSlice={6}/>
+          );
+      }
 
     return(
         <Box
@@ -66,15 +36,12 @@ const VolunteersPage = () => {
         alignItems={"center"}
         >
             <Typography variant='h1' align={"center"}>Wolontariusze</Typography>
-            <Box margin={"0 3rem"} display={"flex"} justifyContent={'flex-start'}>
-                <Box display={"flex"} >
-                    <ChooseCat data={vols}/>
-                </Box>
+            <Box display={'flex'} justifyContent={'center'}>
+                <SearchInput />
             </Box>
-         
-            <PopularCategories data={vols} start={0} end={volsPerPage+next} isCompVol={isCompVol}/>
+            {content}
             <Box  align={"center"} marginBottom={"2rem"}>
-            {showButton && <Button onClick={handleShowMoreVols} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
+            <Button onClick={handleShowMoreVols} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>
             </Box>
         </Box>
     )

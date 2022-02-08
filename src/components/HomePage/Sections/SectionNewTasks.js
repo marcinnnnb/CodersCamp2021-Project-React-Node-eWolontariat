@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router';
 import TasksList from '../../Task/TasksList';
 
 const SectionNewTasks = () => {
-  const isCompVol = false;
   let navigate = useNavigate();
           
     return(
@@ -14,7 +13,7 @@ const SectionNewTasks = () => {
             margin={"3rem 3rem 0 3rem"}
         >
             <Typography variant="h1">Zobacz jakiej pomocy potrzebują inni</Typography>
-            <TasksList isCompVol={isCompVol}/>
+            <TasksList startSlice={0} endSlice={6}/>
             <Box align={"center"}>
                 <Button 
                     variant="outlined" 

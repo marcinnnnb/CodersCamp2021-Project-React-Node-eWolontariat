@@ -1,4 +1,4 @@
-import { MenuItem, FormControl, Select, InputLabel } from '@material-ui/core';
+import { MenuItem, FormControl, Select, InputLabel, Box } from '@material-ui/core';
 import { useState } from 'react';
 import Categories from '../../src/assets/data/Categories';
 
@@ -9,6 +9,7 @@ const ChooseCat = (data) => {
     }
     
   return (
+      <Box style={{margin: "2rem"}}>
         <FormControl variant="standard">
             <InputLabel id="demo-simple-select-standard-label">Wybierz kategorię</InputLabel>
             <Select
@@ -17,7 +18,7 @@ const ChooseCat = (data) => {
             value={category}
             onChange={handleChange}
             label="Wybierz kategorię"
-            style={{width: "260px", fontSize: "1rem"}}
+            style={{width: "260px", fontSize: "1rem" }}
             >
                 <MenuItem value="" style={{fontSize: "1rem"}}>
                     <em>Wszystkie kategorie</em>
@@ -32,6 +33,7 @@ const ChooseCat = (data) => {
         ))}
             </Select>
         </FormControl>
+    </Box>
     )
 }
 

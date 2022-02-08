@@ -8,23 +8,28 @@ import TasksList from '../Task/TasksList';
 
 let tasksPerPage = 6;
 let arrayForHoldingTasks = [];
-const isCompVol=false;
 
 const TasksPage = () => {
-    
-    //const [tasks, setTasks] = useState([]);
-    //const [next, setNext] = useState(0);
-    const [showButton, setShowButton] = useState(true);
     let navigate = useNavigate();
-
-  
+    const [next, setNext] = useState(6);
+    const [showNextCards, setNextCards] = useState(false);
 
     const handleShowMoreTasks = () => {
-    //    setNext(next + tasksPerPage);
-    //    setShowButton(false)
-    //    arrayForHoldingTasks = tasks.slice(next, next+tasksPerPage);
-    //    arrayForHoldingTasks = [arrayForHoldingTasks, tasks];
-      };
+        setNext(next + tasksPerPage);
+        setNextCards(true);
+    };
+
+    let content;
+
+    if (showNextCards===true) {
+      content = (
+        <TasksList startSlice={0} endSlice={next}/>
+      );
+    } else if (showNextCards===false) {
+      content = (
+        <TasksList startSlice={0} endSlice={6}/>
+        )
+    }
 
     return(
         <Box  id={"page-all-tasks"}
@@ -43,9 +48,9 @@ const TasksPage = () => {
                   >Szczęśliwy traf</Button>
                 </Box>
             </Box>
-            <TasksList isCompVol={isCompVol}/>
+            {content}
             <Box  align={"center"} marginBottom={"2rem"}>
-                {showButton && <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
+                <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>
             </Box>
         </Box>
     )
