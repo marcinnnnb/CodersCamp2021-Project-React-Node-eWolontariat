@@ -1,5 +1,5 @@
 import {useForm, Controller} from 'react-hook-form';
-import { Button, Box, Typography, TextField, Container } from "@material-ui/core";
+import { Box, Typography, TextField, Container } from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import Select from 'react-select'
 import Categories from '../../assets/data/Categories';
@@ -9,17 +9,13 @@ import { useDispatch } from "react-redux";
 import { DisplayTaskPage } from '../TaskPage/TaskPagestore2';
 import CustomTypography from '../../theme/CustomTypography';
 import CustomButton from '../../theme/CustomButton';
-
-
-const tytulValidation={
-    required:true, minLength:5, maxLength:80
-}  
+ 
 const amountValidation={
     required:true, pattern:[0-9], maxLength:1000
 } 
 
 export default function TaskForm() {
-    const{register,handleSubmit,control} =useForm();
+    const{register,handleSubmit,control, formState: { errors }} =useForm();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const onSubmit = (data,e) => {
@@ -50,8 +46,9 @@ return (
                 </Box>
 
                 <Box style={{ gridArea: 'main', display:"flex",  flexDirection:"column", alignItems: 'stretch', justifyContent: 'space-around', width: '100%', marginLeft:"30px"}}>
-                    <TextField fullWidth label="Tytuł zadania" {...register('title', tytulValidation)} {...tytulValidation}/>
-                    <TextField type="number" fullWidth label="Ilu wolontariuszy potrzebujesz?" {...register('amount', amountValidation)} {...amountValidation}/>
+                    <TextField fullWidth label="Tytuł zadania" name="title"{...register('title', {required:true, minLength:'5'})} />
+                    {errors.title?.type ==='required' && "To pole jest wymagane. Minimalnie 5 znaków"}
+                    <TextField type="number" name="amount" fullWidth label="Ilu wolontariuszy potrzebujesz?" {...register('amount', amountValidation)} {...amountValidation}/>
                 </Box>
                 
                 <Box style={{ gridArea: 'img', alignItems:"center", justifyContent:"center",  backgroundColor: 'primary', p: 2, border: '1px dashed grey', height:"180px"}}>
@@ -68,7 +65,7 @@ return (
                         name='categories'
                         render={({ field: { onChange, value, ref } }) => (
                         <Select
-                            inputRef={ref}
+                            {...register('categories', {required:true})}
                             label='Kategorie'
                             options={Categories}
                             value={value}
@@ -78,6 +75,7 @@ return (
                         />
                         )}
                     />
+                    {errors.title?.type ==='required' && "To pole jest wymagane"}
                 </Box>
                 <Box sx={{  gridArea: 'button', padding:"1rem 0"}}>
                 <Routes>
