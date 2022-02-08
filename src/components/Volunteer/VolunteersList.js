@@ -35,7 +35,7 @@ const VolunteersList = () => {
         (<CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>)
     
   } else if (volunteerstatus === 'succeeded (:') {
-    orderedVolunteers = dispatch(sortVolunteers(volunteersList.volunteers)).payload.slice(0,3);
+    orderedVolunteers = dispatch(sortVolunteers(volunteersList.volunteers)).payload;
     
   } else if (volunteerstatus === 'failed') {
     content = (
@@ -70,12 +70,12 @@ const VolunteersList = () => {
 
     function getVolunteersCards(){
       if (isFilterVolunteers===false) return (
-          orderedVolunteers?.map((volunteer,id) =>{
+          orderedVolunteers?.slice(0,3).map((volunteer,id) =>{
                 return <VolunteerCard key={`item-${volunteer.id}`} volunteer={volunteer} id={volunteer.id}/>
               })
       )
       if (isFilterVolunteers===true) return (
-          filteredVolunteers?.map((volunteer,id) =>{
+          filteredVolunteers?.slice(0,3).map((volunteer,id) =>{
                 return <VolunteerCard key={`item-${volunteer.id}`} volunteer={volunteer} id={volunteer.id}/>
             })
       )

@@ -33,7 +33,7 @@ const TasksList = () => {
         </Box>
       );
   } else if (tasksStatus === 'succeeded (:') {
-      orderedTasks = dispatch(sortTasks(tasksList.tasks)).payload.slice(0,6);
+      orderedTasks = dispatch(sortTasks(tasksList.tasks)).payload;
       searchInput = (
         <Box display={'flex'} justifyContent={'center'}>
           <SearchInput />
@@ -69,12 +69,12 @@ const TasksList = () => {
 
     function getTasksCards(){
       if (isFilterTasks===false) return (
-          orderedTasks?.map((task,id) =>{
+          orderedTasks?.slice(0,6).map((task,id) =>{
                 return <TaskCard key={`item-${task.id}`} task={task} id={task.id}/>
               })
       )
       if (isFilterTasks===true) return (
-          filteredTasks?.map((task,id) =>{
+          filteredTasks?.slice(0,6).map((task,id) =>{
                 return <TaskCard key={`item-${task.id}`} task={task} id={task.id}/>
             })
       )
