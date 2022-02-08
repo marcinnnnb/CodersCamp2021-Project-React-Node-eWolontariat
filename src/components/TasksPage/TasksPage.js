@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router';
 import TasksList from '../Task/TasksList';
 
 let tasksPerPage = 6;
-let arrayForHoldingTasks = [];
 
 const TasksPage = () => {
     let navigate = useNavigate();

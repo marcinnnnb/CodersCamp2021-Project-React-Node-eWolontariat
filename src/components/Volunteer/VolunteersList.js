@@ -6,7 +6,6 @@ import { fetchVolunteers } from "../../store/fetchVolunteers";
 import Categories from "../../assets/data/Categories";
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import CustomButton from "../../theme/CustomButton";
-import SearchInput from "../SearchInput";
 import getVolunteersCards from "./getVolunteersCards";
 import ChooseCat from "../ChooseCat";
 
@@ -100,7 +99,7 @@ const VolunteersList = ({startSlice,endSlice}) => {
                 ))}
            </Box>
            {content}
-           <Box display={"flex"} justifyContent={'flex-start'} flexWrap={"wrap"} paddingLeft={'12rem'}>
+           <Box display={"flex"} justifyContent={'flex-start'} flexWrap={"wrap"} paddingLeft={'16rem'}>
                     <ChooseCat/>
             </Box>
             <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 0 4rem'} justifyContent={'center'}>

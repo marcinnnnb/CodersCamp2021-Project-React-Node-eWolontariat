@@ -6,8 +6,9 @@ import Categories from "../../assets/data/Categories";
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import CustomButton from "../../theme/CustomButton";
 import { fetchTasks } from "../../store/fetchTasks";
-import SearchInput from "../SearchInput";
+import SearchInput from "../SearchInputTasks";
 import getTasksCards from "./getTasksCards";
+import SearchInputTasks from "../SearchInputTasks";
 
 const TasksList = ({startSlice,endSlice}) => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const TasksList = ({startSlice,endSlice}) => {
       orderedTasks = dispatch(sortTasks(tasksList.tasks)).payload;
       searchInput = (
         <Box display={'flex'} justifyContent={'center'}>
-          <SearchInput />
+          <SearchInputTasks />
         </Box>
       )
   

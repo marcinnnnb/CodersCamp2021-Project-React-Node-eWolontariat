@@ -3,15 +3,15 @@ import { styled } from '@mui/material/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import React, { useState } from 'react';
 import { Box, Divider, Typography, ListItemText } from '@material-ui/core';
-import CustomAvatar from '../theme/CustomAvatar';
+import CustomAvatar from '../../theme/CustomAvatar';
 import { ListItemButton } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material';
 import { makeStyles} from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { selectAllTasks } from '../store/taskSlice';
-import CustomTypography from '../theme/CustomTypography';
-import setCategoryIcon from '../theme/setCategoryIcon';
+import CustomTypography from '../../theme/CustomTypography';
+import setCategoryIcon from '../../theme/setCategoryIcon';
+import { selectAllVolunteers } from '../../store/volunteerSlice';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -58,16 +58,16 @@ const Search = styled('div')(({ theme }) => ({
     }
  }) 
 
-  const SearchInput = () => {
-    const tasksList = useSelector(selectAllTasks);
+  const SearchInputVolunteers = () => {
+    const list = useSelector(selectAllVolunteers);
     const [value, setValue] = useState('');
     const [filteredResults, setFilteredResults] = useState();
     const [displaySearchIcon, setdisplaySearchIcon] = useState(true);
       
       function  findMatches(wordToMatch) {
-        return( tasksList.tasks?.filter((task)=>{
+        return( list.volunteers?.filter((volunteer)=>{
           const regex = new RegExp(wordToMatch,"gi");
-          return task.title.toLowerCase().match(regex) || task.action_short_description.toLowerCase().match(regex)
+          return volunteer.name.toLowerCase().match(regex) || volunteer.nick.toLowerCase().match(regex)
         }));
       };
 
@@ -94,15 +94,15 @@ const Search = styled('div')(({ theme }) => ({
                 />
             </SearchIconWrapper>
             <StyledInputBase
-                placeholder="Znajdź zadanie dla wolontariusza…"
+                placeholder="Znajdź wolontariusza…"
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={(e)=>{
                   setValue(e.target.value);
-                  displayMatches({value,tasksList});
+                  displayMatches({value,list});
                 }}
                 onKeyUp={(e)=>{
                   setValue(e.target.value);
-                  displayMatches({value,tasksList});
+                  displayMatches({value,list});
                 }}
                 value={value}
                 >
@@ -110,11 +110,11 @@ const Search = styled('div')(({ theme }) => ({
             {filteredResults?.map((el,id)=>{
               const regex = new RegExp(value,'gi'); 
               return (
-                    <Box key={`item-${id}`} style={{ border: "1px #eee solid"}} width = {"800px"} >
+                    <Box key={`item-${id}`} style={{ border: "1px #eee solid"}} >
                       <ListItemButton key={`listitembutton-${id}`}  display={"flex"} style={{width: "100%"}} disableGutters>
                           <CustomAvatar 
                             variant={"avatarBackground"} 
-                            backgroundcolor={setCategoryIcon(el.categories[0])[1]}
+                            src={require(`../../assets/img/volunteers/${el.image}.jpg`)}
                             style={{margin: "0.8rem"}}
                             key={`item-${id}`} 
                             >
@@ -124,7 +124,7 @@ const Search = styled('div')(({ theme }) => ({
                               <ListItemText className={"searchList"} key={`listitem-${id}`} 
                                 style={{marginLeft: "1rem", fontSize: "0.8rem", fontWeight: "600"}}
                                 primary= 
-                                          {el.title.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
+                                          {el.nick.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
                           
                                               if (item.match(regex)) return (
                                                 <CustomTypography component="span" variantcolor= 'spanColor' className={classes.spanColor} key={`spancolortititem-${id}`}>{item}</CustomTypography>
@@ -135,7 +135,7 @@ const Search = styled('div')(({ theme }) => ({
                                           })}
                                 
                                 secondary=
-                                          {el.action_short_description.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
+                                          {el.name.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
                                             
                                             if (item.match(regex)) return (
                                               <CustomTypography variant="subtitle2" variantcolor= 'spanColor' component="span" className={classes.spanColor} key={`spancolordesc-${id}`}>{item}</CustomTypography>
@@ -156,4 +156,4 @@ const Search = styled('div')(({ theme }) => ({
    
   }
 
-  export default SearchInput;
+  export default SearchInputVolunteers;
