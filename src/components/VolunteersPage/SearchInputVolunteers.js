@@ -67,7 +67,8 @@ const Search = styled('div')(({ theme }) => ({
       function  findMatches(wordToMatch) {
         return( list.volunteers?.filter((volunteer)=>{
           const regex = new RegExp(wordToMatch,"gi");
-          return volunteer.name.toLowerCase().match(regex) || volunteer.nick.toLowerCase().match(regex)
+          const nameAndSurname = volunteer.name.concat(" ", volunteer.surname)
+          return nameAndSurname.toLowerCase().match(regex) || volunteer.nick.toLowerCase().match(regex)
         }));
       };
 
@@ -124,7 +125,7 @@ const Search = styled('div')(({ theme }) => ({
                               <ListItemText className={"searchList"} key={`listitem-${id}`} 
                                 style={{marginLeft: "1rem", fontSize: "0.8rem", fontWeight: "600"}}
                                 primary= 
-                                          {el.nick.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
+                                          {el.name.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
                           
                                               if (item.match(regex)) return (
                                                 <CustomTypography component="span" variantcolor= 'spanColor' className={classes.spanColor} key={`spancolortititem-${id}`}>{item}</CustomTypography>
@@ -132,10 +133,19 @@ const Search = styled('div')(({ theme }) => ({
                                               else return (
                                                 <Typography variantcolor= 'spanwithoutColor' key={`typotititem-${id}`} component="span">{item}</Typography>
                                               )
-                                          })}
+                                          }).concat(" ",
+                                            el.surname.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
+                                                if (item.match(regex)) return (
+                                                    <CustomTypography component="span" variantcolor= 'spanColor' className={classes.spanColor} key={`spancolortititem-${id}`}>{item}</CustomTypography>
+                                                )
+                                                else return (
+                                                    <Typography variantcolor= 'spanwithoutColor' key={`typotititem-${id}`} component="span">{item}</Typography>
+                                                )
+                                            }
+                                          ))}
                                 
                                 secondary=
-                                          {el.name.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
+                                          {el.nick.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
                                             
                                             if (item.match(regex)) return (
                                               <CustomTypography variant="subtitle2" variantcolor= 'spanColor' component="span" className={classes.spanColor} key={`spancolordesc-${id}`}>{item}</CustomTypography>
