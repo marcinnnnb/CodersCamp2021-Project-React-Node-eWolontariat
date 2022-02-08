@@ -10,15 +10,12 @@ import { useDispatch } from "react-redux";
 import { DisplayTaskPage } from '../TaskPage/TaskPagestore2';
 
 
-const tytulValidation={
-    required:true, minLength:5, maxLength:80
-}  
 const amountValidation={
     required:true, pattern:[0-9], maxLength:1000
 } 
 
 export default function TaskForm() {
-    const{register,handleSubmit,control} =useForm();
+    const{register,handleSubmit,control, formState: { errors }} =useForm();
     const navigate = useNavigate();
     const dispatch = useDispatch();
    const onSubmit = (data,e) => {
@@ -45,8 +42,9 @@ return (
     </Box>
 
     <Box sx={{ gridArea: 'main', display:"flex",  flexDirection:"column", alignItems: 'stretch', justifyContent: 'space-around',width: '100%', marginLeft:"30px"}}>
-    <TextField fullWidth label="Tytuł zadania" {...register('title', tytulValidation)} {...tytulValidation}/>
-    <TextField type="number" fullWidth label="Ilu wolontariuszy potrzebujesz?" {...register('amount', amountValidation)} {...amountValidation}/>
+    <TextField fullWidth name="title" label="Tytuł zadania"  {...register('title', {required:true,  minLength:'5'})} />
+    {errors.title?.type ==='required' && "To pole jest wymagane. Minimalnie 5 znaków"}
+    <TextField type="number" name="amount" fullWidth label="Ilu wolontariuszy potrzebujesz?" {...register('amount', amountValidation)} {...amountValidation}/>
     </Box>
     
     <Box sx={{ gridArea: 'img', alignItems:"center", justifyContent:"center",  backgroundColor: 'primary', p: 2, border: '1px dashed grey', width:"70%", height:"120px"}}>
@@ -58,12 +56,14 @@ return (
     <TextField fullWidth multiline rows={2} label="Dodaj krótki opis widoczny na miniaturze" {...register("action_short_description")} />
     <Typography variant="body1">Wybierz kategorie: </Typography>
     <Controller
+   
     control={control}
     defaultValue={categories[0]}
     name='categories'
     render={({ field: { onChange, value, ref } }) => (
       <Select
-        inputRef={ref}
+      
+        {...register('categories', {required:true})}
         label='Kategorie'
         options={Categories}
         value={value}
@@ -71,8 +71,9 @@ return (
         isMulti
         isSearchable
       />
-    )}
-  />
+      )}
+      />
+      {errors.title?.type ==='required' && "To pole jest wymagane"}
   </Box>
   
   <Box sx={{  gridArea: 'button', padding:"1rem 0"}}>
