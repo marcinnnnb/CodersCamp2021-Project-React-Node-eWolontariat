@@ -69,7 +69,7 @@ Lista dostępnych wolontariuszy. W tym module jest możliwość filtrowania uży
 
 ##### Profil organizacji
 
-Na tym profilu widoczny jest krótki opis organizacji, lista udostępnionych zadań przez nią oraz liczba wolontariuszy potrzebna do konkretych akcji. Jest możliwość dodania kolejnych zadań przez wypełnienie odpowiedniego forularza.
+Na tym profilu widoczny jest krótki opis organizacji, lista udostępnionych zadań przez nią oraz liczba wolontariuszy potrzebna do konkretych akcji. Jest możliwość dodania kolejnych zadań przez wypełnienie odpowiedniego formularza.
 
 ##### Strona ze wszystkimi zadaniami
 
