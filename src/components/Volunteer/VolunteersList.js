@@ -11,30 +11,30 @@ import setVolunteersRatingButtons from "../VolunteersPage/setVolunteersRatingBut
 const VolunteersList = ({startSlice,endSlice}) => {
   const dispatch = useDispatch();
   const volunteersList = useSelector(selectAllVolunteers);
-  const volunteerstatus = useSelector(state => state.volunteers.status);
+  const volunteerStatus = useSelector(state => state.volunteers.status);
   const error = useSelector(state => state.volunteers.error);
   const [filteredVolunteers, setVolunteers] = useState([]);
   const [isFilterVolunteers, setFilterVolunteers] = useState(false);
   let orderedVolunteers =[];
 
   useEffect(() => {
-    if (volunteerstatus === 'idle') {
+    if (volunteerStatus === 'idle') {
       dispatch(fetchVolunteers())
     }
-  }, [volunteerstatus, dispatch]);
+  }, [volunteerStatus, dispatch]);
 
   let content;
-  if (volunteerstatus === 'loading') {
-    content = 
-        (<CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>)
-    
-  } else if (volunteerstatus === 'succeeded (:') {
+    if (volunteerStatus === 'loading...') {
+       content = (
+        <Box style={{color: 'red'}} padding={2} align={"center"}>
+            <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
+        </Box>
+      );
+  } else if (volunteerStatus === 'succeeded (:') {
     orderedVolunteers = dispatch(sortVolunteers(volunteersList.volunteers)).payload;
-  } else if (volunteerstatus === 'failed') {
-    content = (
-        <div style={{color: 'red'}}>ERROR: {error}</div>
-    )
-  }  
+  } else if (volunteerStatus === 'failed :(') {
+    content = <Box style={{color: 'red'}} padding={2} align={"center"}>ERROR: {error}</Box>;
+}  
 
     function getFilteredTextFromButton(text) {
         return (

@@ -1,15 +1,14 @@
 import { Button, Typography, Card, CardContent, CardActions, CardActionArea, CardMedia } from "@material-ui/core";
 import TelegramIcon from '@material-ui/icons/Telegram';
 import { Rating } from '@mui/material';
-import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import CustomButton from "../../theme/CustomButton";
 
-function VolunteerCard(volunteer,id){
+function VolunteerCard(volunteer){
     let navigate = useNavigate();
-    
+
     return(
-        <Card key={`volunteer-${id}`} raised={true} style={{ padding: '1.4rem 1.5rem', margin: '1.6rem', height: '420px', width: '280px', display:'flex', flexDirection:'column',  justifyContent:'center', alignItems: 'center', borderRadius:'12px'}}>
+        <Card key={`volunteer-${volunteer.id}`} raised={true} style={{ padding: '1.4rem 1.5rem', margin: '1.6rem', height: '420px', width: '280px', display:'flex', flexDirection:'column',  justifyContent:'center', alignItems: 'center', borderRadius:'12px'}}>
             <CardActionArea style = {{borderRadius:"50%", width: "150px", height: "150px", display: "flex"}} onClick={()=>{navigate(`/VolunteerPage/${volunteer.nick}`)}}>
                 <CardMedia
                     component={'img'}
@@ -39,7 +38,7 @@ function VolunteerCard(volunteer,id){
                     color='tertiary' 
                     onClick={(e)=>{
                         e.preventDefault();
-                        navigate(`/VolunteerPage`);
+                        navigate(`/VolunteerPage/${volunteer.volunteer.id}/${volunteer.volunteer.nick}`);
                     }}
                     >Zobacz profil</CustomButton>
             </CardActions>

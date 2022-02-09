@@ -48,7 +48,7 @@ const TasksPage = () => {
             > 
             Szczęśliwy traf
             </Button>
-              <Typography variant='h1' align={"center"} style={{marginTop: "4rem"}} >Wszystkie zadania</Typography>
+              <Typography variant='h1' align={"center"} style={{margin: "1rem 0 2rem 0"}} >Wszystkie zadania</Typography>
             {content}
             <Box  align={"center"} marginBottom={"2rem"}>
                 <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>

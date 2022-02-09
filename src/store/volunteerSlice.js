@@ -51,7 +51,7 @@ export const selectAllVolunteers = state => state.volunteers;
 
 
 export const selectVolunteerId = (state, volunteerId) =>
-  state.volunteers.find(volunteer => volunteer.id === volunteerId);
+  state.find(volunteer => volunteer.id === volunteerId);
   
 function compare( a, b ) {
   if ( a.numberActions > b.numberActions ){

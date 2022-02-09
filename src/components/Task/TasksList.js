@@ -52,7 +52,7 @@ const TasksList = ({startSlice,endSlice}) => {
 
     return (
       <Box>
-        <Box display={"flex"} justifyContent={"center"}>
+        <Box display={"flex"} justifyContent={"center"} style={{margin: "4rem 0 1rem"}}>
               {searchInput}
         </Box>
         <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem"} alignItems={"center"} flexWrap={"wrap"}>

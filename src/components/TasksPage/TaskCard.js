@@ -4,7 +4,7 @@ import CustomTypography from "../../theme/CustomTypography";
 import { useNavigate } from 'react-router';
 import setCategoryIcon from "../../theme/setCategoryIcon";
 
-function TaskCard(task,id){
+function TaskCard(task){
     let navigate = useNavigate();
     return(
             <Card raised={true} style={{ position: "relative", height: "270px", maxWidth: "280px", padding: '2.4rem 0.4rem', margin: '1.6rem', width: '22%', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems: 'center', borderRadius:'12px'}}>
@@ -43,8 +43,11 @@ function TaskCard(task,id){
                             }} 
                             variant={"contained"} 
                             color={"secondary"} 
-                            onClick={()=>{navigate("/TaskPage")}}>
-                            Pomagam
+                            onClick={(e)=>{
+                                e.preventDefault();
+                                navigate(`/TaskPage/${task.task.id}`);
+                            }}
+                            >Pomagam
                         </Button>
                     </CardActions> 
             </Card>

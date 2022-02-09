@@ -47,7 +47,7 @@ export default taskSlice.reducer;
 export const selectAllTasks = state => state.task;
 
 export const selectTasksId = (state, taskId) =>
-  state.tasks.find(task => task.id === taskId);
+  state.find(task => task.id === taskId);
 
 function compareDate( a, b ) {
     if ( a.date > b.date  ){

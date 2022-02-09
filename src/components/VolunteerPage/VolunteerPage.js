@@ -2,22 +2,16 @@ import { Button, Typography, Container, Box, Card } from '@material-ui/core'
 import { Rating } from '@mui/material';
 import PersonIcon from '@material-ui/icons/Person';
 import CustomAvatar from "../../theme/CustomAvatar";
-import Avatar from "../../assets/img/volunteers/monikaMajchrzak.jpg";
 import { useSelector } from "react-redux";
-import { selectAllVolunteers, selectVolunteerId } from '../../store/volunteerSlice';
+import { selectAllVolunteers, selectVolunteerId} from '../../store/volunteerSlice';
+import { useParams } from 'react-router-dom';
 
-const VolunteerPage = ({id}) => {
-   
-    const volunteersList = useSelector(selectAllVolunteers);
-    let volunteer;
+const VolunteerPage = () => {
+    const { volunteerId } = useParams();
+    let id = parseInt({ volunteerId }.volunteerId);
+    const volunteersList = useSelector(selectAllVolunteers).volunteers;
+    const volunteer = selectVolunteerId(volunteersList, id);
 
-    if (id !== null) {
-        volunteer = selectVolunteerId(volunteersList,id);
-    } else {
-        volunteer = selectVolunteerId(volunteersList,5);
-    }
-    
-    
     return (
         <Container style={{display: 'flex', justifyContent: 'center', width: '100%', marginTop:'2rem'}}>
                     <Box style={{width: '80%'}}>
