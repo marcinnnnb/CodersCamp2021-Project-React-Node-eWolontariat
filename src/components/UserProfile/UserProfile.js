@@ -16,6 +16,7 @@ const UserProfile = () => {
   const volunteersList = useSelector(selectAllVolunteers).volunteers;
   const volunteer = selectVolunteerId(volunteersList, 3);
   const tasksList = useSelector(selectAllTasks).tasks;
+  let actionTitle;
  
     return (
 
@@ -44,13 +45,11 @@ const UserProfile = () => {
             <CustomTypography variantcolor={"typographycolor"} variant='h2' style={{margin: "2rem 0"}} color="tertiary">Uczestniczyłeś w tych akcjach:</CustomTypography>
             <Typography variant='h3' style={{color: '#868686'}}>
               {volunteer.actions?.map((act,id)=>(
-                <ListItemButton key={`action-${id}`} style={{border: "1px #eee solid", textTransform: "capitalize", width: "80%"}}>
-                          <CustomAvatar 
-                            variant={"avatarBackground"} 
-                            backgroundcolor={setCategoryIcon(selectTasksTitle(tasksList, "Szukam początkującego fotografa do sesji zdjęciowej").categories[0])[1]}
-                            
-                            key={`item-${id}`} 
-                           />
+                <ListItemButton key={`action-${id}`} style={{border: "1px #eee solid", textTransform: "capitalize", width: "80%"}}
+              
+                >
+                
+                         
                     <Divider key={`divideritem-${id}`} style={{margin: "0 0.8rem"}}  orientation="vertical" flexItem/>
                     {act}</ListItemButton>
 
