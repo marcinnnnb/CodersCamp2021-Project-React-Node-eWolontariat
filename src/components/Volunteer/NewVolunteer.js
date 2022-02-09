@@ -1,7 +1,7 @@
 import { Box,Button,TextField } from "@material-ui/core"
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addNewVolunteer } from "../../store/volunteerSlice";
+import { addNewVolunteers } from "../../store/volunteerSlice";
 
 const NewVolunteer = () => {
     const [value, setValue] = useState("");
@@ -15,7 +15,7 @@ const NewVolunteer = () => {
             </TextField>
             <Button disabled={value.trim() === ""}
                  onClick = {() => {
-                    dispatch(addNewVolunteer(value));
+                    dispatch(addNewVolunteers(value));
                     setValue("");
                  }
 

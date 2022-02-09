@@ -3,8 +3,14 @@ import { Button, Typography, Box, TextField, Card} from "@material-ui/core";
 import ProgressBar from "./ProgressBar";
 import liscik from "../../assets/img/plane.svg";
 import skrzynka from "../../assets/img/mailbox.svg";
-import CustomButton from "../CustomButton";
-import { useSelector } from "react-redux";
+import avatar from "../../assets/img/facet.png";
+import CustomButton from "../../theme/CustomButton";
+import TaskForm from '../TaskForm/TaskForm';
+import tasks from '../../assets/data/reducersArchive/reducers_tasks';
+import { selectTask } from "../../store/taskSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+
 
     export function DisplayTaskPage()  {
         

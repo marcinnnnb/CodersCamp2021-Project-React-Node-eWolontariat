@@ -1,5 +1,4 @@
-import './App.css';
-import { AppBar, Box, Toolbar, Button, Container, Grid, Link, Typography, List, ListItem } from '@material-ui/core';
+import { Box } from "@material-ui/core";
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { theme } from '../../theme/theme.js';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -12,150 +11,39 @@ import UserProfile from '../UserProfile/UserProfile';
 import VolunteerForm from '../VolunteerForm/VolunteerForm';
 import VolunteerPage from '../VolunteerPage/VolunteerPage';
 import VolunteersPage from '../VolunteersPage/VolunteersPage';
-import LogoPomocny from '../../assets/img/logo-pomocny.svg';
-import CodersCampLogo from '../../assets/img/coder-camp.svg';
-import GitHubLogo from '../../assets/img/github-logo.png';
-import Dialogs from '../common/Dialog/Dialog';
-import { useDispatch } from 'react-redux';
-import { openDialog, FormType } from '../common/Dialog/store/dialogSlice';
-import { useNavigate } from 'react-router-dom';
-import { TaskPagestore } from '../TaskPage/TaskPagestore';
-import { DisplayTaskPage } from '../TaskPage/TaskPagestore2';
+import TaskPage from '../TaskPage/TaskPage';
+import AppHeader from './AppHeader';
+import AppFooter from './AppFooter';
+import { createBrowserHistory } from "history";
 
-
-function App() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  return (
-    <ThemeProvider theme={theme}>
-      <Box height={'100%'} display={'flex'} flexDirection={'column'}>
-        <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static" color={'inherit'}>
-            <Toolbar>
-              <a href="/">
-                <Box
-                  component="img"
-                  sx={{
-                    height: '46px',
-                  }}
-                  alt="Logo pomocny.pl"
-                  src={LogoPomocny}
-                  padding={'1rem 0'}
-                />
-              </a>
-
-              <Box display={'flex'} justifyContent={'flex-end'} flexGrow={'1'} gridColumnGap={'1.4rem'}>
-                <Button variant="contained" color="primary" onClick={() => navigate('/TaskForm')}>
-                  Stwórz zadanie
-                </Button>
-                <Button variant="text" onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))}>
-                  Zaloguj się
-                </Button>
-                <Button variant="text" onClick={() => dispatch(openDialog({ formType: FormType.rejestracja }))}>
-                  Zarejestruj się
-                </Button>
-              </Box>
-            </Toolbar>
-          </AppBar>
-
-          <Box padding={2} flex={1} overflow={'auto'}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/OrganizationForm" element={<OrganizationForm />} />
-              <Route path="/OrganizationPage" element={<OrganizationPage />} />
-              <Route path="/TaskForm" element={<TaskForm />} />
-              <Route path="/TaskPage" element={<TaskPage />} />
-              <Route path="/TasksPage" element={<TasksPage />} />
-              <Route path="/UserProfile" element={<UserProfile />} />
-              <Route path="/VolunteerForm" element={<VolunteerForm />} />
-              <Route path="/VolunteerPage" element={<VolunteerPage />} />
-              <Route path="/VolunteersPage" element={<VolunteersPage />} />
-              <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
-          </Box>
+export function App() {
+  
+   
+    return (
+        <ThemeProvider theme={theme}>
+        <Box height={"100%"} display={"flex"} flexDirection={"column"}>
+             <Box sx={{ flexGrow: 1 }}> 
+                <AppHeader/>
+                <Box padding={"0 2"} flex={1} overflow={"auto"}>
+                <Routes history={createBrowserHistory}>
+                    <Route exact path="/" element={<HomePage/>} />
+                    <Route path="/OrganizationForm/*" element={<OrganizationForm/>} />
+                    <Route path="/OrganizationPage" element={<OrganizationPage/>} />
+                    <Route path="/TaskForm/*" element={<TaskForm/>} />
+                    <Route path="/TaskPage/:taskId" element={<TaskPage/>} />
+                    <Route path="/TasksPage" element={<TasksPage/>} />
+                    <Route path="/UserProfile" element={<UserProfile/>} />
+                    <Route path="/VolunteerForm" element={<VolunteerForm/>} />
+                    <Route path="/VolunteerPage/:volunteerId/:volunteerNick" element={<VolunteerPage/>} />
+                    <Route path="/VolunteersPage" element={<VolunteersPage/>} />
+                    <Route path="*" element={<Navigate to="/"/>}/>
+                    </Routes>
+                </Box>
+                <AppFooter />
+             </Box>
         </Box>
-
-        <Box
-          display={'flex'}
-          justifyContent={'center'}
-          alignItems={'center'}
-          bgcolor={'#F8F8F8'}
-          padding={'2rem 1rem'}
-          flex-shrink={'0'}
-        >
-          <Container padding={'0'}>
-            <Grid container spacing={1}>
-              <Grid item sm={3}>
-                <a href="/">
-                  <Box
-                    component="img"
-                    sx={{
-                      height: '60px',
-                    }}
-                    alt="Logo pomocny.pl"
-                    src={LogoPomocny}
-                  />
-                </a>
-
-                <Typography variant={'caption'} paragraph={true}>
-                  Projekt został zrealizowany w ramach:
-                </Typography>
-                <Link href={'https://www.coderscamp.edu.pl/'}>
-                  <Box
-                    component="img"
-                    sx={{
-                      height: '20px',
-                    }}
-                    alt="Logo Coders Camp"
-                    src={CodersCampLogo}
-                  />
-                </Link>
-              </Grid>
-              <Grid item sm={1}></Grid>
-              <Grid item sm={3}>
-                <Typography variant="h3" color="secondary">
-                  Informacje
-                </Typography>
-                <List padding={'0'}>
-                  <ListItem component={'a'} href="/VolunteerForm" disableGutters>
-                    Zostań wolontariuszem
-                  </ListItem>
-                  <ListItem component={'a'} href="/VolunteersPage" disableGutters>
-                    Znajdź wolontariusza
-                  </ListItem>
-                  <ListItem component={'a'} href="/#section-how-find-help" disableGutters>
-                    Jak znaleźć pomoc
-                  </ListItem>
-                  <ListItem component={'a'} href="/TasksPage" disableGutters>
-                    Znajdź zadanie
-                  </ListItem>
-                </List>
-              </Grid>
-              <Grid item sm={3}>
-                <Typography variant="h3" color="secondary">
-                  Popularne kategorie
-                </Typography>
-              </Grid>
-              <Grid item sm={2}>
-                <Link href={'https://github.com/marcinnnnb/CodersCamp2021-Project-React-Node-eWolontariat'}>
-                  <Box
-                    component={'img'}
-                    style={{
-                      height: '20px',
-                    }}
-                    alt={'Logo Coders Camp'}
-                    src={GitHubLogo}
-                  />
-                </Link>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-      </Box>
-      <Dialogs />
-    </ThemeProvider>
-  );
-}
+        </ThemeProvider>
+    )
+};
 
 export default App;

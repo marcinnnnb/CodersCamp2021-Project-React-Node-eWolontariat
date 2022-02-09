@@ -1,7 +1,7 @@
 import { Box, Typography, Button, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
-import pies from '../../assets/img/pies.jpg';
+import pies from '../../assets/img/tasks/pies.jpg';
 import petFood from '../../assets/img/petFood.png';
 
 const useStyles = makeStyles({

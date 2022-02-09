@@ -1,11 +1,13 @@
-import {configureStore} from "@reduxjs/toolkit";
-import taskReducer from './taskSlice'
+import {applyMiddleware, configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
+import taskReducer from "./taskSlice"
 import volunteerReducer from "./volunteerSlice";
+import thunkMiddleware from 'redux-thunk';
 import dialogReducer from "../components/common/Dialog/store/dialogSlice";
 import systemReducer from './systemSlice';
-import organizationReducer from './organizationSlice'
-import { getDefaultMiddleware } from '@reduxjs/toolkit';
+//import organizationReducer from './organizationSlice'
+//import { composeWithDevTools } from "@reduxjs/toolkit/dist/devtoolsExtension";
 
+//const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
 
 export const store = configureStore({
     middleware: getDefaultMiddleware({
@@ -16,7 +18,8 @@ export const store = configureStore({
         dialog: dialogReducer,
         system: systemReducer,
         task: taskReducer,
-        organization: organizationReducer,
+        //organization: organizationReducer,
     },
+    //composedEnhancer
 });
 

@@ -1,10 +1,11 @@
-import { Box, Button, Typography,Card, CardMedia, CardContent, CardActions} from "@material-ui/core";
+import { Box, Button, Typography,Card, CardContent, CardActions} from "@material-ui/core";
 import ImgFindCard from '../../../assets/img/find-volunteer.svg';
 import ImgBeVolunteer from '../../../assets/img/be-volunteer.svg';
-import CustomButton from "../../CustomButton";
-
+import CustomButton from "../../../theme/CustomButton";
+import { useNavigate } from 'react-router-dom';
 
 const SectionHowItWorks = () => {
+    let navigate = useNavigate();
     return(
         <Box id={"section-how-it-works"}
             padding={2}
@@ -58,7 +59,16 @@ const SectionHowItWorks = () => {
                             Załóż profil wolontariusza i zacznij pomagać                        </Typography>
                         </CardContent>
                     <CardActions>
-                        <CustomButton size="medium" variant="contained" color='tertiary' href={"/VolunteerForm"}>
+                        <CustomButton 
+                            size="medium" 
+                            variant="contained" 
+                            color='tertiary' 
+                            type="button" 
+                            onClick={(e)=>{
+                                e.preventDefault();
+                                navigate('/VolunteerForm');
+                                }}
+                        >
                             Załóż profil
                         </CustomButton>
                     </CardActions>
