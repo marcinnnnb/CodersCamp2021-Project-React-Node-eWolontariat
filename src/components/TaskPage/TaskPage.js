@@ -40,7 +40,7 @@ const TaskPage = () => {
                     <Typography variant="h3" align="center">Ilu wolontariuszy potrzebujemy?</Typography>
                     <Typography variant="body1" align={'center'}>{task.amount}</Typography>
                     <Typography variant="body1" align={'center'}>Ilu się zapisało: {task.sign}</Typography>
-                    <ProgressBar const completed={task.sign/task.amount*100}/>
+                    <ProgressBar const completed={Math.floor(task.sign/task.amount*100)}/>
                     <Box style={{display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around', height:"100px"}} >
                         <CustomButton variant="outlined" color="primary" size="large" >Udostępnij</CustomButton>
                         <Button  variant="contained" color="secondary" size="large" > Pomagam </Button>
