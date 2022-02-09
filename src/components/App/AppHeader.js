@@ -32,6 +32,7 @@ const AppHeader = () => {
                 
                     <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
                         <Button 
+                            style={{height: '2.5rem', marginTop:'1rem'}}
                             variant="contained" 
                             color='primary' 
                             size={'medium'} 

@@ -1,4 +1,4 @@
-import { MenuItem, FormControl, Select, InputLabel, Box } from '@material-ui/core';
+import { MenuItem, FormControl, Select, InputLabel } from '@material-ui/core';
 import { useState } from 'react';
 import Categories from '../../src/assets/data/Categories';
 
