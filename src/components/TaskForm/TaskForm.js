@@ -8,21 +8,38 @@ import { addNewTask } from "../../store/taskSlice";
 import { useDispatch } from "react-redux";
 import CustomTypography from '../../theme/CustomTypography';
 import CustomButton from '../../theme/CustomButton';
+import { useSelector } from "react-redux";
+import { selectAllTasks } from '../../store/taskSlice';
  
 const amountValidation={
     required:true, pattern:[0-9], maxLength:1000
 } 
 
 export default function TaskForm() {
-    const{register,handleSubmit,control, formState: { errors }} =useForm();
-    const navigate = useNavigate();
+    let navigate = useNavigate();
     const dispatch = useDispatch();
+    const tasksListLength = useSelector(selectAllTasks).tasks.length;
+    let newID = tasksListLength+1;
+    const date = new Date();
+
+    const{register,handleSubmit,control, formState: { errors }} =useForm(
+       {
+        defaultValues: {
+            id: newID,
+            date: JSON.stringify(date),
+            image: "webinar",
+            organization: "",
+            dateExpired: ""
+          }
+       }
+    );
+
     const onSubmit = (data,e) => {
         e.preventDefault()
         dispatch(addNewTask(data))
-        navigate('/TaskPage2')
-         };
- 
+        navigate(`/TaskPage/${newID}`)
+         };  
+
     const categories = []; 
 
 return (
