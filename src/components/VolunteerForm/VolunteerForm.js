@@ -70,7 +70,7 @@ const VolunteerForm = () => {
 
                 </form>
                 <Box align={"right"}>
-                    <CustomButton size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary"> Opublikuj zadanie</CustomButton>
+                    <CustomButton size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary"> Opublikuj profil</CustomButton>
                 </Box>
             </Box>
         </Container>
