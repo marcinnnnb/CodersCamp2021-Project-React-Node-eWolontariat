@@ -1,9 +1,6 @@
-import reducer, { addNewTask } from '../taskSlice';
-import { shallowWrapper } from '../../testsEnv/testsEnv';
-import fetchTasks  from "../fetchTasks";
+import  { addNewTask } from '../taskSlice';
 import {store} from '../store';
 
-const initialState = [fetchTasks]
 
 describe('taskSlice', () => {
   
