@@ -43,7 +43,6 @@ Aplikację została wykonana przez uczestników kursu pod okiem dwóch mentorów
 ### Demo
 
 Wersja demonstracyjna aplikacji jest dostępna [TUTAJ]().
-
 ### Cel projektu
 
 Celem projektu było napisanie aplikacji wykorzystującej wiedzę nabytą z drugiego działu kursu tj. z następujących technologi: React, Redux-Toolkit, Material-UI.
@@ -51,6 +50,8 @@ Zespół projektowy zdecydował się na aplikację własnego pomysłu. E-Wolonta
 
 Aplikacja została wykonana wg wymagań dostarczonych przez organizatorów CodersCamp.
 Szablon projektu dostępny jest [TUTAJ](https://github.com/KrystianKjjk/CodersCamp2020.Project.FullStack-Node-React.OrganizationApp/blob/main/README.md).
+
+Zespół projektowy przygotował design przy użyciu aplikacji FIGMA. Projekt graficzny dostępny jest [TUTAJ] (https://www.figma.com/file/sLIhQsE4ADtUJnVhFKfWij/Wolontariusze?node-id=0%3A1).
 
 ### Działanie aplikacji
 
