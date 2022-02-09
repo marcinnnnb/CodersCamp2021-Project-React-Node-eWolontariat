@@ -41,7 +41,7 @@ Wersja demonstracyjna aplikacji jest dostępna [TUTAJ]().
 ### Cel projektu
 
 Celem projektu było napisanie aplikacji wykorzystującej wiedzę nabytą z drugiego działu kursu tj. z następujących technologi: React, Redux-Toolkit, Material-UI.
-Zespół projektowy zdecydował się na aplikację własnego pomysłu. E-Wolontariat jest aplikacją umożliwiającą użytkownikowi zapisanie się do grona Wolontariuszy i aktywnie działanie wśród nich. Możliwe jest również stworzenie profilu organizacji, która poszukuje wolontariuszy i udostępnia aktualne zadania.
+Zespół projektowy zdecydował się na aplikację własnego pomysłu. eWolontariat jest aplikacją umożliwiającą użytkownikowi zapisanie się do grona Wolontariuszy i aktywnie działanie wśród nich. Możliwe jest również stworzenie profilu organizacji, która poszukuje wolontariuszy i udostępnia aktualne zadania.
 
 Aplikacja została wykonana wg wymagań dostarczonych przez organizatorów CodersCamp.
 Szablon projektu dostępny jest [TUTAJ](https://github.com/KrystianKjjk/CodersCamp2020.Project.FullStack-Node-React.OrganizationApp/blob/main/README.md).
@@ -52,12 +52,12 @@ Zespół projektowy przygotował design przy użyciu aplikacji FIGMA. Projekt gr
 
 #### Menu Główne
 
-Po uruchomieniu aplikacji wyświetlone zostaje Menu główne zgodnie z założeniem Single-Page. Przesuwająć stronę w dół mamy widocznych szereg przycisków, które przenoszą nas na odpowiednie strony aplikacji. Widoczne są logo aplikacji oraz odnośniki do strony organizatora kursu i repozytorium projektu na githubie. Założenia aplikacji: pozyskiwanie nowyh wolontariuszy oraz budowanie listy zadań (wypełnienie odpowiednich formularzy). 
-Z poziomu każdego ekranu jest możliwość powortu do Menu głównego po naciśnięciu logo aplikacji znajdującego się w lewym górnym rogu ekranu.
+Po uruchomieniu aplikacji wyświetlone zostaje Menu główne zgodnie z założeniem SPA (Single Page Application). Homepage został podzielony na sześć sekcji, z których możemy się przenieść dalej (wyrenderować inne komponenty aplikacji). W stopce znajduje się logo aplikacji oraz odnośniki do strony organizatora kursu i repozytorium projektu na Githubie. Założenia aplikacji: pozyskiwanie nowych wolontariuszy oraz budowanie listy zadań (wypełnienie odpowiednich formularzy). 
+Z poziomu każdego ekranu jest możliwość powrotu do Menu głównego po naciśnięciu logo aplikacji znajdującego się w lewym górnym rogu ekranu.
 
 ##### Profil ogólny użytkownika
 
-Ogólny profil użytkownika wyświetlający podstawowe informacje podane przy rejestarcji aby przypisać do swojego profilu status wolontariusza należy wypełnić formularz, który pojawia się po kliknięciu przycisku "Zakładam sobie profil wolontariusza"
+Ogólny profil użytkownika wyświetla podstawowe informacje podane przy rejestarcji. Aby przypisać do swojego profilu status wolontariusza należy wypełnić formularz, który pojawia się po kliknięciu przycisku "Zakładam sobie profil wolontariusza".
 
 ##### Profil wolontariusza
 
@@ -69,7 +69,7 @@ Lista dostępnych wolontariuszy. W tym module jest możliwość filtrowania uży
 
 ##### Profil organizacji
 
-Na tym profilu widoczny jest krótki opis organizacji, lista udostępnionych zadań przez nią oraz liczba wolontariuszy potrzena do konkretych akcji. Jest możliwość dodania kolejnych zadań przez wypełnienie odpowiedniego forularza.
+Na tym profilu widoczny jest krótki opis organizacji, lista udostępnionych zadań przez nią oraz liczba wolontariuszy potrzebna do konkretych akcji. Jest możliwość dodania kolejnych zadań przez wypełnienie odpowiedniego forularza.
 
 ##### Strona ze wszystkimi zadaniami
 
@@ -91,7 +91,8 @@ W trakcie developmentu wykorzystujemy:
 - Tworzenie list komponentów
 - JSX
 - React-Modal
-- Pisanie Testów
+- Testy jednostkowe
+- Redux Thunk
 
 ### Uruchomienie projektu
 
