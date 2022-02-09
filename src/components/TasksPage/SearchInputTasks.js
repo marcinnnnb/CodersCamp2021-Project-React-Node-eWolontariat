@@ -7,7 +7,6 @@ import CustomAvatar from '../../theme/CustomAvatar';
 import { ListItemButton } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material';
 import { makeStyles} from '@mui/styles';
-import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { selectAllTasks } from '../../store/taskSlice';
 import CustomTypography from '../../theme/CustomTypography';
