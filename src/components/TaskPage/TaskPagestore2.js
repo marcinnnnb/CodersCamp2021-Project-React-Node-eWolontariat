@@ -7,7 +7,7 @@ import skrzynka from "../../assets/img/mailbox.svg";
 import avatar from "../../assets/img/facet.png";
 import CustomButton from "../../theme/CustomButton";
 import TaskForm from '../TaskForm/TaskForm';
-import tasks from '../../reducers/reducers_tasks';
+import tasks from '../../assets/data/reducersArchive/reducers_tasks';
 import { selectTask } from "../../store/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
 

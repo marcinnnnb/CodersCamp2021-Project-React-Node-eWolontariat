@@ -5,12 +5,13 @@ import CasinoIcon from '@material-ui/icons/Casino';
 import { useNavigate } from 'react-router';
 import TasksList from '../Task/TasksList';
 
-let tasksPerPage = 8;
+
 
 const TasksPage = () => {
     let navigate = useNavigate();
     const [next, setNext] = useState(8);
     const [showNextCards, setNextCards] = useState(false);
+    let tasksPerPage = 8;
 
     const handleShowMoreTasks = () => {
         setNext(next + tasksPerPage);
@@ -34,7 +35,7 @@ const TasksPage = () => {
               height = {"100%"}
               alignItems={"center"}
               >
-              <Typography variant='h1' align={"center"} >Wszystkie zadania</Typography>
+              <Typography variant='h1' align={"center"} style={{marginTop: "4rem"}} >Wszystkie zadania</Typography>
             {content}
             <Box  align={"center"} marginBottom={"2rem"}>
                 <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>

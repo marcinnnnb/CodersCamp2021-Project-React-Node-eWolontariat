@@ -1,8 +1,8 @@
-import pies from '../assets/img/tasks/pies.jpg'
-import książki from '../assets/img/tasks/książki.png'
-import karmnik from '../assets/img/tasks/karmnik.png'
-import chemia from '../assets/img/tasks/chemia.png'
-import sesja from '../assets/img/tasks/sesja.png'
+import pies from '../../img/tasks/pies.jpg';
+import książki from '../../img/tasks/książki.png';
+import karmnik from '../../img/tasks/karmnik.png';
+import chemia from '../../img/tasks/chemia.png';
+import sesja from '../../img/tasks/sesja.png';
  
 const Tasks =
      [

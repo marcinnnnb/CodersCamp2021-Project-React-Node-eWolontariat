@@ -1,10 +1,10 @@
 import { Box, Button, Typography } from "@material-ui/core";
 import ArrowRightRounded from '@material-ui/icons/ArrowRightRounded';
-import { useNavigate } from 'react-router';
+import { useNavigate, Route, Routes} from 'react-router-dom';
 import TasksList from '../../Task/TasksList';
 
 const SectionNewTasks = () => {
-  let navigate = useNavigate();
+    let navigate = useNavigate();
           
     return(
         <Box id={"section-new-tasks"}
@@ -15,9 +15,16 @@ const SectionNewTasks = () => {
             <Typography variant="h1">Zobacz jakiej pomocy potrzebują inni</Typography>
             <TasksList startSlice={0} endSlice={6}/>
             <Box align={"center"}>
+                <Routes>
+                    <Route path="/TasksPage"/>
+                </Routes>
                 <Button 
                     variant="outlined" 
-                    onClick={()=>{navigate("/TasksPage")}} 
+                    type="button" 
+                        onClick={(e)=>{
+                        e.preventDefault();
+                        navigate('/TasksPage');
+                    }}
                     endIcon={<ArrowRightRounded style={{fontSize: "2rem"}}/>}
                     >
                     Wszystkie zadania

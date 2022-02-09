@@ -1,6 +1,6 @@
 import { AppBar, Box, Button, Toolbar } from "@material-ui/core";
-import { useNavigate } from "react-router-dom";
 import LogoPomocny from "../../assets/img/logo-pomocny.svg";
+import { useNavigate, Route, Routes} from 'react-router-dom';
 
 const AppHeader = () => {
     let navigate = useNavigate();
@@ -8,24 +8,56 @@ const AppHeader = () => {
     <header>
         <AppBar position='static' color={'inherit'}>
             <Toolbar>
-                
                     <Box
                         component="img"
-                        sx={{
+                        style={{
                         height: "46px",
+                        cursor: "pointer"
                         }}
                         alt="Logo pomocny.pl"
                         src={LogoPomocny}
                         padding={"1rem 0"}
-                        onClick={()=>{navigate("/TasksPage")}} 
-                    />
+                        type="button" 
+                        onClick={(e)=>{
+                            e.preventDefault();
+                            navigate('/');
+                        }}
+                    >
+                    </Box>
                 
                     <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
-                        <Button variant="contained" color='primary' href={"/TaskForm"} size={'medium'}>Stwórz zadanie</Button>
-                        <Button variant="text" size={'medium'}>Zaloguj się</Button>
-                        <Button variant="text" size={'medium'}>Zarejestruj się</Button>
+                        <Button 
+                            variant="contained" 
+                            color='primary' 
+                            href={"/TaskForm"} 
+                            size={'medium'} 
+                            type="button" 
+                            onClick={(e)=>{
+                                e.preventDefault();
+                                navigate('/TaskForm');
+                            }}
+                        >
+                            Stwórz zadanie
+                        </Button>
+                        <Button 
+                            variant="text" 
+                            size={'medium'}
+                            type="button" 
+                        >
+                            Zaloguj się
+                        </Button>
+                        <Button 
+                            variant="text" 
+                            size={'medium'}
+                        >
+                            Zarejestruj się
+                        </Button>
                     </Box>              
             </Toolbar>
+            <Routes>
+                <Route path="/"/>
+                <Route path="TaskForm"/>
+            </Routes>
         </AppBar>
     </header>
 )}

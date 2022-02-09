@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { current } from '@reduxjs/toolkit';
 import { fetchVolunteers } from "./fetchVolunteers";
 
 const initialState = {
@@ -13,18 +12,18 @@ const volunteersSlice = createSlice({
     initialState,
     reducers: {
         sortVolunteers: (state,action) => {
-          const volunteersActions = state.volunteers.map((volunteer, id)=>{
-            let par = volunteer.actions;
-            volunteer.numberActions= par.length;
-            return volunteer;
-          })
+            state.volunteers.map((volunteer, id)=>{
+              let par = volunteer.actions;
+              volunteer.numberActions= par.length;
+              return volunteer;
+              })
             state.volunteers.sort(compare);
             return state;
         },
         addNewVolunteer: (state, action) => {
-         state.volunteers.push(action.payload);
+            state.volunteers.push(action.payload);
         },
-        selectVolunteers:(state, action) => {
+        selectVolunteers: (state, action) => {
             return action.payload;
         }
     },
@@ -44,15 +43,16 @@ const volunteersSlice = createSlice({
       }
 });
 
-export const { sortVolunteers, addNewVolunteers, selectVolunteers, filterVolunteers } = volunteersSlice.actions;
+export const { sortVolunteers, addNewVolunteer, selectVolunteers, filterVolunteers } = volunteersSlice.actions;
 
 export default volunteersSlice.reducer;
 
 export const selectAllVolunteers = state => state.volunteers;
 
+
 export const selectVolunteerId = (state, volunteerId) =>
   state.volunteers.find(volunteer => volunteer.id === volunteerId);
-
+  
 function compare( a, b ) {
   if ( a.numberActions > b.numberActions ){
       return -1;

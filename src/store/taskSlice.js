@@ -20,7 +20,7 @@ const taskSlice = createSlice({
         addNewTask: (state, action) => {
          state.tasks.push(action.payload);
         },
-        selectTask:(state, action) => {
+        selectTasks:(state, action) => {
             return action.payload;
         }
     },
@@ -40,7 +40,7 @@ const taskSlice = createSlice({
       }
 });
 
-export const { sortTasks, addNewTask, selectTask } = taskSlice.actions;
+export const { sortTasks, addNewTask, selectTasks } = taskSlice.actions;
 
 export default taskSlice.reducer;
 
@@ -48,7 +48,6 @@ export const selectAllTasks = state => state.task;
 
 export const selectTasksId = (state, taskId) =>
   state.tasks.find(task => task.id === taskId);
-
 
 function compareDate( a, b ) {
     if ( a.date > b.date  ){

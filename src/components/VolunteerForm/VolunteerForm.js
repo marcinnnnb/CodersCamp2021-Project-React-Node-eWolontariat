@@ -5,6 +5,9 @@ import Categories from '../../assets/data/Categories';
 import CustomTypography from "../../theme/CustomTypography";
 import CustomButton from "../../theme/CustomButton";
 import SendIcon from '@material-ui/icons/Send';
+import { useNavigate, Route, Routes} from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { addNewVolunteer, addNewVolunteers } from "../../store/volunteerSlice";
 
 const StyledSelect = styled(Select)(({ theme }) => ({
     margin: "1.2rem 0",
@@ -38,7 +41,13 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 
 const VolunteerForm = () => {
     const{register,handleSubmit} =useForm();
-    const onSubmit = data => console.log(data);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const onSubmit = (newVolunteer,e) => {
+        e.preventDefault()
+        dispatch( addNewVolunteer(newVolunteer))
+        //navigate('/TaskPage')
+         };
 
     return (
         <Container>
@@ -52,7 +61,7 @@ const VolunteerForm = () => {
             <Divider/>
             <Typography variant="h2" style={{margin: "6rem 0 3rem 0", fontWeight: 600, fontSize: "1.6rem"}}>Aby dodać do swojego profilu status wolontariusza wypełnij poniższy formularz:</Typography>
 
-                <form onSubmit={handleSubmit(onSubmit)} style={{margin: "2rem 0 3rem 0"}}>
+            <form onSubmit={handleSubmit(onSubmit)} style={{margin: "2rem 0 3rem 0"}}>
                     <Typography variant="h3" >Wybierz kategorie, z których chciałbyś otrzymywać powiadomienia o nowych zadaniach:</Typography>
                     <StyledSelect style = {{marginBottom: "6rem"}}  label="Kategorie" placeholder="Wybierz kategorie" options={Categories} isMulti isSearchable {...register("categories")} />
                     <StyledTextField multiline rows={4} fullWidth label="Napisz parę słów o sobie. W czym chciałbyś pomagać, czy masz jakieś doświadczenie związanie z wolontariatem" {...register("action_description")} /> 
@@ -61,7 +70,7 @@ const VolunteerForm = () => {
 
                 </form>
                 <Box align={"right"}>
-                    <CustomButton size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary"  > Opublikuj zadanie</CustomButton>
+                    <CustomButton size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary"> Opublikuj zadanie</CustomButton>
                 </Box>
             </Box>
         </Container>
