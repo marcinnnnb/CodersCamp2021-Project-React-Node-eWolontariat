@@ -1,3 +1,8 @@
+<script src="https://unpkg.com/react@15.6.1/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15.6.1/dist/react-dom.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"/>
+<style>body { color: red }</style>
+
 # Coders Camp 2020/2021 | Projekt Zespołowy | React
 
 - [Zespół projektowy](#zespół-projektowy)
@@ -32,6 +37,8 @@ Aplikację została wykonana przez uczestników kursu pod okiem dwóch mentorów
 - [Marta Pejkowska](https://github.com/MartaPejkowska)
 
 ## E-Wolontariat
+
+![This is an image](https://github.com/marcinnnnb/CodersCamp2021-Project-React-Node-eWolontariat/blob/9d64011d85607468474710fbb63e6153c1418b09/src/assets/img/hero.png)
 
 ### Demo
 
