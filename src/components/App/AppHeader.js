@@ -3,6 +3,7 @@ import LogoPomocny from "../../assets/img/logo-pomocny.svg";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { openDialog, FormType } from '../common/Dialog/store/dialogSlice';
+import PersistentDrawerRight from "../Drawer/Drawer";
 
 const AppHeader = () => {
     let navigate = useNavigate();
@@ -58,6 +59,7 @@ const AppHeader = () => {
                         >
                             Zarejestruj się
                         </Button>
+                        <PersistentDrawerRight />
                     </Box>              
             </Toolbar>
         </AppBar>
