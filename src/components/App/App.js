@@ -15,10 +15,10 @@ import TaskPage from '../TaskPage/TaskPage';
 import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 import { createBrowserHistory } from "history";
+import CategoryPage from "../TasksPage/CategoryPage.js";
 
 export function App() {
-  
-   
+
     return (
         <ThemeProvider theme={theme}>
         <Box height={"100%"} display={"flex"} flexDirection={"column"}>
@@ -32,6 +32,7 @@ export function App() {
                     <Route path="/TaskForm/*" element={<TaskForm/>} />
                     <Route path="/TaskPage/:taskId" element={<TaskPage/>} />
                     <Route path="/TasksPage" element={<TasksPage/>} />
+                    <Route path="/TasksPage/:category" element={<CategoryPage/>} />
                     <Route path="/UserProfile" element={<UserProfile/>} />
                     <Route path="/VolunteerForm" element={<VolunteerForm/>} />
                     <Route path="/VolunteerPage/:volunteerId/:volunteerNick" element={<VolunteerPage/>} />
