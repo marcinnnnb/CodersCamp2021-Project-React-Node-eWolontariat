@@ -7,7 +7,6 @@ import HomePage from '../HomePage/HomePage';
 import OrganizationForm from '../OrganizationForm/OrganizationForm';
 import OrganizationPage from '../OrganizationPage/OrganizationPage';
 import TaskForm from '../TaskForm/TaskForm';
-import TaskPage from '../TaskPage/TaskPage';
 import TasksPage from '../TasksPage/TasksPage';
 import UserProfile from '../UserProfile/UserProfile';
 import VolunteerForm from '../VolunteerForm/VolunteerForm';
@@ -20,6 +19,9 @@ import Dialogs from '../common/Dialog/Dialog';
 import { useDispatch } from 'react-redux';
 import { openDialog, FormType } from '../common/Dialog/store/dialogSlice';
 import { useNavigate } from 'react-router-dom';
+import { TaskPagestore } from '../TaskPage/TaskPagestore';
+import { DisplayTaskPage } from '../TaskPage/TaskPagestore2';
+
 
 function App() {
   const navigate = useNavigate();

@@ -4,8 +4,6 @@ import {makeStyles} from '@material-ui/core';
 import { useState } from "react";
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor-v2';
-import ReactDOM from "react-dom";
-
 const useStyles = makeStyles({
     bigNumber: {
         fontSize: '4rem',

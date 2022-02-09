@@ -13,13 +13,13 @@ const SectionInNumbers = () => {
             height = {"100%"}
             justifyContent={"center"}
             alignItems={"center"}
-            p={"4rem"}
+          
         >
             <Box sx= {{ display: 'flex', flexDirection: 'column', alignItems: "center"}} >
                 <Box component="img" height={'80px'} alt="Logo pomocny.pl" src={LogoPomocny}/>
                 <Typography variant="h1" style={{marginTop: 0}}>w liczbach</Typography>
             </Box>
-            <Box display={'flex'} padding={'4rem'} justifyContent={'space-evenly'} mr={'2rem'}>
+            <Box display={'flex'} padding={'4rem'} justifyContent={'space-evenly'}>
                 <Box alignSelf={'center'} textAlign={'center'}>
                     <BigNumber end={100}/>
                     <Typography variant="body1">Tylu osobom pomogliśmy</Typography>
@@ -33,9 +33,9 @@ const SectionInNumbers = () => {
                     <Typography variant="body1">Tyle zgłosiło się wolontariuszy</Typography>
                 </Box>    
             </Box>
-            <Box display={'flex'} padding={'4rem'} justifyContent={'space-evenly'} mr={'2rem'}>
+            <Box display={'flex'} padding={'0 6rem'} justifyContent={'space-evenly'} m={'0 2rem'}>
                 <Box display={'flex'} flexDirection={'column'} alignSelf={'center'} justifyContent={'center'} alignItems={'center'}>
-                    <Typography variant={'body1'} paragraph={true} style={{fontSize: '2.3rem', margin: '0 2rem 2rem 2rem'}} align={'center'}>
+                    <Typography variant={'body1'} paragraph style={{fontSize: '2.3rem'}} align={'center'}>
                         Imponujące? Dołącz do nas już dziś i bądź pomocny!
                     </Typography>
                     <CustomButton variant="contained" color="tertiary" size={'medium'} href={"/VolunteerForm"} style={{maxWidth: '50%'}}>Zostań wolontariuszem</CustomButton>

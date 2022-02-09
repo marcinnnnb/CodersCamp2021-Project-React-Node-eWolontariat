@@ -1,70 +1,82 @@
-
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import {makeStyles} from '@material-ui/core'
+import {useState, useEffect} from 'react';
+import Api from "../../components/HomePage/Sections/SectionTheBestVolunteers/ApiVolunteers";
+import { Box, Button, Typography, CircularProgress } from "@material-ui/core";
+import ChooseCat from '../../components/ChooseCat';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import { Container } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid'
-import VolunteersCard from './VolunteersCard';
-import { useEffect, useState } from 'react';
-import Box from '@material-ui/core/Box'
-import CatButtons from '../TasksPage/CatButtons';
-import ChooseCat from '../TasksPage/ChooseCat';
+import PopularCategories from "../PopularCategories"
 
 
 
-const useStyles = makeStyles({
-     btnLong:{
-        paddingLeft: '5rem',
-        paddingRight: '5rem',
-     },
-    flex:{
-        display: 'flex',
-        marginBottom: '3rem'
-    },
-    center:{
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: '2rem',
-        marginTop: '2rem'
-    }
-  }) 
+let volsPerPage = 6;
+let arrayForHoldingVols = [];
+const isCompVol=true;
+     
 
 
 const VolunteersPage = () => {
     const [vols, setVols] = useState([]);
+    const [next, setNext] = useState(0);
+    const [showButton, setShowButton] = useState(true);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+    
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await Api.getData();
+                const json = await response.json();
+ 
+             setVols(json);
+            } catch (e) {
+                setError(e.message || 'Unexpected error');
+            }
+ 
+            setLoading(false);
+        }
+ 
+        fetchData();
+    }, []);
+     
+    if (loading) {
+        return (
+            <Box align={"center"}>
+                <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
+            </Box>
+        )
+    }
+     
+    if (error) {
+        return <div style={{color: 'red'}}>ERROR: {error}</div>
+    }
 
-    useEffect(()=>{
-        fetch('https://api.npoint.io/44dbc66d5c17c97ade26')
-        .then(res => res.json())
-        .then(data => setVols(data))
-    }, [])
+
+    const handleShowMoreVols = () => {
+        setNext(next + volsPerPage);
+        setShowButton(false)
+        arrayForHoldingVols = vols.slice(next, next+volsPerPage);
+        arrayForHoldingVols = [arrayForHoldingVols, vols];
+      };
 
     
-    const classes = useStyles();
+  
 
     return(
-        <Container>
-            <Typography variant='h4'>Wolontariusze</Typography>
-            <CatButtons/>
-            <Box className={classes.flex}>
-            <ChooseCat/> 
+        <Box
+        height = {"100%"}
+        alignItems={"center"}
+        >
+            <Typography variant='h1' align={"center"}>Wolontariusze</Typography>
+            <Box margin={"0 3rem"} display={"flex"} justifyContent={'flex-start'}>
+                <Box display={"flex"} >
+                    <ChooseCat data={vols}/>
+                </Box>
             </Box>
-            <Grid container spacing={10}>
-                {vols.splice(6)}
-                {vols.map(vol => (
-                    <Grid item 
-                    key={vol.nick} 
-                    lg={4} md={6} sx={12} 
-                    >
-                        <VolunteersCard vol = {vol}/>
-                    </Grid>  
-                ))}  
-            </Grid>
-            <Box className={classes.center}>
-                <Button className={classes.btnLong} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>
+         
+            <PopularCategories data={vols} start={0} end={volsPerPage+next} isCompVol={isCompVol}/>
+            <Box  align={"center"} marginBottom={"2rem"}>
+            {showButton && <Button onClick={handleShowMoreVols} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
             </Box>
-        </Container>
+        </Box>
     )
     
 }

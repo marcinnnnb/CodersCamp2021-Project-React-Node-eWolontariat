@@ -10,14 +10,18 @@ const useStyles = makeStyles(theme => ({
   outlinedTertiary: {
     color: theme.palette.tertiary.main,
     borderColor: theme.palette.tertiary.main,
-    '&hover': {
-      borderColor:'#4DAF7B',
+    '&:hover': {
+      color: theme.palette.tertiary.dark,
+      borderColor: theme.palette.tertiary.dark,
     },
   },
   containedTertiary: {
     color: theme.palette.tertiary.contrastText,
     backgroundColor: theme.palette.tertiary.main,
     textAlign: 'center',
+    '&:hover': {
+      backgroundColor: theme.palette.tertiary.dark,
+    },
   }
 }));
 
