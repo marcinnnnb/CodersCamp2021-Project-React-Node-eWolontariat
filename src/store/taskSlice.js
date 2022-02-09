@@ -47,6 +47,9 @@ export const selectAllTasks = state => state.task;
 export const selectTasksId = (state, taskId) =>
   state.find(task => task.id === taskId);
 
+export const selectTasksTitle = (state, title) =>
+  state.find(task => task.title === title);
+
 function compareDate( a, b ) {
     if ( a.date > b.date  ){
       return -1;
