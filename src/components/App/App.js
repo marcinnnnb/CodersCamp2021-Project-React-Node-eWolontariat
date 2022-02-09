@@ -26,7 +26,7 @@ export function App() {
                 <AppHeader/>
                 <Box padding={"0 2"} flex={1} overflow={"auto"}>
                 <Routes history={createBrowserHistory}>
-                    <Route exact path="/" element={<HomePage/>} />
+                    <Route exact path="/*" element={<HomePage/>} />
                     <Route path="/OrganizationForm/*" element={<OrganizationForm/>} />
                     <Route path="/OrganizationPage" element={<OrganizationPage/>} />
                     <Route path="/TaskForm/*" element={<TaskForm/>} />
