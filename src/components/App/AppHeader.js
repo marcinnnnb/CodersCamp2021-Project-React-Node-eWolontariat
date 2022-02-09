@@ -12,7 +12,7 @@ const AppHeader = () => {
     return (
     <header>
         <AppBar position='static' color={'inherit'}>
-            <Toolbar>
+            <Toolbar >
                     <Box
                         component="img"
                         style={{

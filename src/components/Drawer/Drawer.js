@@ -20,6 +20,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 250;
 
@@ -33,6 +34,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerRight() {
+  let navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const name = useSelector((state) => state.system.name);
 
@@ -76,7 +78,13 @@ export default function PersistentDrawerRight() {
         </DrawerHeader>
         <List>
           <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" margin={2}>
-            <Avatar alt="Zdjęcie" src="" />
+          <Avatar
+               alt="userAvatar"
+               style={{cursor: "pointer"}} 
+               onClick={(e)=>{
+                    e.preventDefault();
+                    navigate(`/UserProfile`);
+               }}/>
             <Typography>{name}</Typography>
           </Box>
           <Divider />
