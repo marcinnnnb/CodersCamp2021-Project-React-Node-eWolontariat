@@ -24,14 +24,15 @@ const TaskPage = () => {
         p={"2rem"}
     >
         <Box sx={{display:"grid",gridTemplateColumns: {xl:"(3fr, 1fr)", xs:"1fr"}, gap: 2, justifyItems: 'center', alignItems: 'space-evenly', gridTemplateRows: 'auto',
-          gridTemplateAreas: `"header ."
+          gridTemplateAreas: `"header header "
         "main sidebar"
+        "main mailbox"
         "footer footer"`}}>
         <Box style={{ gridArea: 'header'}}>
             <Typography variant="h1" align="center"> {task.title}</Typography>
         </Box>
       
-        <Box style={{gridArea:'sidebar' , display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around'}}>
+        <Box style={{gridArea:'sidebar' , display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around', maxHeight:'50rem'}}>
             <Box>
                 <Button variant="contained" color="primary" size="large" href="/TasksPage">Zobacz wszystkie zadania </Button>
             </Box>
@@ -40,7 +41,7 @@ const TaskPage = () => {
                 <Typography variant="h3" align="center">Ilu wolontariuszy potrzebujemy?</Typography>
                 <Typography variant="body1" align={'center'}>{task.amount}</Typography>
                 <Typography variant="body1" align={'center'}>Ilu się zapisało: {task.sign}</Typography>
-                <ProgressBar const completed={task.sign/task.amount*100}/>
+                <ProgressBar const completed= {Math.floor(task.sign/task.amount*100)}/>
                 <Box style={{display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around', height:"100px"}} >
                     <CustomButton variant="outlined" color="primary" size="large" >Udostępnij</CustomButton>
                     <Button  variant="contained" color="secondary" size="large" > Pomagam </Button>
@@ -54,15 +55,15 @@ const TaskPage = () => {
                 <Button  mb="10px" variant="outlined" size="medium" align="center">Kasia z Gdańska</Button>
             </Box>
             </Card>
-            <Box sx={{ marginTop:"10px", justifySelf:"end"}}>
+            </Box>
+            <Box sx={{ gridArea:'mailbox', marginTop:"10px", alignSelf:"end"}}>
                 <Box>
                     <img width="200px" src={skrzynka} alt=""/>
                 </Box>
             </Box>
-        </Box>
       
         <Box sx={{ gridArea: 'main', alignItems:"center", width:'90%', justifyContent:"center"}}>
-            
+            <Box>
             <Typography variant={"subtitle1"}>Kategorie: </Typography>
             <CustomButton 
                         variant="contained" 
@@ -72,14 +73,14 @@ const TaskPage = () => {
             >
               <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {task.categories[0]}
             </CustomButton>
-
+            </Box>
             <Box 
                     align={"center"}
                     component={'img'}
                     padding={"2rem"}
                     src={require(`../../assets/img/tasks/${task.image}.jpg`)}
                     alt={`${task.title}`}
-                    style = {{maxWidth:"600px"}}
+                    style = {{maxWidth:"550px"}}
                 />
             <Typography variant="body1">{task.action_description}</Typography>  
             <img width="300px" height="200px" src={liscik} alt=""/>
