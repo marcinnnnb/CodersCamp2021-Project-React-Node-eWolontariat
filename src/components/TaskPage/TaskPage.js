@@ -26,13 +26,13 @@ const TaskPage = () => {
         <Box sx={{display:"grid",gridTemplateColumns: {xl:"(3fr, 1fr)", xs:"1fr"}, gap: 2, justifyItems: 'center', alignItems: 'space-evenly', gridTemplateRows: 'auto',
           gridTemplateAreas: `"header header "
         "main sidebar"
-        "main mailbox"
+        "comments mailbox"
         "footer footer"`}}>
         <Box style={{ gridArea: 'header'}}>
             <Typography variant="h1" align="center"> {task.title}</Typography>
         </Box>
       
-        <Box style={{gridArea:'sidebar' , display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around', maxHeight:'50rem'}}>
+        <Box style={{gridArea:'sidebar' , display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around', maxHeight:'40rem'}}>
             <Box>
                 <Button variant="contained" color="primary" size="large" href="/TasksPage">Zobacz wszystkie zadania </Button>
             </Box>
@@ -62,7 +62,7 @@ const TaskPage = () => {
                 </Box>
             </Box>
       
-        <Box sx={{ gridArea: 'main', alignItems:"center", width:'90%', justifyContent:"center"}}>
+        <Box sx={{ display:"flex", flexDirection:"column", gridArea: 'main', alignItems:"center", width:'90%', justifyContent:"center"}}>
             <Box>
             <Typography variant={"subtitle1"}>Kategorie: </Typography>
             <CustomButton 
@@ -75,7 +75,7 @@ const TaskPage = () => {
             </CustomButton>
             </Box>
             <Box 
-                    align={"center"}
+                    // align={"center"}
                     component={'img'}
                     padding={"2rem"}
                     src={require(`../../assets/img/tasks/${task.image}.jpg`)}
@@ -85,17 +85,17 @@ const TaskPage = () => {
             <Typography variant="body1">{task.action_description}</Typography>  
             <img width="300px" height="200px" src={liscik} alt=""/>
 
+            </Box>
+            <Box sx={{display:"flex", flexDirection:"column",  alignContent: 'stretch', gridArea:"comments", width:"90%"}}  mx='0.5rem'  >
             <Card raised={true} style={{ margin:'1rem', padding: '0.5rem 0.1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
-            <Box sx={{gridArea:"main"}}  mx='0.5rem'  >
                 <Typography variant="h3" align="center" >Komentarze</Typography>  
                 <Typography  variant="body2"  ><img height="45px" src={avatar} alt=""/>{task.comments}</Typography>
-                </Box>
                 </Card>
-
+                
                 <Card raised={true} style={{ margin:'1rem', padding: '0.8rem 0.5rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
                 <TextField label="Napisz komentarz" multiline rows={2} fullWidth/>
                 </Card>
-        </Box>
+                </Box>
         </Box>
      
     </Box>
