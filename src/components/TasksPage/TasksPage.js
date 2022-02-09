@@ -7,13 +7,15 @@ import TasksList from '../Task/TasksList';
 
 const TasksPage = () => {
     let navigate = useNavigate();
-    const [next, setNext] = useState(8);
+    const [next, setNext] = useState(20);
     const [showNextCards, setNextCards] = useState(false);
-    let tasksPerPage = 8;
+    const [showButton, setShowButton] = useState(true);
+    let tasksPerPage = 9;
 
     const handleShowMoreTasks = () => {
         setNext(next + tasksPerPage);
         setNextCards(true);
+        setShowButton(false);
     };
 
     let content;
@@ -24,7 +26,7 @@ const TasksPage = () => {
       );
     } else if (showNextCards===false) {
       content = (
-        <TasksList startSlice={0} endSlice={8}/>
+        <TasksList startSlice={0} endSlice={9}/>
         )
     }
 
@@ -48,10 +50,10 @@ const TasksPage = () => {
             > 
             Szczęśliwy traf
             </Button>
-              <Typography variant='h1' align={"center"} style={{margin: "1rem 0 2rem 0"}} >Wszystkie zadania</Typography>
+              <Typography variant='h1' align={"center"} style={{margin: "1rem 0 2rem 0"}}>Wszystkie zadania</Typography>
             {content}
             <Box  align={"center"} marginBottom={"2rem"}>
-                <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>
+                {showButton && <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
             </Box>
         </Box>
     )

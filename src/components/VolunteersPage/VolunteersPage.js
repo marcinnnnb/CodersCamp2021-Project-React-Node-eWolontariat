@@ -1,27 +1,26 @@
 import { useState } from 'react';
 import { Box, Button, Typography } from "@material-ui/core";
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import { useNavigate } from 'react-router-dom';
 import VolunteersList from '../Volunteer/VolunteersList';
 import SearchInputVolunteers from './SearchInputVolunteers';
 
 let volsPerPage = 6;
 
 const VolunteersPage = () => {
-    let navigate = useNavigate();
-    const [next, setNext] = useState(6);
+    const [next, setNext] = useState(10);
     const [showNextCards, setNextCards] = useState(false);
+    const [showButton, setShowButton] = useState(true)
   
     const handleShowMoreVols = () => {
         setNext(next + volsPerPage);
         setNextCards(true);
+        setShowButton(false)
       };
 
     let content;
 
     if (showNextCards===true) {
         content = (
-            
           <VolunteersList startSlice={0} endSlice={next}/>
         );
       } else if (showNextCards===false) {
@@ -41,7 +40,7 @@ const VolunteersPage = () => {
             </Box>
             {content}
             <Box  align={"center"} marginBottom={"2rem"}>
-            <Button onClick={handleShowMoreVols} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>
+            {showButton && <Button onClick={handleShowMoreVols} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
             </Box>
         </Box>
     )

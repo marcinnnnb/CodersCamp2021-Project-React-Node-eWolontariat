@@ -1,19 +1,10 @@
-import reducer, { addNewTask } from '../taskSlice';
-import Tasks from '../../reducers/reducers_tasks';
+import  { addNewTask } from '../taskSlice';
 import {store} from '../store';
 
-const initialState = {tasks:Tasks};
 
 describe('taskSlice', () => {
-    it('should return the initial state on first run', () => {
-     
-      const nextState = initialState;
-      const result = reducer(undefined, {});
-      expect(result).toEqual(nextState);
-    });
-
-
-     it('Adds a new task', () => {
+  
+         it('Adds a new task', () => {
     let state = store.getState().task;
     const initialTaskList = state.tasks.length;
   
