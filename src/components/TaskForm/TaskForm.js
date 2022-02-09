@@ -78,9 +78,6 @@ return (
                     {errors.title?.type ==='required' && "To pole jest wymagane"}
                 </Box>
                 <Box sx={{  gridArea: 'button', padding:"1rem 0"}}>
-                <Routes>
-                    <Route path="/TaskPage2" element={<DisplayTaskPage />} />
-                </Routes>
                 <CustomButton size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary"  > Opublikuj zadanie</CustomButton>
             </Box>
         </Box>

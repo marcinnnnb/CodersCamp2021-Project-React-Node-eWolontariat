@@ -1,10 +1,8 @@
-import { Button, Typography, Container, Box, Avatar, ListItem } from '@material-ui/core'
-import PersonIcon from '@material-ui/icons/Person';
+import { Button, Typography, Container, Box, Avatar } from '@material-ui/core'
 import { useNavigate } from 'react-router';
 import CustomButton from '../../theme/CustomButton';
 import { selectAllVolunteers, selectVolunteerId } from '../../store/volunteerSlice';
 import { useSelector } from "react-redux";
-import { useState } from 'react';
 import { ListItemButton } from '@mui/material';
 import CustomTypography from '../../theme/CustomTypography';
 

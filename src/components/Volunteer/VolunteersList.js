@@ -79,7 +79,7 @@ const VolunteersList = ({startSlice,endSlice}) => {
            </Box>
          
            {content}
-           <Box display={"flex"} justifyContent={"flex-start"} alignItems={"center"} flexWrap={"wrap"}>
+           <Box display={"flex"} justifyContent={"space-evenly"} alignItems={"center"} flexWrap={"wrap"} >
               <ChooseCat/>
            </Box>
             <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 0 4rem'} justifyContent={'center'}>

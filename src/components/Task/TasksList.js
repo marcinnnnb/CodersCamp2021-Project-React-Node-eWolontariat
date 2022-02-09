@@ -84,7 +84,7 @@ const TasksList = ({startSlice,endSlice}) => {
                     
                 ))}
             </Box>
-            <Box display={"flex"} justifyContent={"flex-start"} alignItems={"center"} flexWrap={"wrap"} style={{marginLeft: "6rem"}}>
+            <Box display={"flex"} justifyContent={"space-evenly"} alignItems={"center"} flexWrap={"wrap"}>
               <ChooseCat/>
             </Box>
               {content}

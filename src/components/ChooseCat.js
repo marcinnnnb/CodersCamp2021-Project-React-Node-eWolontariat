@@ -11,10 +11,8 @@ const ChooseCat = (data) => {
   return (
       
         <FormControl variant="standard" style={{bottom: "10px"}}>
-            <InputLabel id="demo-simple-select-standard-label">Wybierz kategorię</InputLabel>
+            <InputLabel >Wybierz kategorię</InputLabel>
             <Select
-            labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard"
             value={category}
             onChange={handleChange}
             label="Wybierz kategorię"

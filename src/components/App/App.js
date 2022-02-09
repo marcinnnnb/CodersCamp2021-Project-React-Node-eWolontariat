@@ -24,7 +24,7 @@ export function App() {
              <Box sx={{ flexGrow: 1 }}> 
                 <AppHeader/>
                 <Box padding={"0 2"} flex={1} overflow={"auto"}>
-                    <Routes>
+                <Routes>
                     <Route path="/" element={<HomePage/>} />
                     <Route path="/OrganizationForm/*" element={<OrganizationForm/>} />
                     <Route path="/OrganizationPage" element={<OrganizationPage/>} />

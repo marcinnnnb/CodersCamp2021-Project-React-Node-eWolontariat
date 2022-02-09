@@ -5,8 +5,6 @@ import CasinoIcon from '@material-ui/icons/Casino';
 import { useNavigate } from 'react-router';
 import TasksList from '../Task/TasksList';
 
-
-
 const TasksPage = () => {
     let navigate = useNavigate();
     const [next, setNext] = useState(8);
@@ -35,26 +33,26 @@ const TasksPage = () => {
               height = {"100%"}
               alignItems={"center"}
               >
-              <Typography variant='h1' align={"center"} style={{marginTop: "4rem"}} >Wszystkie zadania</Typography>
-            {content}
-            <Box  align={"center"} marginBottom={"2rem"}>
-                <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>
-            </Box>
-            <Button 
+               <Button 
               variant={"contained"} 
-              size={"small"}
+              size={"large"}
               color={"secondary"} 
               startIcon={<CasinoIcon/>}
               onClick={()=>{navigate("/TaskPage")}}
               style={{
-                position: "fixed",
-                top: "20%",
-                right: "10px",
+                position: "sticky",
+                top: "0",
+                left: "10%",
                 zIndex: 2,
               }}
             > 
             Szczęśliwy traf
             </Button>
+              <Typography variant='h1' align={"center"} style={{marginTop: "4rem"}} >Wszystkie zadania</Typography>
+            {content}
+            <Box  align={"center"} marginBottom={"2rem"}>
+                <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>
+            </Box>
         </Box>
     )
 }

@@ -2,7 +2,7 @@ import { Box, Button, Typography,Card, CardContent, CardActions} from "@material
 import ImgFindCard from '../../../assets/img/find-volunteer.svg';
 import ImgBeVolunteer from '../../../assets/img/be-volunteer.svg';
 import CustomButton from "../../../theme/CustomButton";
-import { useNavigate, Route, Routes} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SectionHowItWorks = () => {
     let navigate = useNavigate();
@@ -74,9 +74,6 @@ const SectionHowItWorks = () => {
                     </CardActions>
                 </Card>
             </Box>
-            <Routes>
-                <Route path="/VolunteerForm"/>
-            </Routes>
         </Box>
     )
 }

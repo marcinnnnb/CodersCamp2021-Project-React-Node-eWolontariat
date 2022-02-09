@@ -1,6 +1,6 @@
 import { AppBar, Box, Button, Toolbar } from "@material-ui/core";
 import LogoPomocny from "../../assets/img/logo-pomocny.svg";
-import { useNavigate, Route, Routes} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AppHeader = () => {
     let navigate = useNavigate();
@@ -54,10 +54,6 @@ const AppHeader = () => {
                         </Button>
                     </Box>              
             </Toolbar>
-            <Routes>
-                <Route path="/"/>
-                <Route path="TaskForm"/>
-            </Routes>
         </AppBar>
     </header>
 )}
