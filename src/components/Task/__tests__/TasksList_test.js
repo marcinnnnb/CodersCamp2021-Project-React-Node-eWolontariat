@@ -1,4 +1,3 @@
-import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import { Provider } from "react-redux";
 import { store } from "../../../store/store";

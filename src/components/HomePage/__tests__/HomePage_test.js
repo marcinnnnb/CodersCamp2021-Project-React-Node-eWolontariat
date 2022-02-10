@@ -55,6 +55,7 @@ it("Should render title of Section How Find Help", ()=>{
 
 const b = wrapper.find('.MuiButton-root'); 
 
+
 it ("Should render button Add new Task", ()=> {
     expect(b.text()).toEqual('Stwórz zadanie'); 
 

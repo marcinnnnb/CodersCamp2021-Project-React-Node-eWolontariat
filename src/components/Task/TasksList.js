@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Typography, Divider } from "@material-ui/core";
+import { Box, CircularProgress, Typography, Divider, MenuItem } from "@material-ui/core";
 import { useEffect, useState  } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { sortTasks,  selectAllTasks } from "../../store/taskSlice";
@@ -6,8 +6,9 @@ import CustomButton from "../../theme/CustomButton";
 import { fetchTasks } from "../../store/fetchTasks";
 import getTasksCards from "./getTasksCards";
 import SearchInputTasks from "../TasksPage/SearchInputTasks";
-import ChooseCat from "../ChooseCat";
 import setTasksRatingButtons from "../TasksPage/setTasksRatingButtons";
+import { FormControl, InputLabel, Select } from "@mui/material";
+import Categories from "../../assets/data/Categories";
 
 const TasksList = ({startSlice,endSlice}) => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const TasksList = ({startSlice,endSlice}) => {
   const error = useSelector(state => state.task.error);
   const [filteredTasks, setTasks] = useState([]);
   const [isFilterTasks, setFilterTasks] = useState(false);
+  const [selectValue, setSelectValue] = useState('');
 
   let orderedTasks =[];
 
@@ -64,6 +66,7 @@ const TasksList = ({startSlice,endSlice}) => {
                         color={"primary"}  
                         onClick={()=>{
                           setFilterTasks(false);
+                          setSelectValue("");
                         }}        
                     >
                     Wszystkie</CustomButton>
@@ -78,6 +81,7 @@ const TasksList = ({startSlice,endSlice}) => {
                         onClick={()=>{
                             setTasks(getFilteredTextFromButton(category.value));
                             setFilterTasks(true);
+                            setSelectValue(category.value);
                         }}                           
                     >
                         <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {category.value}
@@ -86,11 +90,36 @@ const TasksList = ({startSlice,endSlice}) => {
                 ))}
             </Box>
             <Box display={"flex"} justifyContent={"space-evenly"} alignItems={"center"} flexWrap={"wrap"}>
-              <ChooseCat/>
+              
+            <FormControl variant="standard" style={{bottom: "10px"}}>
+                <InputLabel >Wybierz kategorię</InputLabel>
+                <Select
+                  value = {selectValue}
+                  onChange={(e)=> {
+                    setSelectValue(e.target.value);
+                    setTasks(getFilteredTextFromButton(e.target.value));
+                    setFilterTasks(true);
+                  }}
+                label="Wybierz kategorię"
+                style={{width: "260px", fontSize: "1rem" }}
+                >
+                    <MenuItem value="" style={{fontSize: "1rem"}}>
+                        <em>Wszystkie kategorie</em>
+                    </MenuItem>
+                    {Categories.map (cat =>(
+                    <MenuItem  
+                        key={cat.label} 
+                        value={cat.value} 
+                        style={{fontSize: "1rem"}}>
+                        {cat.label} 
+                    </MenuItem>
+            ))}
+                </Select>
+            </FormControl>
             </Box>
               {content}
               <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
-                  {getTasksCards(isFilterTasks, orderedTasks, filteredTasks, startSlice, endSlice)}
+                  {getTasksCards(isFilterTasks, orderedTasks, selectValue, filteredTasks, startSlice, endSlice)}
               </Box>
          </Box>
     )

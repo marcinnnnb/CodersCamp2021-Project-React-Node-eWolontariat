@@ -5,8 +5,9 @@ import { sortVolunteers,  selectAllVolunteers  } from "../../store/volunteerSlic
 import { fetchVolunteers } from "../../store/fetchVolunteers";
 import CustomButton from "../../theme/CustomButton";
 import getVolunteersCards from "./getVolunteersCards";
-import ChooseCat from "../ChooseCat";
 import setVolunteersRatingButtons from "../VolunteersPage/setVolunteersRatingButtons";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import Categories from "../../assets/data/Categories";
 
 const VolunteersList = ({startSlice,endSlice}) => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const VolunteersList = ({startSlice,endSlice}) => {
   const error = useSelector(state => state.volunteers.error);
   const [filteredVolunteers, setVolunteers] = useState([]);
   const [isFilterVolunteers, setFilterVolunteers] = useState(false);
+  const [selectValue, setSelectValue] = useState('');
   let orderedVolunteers =[];
 
   useEffect(() => {
@@ -55,6 +57,7 @@ const VolunteersList = ({startSlice,endSlice}) => {
                         style={{marginTop: "1rem"}} 
                         onClick={()=>{
                             setVolunteers(volunteersList.volunteers.slice(startSlice,endSlice));
+                            setSelectValue("");
                         }}        
                     >
                     Wszystkie</CustomButton>
@@ -71,6 +74,7 @@ const VolunteersList = ({startSlice,endSlice}) => {
                         onClick={()=>{
                           setVolunteers(getFilteredTextFromButton(category.value));
                             setFilterVolunteers(true);
+                            setSelectValue(category.value);
                         }}                           
                     >
                         <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {category.value}
@@ -80,10 +84,34 @@ const VolunteersList = ({startSlice,endSlice}) => {
          
            {content}
            <Box display={"flex"} justifyContent={"space-evenly"} alignItems={"center"} flexWrap={"wrap"} >
-              <ChooseCat/>
+            <FormControl variant="standard" style={{bottom: "10px"}}>
+                  <InputLabel >Wybierz kategorię</InputLabel>
+                  <Select
+                    value = {selectValue}
+                    onChange={(e)=> {
+                      setSelectValue(e.target.value);
+                      setVolunteers(getFilteredTextFromButton(e.target.value));
+                      setFilterVolunteers(true);
+                    }}
+                  label="Wybierz kategorię"
+                  style={{width: "260px", fontSize: "1rem" }}
+                  >
+                      <MenuItem value="" style={{fontSize: "1rem"}}>
+                          <em>Wszystkie kategorie</em>
+                      </MenuItem>
+                      {Categories.map (cat =>(
+                      <MenuItem  
+                          key={cat.label} 
+                          value={cat.value} 
+                          style={{fontSize: "1rem"}}>
+                          {cat.label} 
+                      </MenuItem>
+              ))}
+                  </Select>
+              </FormControl>
            </Box>
             <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 0 4rem'} justifyContent={'center'}>
-                {getVolunteersCards(isFilterVolunteers, orderedVolunteers, filteredVolunteers, startSlice, endSlice)}
+                {getVolunteersCards(isFilterVolunteers, selectValue, orderedVolunteers, filteredVolunteers, startSlice, endSlice)}
             </Box>
       </Box>
     )

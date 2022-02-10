@@ -1,8 +1,8 @@
 
 import VolunteerCard from "../VolunteersPage/VolunteerCard"
 
-function getVolunteersCards(isFilterVolunteers, orderedVolunteers, filteredVolunteers, startSlice, endSlice){
-    if (isFilterVolunteers===false) return (
+function getVolunteersCards(isFilterVolunteers,  selectValue, orderedVolunteers, filteredVolunteers, startSlice, endSlice){
+    if (isFilterVolunteers===false || selectValue === '') return (
         orderedVolunteers?.slice(startSlice, endSlice).map((volunteer) =>{
               return <VolunteerCard key={`volunteer-${volunteer.id}`} volunteer={volunteer} />
             })
