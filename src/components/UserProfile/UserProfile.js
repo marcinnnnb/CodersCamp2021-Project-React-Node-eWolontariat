@@ -35,10 +35,19 @@ const UserProfile = () => {
                   <Typography gutterBottom variant="h1" style={{margin: "0 2rem 0 0"}}>{volunteer.name} {volunteer.surname}</Typography>
               </Box>
               <Box style={{  display: 'flex', justifyContent: "flex-end", gap: "3rem"}}>
-                  <CustomButton style={{marginBottom:'1rem'}} variant="contained" color='tertiary'>Jesteś wolontariuszem</CustomButton>
+                  <CustomButton 
+                    style={{marginBottom:'1rem'}} 
+                    variant="contained" 
+                    color='tertiary'
+                    onClick={(e)=>{
+                      e.preventDefault();
+                      navigate(`/VolunteerPage/3/kowal`);
+                    }}
+                    >
+                    Jesteś wolontariuszem
+                  </CustomButton>
                   <Button style={{marginBottom:'1rem'}} variant="outlined" disabled >Edytuj profil</Button>
               </Box>
-            
             
           </Box>
           <Box style={{borderBottom: '1px solid #AFAFAF', marginBottom: '2rem'}}>
@@ -46,11 +55,7 @@ const UserProfile = () => {
             <Typography variant='h3' style={{color: '#868686'}}>
               {volunteer.actions?.map((act,id)=>(
                 <ListItemButton key={`action-${id}`} style={{border: "1px #eee solid", textTransform: "capitalize", width: "80%"}}
-              
-                >
-                
-                         
-                    <Divider key={`divideritem-${id}`} style={{margin: "0 0.8rem"}}  orientation="vertical" flexItem/>
+                >  
                     {act}</ListItemButton>
 
               ))}
