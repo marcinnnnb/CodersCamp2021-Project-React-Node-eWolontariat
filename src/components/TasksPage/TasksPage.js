@@ -18,6 +18,11 @@ const TasksPage = () => {
         setShowButton(false);
     };
 
+    const traf = () => {
+      let luckId=Math.floor(Math.random()*16)
+      navigate(`/TaskPage/${luckId}`)
+       };
+
     let content;
 
     if (showNextCards===true) {
@@ -40,7 +45,7 @@ const TasksPage = () => {
               size={"large"}
               color={"secondary"} 
               startIcon={<CasinoIcon/>}
-              onClick={()=>{navigate("/TaskPage")}}
+              onClick={traf}
               style={{
                 position: "sticky",
                 top: "0",
