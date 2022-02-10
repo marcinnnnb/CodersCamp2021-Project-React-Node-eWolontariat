@@ -68,7 +68,7 @@ export const OrganizationPage = () => {
 
       <Box className={classes.utworzenieZadania}>
         <Typography onClick={() => navigate('/TaskForm')}>Utworzone zadania</Typography>
-        <Button onClick={() => navigate('/VolounteerForm')} variant="contained">
+        <Button onClick={() => navigate('/TaskForm')} variant="contained">
           Dodaj nowe zadanie
         </Button>
       </Box>
