@@ -6,7 +6,7 @@ import avatar from "../../assets/img/facet.png";
 import CustomButton from "../../theme/CustomButton";
 import { useSelector } from "react-redux";
 import { selectAllTasks, selectTasksId} from '../../store/taskSlice';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import setCategoryIcon from "../../theme/setCategoryIcon";
 
 const TaskPage = () => {
@@ -14,7 +14,6 @@ const TaskPage = () => {
     let id = parseInt({ taskId }.taskId);
     const tasksList = useSelector(selectAllTasks).tasks;
     const task = selectTasksId(tasksList, id);
-    let navigate = useNavigate();
 
     return (
         <Box id={"task-page"}
@@ -54,16 +53,8 @@ const TaskPage = () => {
                 <Card raised={true} style={{ padding: '0.8rem 2.4rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
             <Box >
                 <Typography margin="10px" variant="h5" align="center">Zgłoszeni wolontariusze</Typography>
-                <Button  
-                    mb="10px" 
-                    variant="outlined" 
-                    size="medium" 
-                    align="center"
-                     onClick={(e)=>{
-                        e.preventDefault();
-                        navigate(`/VolunteerPage/3/Kowal`);
-                    }}>Marek Kowalski</Button>
-             </Box>
+                <Button  mb="10px" variant="outlined" size="medium" align="center">Kasia z Gdańska</Button>
+            </Box>
             </Card>
             </Box>
             <Box sx={{ gridArea:'mailbox', marginTop:"10px", alignSelf:"end"}}>
@@ -73,7 +64,7 @@ const TaskPage = () => {
             </Box>
       
         <Box sx={{ display:"flex", flexDirection:"column", gridArea: 'main', alignItems:"center", width:'90%', justifyContent:"center"}}>
-            <Box sx={{ display:"flex", flexDirection:"row", justifyContent: "flex-end"}}>
+            <Box sx={{ display:"flex", flexDirection:"row", width:'90%'}}>
             <Typography variant={"subtitle1"}>Kategorie: </Typography>
             {task.categories.map((cat)=>
                 (<div key={cat.id}> 
