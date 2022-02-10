@@ -34,7 +34,7 @@ export function App() {
                                 <Route path="/TaskForm/*" element={<TaskForm/>} />
                                 <Route path="/TaskPage/:taskId" element={<TaskPage/>} />
                                 <Route path="/TasksPage" element={<TasksPage/>} />
-                                <Route path="/TasksPage/:category" element={<CategoryPage/>} />
+                                <Route path="/CategoryPage/:category" element={<CategoryPage/>} />
                                 <Route path="/UserProfile" element={<UserProfile/>} />
                                 <Route path="/VolunteerForm" element={<VolunteerForm/>} />
                                 <Route path="/VolunteerPage/:volunteerId/:volunteerNick" element={<VolunteerPage/>} />

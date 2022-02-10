@@ -112,7 +112,7 @@ const AppFooter = () => {
                                         disableGutters
                                         onClick={(e)=>{
                                             e.preventDefault();
-                                            navigate(`/TasksPage/${category.value.replace(" ","-")}`);
+                                            navigate(`/CategoryPage/${category.value.replace(" ","-")}`);
                                         }} 
                                         >
                                         {category.value}

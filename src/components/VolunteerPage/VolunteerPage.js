@@ -48,8 +48,13 @@ const VolunteerPage = () => {
                     <Box style={{ display:'flex'}}>
                         <PersonIcon color='primary' style={{fontSize: '3rem'}}/>
                         <Box style={{paddingLeft:'1rem'}}>
-                            <Typography variant='h4'>{volunteer.comment[0]}</Typography>
-                            <Typography variant='body2'>{volunteer.comment[1]}</Typography>
+
+                            {volunteer.comment?.map(comment => (
+                                <>
+                                <Typography variant='h4'>{volunteer.comment[0] }</Typography>
+                                <Typography variant='body2'>{volunteer.comment[1]  }</Typography>
+                                </>
+                            ))}
                         </Box> 
                     </Box>
                 </Card>
