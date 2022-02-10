@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { selectAllTasks } from '../../store/taskSlice';
 import CustomTypography from '../../theme/CustomTypography';
 import setCategoryIcon from '../../theme/setCategoryIcon';
+import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -84,6 +85,8 @@ const Search = styled('div')(({ theme }) => ({
       
     const classes = useStyles();
 
+    let navigate = useNavigate();
+
       return (
         <StyledEngineProvider injectFirst>
           <Search>
@@ -110,7 +113,15 @@ const Search = styled('div')(({ theme }) => ({
               const regex = new RegExp(value,'gi'); 
               return (
                     <Box key={`item-${id}`} style={{ border: "1px #eee solid"}} width = {"800px"} >
-                      <ListItemButton key={`listitembutton-${id}`}  display={"flex"} style={{width: "100%"}} disableGutters>
+                      <ListItemButton 
+                        key={`listitembutton-${id}`}  
+                        display={"flex"} 
+                        style={{width: "100%"}} 
+                        disableGutters
+                        onClick={(e)=>{
+                            e.preventDefault();
+                            navigate(`/TaskPage/${el.id}`);
+                        }}>
                           <CustomAvatar 
                             variant={"avatarBackground"} 
                             backgroundcolor={setCategoryIcon(el.categories[0])[1]}
