@@ -51,6 +51,7 @@ const TasksList = ({startSlice,endSlice}) => {
     let thePopularCategoriesButtons = setTasksRatingButtons(orderedTasks).slice(0,4);
 
     return (
+
       <Box>
         <Box display={"flex"} justifyContent={"center"} style={{margin: "4rem 0 1rem"}}>
               {searchInput}

@@ -218,7 +218,7 @@ exports[`App Should render correctly 1`] = `
         "h1": Object {
           "fontFamily": "'Quicksand', sans-serif",
           "fontSize": "2.2rem",
-          "fontWeight": 900,
+          "fontWeight": "700",
           "letterSpacing": "2px",
           "lineHeight": 1.167,
           "margin": "2rem",
@@ -289,6 +289,7 @@ exports[`App Should render correctly 1`] = `
     }
   }
 >
+  <Dialogs />
   <Styled(MuiBox)
     display="flex"
     flexDirection="column"
@@ -301,67 +302,22 @@ exports[`App Should render correctly 1`] = `
         }
       }
     >
-      <WithStyles(ForwardRef(AppBar))
-        color="inherit"
-        position="static"
-      >
-        <WithStyles(ForwardRef(Toolbar))>
-          <a
-            href="/"
-          >
-            <Styled(MuiBox)
-              alt="Logo pomocny.pl"
-              component="img"
-              padding="1rem 0"
-              src="logo-pomocny.svg"
-              sx={
-                Object {
-                  "height": "46px",
-                }
-              }
-            />
-          </a>
-          <Styled(MuiBox)
-            display="flex"
-            flexGrow="1"
-            gridColumnGap="1.4rem"
-            justifyContent="flex-end"
-          >
-            <WithStyles(ForwardRef(Button))
-              color="primary"
-              href="/TaskForm"
-              size="medium"
-              variant="contained"
-            >
-              Stwórz zadanie
-            </WithStyles(ForwardRef(Button))>
-            <WithStyles(ForwardRef(Button))
-              size="medium"
-              variant="text"
-            >
-              Zaloguj się
-            </WithStyles(ForwardRef(Button))>
-            <WithStyles(ForwardRef(Button))
-              size="medium"
-              variant="text"
-            >
-              Zarejestruj się
-            </WithStyles(ForwardRef(Button))>
-          </Styled(MuiBox)>
-        </WithStyles(ForwardRef(Toolbar))>
-      </WithStyles(ForwardRef(AppBar))>
+      <AppHeader />
       <Styled(MuiBox)
         flex={1}
         overflow="auto"
-        padding={2}
+        padding="0 2"
       >
-        <Routes>
+        <Routes
+          history={[Function]}
+        >
           <Route
             element={<HomePage />}
-            path="/"
+            exact={true}
+            path="/*"
           />
           <Route
-            element={<TaskForm />}
+            element={<OrganizationForm />}
             path="/OrganizationForm/*"
           />
           <Route
@@ -374,15 +330,15 @@ exports[`App Should render correctly 1`] = `
           />
           <Route
             element={<TaskPage />}
-            path="/TaskPage"
-          />
-          <Route
-            element={<DisplayTaskPage />}
-            path="/TaskPage2"
+            path="/TaskPage/:taskId"
           />
           <Route
             element={<TasksPage />}
             path="/TasksPage"
+          />
+          <Route
+            element={<CategoryPage />}
+            path="/CategoryPage/:category"
           />
           <Route
             element={<UserProfile />}
@@ -394,7 +350,7 @@ exports[`App Should render correctly 1`] = `
           />
           <Route
             element={<VolunteerPage />}
-            path="/VolunteerPage"
+            path="/VolunteerPage/:volunteerId/:volunteerNick"
           />
           <Route
             element={<VolunteersPage />}
@@ -410,140 +366,7 @@ exports[`App Should render correctly 1`] = `
           />
         </Routes>
       </Styled(MuiBox)>
-    </Styled(MuiBox)>
-    <Styled(MuiBox)
-      alignItems="center"
-      bgcolor="#F8F8F8"
-      display="flex"
-      flex-shrink="0"
-      justifyContent="center"
-      padding="2rem 1rem"
-    >
-      <WithStyles(ForwardRef(Container))
-        padding="0"
-      >
-        <WithStyles(ForwardRef(Grid))
-          container={true}
-          spacing={1}
-        >
-          <WithStyles(ForwardRef(Grid))
-            item={true}
-            sm={3}
-          >
-            <a
-              href="/"
-            >
-              <Styled(MuiBox)
-                alt="Logo pomocny.pl"
-                component="img"
-                src="logo-pomocny.svg"
-                sx={
-                  Object {
-                    "height": "60px",
-                  }
-                }
-              />
-            </a>
-            <WithStyles(ForwardRef(Typography))
-              paragraph={true}
-              variant="caption"
-            >
-              Projekt został zrealizowany w ramach:
-            </WithStyles(ForwardRef(Typography))>
-            <WithStyles(ForwardRef(Link))
-              href="https://www.coderscamp.edu.pl/"
-            >
-              <Styled(MuiBox)
-                alt="Logo Coders Camp"
-                component="img"
-                src="coder-camp.svg"
-                sx={
-                  Object {
-                    "height": "20px",
-                  }
-                }
-              />
-            </WithStyles(ForwardRef(Link))>
-          </WithStyles(ForwardRef(Grid))>
-          <WithStyles(ForwardRef(Grid))
-            item={true}
-            sm={1}
-          />
-          <WithStyles(ForwardRef(Grid))
-            item={true}
-            sm={3}
-          >
-            <WithStyles(ForwardRef(Typography))
-              color="secondary"
-              variant="h3"
-            >
-              Informacje
-            </WithStyles(ForwardRef(Typography))>
-            <WithStyles(ForwardRef(List))
-              padding="0"
-            >
-              <WithStyles(ForwardRef(ListItem))
-                component="a"
-                disableGutters={true}
-                href="/VolunteerForm"
-              >
-                Zostań wolontariuszem
-              </WithStyles(ForwardRef(ListItem))>
-              <WithStyles(ForwardRef(ListItem))
-                component="a"
-                disableGutters={true}
-                href="/VolunteersPage"
-              >
-                Znajdź wolontariusza
-              </WithStyles(ForwardRef(ListItem))>
-              <WithStyles(ForwardRef(ListItem))
-                component="a"
-                disableGutters={true}
-                href="/#section-how-find-help"
-              >
-                Jak znaleźć pomoc
-              </WithStyles(ForwardRef(ListItem))>
-              <WithStyles(ForwardRef(ListItem))
-                component="a"
-                disableGutters={true}
-                href="/TasksPage"
-              >
-                Znajdź zadanie
-              </WithStyles(ForwardRef(ListItem))>
-            </WithStyles(ForwardRef(List))>
-          </WithStyles(ForwardRef(Grid))>
-          <WithStyles(ForwardRef(Grid))
-            item={true}
-            sm={3}
-          >
-            <WithStyles(ForwardRef(Typography))
-              color="secondary"
-              variant="h3"
-            >
-              Popularne kategorie
-            </WithStyles(ForwardRef(Typography))>
-          </WithStyles(ForwardRef(Grid))>
-          <WithStyles(ForwardRef(Grid))
-            item={true}
-            sm={2}
-          >
-            <WithStyles(ForwardRef(Link))
-              href="https://github.com/marcinnnnb/CodersCamp2021-Project-React-Node-eWolontariat"
-            >
-              <Styled(MuiBox)
-                alt="Logo Coders Camp"
-                component="img"
-                src="github-logo.png"
-                style={
-                  Object {
-                    "height": "20px",
-                  }
-                }
-              />
-            </WithStyles(ForwardRef(Link))>
-          </WithStyles(ForwardRef(Grid))>
-        </WithStyles(ForwardRef(Grid))>
-      </WithStyles(ForwardRef(Container))>
+      <AppFooter />
     </Styled(MuiBox)>
   </Styled(MuiBox)>
 </ThemeProvider>

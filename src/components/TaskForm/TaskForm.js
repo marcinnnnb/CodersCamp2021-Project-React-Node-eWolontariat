@@ -10,6 +10,8 @@ import CustomTypography from '../../theme/CustomTypography';
 import CustomButton from '../../theme/CustomButton';
 import { useSelector } from "react-redux";
 import { selectAllTasks } from '../../store/taskSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
  
 const amountValidation={
     required:true, pattern:[0-9], maxLength:1000
@@ -42,6 +44,16 @@ export default function TaskForm() {
          };  
 
     const categories = []; 
+
+    const notify = () => toast.success('Zadanie dodane!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
 
 return (
     <Container>
@@ -95,7 +107,7 @@ return (
                     {errors.title?.type ==='required' && "To pole jest wymagane"}
                 </Box>
                 <Box sx={{  gridArea: 'button', padding:"1rem 0"}}>
-                <CustomButton size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary"  > Opublikuj zadanie</CustomButton>
+                <CustomButton size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary" > Opublikuj zadanie</CustomButton>          
             </Box>
         </Box>
         </form>
