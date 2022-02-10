@@ -40,7 +40,7 @@ Aplikację została wykonana przez uczestników kursu pod okiem dwóch mentorów
 Wersja demonstracyjna aplikacji jest dostępna [TUTAJ]().
 ### Cel projektu
 
-Celem projektu było napisanie aplikacji wykorzystującej wiedzę nabytą z drugiego działu kursu tj. z następujących technologi: React, Redux-Toolkit, Material-UI.
+Celem projektu było napisanie aplikacji wykorzystującej wiedzę nabytą z drugiego działu kursu tj. z następujących technologii: React, Redux-Toolkit, Material-UI.
 Zespół projektowy zdecydował się na aplikację własnego pomysłu. eWolontariat jest aplikacją umożliwiającą użytkownikowi zapisanie się do grona Wolontariuszy i aktywnie działanie wśród nich. Możliwe jest również stworzenie profilu organizacji, która poszukuje wolontariuszy i udostępnia aktualne zadania.
 
 Aplikacja została wykonana wg wymagań dostarczonych przez organizatorów CodersCamp.
