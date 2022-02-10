@@ -25,6 +25,7 @@ export default function TaskForm() {
     const{register,handleSubmit,control, formState: { errors }} =useForm(
        {
         defaultValues: {
+            sign:0,
             id: newID,
             date: JSON.stringify(date),
             image: "webinar",

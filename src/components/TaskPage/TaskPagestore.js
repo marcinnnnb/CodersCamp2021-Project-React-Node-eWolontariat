@@ -4,27 +4,15 @@ import ProgressBar from "./ProgressBar";
 import liscik from "../../assets/img/plane.svg";
 import skrzynka from "../../assets/img/mailbox.svg";
 import avatar from "../../assets/img/facet.png";
-<<<<<<< HEAD
-import CustomButton from "../CustomButton";
-import { useSelector } from "react-redux";
-
-export function TaskPagestore()  {
-=======
 import CustomButton from "../../theme/CustomButton";
 import { useSelector } from "react-redux";
 
 const TaskPagestore= ()  => {
->>>>>>> version-with-api-to-store
     
     let n=Math.floor(Math.random()*6);
 
         const list= useSelector((state)=>state.task.tasks);
-<<<<<<< HEAD
-        console.log(list)
-=======
         
->>>>>>> version-with-api-to-store
-     
             return(
                 <Box id={"task-page"}
                 display={"flex:"}

@@ -41,7 +41,8 @@ const TaskPage = () => {
                 <Typography variant="h3" align="center">Ilu wolontariuszy potrzebujemy?</Typography>
                 <Typography variant="body1" align={'center'}>{task.amount}</Typography>
                 <Typography variant="body1" align={'center'}>Ilu się zapisało: {task.sign}</Typography>
-                <ProgressBar const completed= {Math.floor(task.sign/task.amount*100)}/>
+                
+                <ProgressBar const completed= {Math.floor(task.sign /task.amount*100)}/>
                 <Box style={{display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around', height:"100px"}} >
                     <CustomButton variant="outlined" color="primary" size="large" >Udostępnij</CustomButton>
                     <Button  variant="contained" color="secondary" size="large" > Pomagam </Button>
@@ -63,19 +64,22 @@ const TaskPage = () => {
             </Box>
       
         <Box sx={{ display:"flex", flexDirection:"column", gridArea: 'main', alignItems:"center", width:'90%', justifyContent:"center"}}>
-            <Box>
+            <Box sx={{ display:"flex", flexDirection:"row"}}>
             <Typography variant={"subtitle1"}>Kategorie: </Typography>
+            {task.categories.map((cat)=>
+                (<div key={cat.id}> 
             <CustomButton 
                         variant="contained" 
-                        style={{marginTop: "1rem"}}
+                        style={{margin: "0.8rem"}}
                         color={setCategoryIcon(task.categories[0])[1]}
                         startIcon={setCategoryIcon(task.categories[0])[0]}                        
             >
-              <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {task.categories[0]}
+              <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {cat.value || task.categories} 
+        
             </CustomButton>
+            </div>))}
             </Box>
             <Box 
-                    // align={"center"}
                     component={'img'}
                     padding={"2rem"}
                     src={require(`../../assets/img/tasks/${task.image}.jpg`)}
@@ -86,10 +90,10 @@ const TaskPage = () => {
             <img width="300px" height="200px" src={liscik} alt=""/>
 
             </Box>
-            <Box sx={{display:"flex", flexDirection:"column",  alignContent: 'stretch', gridArea:"comments", width:"90%"}}  mx='0.5rem'  >
-            <Card raised={true} style={{ margin:'1rem', padding: '0.5rem 0.1rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
-                <Typography variant="h3" align="center" >Komentarze</Typography>  
-                <Typography  variant="body2"  ><img height="45px" src={avatar} alt=""/>{task.comments}</Typography>
+            <Box sx={{display:"flex", flexDirection:"column", gridArea:"comments", width:"90%"}}  mx='0.5rem'  >
+            <Typography variant="h2" align="center" >Komentarze</Typography>  
+            <Card raised={true} style={{ margin:'1rem', padding: '0.6rem 0.8rem'}}>
+                <Typography  variant="body2"  ><img height="45px" src={avatar} alt=""/>  {task.comments}</Typography>
                 </Card>
                 
                 <Card raised={true} style={{ margin:'1rem', padding: '0.8rem 0.5rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems: 'center'}}>
@@ -99,13 +103,6 @@ const TaskPage = () => {
         </Box>
      
     </Box>
-
-
-
-
-
-
-
 
     )
 }
