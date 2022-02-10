@@ -6,7 +6,7 @@ function getTasksCards(isFilterTasks, orderedTasks, selectValue, filteredTasks, 
               return <TaskCard key={`item-${task.id}`} task={task} id={task.id}/>
             })
     )
-    if (isFilterTasks===true) return (
+    if (isFilterTasks===true && selectValue !== '') return (
         filteredTasks?.slice(startSlice,endSlice).map((task,id) =>{
               return <TaskCard key={`item-${task.id}`} task={task} id={task.id}/>
           })

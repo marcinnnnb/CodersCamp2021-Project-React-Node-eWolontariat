@@ -12,6 +12,7 @@ const CategoryPage = () => {
     let isFilterTasks = true;
     let startSlice = 0;
     let endSlice = 8;
+    let selectValue = categoryName;
     
     return (
         <Box  id={"page-all-tasks"}
@@ -20,7 +21,7 @@ const CategoryPage = () => {
         >
         <Typography variant='h1' align={"center"} style={{margin: "3rem 0 2rem 0"}}>Kategoria: {categoryName} </Typography>
         <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
-                  {getTasksCards(isFilterTasks, orderedTasks, filteredTasks, startSlice, endSlice)}
+                  {getTasksCards(isFilterTasks, selectValue , orderedTasks, filteredTasks, startSlice, endSlice)}
         </Box>
 
         </Box>
