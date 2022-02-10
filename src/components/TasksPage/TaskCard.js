@@ -45,7 +45,7 @@ function TaskCard(task){
                             color={"secondary"} 
                             onClick={(e)=>{
                                 e.preventDefault();
-                                navigate(`/TasksPage/${task.task.id}`);
+                                navigate(`/TaskPage/${task.task.id}`);
                             }}
                             >Pomagam
                         </Button>
