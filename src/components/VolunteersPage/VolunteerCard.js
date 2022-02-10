@@ -19,9 +19,9 @@ function VolunteerCard(volunteer){
                     />
             </CardActionArea>
             <CardContent>
-                <Typography gutterBottom variant="h3" align={'center'} onClick={(e)=>{
+                <Typography gutterBottom variant="h3" align={'center'} style={{cursor: "pointer"}} onClick={(e)=>{
                         e.preventDefault();
-                        navigate(`/VolunteerPage`);
+                        navigate(`/VolunteerPage/${volunteer.volunteer.id}/${volunteer.volunteer.nick}`);
                     }}>
                     {volunteer.volunteer.nick}
                 </Typography>

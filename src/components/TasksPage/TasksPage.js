@@ -31,7 +31,7 @@ const TasksPage = () => {
       );
     } else if (showNextCards===false) {
       content = (
-        <TasksList startSlice={0} endSlice={9}/>
+        <TasksList startSlice={0} endSlice={8}/>
         )
     }
 
