@@ -37,7 +37,7 @@ Aplikację została wykonana przez uczestników kursu pod okiem dwóch mentorów
 
 ### Demo
 
-Wersja demonstracyjna aplikacji jest dostępna [TUTAJ]().
+Wersja demonstracyjna aplikacji jest dostępna [TUTAJ](https://coders-camp2021-project-react-node-e-wolontariat-one.vercel.app/).
 ### Cel projektu
 
 Celem projektu było napisanie aplikacji wykorzystującej wiedzę nabytą z drugiego działu kursu tj. z następujących technologii: React, Redux-Toolkit, Material-UI.
