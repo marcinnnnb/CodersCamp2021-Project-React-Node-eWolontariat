@@ -101,8 +101,6 @@ Aby uruchomić aplikację na lokalnej maszynie, wykonaj następujące kroki:
 1. Zainstaluj zależności za pomocą komendy: `npm install`
 2. Wystartuj serwer developerski `npm run dev`
 
-Aplikacja będzie dostępna pod adresem [TUTAJ](https://github.com/marcinnnnb/CodersCamp2021-Project-React-Node-eWolontariat/new/main)
-
 Kod produkcyjny aplikacji znajduje się w katalogu `src`.
 
 ### Organizacja pracy
