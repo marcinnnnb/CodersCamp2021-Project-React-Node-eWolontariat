@@ -43,8 +43,8 @@ const SectionHero = () => {
         <StyledBox id={"section-hero"}>
             <Box className={"box-responsive"} display={'flex'} padding={'3rem'} justifyContent={'space-evenly'}>
                 <Box alignSelf={'center'}>
-                    <Box component="img" height={'80px'} alt="Logo pomocny.pl" src={LogoPomocny}/>
-                    <Typography variant='body1' paragraph gutterBottom={true} style={{paddingRight: "2rem"}} >
+                    <Box className="logo" component="img" height={'80px'} alt="Logo pomocny.pl" src={LogoPomocny}/>
+                    <Typography variant='body1' paragraph gutterBottom={true}>
                         Miejsce spotkań dla tych, którzy potrzebują <br/> pomocy i dla tych, którzy tej pomocy chętnie udzielą.
                     </Typography>
                     <Button 

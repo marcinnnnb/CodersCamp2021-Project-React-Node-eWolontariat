@@ -36,6 +36,13 @@ const StyledCard = styled(Card)(({ theme }) => ({
     },
 }));
 
+const StyledTitle = styled(Typography)(({ theme }) => ({
+    [theme.breakpoints.down('md')]: {
+        fontSize: '1.6rem',
+        lineHeight: "1.4"
+    },
+}));
+
 const SectionHowItWorks = () => {
     let navigate = useNavigate();
     return(
@@ -46,7 +53,7 @@ const SectionHowItWorks = () => {
             justifyContent={"center"}
             alignItems={"center"}
         >
-            <Typography variant="h1">Zobacz jak to działa</Typography>
+            <StyledTitle variant="h1">Zobacz jak to działa</StyledTitle>
             <StyledBox>
                 <StyledCard raised={true} >
                         <Box 

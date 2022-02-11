@@ -13,6 +13,13 @@ const StyledBox = styled(Box)(({ theme }) => ({
     },
   }));
 
+const StyledTitle = styled(Typography)(({ theme }) => ({
+    [theme.breakpoints.down('md')]: {
+        fontSize: '1.6rem',
+        lineHeight: "1.4"
+    },
+}));
+
 const SectionNewTasks = () => {
     let navigate = useNavigate();
           
@@ -21,7 +28,7 @@ const SectionNewTasks = () => {
             height = {"100%"}
             alignItems={"center"}
         >
-            <Typography variant="h1">Zobacz jakiej pomocy potrzebują inni</Typography>
+            <StyledTitle  variant="h1">Zobacz jakiej pomocy potrzebują inni</StyledTitle>
             <TasksList startSlice={0} endSlice={6}/>
             <Box align={"center"}>
                 <Button 

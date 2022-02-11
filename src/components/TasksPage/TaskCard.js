@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 
 const StyledCard = styled(Card)(({ theme }) => ({
     position: "relative", 
-    height: "270px", 
+    height: "300px",
     maxWidth: "280px", 
     padding: '2.4rem 0.4rem', 
     margin: '1.6rem', 
@@ -17,10 +17,20 @@ const StyledCard = styled(Card)(({ theme }) => ({
     justifyContent:'flex-start', 
     alignItems: 'center', 
     borderRadius:'12px',
+    '& h4': {
+        paddingTop: '1rem',
+        borderTop: "1px solid #eee",
+    },
+    '& .describe': {
+        margin:"2rem 0",  
+    },
     [theme.breakpoints.down('md')]: {
       margin: '2rem 0.6rem',
+      height: "auto",
     },
 }));
+
+
 
 function TaskCard(task){
     let navigate = useNavigate();
@@ -46,10 +56,10 @@ function TaskCard(task){
                         {task.task.categories}
                 </CustomTypography>
                 <CardContent>
-                    <Typography variant='h4' style={{margin: "0.6rem 0", position: "absolute", padding: "0.4rem 1.2rem 0.4rem 0", top:"110px", left: "24px", borderTop: "1px solid #eee"}}>
+                    <Typography variant='h4'>
                         {task.task.title}
                     </Typography>
-                    <Typography variant='caption' paragraph gutterBottom={true} style={{margin:"1rem",  position: "absolute", top:"160px", left: "10px"}}>
+                    <Typography className={"describe"} variant='caption' paragraph gutterBottom={true}>
                         {task.task.action_short_description}
                     </Typography>
                 </CardContent>    

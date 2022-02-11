@@ -118,7 +118,7 @@ const TasksList = ({startSlice,endSlice}) => {
             </FormControl>
             </Box>
               {content}
-              <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
+              <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 2rem 4rem 2rem'} justifyContent={'center'}>
                   {getTasksCards(isFilterTasks, orderedTasks, selectValue, filteredTasks, startSlice, endSlice)}
               </Box>
          </Box>
