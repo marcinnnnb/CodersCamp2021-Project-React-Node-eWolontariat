@@ -1,22 +1,29 @@
 import { Box, Button, Typography } from "@material-ui/core";
 import ArrowRightRounded from '@material-ui/icons/ArrowRightRounded';
-import { useNavigate, Route, Routes} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import TasksList from '../../Task/TasksList';
+import { styled } from '@mui/material/styles';
+
+const StyledBox = styled(Box)(({ theme }) => ({
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    [theme.breakpoints.down('md')]: {
+      
+    },
+  }));
 
 const SectionNewTasks = () => {
     let navigate = useNavigate();
           
     return(
-        <Box id={"section-new-tasks"}
+        <StyledBox id={"section-new-tasks"}
             height = {"100%"}
             alignItems={"center"}
         >
             <Typography variant="h1">Zobacz jakiej pomocy potrzebują inni</Typography>
-            <TasksList startSlice={0} endSlice={8}/>
+            <TasksList startSlice={0} endSlice={6}/>
             <Box align={"center"}>
-                <Routes>
-                    <Route path="/TasksPage"/>
-                </Routes>
                 <Button 
                     variant="outlined" 
                     type="button" 
@@ -29,7 +36,7 @@ const SectionNewTasks = () => {
                     Wszystkie zadania
                 </Button>
             </Box>
-        </Box>
+        </StyledBox>
     ) 
 }
 

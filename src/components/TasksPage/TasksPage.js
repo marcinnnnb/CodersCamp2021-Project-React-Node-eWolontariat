@@ -1,6 +1,6 @@
 import { Button, Box, Typography } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CasinoIcon from '@material-ui/icons/Casino';
 import { useNavigate } from 'react-router';
 import TasksList from '../Task/TasksList';
@@ -34,21 +34,11 @@ const TasksPage = () => {
         <TasksList startSlice={0} endSlice={8}/>
         )
     }
-
-    function ScrollToTopOnMount() {
-      useEffect(() => {
-        window.scrollTo(0, 0);
-      }, []);
-    
-      return null;
-    }
-
     return(
         <Box  id={"page-all-tasks"}
               height = {"100%"}
               alignItems={"center"}
               >
-               <ScrollToTopOnMount />
                <Button 
               variant={"contained"} 
               size={"large"}

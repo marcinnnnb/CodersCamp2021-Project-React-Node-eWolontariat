@@ -3,11 +3,29 @@ import CustomAvatar from "../../theme/CustomAvatar";
 import CustomTypography from "../../theme/CustomTypography";
 import { useNavigate } from 'react-router';
 import setCategoryIcon from "../../theme/setCategoryIcon";
+import { styled } from '@mui/material/styles';
+
+const StyledCard = styled(Card)(({ theme }) => ({
+    position: "relative", 
+    height: "270px", 
+    maxWidth: "280px", 
+    padding: '2.4rem 0.4rem', 
+    margin: '1.6rem', 
+    width: '100%', 
+    display:'flex', 
+    flexDirection:'column', 
+    justifyContent:'flex-start', 
+    alignItems: 'center', 
+    borderRadius:'12px',
+    [theme.breakpoints.down('md')]: {
+      margin: '2rem 0.6rem',
+    },
+}));
 
 function TaskCard(task){
     let navigate = useNavigate();
     return(
-            <Card raised={true} style={{ position: "relative", height: "270px", maxWidth: "280px", padding: '2.4rem 0.4rem', margin: '1.6rem', width: '22%', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems: 'center', borderRadius:'12px'}}>
+            <StyledCard raised={true}>
                 <CustomAvatar 
                 variant={"avatarBackground"} 
                 backgroundcolor={setCategoryIcon(task.task.categories[0])[1]} >
@@ -50,7 +68,7 @@ function TaskCard(task){
                             >Pomagam
                         </Button>
                     </CardActions> 
-            </Card>
+            </StyledCard>
     )
 }
 

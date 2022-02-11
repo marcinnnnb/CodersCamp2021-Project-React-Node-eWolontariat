@@ -58,8 +58,8 @@ const TasksList = ({startSlice,endSlice}) => {
         <Box display={"flex"} justifyContent={"center"} style={{margin: "4rem 0 1rem"}}>
               {searchInput}
         </Box>
-        <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem"} alignItems={"center"} flexWrap={"wrap"}>
-                    <Typography variant="subtitle2" align={"left"} style={{marginTop: "1rem"}}>Najpopularniejsze <br/>kategorie:</Typography> 
+        <Typography variant="subtitle2" align={"center"} style={{marginTop: "1rem"}}>Najpopularniejsze kategorie:</Typography>
+        <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"0 0 2rem 0"} margin={"1rem"} alignItems={"center"} flexWrap={"wrap"}>
                     <CustomButton 
                         variant="outlined" 
                         style={{marginTop: "1rem"}}

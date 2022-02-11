@@ -17,7 +17,7 @@ function ScrollToTopOnMount() {
 const HomePage = () => {
     return(
         <>
-         <ScrollToTopOnMount />
+        <ScrollToTopOnMount />
         <SectionHero/>
         <SectionHowItWorks/>
         <SectionNewTasks/>
