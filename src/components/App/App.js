@@ -17,7 +17,6 @@ import AppFooter from './AppFooter';
 import { createBrowserHistory } from "history";
 import CategoryPage from "../TasksPage/CategoryPage.js";
 import Dialog from '../common/Dialog/Dialog';
-
 export function App() {
 
     return (
