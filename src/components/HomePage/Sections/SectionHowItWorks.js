@@ -3,6 +3,38 @@ import ImgFindCard from '../../../assets/img/find-volunteer.svg';
 import ImgBeVolunteer from '../../../assets/img/be-volunteer.svg';
 import CustomButton from "../../../theme/CustomButton";
 import { useNavigate } from 'react-router-dom';
+import { styled } from '@mui/material/styles';
+
+const StyledBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    padding: '2rem 4rem',
+    justifyContent: 'space-evenly',
+    [theme.breakpoints.down('md')]: {
+        flexDirection: "column",
+        padding: '0.8rem',
+    },
+  }));
+
+const StyledCard = styled(Card)(({ theme }) => ({
+    padding: '3rem 2rem', 
+    height: '380px', 
+    borderRadius:'12px', 
+    display:'flex', 
+    flexDirection:'column', 
+    justifyContent:'flex-end', 
+    alignItems: 'center',
+    margin: "2rem 4rem",
+    [theme.breakpoints.down('md')]: {
+        margin: '0 0 2rem 0',
+        padding: '1rem 1rem 2rem 1rem',
+        '& h2': {
+            fontSize: "1.4rem"
+        },
+        '& p': {
+            fontSize: "0.8rem"
+        }
+    },
+}));
 
 const SectionHowItWorks = () => {
     let navigate = useNavigate();
@@ -15,8 +47,8 @@ const SectionHowItWorks = () => {
             alignItems={"center"}
         >
             <Typography variant="h1">Zobacz jak to działa</Typography>
-            <Box display={'flex'} py={'4rem'} justifyContent={'space-evenly'}>
-                <Card raised={true} style={{ padding: '3rem 2rem', height: '380px', borderRadius:'12px', display:'flex', flexDirection:'column', justifyContent:'flex-end', alignItems: 'center'}}>
+            <StyledBox>
+                <StyledCard raised={true} >
                         <Box 
                             component={'img'}
                             alt=""
@@ -39,12 +71,12 @@ const SectionHowItWorks = () => {
                             Stwórz zadanie
                         </Button>
                     </CardActions>
-                </Card>
-                <Card raised={true} style={{ padding: '3rem 2rem', height: '380px', display:'flex', flexDirection:'column', justifyContent:'flex-end', alignItems: 'center'}}>
+                </StyledCard>
+                <StyledCard raised={true} >
                         <Box
                             component={'img'}
                             alt=""
-                            maxHeight='193px'
+                            maxHeight='163px'
                             src={ImgBeVolunteer}
                             title="Znajdź wolontariusza"
                             alignSelf={'center'}
@@ -72,8 +104,8 @@ const SectionHowItWorks = () => {
                             Załóż profil
                         </CustomButton>
                     </CardActions>
-                </Card>
-            </Box>
+                </StyledCard>
+            </StyledBox>
         </Box>
     )
 }
