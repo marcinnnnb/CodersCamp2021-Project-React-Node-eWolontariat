@@ -37,7 +37,7 @@ Aplikację została wykonana przez uczestników kursu pod okiem dwóch mentorów
 
 ### Demo
 
-Wersja demonstracyjna aplikacji jest dostępna [TUTAJ]().
+Wersja demonstracyjna aplikacji jest dostępna [TUTAJ](https://coders-camp2021-project-react-node-e-wolontariat-one.vercel.app/).
 ### Cel projektu
 
 Celem projektu było napisanie aplikacji wykorzystującej wiedzę nabytą z drugiego działu kursu tj. z następujących technologii: React, Redux-Toolkit, Material-UI.
@@ -100,8 +100,6 @@ Aby uruchomić aplikację na lokalnej maszynie, wykonaj następujące kroki:
 
 1. Zainstaluj zależności za pomocą komendy: `npm install`
 2. Wystartuj serwer developerski `npm run dev`
-
-Aplikacja będzie dostępna pod adresem [TUTAJ](https://github.com/marcinnnnb/CodersCamp2021-Project-React-Node-eWolontariat/new/main)
 
 Kod produkcyjny aplikacji znajduje się w katalogu `src`.
 
