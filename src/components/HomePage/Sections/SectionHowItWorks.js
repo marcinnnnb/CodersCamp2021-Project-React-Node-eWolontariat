@@ -45,6 +45,15 @@ const StyledTitle = styled(Typography)(({ theme }) => ({
 
 const SectionHowItWorks = () => {
     let navigate = useNavigate();
+
+    const handleClickToTaskForm = (e)=>{
+        e.preventDefault();
+        navigate('/TaskForm');
+        }
+    const handleClickVolunteerForm = (e)=>{
+        e.preventDefault();
+        navigate('/VolunteerForm');
+        }
     return(
         <Box id={"section-how-it-works"}
             padding={2}
@@ -55,7 +64,7 @@ const SectionHowItWorks = () => {
         >
             <StyledTitle variant="h1">Zobacz jak to działa</StyledTitle>
             <StyledBox>
-                <StyledCard raised={true} >
+                <StyledCard id="make-task-card" raised={true} >
                         <Box 
                             component={'img'}
                             alt=""
@@ -74,12 +83,12 @@ const SectionHowItWorks = () => {
                         </Typography>
                         </CardContent>
                     <CardActions>
-                        <Button size="medium" variant="contained" color="primary" href={"/TaskForm"}>
+                        <Button size="medium" variant="contained" color="primary" onClick={handleClickToTaskForm} >
                             Stwórz zadanie
                         </Button>
                     </CardActions>
                 </StyledCard>
-                <StyledCard raised={true} >
+                <StyledCard id="be-volunteer-card" raised={true} >
                         <Box
                             component={'img'}
                             alt=""
@@ -103,10 +112,7 @@ const SectionHowItWorks = () => {
                             variant="contained" 
                             color='tertiary' 
                             type="button" 
-                            onClick={(e)=>{
-                                e.preventDefault();
-                                navigate('/VolunteerForm');
-                                }}
+                            onClick={handleClickVolunteerForm}
                         >
                             Załóż profil
                         </CustomButton>

@@ -30,21 +30,27 @@ const StyledCard = styled(Card)(({ theme }) => ({
     },
 }));
 
-
-
 function TaskCard(task){
     let navigate = useNavigate();
+    const taskIcon = setCategoryIcon(task.task.categories[0])[0];
+    const iconColor = setCategoryIcon(task.task.categories[0])[1];
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        navigate(`/TaskPage/${task.task.id}`);
+    }
+
     return(
             <StyledCard raised={true}>
                 <CustomAvatar 
                 variant={"avatarBackground"} 
-                backgroundcolor={setCategoryIcon(task.task.categories[0])[1]} >
-                    {setCategoryIcon(task.task.categories[0])[0]}
+                backgroundcolor={iconColor} >
+                    {taskIcon}
                 </CustomAvatar>
                 <CustomTypography 
                     variantcolor={"typographycolor"} 
                     margin={"4rem 0"} 
-                    color= {setCategoryIcon(task.task.categories[0])[1]}
+                    color= {iconColor}
                     style={{
                         textTransform: "uppercase", 
                         fontSize: "0.8rem", 
@@ -71,10 +77,7 @@ function TaskCard(task){
                             }} 
                             variant={"contained"} 
                             color={"secondary"} 
-                            onClick={(e)=>{
-                                e.preventDefault();
-                                navigate(`/TaskPage/${task.task.id}`);
-                            }}
+                            onClick={handleClick}
                             >Pomagam
                         </Button>
                     </CardActions> 

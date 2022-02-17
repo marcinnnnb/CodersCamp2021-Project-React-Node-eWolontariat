@@ -2,50 +2,269 @@
 
 exports[`VolunteersList Should render correctly 1`] = `
 <Styled(MuiBox)>
-  <div
-    key="item-0"
+  <WithStyles(ForwardRef(Typography))
+    align="center"
+    style={
+      Object {
+        "marginTop": "1rem",
+      }
+    }
+    variant="subtitle2"
   >
-    <Component />
-  </div>
-  <div
-    key="item-1"
+    Najpopularniejsze kategorie:
+  </WithStyles(ForwardRef(Typography))>
+  <Styled(MuiBox)
+    display="flex"
+    flexWrap="wrap"
+    gridColumnGap="2rem"
+    id="filtering-buttons"
+    justifyContent="center"
+    margin="1rem"
+    padding="0 0 2rem 0"
   >
-    <Component />
-  </div>
-  <div
-    key="item-2"
+    <ForwardRef(CustomButton)
+      color="primary"
+      onClick={[Function]}
+      style={
+        Object {
+          "marginTop": "1rem",
+        }
+      }
+      variant="outlined"
+    >
+      Wszystkie
+    </ForwardRef(CustomButton)>
+    <ForwardRef(CustomButton)
+      color="primary"
+      id="Korepetycje"
+      key="item-0"
+      onClick={[Function]}
+      startIcon={<Memo />}
+      style={
+        Object {
+          "marginTop": "1rem",
+        }
+      }
+      variant="contained"
+    >
+      <WithStyles(ForwardRef(Divider))
+        flexItem={true}
+        orientation="vertical"
+        style={
+          Object {
+            "backgroundColor": "#eee",
+            "marginRight": "10px",
+          }
+        }
+      />
+       
+      Korepetycje
+    </ForwardRef(CustomButton)>
+    <ForwardRef(CustomButton)
+      color="primary"
+      id="Opieka nad dziećmi"
+      key="item-1"
+      onClick={[Function]}
+      startIcon={<Memo />}
+      style={
+        Object {
+          "marginTop": "1rem",
+        }
+      }
+      variant="contained"
+    >
+      <WithStyles(ForwardRef(Divider))
+        flexItem={true}
+        orientation="vertical"
+        style={
+          Object {
+            "backgroundColor": "#eee",
+            "marginRight": "10px",
+          }
+        }
+      />
+       
+      Opieka nad dziećmi
+    </ForwardRef(CustomButton)>
+    <ForwardRef(CustomButton)
+      color="secondary"
+      id="Strony www"
+      key="item-2"
+      onClick={[Function]}
+      startIcon={<Memo />}
+      style={
+        Object {
+          "marginTop": "1rem",
+        }
+      }
+      variant="contained"
+    >
+      <WithStyles(ForwardRef(Divider))
+        flexItem={true}
+        orientation="vertical"
+        style={
+          Object {
+            "backgroundColor": "#eee",
+            "marginRight": "10px",
+          }
+        }
+      />
+       
+      Strony www
+    </ForwardRef(CustomButton)>
+    <ForwardRef(CustomButton)
+      color="primary"
+      id="Excel"
+      key="item-3"
+      onClick={[Function]}
+      startIcon={<Memo />}
+      style={
+        Object {
+          "marginTop": "1rem",
+        }
+      }
+      variant="contained"
+    >
+      <WithStyles(ForwardRef(Divider))
+        flexItem={true}
+        orientation="vertical"
+        style={
+          Object {
+            "backgroundColor": "#eee",
+            "marginRight": "10px",
+          }
+        }
+      />
+       
+      Excel
+    </ForwardRef(CustomButton)>
+  </Styled(MuiBox)>
+  <Styled(MuiBox)
+    alignItems="center"
+    display="flex"
+    flexWrap="wrap"
+    justifyContent="space-evenly"
   >
-    <Component />
-  </div>
-  <div
-    key="item-3"
-  >
-    <Component />
-  </div>
-  <div
-    key="item-4"
-  >
-    <Component />
-  </div>
-  <div
-    key="item-5"
-  >
-    <Component />
-  </div>
-  <div
-    key="item-6"
-  >
-    <Component />
-  </div>
-  <div
-    key="item-7"
-  >
-    <Component />
-  </div>
-  <div
-    key="item-8"
-  >
-    <Component />
-  </div>
+    <ForwardRef(FormControl)
+      style={
+        Object {
+          "bottom": "10px",
+        }
+      }
+      variant="standard"
+    >
+      <ForwardRef(InputLabel)>
+        Wybierz kategorię
+      </ForwardRef(InputLabel)>
+      <ForwardRef(Select)
+        label="Wybierz kategorię"
+        onChange={[Function]}
+        style={
+          Object {
+            "fontSize": "1rem",
+            "width": "260px",
+          }
+        }
+        value=""
+      >
+        <ForwardRef(MenuItem)
+          style={
+            Object {
+              "fontSize": "1rem",
+            }
+          }
+          value=""
+        >
+          <em>
+            Wszystkie kategorie
+          </em>
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="Strony www"
+          style={
+            Object {
+              "fontSize": "1rem",
+            }
+          }
+          value="Strony www"
+        >
+          Strony www
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="Excel"
+          style={
+            Object {
+              "fontSize": "1rem",
+            }
+          }
+          value="Excel"
+        >
+          Excel
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="Korepetycje"
+          style={
+            Object {
+              "fontSize": "1rem",
+            }
+          }
+          value="Korepetycje"
+        >
+          Korepetycje
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="Opieka nad dziećmi"
+          style={
+            Object {
+              "fontSize": "1rem",
+            }
+          }
+          value="Opieka nad dziećmi"
+        >
+          Opieka nad dziećmi
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="Wyprowadzanie psów"
+          style={
+            Object {
+              "fontSize": "1rem",
+            }
+          }
+          value="Wyprowadzanie psów"
+        >
+          Wyprowadzanie psów
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="Fotografia"
+          style={
+            Object {
+              "fontSize": "1rem",
+            }
+          }
+          value="Fotografia"
+        >
+          Fotografia
+        </ForwardRef(MenuItem)>
+        <ForwardRef(MenuItem)
+          key="Tłumaczenia"
+          style={
+            Object {
+              "fontSize": "1rem",
+            }
+          }
+          value="Tłumaczenia"
+        >
+          Tłumaczenia
+        </ForwardRef(MenuItem)>
+      </ForwardRef(Select)>
+    </ForwardRef(FormControl)>
+  </Styled(MuiBox)>
+  <Styled(MuiBox)
+    display="flex"
+    flexDirection="row"
+    flexWrap="wrap"
+    justifyContent="center"
+    padding="0 1rem 4rem 1rem"
+  />
 </Styled(MuiBox)>
 `;

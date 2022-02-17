@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionInNumbers Should render SectionInNumbers correctly 1`] = `
+<Styled(MuiBox)
+  alignItems="center"
+  display="flex:"
+  height="100%"
+  id="section-in-numbers"
+  justifyContent="center"
+>
+  <Styled(MuiBox)
+    sx={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+      }
+    }
+  >
+    <Styled(MuiBox)
+      alt="Logo pomocny.pl"
+      component="img"
+      height="80px"
+      src="logo-pomocny.svg"
+    />
+    <WithStyles(ForwardRef(Typography))
+      style={
+        Object {
+          "marginTop": 0,
+        }
+      }
+      variant="h1"
+    >
+      w liczbach
+    </WithStyles(ForwardRef(Typography))>
+  </Styled(MuiBox)>
+  <Styled(Styled(MuiBox))>
+    <Styled(MuiBox)
+      alignSelf="center"
+      textAlign="center"
+    >
+      <ForwardRef(BigNumber)
+        end={100}
+      />
+      <WithStyles(ForwardRef(Typography))
+        variant="body1"
+      >
+        Tylu osobom pomogliśmy
+      </WithStyles(ForwardRef(Typography))>
+    </Styled(MuiBox)>
+    <Styled(MuiBox)
+      alignSelf="center"
+      textAlign="center"
+    >
+      <ForwardRef(BigNumber)
+        end={1230}
+      />
+      <WithStyles(ForwardRef(Typography))
+        variant="body1"
+      >
+        Tyle zadań zakończyło się sukcesem
+      </WithStyles(ForwardRef(Typography))>
+    </Styled(MuiBox)>
+    <Styled(MuiBox)
+      alignSelf="center"
+      textAlign="center"
+    >
+      <ForwardRef(BigNumber)
+        end={560}
+      />
+      <WithStyles(ForwardRef(Typography))
+        variant="body1"
+      >
+        Tyle zgłosiło się wolontariuszy
+      </WithStyles(ForwardRef(Typography))>
+    </Styled(MuiBox)>
+  </Styled(Styled(MuiBox))>
+  <Styled(Styled(MuiBox))>
+    <Styled(MuiBox)
+      alignItems="center"
+      alignSelf="center"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+    >
+      <Styled(WithStyles(ForwardRef(Typography)))
+        align="center"
+        paragraph={true}
+        variant="body1"
+      >
+        Imponujące? Dołącz do nas już dziś i bądź pomocny!
+      </Styled(WithStyles(ForwardRef(Typography)))>
+      <ForwardRef(CustomButton)
+        color="tertiary"
+        href="/VolunteerForm"
+        size="medium"
+        style={
+          Object {
+            "maxWidth": "50%",
+          }
+        }
+        variant="contained"
+      >
+        Zostań wolontariuszem
+      </ForwardRef(CustomButton)>
+    </Styled(MuiBox)>
+    <Styled(MuiBox)
+      alignSelf="flex-end"
+      alt=""
+      component="img"
+      maxWidth="100px"
+      src="hand-peace-solid.svg"
+    />
+    <Styled(MuiBox)
+      alt=""
+      component="img"
+      maxWidth="460px"
+      src="globe-mask.svg"
+    />
+  </Styled(Styled(MuiBox))>
+</Styled(MuiBox)>
+`;

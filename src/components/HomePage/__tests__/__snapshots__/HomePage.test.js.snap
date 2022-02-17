@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage Should render TasksPage correctly 1`] = `
+<Fragment>
+  <SectionHero />
+  <SectionHowItWorks />
+  <SectionNewTasks />
+  <SectionTheBestVolunteers />
+  <SectionHowFindHelp />
+  <SectionInNumbers />
+</Fragment>
+`;

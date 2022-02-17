@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionHero Should render SectionHero correctly 1`] = `
+<Styled(Styled(MuiBox))
+  id="section-hero"
+>
+  <Styled(MuiBox)
+    className="box-responsive"
+    display="flex"
+    justifyContent="space-evenly"
+    padding="3rem"
+  >
+    <Styled(MuiBox)
+      alignSelf="center"
+    >
+      <Styled(MuiBox)
+        alt="Logo pomocny.pl"
+        className="logo"
+        component="img"
+        height="80px"
+        src="logo-pomocny.svg"
+      />
+      <WithStyles(ForwardRef(Typography))
+        gutterBottom={true}
+        paragraph={true}
+        variant="body1"
+      >
+        Miejsce spotkań dla tych, którzy potrzebują 
+        <br />
+         pomocy i dla tych, którzy tej pomocy chętnie udzielą.
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Button))
+        color="secondary"
+        href="#section-how-it-works"
+        size="large"
+        variant="contained"
+      >
+        Zobacz jak to działa
+      </WithStyles(ForwardRef(Button))>
+    </Styled(MuiBox)>
+    <Styled(MuiBox)
+      alt=""
+      className="main-img"
+      component="img"
+      maxWidth="400px"
+      src="hero-img.svg"
+      style={
+        Object {
+          "paddingLeft": "2rem",
+        }
+      }
+    />
+  </Styled(MuiBox)>
+</Styled(Styled(MuiBox))>
+`;

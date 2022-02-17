@@ -1,22 +1,15 @@
-import { Button, Typography, Container, Box, Avatar, Divider } from '@material-ui/core'
+import { Button, Typography, Container, Box, Avatar } from '@material-ui/core'
 import { useNavigate } from 'react-router';
 import CustomButton from '../../theme/CustomButton';
 import { selectAllVolunteers, selectVolunteerId } from '../../store/volunteerSlice';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { ListItemButton } from '@mui/material';
 import CustomTypography from '../../theme/CustomTypography';
-import { useParams } from 'react-router-dom';
-import CustomAvatar from '../../theme/CustomAvatar';
-import setCategoryIcon from '../../theme/setCategoryIcon';
-import { selectAllTasks, selectTasks, selectTasksTitle } from '../../store/taskSlice';
 
 const UserProfile = () => { 
   let navigate = useNavigate();
-  const dispatch = useDispatch();
   const volunteersList = useSelector(selectAllVolunteers).volunteers;
   const volunteer = selectVolunteerId(volunteersList, 3);
-  const tasksList = useSelector(selectAllTasks).tasks;
-  let actionTitle;
  
     return (
 

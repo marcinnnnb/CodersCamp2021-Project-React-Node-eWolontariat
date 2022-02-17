@@ -43,14 +43,14 @@ const TasksList = ({startSlice,endSlice}) => {
        content = <Box style={{color: 'red'}} padding={2} align={"center"}>ERROR: {error}</Box>;
   }  
   
-  function getFilteredTextFromButton(text) {
+  const getFilteredTextFromButton=(text)=> {
     return (
         tasksList.tasks?.filter(element => 
               element.categories.includes(text))
           )
     };
 
-    let thePopularCategoriesButtons = setTasksRatingButtons(orderedTasks).slice(0,4);
+  let thePopularCategoriesButtons = setTasksRatingButtons(orderedTasks).slice(0,4);
 
     return (
 

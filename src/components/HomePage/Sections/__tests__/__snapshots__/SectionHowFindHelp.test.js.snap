@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionHowFindHelp Should render SectionHowFindHelp correctly 1`] = `
+<Styled(MuiBox)
+  id="section-how-find-help"
+>
+  <Styled(Styled(MuiBox))>
+    <Styled(WithStyles(ForwardRef(Typography)))
+      variant="h1"
+    >
+      Jak znaleźć pomoc na pomocny.pl
+    </Styled(WithStyles(ForwardRef(Typography)))>
+    <Styled(WithStyles(ForwardRef(Typography)))
+      align="justify"
+      paragraph={true}
+      variant="body1"
+    >
+      Pomocny.pl to nie tylko strona z ogłoszeniami dotyczącymi wolontariatu. To miejsce spotkań ludzi, którzy potrzebują przestrzeni na rozmowę o tym jak można im pomóc. Jeżeli jesteś w trudnej sytuacji i jest coś, w czym można Cię wesprzeć, możesz stworzyć nowe zadanie lub odezwać się bezpośrednio do któregoś z wolontariuszy.
+    </Styled(WithStyles(ForwardRef(Typography)))>
+    <Styled(Styled(MuiBox)) />
+    <Styled(Styled(MuiBox))>
+      <Styled(MuiBox)
+        alt=""
+        component="img"
+        maxHeight="360px"
+        src="planning.svg"
+      />
+      <Styled(MuiBox)
+        alignSelf="center"
+      >
+        <Styled(MuiBox)
+          m={3}
+        >
+          <Styled(WithStyles(ForwardRef(Typography)))
+            style={
+              Object {
+                "fontWeight": "700",
+              }
+            }
+          >
+            Krok 1.
+          </Styled(WithStyles(ForwardRef(Typography)))>
+          <Styled(WithStyles(ForwardRef(Typography)))
+            paragraph={true}
+          >
+            Aby rozpocząć kliknij przycisk Stwórz zadanie.
+          </Styled(WithStyles(ForwardRef(Typography)))>
+          <WithStyles(ForwardRef(Button))
+            color="primary"
+            href="/TaskForm"
+            size="medium"
+            variant="contained"
+          >
+            Stwórz zadanie
+          </WithStyles(ForwardRef(Button))>
+        </Styled(MuiBox)>
+        <Styled(MuiBox)
+          m={3}
+        >
+          <Styled(WithStyles(ForwardRef(Typography)))
+            style={
+              Object {
+                "fontWeight": "700",
+              }
+            }
+          >
+            Krok 2.
+          </Styled(WithStyles(ForwardRef(Typography)))>
+          <Styled(WithStyles(ForwardRef(Typography)))
+            paragraph={true}
+          >
+            Zostaniesz przekierowany do formularza, który poprowadzi Cię dalej. W podpowiednich miejscach wpisz najważniejsze informacje dotyczące tworzonego przez Ciebie zadania: krótki opis tego, czego potrzebujesz oraz ilu wolontariuszy może się w to zaangażować. Możesz dodać również zdjęcie.
+          </Styled(WithStyles(ForwardRef(Typography)))>
+        </Styled(MuiBox)>
+        <Styled(MuiBox)
+          m={3}
+        >
+          <Styled(WithStyles(ForwardRef(Typography)))
+            style={
+              Object {
+                "fontWeight": "700",
+              }
+            }
+          >
+            Krok 3.
+          </Styled(WithStyles(ForwardRef(Typography)))>
+          <Styled(WithStyles(ForwardRef(Typography)))
+            paragraph={true}
+          >
+            Kiedy wolontariusz zgłosi się do Twojej akcji, zostaniesz o tym powiadomion_ mailowo.
+          </Styled(WithStyles(ForwardRef(Typography)))>
+        </Styled(MuiBox)>
+      </Styled(MuiBox)>
+    </Styled(Styled(MuiBox))>
+  </Styled(Styled(MuiBox))>
+</Styled(MuiBox)>
+`;

@@ -56,7 +56,7 @@ const TasksPage = () => {
             </Button>
               <Typography variant='h1' align={"center"} style={{margin: "1rem 0 2rem 0"}}>Wszystkie zadania</Typography>
             {content}
-            <Box  align={"center"} marginBottom={"2rem"}>
+            <Box id="show-more-card-button" align={"center"} marginBottom={"2rem"}>
                 {showButton && <Button onClick={handleShowMoreTasks} variant="outlined" endIcon={<ArrowDownwardIcon/>}>Załaduj więcej</Button>}
             </Box>
         </Box>
