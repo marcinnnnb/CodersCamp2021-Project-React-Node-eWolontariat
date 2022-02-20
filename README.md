@@ -1,4 +1,4 @@
-# Coders Camp 2020/2021 | Projekt Zespołowy | React
+# CodersCamp 2021/2022 | Projekt Zespołowy | React
 
 - [Zespół projektowy](#zespół-projektowy)
 - [E-Wolontariat](#e-wolontariat)
