@@ -3,12 +3,25 @@ import TelegramIcon from '@material-ui/icons/Telegram';
 import { Rating } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import CustomButton from "../../theme/CustomButton";
+import { styled } from '@mui/material/styles';
+
+const StyledCard = styled(Card)(({ theme }) => ({
+    padding: '1.4rem 1.5rem', 
+    margin: '1.6rem', 
+    height: '420px', 
+    width: '280px', 
+    display:'flex', 
+    flexDirection:'column',  
+    justifyContent:'center', 
+    alignItems: 'center', 
+    borderRadius:'12px',   
+  }));
 
 function VolunteerCard(volunteer){
     let navigate = useNavigate();
 
     return(
-        <Card key={`volunteer-${volunteer.id}`} raised={true} style={{ padding: '1.4rem 1.5rem', margin: '1.6rem', height: '420px', width: '280px', display:'flex', flexDirection:'column',  justifyContent:'center', alignItems: 'center', borderRadius:'12px'}}>
+        <StyledCard key={`volunteer-${volunteer.id}`} raised={true}>
             <CardActionArea style = {{borderRadius:"50%", width: "150px", height: "150px", display: "flex"}} onClick={()=>{navigate(`/VolunteerPage/${volunteer.nick}`)}}>
                 <CardMedia
                     component={'img'}
@@ -42,7 +55,7 @@ function VolunteerCard(volunteer){
                     }}
                     >Zobacz profil</CustomButton>
             </CardActions>
-        </Card>
+        </StyledCard>
     )
 }
 export default VolunteerCard;

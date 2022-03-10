@@ -3,20 +3,54 @@ import CustomAvatar from "../../theme/CustomAvatar";
 import CustomTypography from "../../theme/CustomTypography";
 import { useNavigate } from 'react-router';
 import setCategoryIcon from "../../theme/setCategoryIcon";
+import { styled } from '@mui/material/styles';
+
+const StyledCard = styled(Card)(({ theme }) => ({
+    position: "relative", 
+    height: "300px",
+    maxWidth: "280px", 
+    padding: '2.4rem 0.4rem', 
+    margin: '1.6rem', 
+    width: '100%', 
+    display:'flex', 
+    flexDirection:'column', 
+    justifyContent:'flex-start', 
+    alignItems: 'center', 
+    borderRadius:'12px',
+    '& h4': {
+        paddingTop: '1rem',
+        borderTop: "1px solid #eee",
+    },
+    '& .describe': {
+        margin:"2rem 0",  
+    },
+    [theme.breakpoints.down('md')]: {
+      margin: '2rem 0.6rem',
+      height: "auto",
+    },
+}));
 
 function TaskCard(task){
     let navigate = useNavigate();
+    const taskIcon = setCategoryIcon(task.task.categories[0])[0];
+    const iconColor = setCategoryIcon(task.task.categories[0])[1];
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        navigate(`/TaskPage/${task.task.id}`);
+    }
+
     return(
-            <Card raised={true} style={{ position: "relative", height: "270px", maxWidth: "280px", padding: '2.4rem 0.4rem', margin: '1.6rem', width: '22%', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems: 'center', borderRadius:'12px'}}>
+            <StyledCard raised={true}>
                 <CustomAvatar 
                 variant={"avatarBackground"} 
-                backgroundcolor={setCategoryIcon(task.task.categories[0])[1]} >
-                    {setCategoryIcon(task.task.categories[0])[0]}
+                backgroundcolor={iconColor} >
+                    {taskIcon}
                 </CustomAvatar>
                 <CustomTypography 
                     variantcolor={"typographycolor"} 
                     margin={"4rem 0"} 
-                    color= {setCategoryIcon(task.task.categories[0])[1]}
+                    color= {iconColor}
                     style={{
                         textTransform: "uppercase", 
                         fontSize: "0.8rem", 
@@ -28,10 +62,10 @@ function TaskCard(task){
                         {task.task.categories}
                 </CustomTypography>
                 <CardContent>
-                    <Typography variant='h4' style={{margin: "0.6rem 0", position: "absolute", padding: "0.4rem 1.2rem 0.4rem 0", top:"110px", left: "24px", borderTop: "1px solid #eee"}}>
+                    <Typography variant='h4'>
                         {task.task.title}
                     </Typography>
-                    <Typography variant='caption' paragraph gutterBottom={true} style={{margin:"1rem",  position: "absolute", top:"160px", left: "10px"}}>
+                    <Typography className={"describe"} variant='caption' paragraph gutterBottom={true}>
                         {task.task.action_short_description}
                     </Typography>
                 </CardContent>    
@@ -43,14 +77,11 @@ function TaskCard(task){
                             }} 
                             variant={"contained"} 
                             color={"secondary"} 
-                            onClick={(e)=>{
-                                e.preventDefault();
-                                navigate(`/TaskPage/${task.task.id}`);
-                            }}
+                            onClick={handleClick}
                             >Pomagam
                         </Button>
                     </CardActions> 
-            </Card>
+            </StyledCard>
     )
 }
 

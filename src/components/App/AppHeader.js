@@ -1,37 +1,53 @@
 import { AppBar, Box, Button, Toolbar } from "@material-ui/core";
 import LogoPomocny from "../../assets/img/logo-pomocny.svg";
+import LogoSignet from "../../assets/img/hand-peace-solid.svg";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { openDialog, FormType } from '../common/Dialog/store/dialogSlice';
 import PersistentDrawerRight from "../Drawer/Drawer";
+import { styled } from '@mui/material/styles';
+import { useMediaQuery } from "@mui/material";
+
+const LogoBox = styled(Box)(({ theme }) => ({
+    height: "46px",
+    cursor: "pointer",
+    padding: "1rem 0",
+}));
+
+const StyledAppBar= styled(AppBar)(({ theme }) => ({
+    [theme.breakpoints.down('md')]: {
+       '& span': {
+           fontSize: '0.8rem'
+       }
+    },
+    
+}));
 
 const AppHeader = () => {
     let navigate = useNavigate();
     let dispatch = useDispatch();
+    const matches = useMediaQuery('(min-width:600px)', { noSsr: true });
+    let buttons;
 
-    return (
-    <header>
-        <AppBar position='static' color={'inherit'}>
-            <Toolbar >
-                    <Box
-                        component="img"
-                        style={{
-                        height: "46px",
-                        cursor: "pointer"
-                        }}
-                        alt="Logo pomocny.pl"
-                        src={LogoPomocny}
-                        padding={"1rem 0"}
-                        type="button" 
+
+    function getLogo() {
+        
+        const logo = <LogoBox className="logo" component="img" alt="Logo pomocny.pl" type="button" 
+                        src={ 
+                            matches ?  LogoPomocny :  LogoSignet
+                        }                     
                         onClick={(e)=>{
                             e.preventDefault();
                             navigate('/');
                         }}
-                    >
-                    </Box>
-                
-                    <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
-                        <Button 
+                    />
+        return logo;
+     };
+
+     function setAppBar() {
+
+              matches ? (
+                buttons = <><Button 
                             style={{height: '2.5rem', marginTop:'1rem'}}
                             variant="contained" 
                             color='primary' 
@@ -59,10 +75,23 @@ const AppHeader = () => {
                         >
                             Zarejestruj się
                         </Button>
+                        </>
+
+        ) : buttons = null;
+        return buttons;
+     };
+    
+    return (
+    <header>
+        <StyledAppBar position='static' color={'inherit'}>
+            <Toolbar >
+                    {getLogo()}
+                    <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
+                        {setAppBar()}
                         <PersistentDrawerRight />
                     </Box>              
             </Toolbar>
-        </AppBar>
+        </StyledAppBar>
     </header>
 )}
 

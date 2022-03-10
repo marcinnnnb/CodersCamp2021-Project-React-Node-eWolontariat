@@ -1,22 +1,15 @@
-import { Button, Typography, Container, Box, Avatar, Divider } from '@material-ui/core'
+import { Button, Typography, Container, Box, Avatar } from '@material-ui/core'
 import { useNavigate } from 'react-router';
 import CustomButton from '../../theme/CustomButton';
 import { selectAllVolunteers, selectVolunteerId } from '../../store/volunteerSlice';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { ListItemButton } from '@mui/material';
 import CustomTypography from '../../theme/CustomTypography';
-import { useParams } from 'react-router-dom';
-import CustomAvatar from '../../theme/CustomAvatar';
-import setCategoryIcon from '../../theme/setCategoryIcon';
-import { selectAllTasks, selectTasks, selectTasksTitle } from '../../store/taskSlice';
 
 const UserProfile = () => { 
   let navigate = useNavigate();
-  const dispatch = useDispatch();
   const volunteersList = useSelector(selectAllVolunteers).volunteers;
   const volunteer = selectVolunteerId(volunteersList, 3);
-  const tasksList = useSelector(selectAllTasks).tasks;
-  let actionTitle;
  
     return (
 
@@ -35,10 +28,19 @@ const UserProfile = () => {
                   <Typography gutterBottom variant="h1" style={{margin: "0 2rem 0 0"}}>{volunteer.name} {volunteer.surname}</Typography>
               </Box>
               <Box style={{  display: 'flex', justifyContent: "flex-end", gap: "3rem"}}>
-                  <CustomButton style={{marginBottom:'1rem'}} variant="contained" color='tertiary'>Jesteś wolontariuszem</CustomButton>
+                  <CustomButton 
+                    style={{marginBottom:'1rem'}} 
+                    variant="contained" 
+                    color='tertiary'
+                    onClick={(e)=>{
+                      e.preventDefault();
+                      navigate(`/VolunteerPage/3/kowal`);
+                    }}
+                    >
+                    Jesteś wolontariuszem
+                  </CustomButton>
                   <Button style={{marginBottom:'1rem'}} variant="outlined" disabled >Edytuj profil</Button>
               </Box>
-            
             
           </Box>
           <Box style={{borderBottom: '1px solid #AFAFAF', marginBottom: '2rem'}}>
@@ -46,11 +48,7 @@ const UserProfile = () => {
             <Typography variant='h3' style={{color: '#868686'}}>
               {volunteer.actions?.map((act,id)=>(
                 <ListItemButton key={`action-${id}`} style={{border: "1px #eee solid", textTransform: "capitalize", width: "80%"}}
-              
-                >
-                
-                         
-                    <Divider key={`divideritem-${id}`} style={{margin: "0 0.8rem"}}  orientation="vertical" flexItem/>
+                >  
                     {act}</ListItemButton>
 
               ))}

@@ -43,14 +43,14 @@ const TasksList = ({startSlice,endSlice}) => {
        content = <Box style={{color: 'red'}} padding={2} align={"center"}>ERROR: {error}</Box>;
   }  
   
-  function getFilteredTextFromButton(text) {
+  const getFilteredTextFromButton=(text)=> {
     return (
         tasksList.tasks?.filter(element => 
               element.categories.includes(text))
           )
     };
 
-    let thePopularCategoriesButtons = setTasksRatingButtons(orderedTasks).slice(0,4);
+  let thePopularCategoriesButtons = setTasksRatingButtons(orderedTasks).slice(0,4);
 
     return (
 
@@ -58,8 +58,8 @@ const TasksList = ({startSlice,endSlice}) => {
         <Box display={"flex"} justifyContent={"center"} style={{margin: "4rem 0 1rem"}}>
               {searchInput}
         </Box>
-        <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"2rem 0"} margin={"1rem"} alignItems={"center"} flexWrap={"wrap"}>
-                    <Typography variant="subtitle2" align={"left"} style={{marginTop: "1rem"}}>Najpopularniejsze <br/>kategorie:</Typography> 
+        <Typography variant="subtitle2" align={"center"} style={{marginTop: "1rem"}}>Najpopularniejsze kategorie:</Typography>
+        <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"0 0 2rem 0"} margin={"1rem"} alignItems={"center"} flexWrap={"wrap"}>
                     <CustomButton 
                         variant="outlined" 
                         style={{marginTop: "1rem"}}
@@ -118,7 +118,7 @@ const TasksList = ({startSlice,endSlice}) => {
             </FormControl>
             </Box>
               {content}
-              <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 4rem 4rem 4rem'} justifyContent={'center'}>
+              <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 2rem 4rem 2rem'} justifyContent={'center'}>
                   {getTasksCards(isFilterTasks, orderedTasks, selectValue, filteredTasks, startSlice, endSlice)}
               </Box>
          </Box>

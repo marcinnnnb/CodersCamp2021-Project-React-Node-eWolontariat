@@ -11,8 +11,12 @@ const taskSlice = createSlice({
     name: 'tasks',
     initialState,
     reducers: {
-        sortTasks: (state,action) => {
-            state.tasks.sort(compareDate);
+        sortTasks: (state) => {
+            state.tasks.sort((a,b)=>{
+              if ( a.date > b.date  ){ return -1;}
+              if ( a.date < b.date  ){ return  1;}
+              return 0;
+            });
             return state;
         },
         addNewTask: (state, action) => {
@@ -52,14 +56,3 @@ export const selectTasksTitle = (state, title) =>
 
 export const selectTasksCategory = (state, category) =>
   state.filter(task => task.categories.includes(category));
-
-function compareDate( a, b ) {
-    if ( a.date > b.date  ){
-      return -1;
-    }
-    if ( a.date < b.date ){
-      return 1;
-    }
-    return 0;
-}  
-

@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { Box, Divider, Typography, ListItemText } from '@material-ui/core';
 import CustomAvatar from '../../theme/CustomAvatar';
 import { ListItemButton } from '@mui/material';
-import { StyledEngineProvider } from '@mui/material';
 import { makeStyles} from '@mui/styles';
 import { useSelector } from "react-redux";
 import { selectAllTasks } from '../../store/taskSlice';
@@ -19,11 +18,6 @@ const Search = styled('div')(({ theme }) => ({
     marginRight: theme.spacing(2),
     marginLeft: 0,
     marginBottom: '0.6rem',
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
   }));
   
   const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -54,7 +48,7 @@ const Search = styled('div')(({ theme }) => ({
     spanColor:{
       fontWeight: 600,
       letterSpacing: '1px',
-      background: 'linear-gradient(104deg,#82ffad00 .9%,#82ffad 2.4%,#82ffad80 5.8%,#82ffad1a 93%,#82ffadb3 96%,#82ffff00 98%),linear-gradient(183deg,#82ffad00,#82ffad4d 7.9%,#82ffad00 15%)',
+      textDecoration: 'underline'
     }
  }) 
 
@@ -88,7 +82,6 @@ const Search = styled('div')(({ theme }) => ({
     let navigate = useNavigate();
 
       return (
-        <StyledEngineProvider injectFirst>
           <Search>
             <SearchIconWrapper>
                 <SearchIcon color='primary' 
@@ -96,7 +89,7 @@ const Search = styled('div')(({ theme }) => ({
                 />
             </SearchIconWrapper>
             <StyledInputBase
-                placeholder="Znajdź zadanie dla wolontariusza…"
+                placeholder="Znajdź zadanie…"
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={(e)=>{
                   setValue(e.target.value);
@@ -161,7 +154,6 @@ const Search = styled('div')(({ theme }) => ({
                 )
             })}
         </Search>
-      </StyledEngineProvider>
       ) 
    
   }

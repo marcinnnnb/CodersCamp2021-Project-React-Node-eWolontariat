@@ -120,21 +120,24 @@ const AppFooter = () => {
                             )})}
                         </List>
                     </Grid>
-                    <Grid item sm={2}>
-                    <Link href={"https://github.com/marcinnnnb/CodersCamp2021-Project-React-Node-eWolontariat"}>
+                    
+                    
+                    
+                </Grid>
+            </Container>
+           
+        </Box>
+        <Link href={"https://github.com/marcinnnnb/CodersCamp2021-Project-React-Node-eWolontariat"}>
                         <Box
                             component={"img"}
                             style={{
                                 height: "20px",
+                                margin: '2rem'
                             }}
                             alt={"Logo Coders Camp"}
                             src={GitHubLogo}
                         />
                     </Link>
-                    </Grid>
-                </Grid>
-            </Container>
-        </Box>
     </footer>
     )}
 

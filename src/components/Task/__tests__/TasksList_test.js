@@ -3,8 +3,7 @@ import { Provider } from "react-redux";
 import { store } from "../../../store/store";
 import TasksList from "../TasksList";
 
-const TasksListWrapper = () => {
-
+const tasksListWrapper = () => {
   return (
     <Provider store={store}> 
       <TasksList /> 
@@ -14,8 +13,13 @@ const TasksListWrapper = () => {
 
 describe("TasksList",()=>{
 
-    it("Show reender correctly", ()=>{
-        expect(toJson(TasksListWrapper)).toMatchSnapshot();
+    it("Show reender TasksList correctly", ()=>{
+      expect(toJson(tasksListWrapper)).toMatchSnapshot();
       });
+
+    it("Should filter tasks list correctly", ()=>{
+     
+      //expect(tasksListWrapper.instance().getFilteredTextFromButton([])).toEqual([]);
+    })
 
 });
