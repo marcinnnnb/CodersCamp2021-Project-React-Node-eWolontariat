@@ -8,7 +8,6 @@ import {BrowserRouter} from 'react-router-dom';
 import { fetchTasks } from './store/fetchTasks';
 import { fetchVolunteers } from './store/fetchVolunteers';
 import { fetchOrganizations } from './store/fetchOrganizations';
-import { useEffect } from "react";
 
 store.dispatch(fetchTasks());
 store.dispatch(fetchVolunteers());

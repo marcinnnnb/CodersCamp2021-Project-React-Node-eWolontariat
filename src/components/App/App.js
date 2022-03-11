@@ -17,6 +17,7 @@ import AppFooter from './AppFooter';
 import { createBrowserHistory } from "history";
 import CategoryPage from "../TasksPage/CategoryPage.js";
 import Dialog from '../common/Dialog/Dialog';
+import OrganizationsPage from '../OrganizationsPage/OrganizationsPage.js';
 export function App() {
 
     return (
@@ -29,7 +30,8 @@ export function App() {
                             <Routes history={createBrowserHistory}>
                                 <Route exact path="/*" element={<HomePage/>} />
                                 <Route path="/OrganizationForm/*" element={<OrganizationForm/>} />
-                                <Route path="/OrganizationPage" element={<OrganizationPage/>} />
+                                <Route path="/OrganizationPage/:organizationId" element={<OrganizationPage/>} />
+                                <Route path="/OrganizationsPage" element={<OrganizationsPage/>} />
                                 <Route path="/TaskForm/*" element={<TaskForm/>} />
                                 <Route path="/TaskPage/:taskId" element={<TaskPage/>} />
                                 <Route path="/TasksPage" element={<TasksPage/>} />

@@ -5,9 +5,9 @@ import Categories from '../../assets/data/Categories';
 import CustomTypography from "../../theme/CustomTypography";
 import CustomButton from "../../theme/CustomButton";
 import SendIcon from '@material-ui/icons/Send';
-import { useNavigate, Route, Routes} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { addNewVolunteer, addNewVolunteers } from "../../store/volunteerSlice";
+import { addNewVolunteer } from "../../store/volunteerSlice";
 
 const StyledSelect = styled(Select)(({ theme }) => ({
     margin: "1.2rem 0",
@@ -65,10 +65,7 @@ const VolunteerForm = () => {
                     <Typography variant="h3" >Wybierz kategorie, z których chciałbyś otrzymywać powiadomienia o nowych zadaniach:</Typography>
                     <StyledSelect style = {{marginBottom: "6rem"}}  label="Kategorie" placeholder="Wybierz kategorie" options={Categories} isMulti isSearchable {...register("categories")} />
                     <StyledTextField multiline rows={4} fullWidth label="Napisz parę słów o sobie. W czym chciałbyś pomagać, czy masz jakieś doświadczenie związanie z wolontariatem" {...register("action_description")} /> 
-                    <Typography variant="h3"  style={{margin: "3rem 0 0.8rem 0"}} >Jeśli masz jakieś referencje dodaj je w formacie pdf</Typography>
-                        <input name="file" type="file" accept="pdf" label="" />
-
-                </form>
+            </form>
                 <Box align={"right"}>
                     <CustomButton size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary"> Opublikuj profil</CustomButton>
                 </Box>

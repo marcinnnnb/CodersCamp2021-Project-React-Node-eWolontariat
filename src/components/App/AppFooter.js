@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Link, List, ListItem, Typography } from "@material-ui/core";
+import { Box, Container, Grid, Link, List, Typography } from "@material-ui/core";
 import LogoPomocny from "../../assets/img/logo-pomocny.svg";
 import CodersCampLogo from "../../assets/img/coder-camp.svg";
 import GitHubLogo from "../../assets/img/github-logo.png";

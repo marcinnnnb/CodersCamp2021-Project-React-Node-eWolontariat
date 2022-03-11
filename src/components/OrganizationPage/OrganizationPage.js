@@ -1,8 +1,10 @@
 import { Box, Typography, Button, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import pies from '../../assets/img/tasks/pies.jpg';
 import petFood from '../../assets/img/petFood.png';
+import { useSelector } from 'react-redux';
+import { selectAllOrganizations, selectOrganizationId } from '../../store/organizationSlice';
 
 const useStyles = makeStyles({
   topBox: {
@@ -35,34 +37,34 @@ const useStyles = makeStyles({
 export const OrganizationPage = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-
+  const { organizationId } = useParams();
+  //w jsonie jest id w stringu,ale w bazie będziemy mieli int
+  //let id = parseInt({ organizationId }.organizationId);
+  const organizationsList = useSelector(selectAllOrganizations).organizations;
+  const organization = selectOrganizationId(organizationsList, organizationId );
+  
   return (
     <>
       <Box className={classes.topBox}>
-        <Typography variant="h3">Schronisko dla bezdomnych zwierząt</Typography>
-        <Typography variant="h5">KRS 000387593875</Typography>
+        <Typography variant="h3">{organization.title}</Typography>
+        <Typography variant="h5">{organization.KRS_number}</Typography>
       </Box>
 
       <Box className={classes.mainBox}>
         <Box
           component="img"
           sx={{
-            height: '200px',
-            width: '200px',
-            borderRadius: '40%',
+            maxWidth: '200px',
           }}
-          alt="Zdjęcie pieska podnoszącego łapkę"
-          src={pies}
+          alt=""
+          src={organization.image}
         />
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
-          <Typography variant="h2">Schronisko dla bezdomnych zwierząt</Typography>
+          <Typography variant="h2">{organization.title}</Typography>
           <Typography variant="h6">Poszukuje do: 3 zadań</Typography>
         </Box>
         <Typography variant="h3">
-          W naszym schronisku znajduje się wiele spragnionych uczucia i domu psów oraz kotów, które z utęsknieniem
-          czekają na ludzi chcących dać im prawdziwy dom i opiekę. W schronisku przebywa (w zaleności od pory roku)
-          około 200-300 psów i 100-300 kotów rónych ras i wielkości. Schronisko dla przyjmuje zwierzęta całą dobę, a
-          wydaje nowym opiekunom w godzinach 10:00-14:00 i 15:00-17:00 przez wszystkie dni tygodnia.
+        {organization.action_description}
         </Typography>
       </Box>
 
@@ -81,7 +83,7 @@ export const OrganizationPage = () => {
               sx={{
                 height: '180px',
               }}
-              alt="Zdjęcie pieska podnoszącego łapkę"
+              alt=""
               src={pies}
             />
             <Typography variant="h3">Wyprowadzanie psów na spacery</Typography>

@@ -67,17 +67,17 @@ const TaskPage = () => {
             <Box sx={{ display:"flex", flexDirection:"row", width:'90%'}}>
             <Typography variant={"subtitle1"}>Kategorie: </Typography>
             {task.categories.map((cat)=>
-                (<div key={cat.id}> 
-            <CustomButton 
-                        variant="contained" 
-                        style={{margin: "0.8rem"}}
-                        color={setCategoryIcon(task.categories[0])[1]}
-                        startIcon={setCategoryIcon(task.categories[0])[0]}                        
-            >
-              <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {cat.value || task.categories} 
-        
-            </CustomButton>
-            </div>))}
+                <CustomButton 
+                            variant="contained" 
+                            key={cat.id}
+                            style={{margin: "0.8rem"}}
+                            color={setCategoryIcon(task.categories[0])[1]}
+                            startIcon={setCategoryIcon(task.categories[0])[0]}                        
+                >
+                <Divider key={"div"+cat.id} orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {cat.value || task.categories} 
+            
+                </CustomButton>
+            )};
             </Box>
             <Box 
                     component={'img'}
