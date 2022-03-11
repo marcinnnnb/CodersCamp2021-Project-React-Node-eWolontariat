@@ -1,4 +1,4 @@
-import { Divider, Typography, Container, Box, Card } from '@material-ui/core'
+import { Divider, Typography, Box, Card } from '@material-ui/core'
 import { Rating } from '@mui/material';
 import PersonIcon from '@material-ui/icons/Person';
 import CustomAvatar from "../../theme/CustomAvatar";
@@ -7,6 +7,51 @@ import { selectAllVolunteers, selectVolunteerId} from '../../store/volunteerSlic
 import { useParams } from 'react-router-dom';
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import CustomButton from "../../theme/CustomButton";
+import { styled } from '@mui/material/styles';
+
+const StyledVolunteerPage = styled(Card)(({ theme }) => ({
+    width: '100%',
+    margin: '7rem 2rem', 
+    padding: '1rem',
+    display:'flex',  
+    flexDirection: "row",
+    justifyContent:'center',  
+
+    [theme.breakpoints.down('md')]: {
+        flexDirection: "column",
+        padding: "0", 
+        margin: '2rem 0.2rem',
+        height: "auto",
+        alignItems: 'center',
+        '& p': {
+            fontSize: "1rem",
+            margin: "1rem 0.2rem",  //paragraph
+            paddingRight: "0",
+        },
+        '& .box-responsive': {
+            display: "block",
+            padding: "1.4rem",      //class
+            textAlign: "center"
+        },
+        '& .main-img': {
+            padding: "1rem",
+            margin: "1rem"     //class
+        },
+        '& img': {
+            maxWidth: "60%",    //??
+            paddingLeft: "0",
+        },
+        '& span': {
+            fontSize: '0.8rem'     //nic
+        },
+        '& .card-responsive': {
+            width:'150%',
+            display: "block",
+            padding: "1.4rem",
+            
+        }
+    },
+}));
 
 const VolunteerPage = () => {
     const { volunteerId } = useParams();
@@ -15,10 +60,10 @@ const VolunteerPage = () => {
     const volunteer = selectVolunteerId(volunteersList, id);
 
     return (
-        <Container style={{display: 'flex', justifyContent: 'center', width: '100%', marginTop:'5rem'}}>
-            <Box style={{width: '70%', marginRight:'3rem'}}>
+        <StyledVolunteerPage> 
+            <Box className={"box-responsive"} style={{width: '60%', marginRight:'3rem'}}>
                 <Box style={{ display:'flex'}}>
-                    <Box style={{display:'block', width:'20%', marginRight:"2rem", padding:'0'}}>
+                    <Box style={{display:'block', width:'30%', marginRight:"2rem", padding:'0'}}>
                         <Box 
                             component="img" 
                             src={require(`../../assets/img/volunteers/${volunteer.image}.jpg`)}
@@ -38,12 +83,12 @@ const VolunteerPage = () => {
                                 <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {cat}
                                 </CustomButton>  
                             ))}
-                            <Typography gutterBottom variant="h2">{volunteer.name.concat(" ", volunteer.surname)}</Typography>
-                            <Typography variant='h3'>{volunteer.short_description}</Typography>
+                            <Typography paragraph gutterBottom variant="h2">{volunteer.name.concat(" ", volunteer.surname)}</Typography>
+                            <Typography paragraph variant='h3'>{volunteer.short_description}</Typography>
                     </Box>
                 </Box>
-                <Typography style={{marginTop:'5rem'}}>{volunteer.description}</Typography>
-                <Typography variant="h2" style={{marginTop:'8rem', textAlign:'center'}}>Komentarze</Typography>
+                <Typography paragraph style={{marginTop:'5rem'}}>{volunteer.description}</Typography>
+                <Typography paragraph variant="h2" style={{marginTop:'6rem', textAlign:'center'}}>Komentarze</Typography>
                 <Card raised={true} style={{ margin:'5rem', padding: '1rem 1rem', display:'flex', flexDirection:'column',   justifyContent:'space-between'}}>
                     <Box style={{ display:'flex'}}>
                         <PersonIcon color='primary' style={{fontSize: '3rem'}}/>
@@ -51,8 +96,8 @@ const VolunteerPage = () => {
 
                             {volunteer.comment?.map(comment => (
                                 <>
-                                <Typography variant='h4'>{volunteer.comment[0] }</Typography>
-                                <Typography variant='body2'>{volunteer.comment[1]  }</Typography>
+                                <Typography paragraph variant='h4'>{volunteer.comment[0] }</Typography>
+                                <Typography paragraph variant='body2'>{volunteer.comment[1]  }</Typography>
                                 </>
                             ))}
                         </Box> 
@@ -60,21 +105,21 @@ const VolunteerPage = () => {
                 </Card>
             </Box>
             <Box style={{width: '20%',margin: '0',padding: '0',}}>
-                <Typography variant='h4'>Zrealizowane przeze mnie zadania:</Typography>
+                <Typography paragraph variant='h4'>Zrealizowane przeze mnie zadania:</Typography>
                 {volunteer.categories.map(cat=>(
                     volunteer.actions.map(act=>(
-                    <Card style={{margin:'2rem'}}>
+                    <Card className={"card-responsive"} style={{margin:'2rem'}}>
                         <CustomAvatar 
                             variant={"avatarBackground"} 
                             backgroundcolor={setCategoryIcon(cat)[1]} 
                             style={{margin:'auto'}}>
                             {setCategoryIcon(cat)[0]}
                         </CustomAvatar>
-                        <Typography style={{padding:'1rem', textAlign:'center'}}variant='h5'>{act}</Typography>
+                        <Typography paragraph style={{padding:'1rem', textAlign:'center'}}variant='h5'>{act}</Typography>
                     </Card>
                 ))))}
             </Box>
-        </Container>
+        </StyledVolunteerPage>
     )
 }
 
