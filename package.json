@@ -62,7 +62,7 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
-    "collectCoverageFrom":[
+    "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "!/mode_modules/",
       "!src/index.js"
