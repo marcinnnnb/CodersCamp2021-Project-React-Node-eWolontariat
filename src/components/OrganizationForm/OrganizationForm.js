@@ -3,10 +3,9 @@ import { Button, Box, Typography, TextField, Container, Divider } from "@materia
 import SendIcon from '@material-ui/icons/Send';
 import Select from 'react-select'
 import Categories from '../../assets/data/Categories';
-import { useNavigate, Route, Routes} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { addNewOrganization } from "../../store/organizationSlice";
 import { useDispatch } from "react-redux";
-import { Input } from '@material-ui/core';
 import './Organization.css'
 
 const tytulValidation={

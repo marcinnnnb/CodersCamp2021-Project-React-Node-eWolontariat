@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { Box, Divider, Typography, ListItemText } from '@material-ui/core';
 import CustomAvatar from '../../theme/CustomAvatar';
 import { ListItemButton } from '@mui/material';
-import { makeStyles} from '@mui/styles';
 import { useSelector } from "react-redux";
 import { selectAllTasks } from '../../store/taskSlice';
 import CustomTypography from '../../theme/CustomTypography';
@@ -44,19 +43,46 @@ const Search = styled('div')(({ theme }) => ({
     },
   }));
 
-  const useStyles = makeStyles({
-    spanColor:{
+  const StyledListItemText = styled(ListItemText)(({ theme }) => ({
+    margin: "0.8rem", 
+    fontSize: "0.8rem", 
+    fontWeight: "600",
+    '& .spanColor': {
       fontWeight: 600,
       letterSpacing: '1px',
-      textDecoration: 'underline'
-    }
- }) 
+      background: 'linear-gradient(104deg,#82ffad00 .9%,#82ffad 2.4%,#82ffad80 5.8%,#82ffad1a 93%,#82ffadb3 96%,#82ffff00 98%),linear-gradient(183deg,#82ffad00,#82ffad4d 7.9%,#82ffad00 15%)',
+      textShadow: '-12px 12px 9.8px #82ffadb3, 21px -18.1px 7.3px #fff0, -18.1px -27.3px 30px #fff'
+    },
+    [theme.breakpoints.down('md')]: {
+      '& .titleSpan': {
+        fontWeight: 600,
+        fontSize: "1rem",
+      }
+    },
+  }));
+
+  const StyledBoxForSearch = styled(Box)(({ theme }) => ({
+    border: "1px #eee solid",
+    width: "800px",
+    [theme.breakpoints.down('md')]: {
+      width: "600px",
+      '& .MuiTypography-body1': {
+        margin: "0 0 0.6rem 0",
+        lineHeight: 1 
+
+      },
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '300px'
+    },
+  }));
 
   const SearchInputTasks = () => {
     const tasksList = useSelector(selectAllTasks);
     const [value, setValue] = useState('');
     const [filteredResults, setFilteredResults] = useState();
     const [displaySearchIcon, setdisplaySearchIcon] = useState(true);
+    let navigate = useNavigate();
       
       function  findMatches(wordToMatch) {
         return( tasksList.tasks?.filter((task)=>{
@@ -76,10 +102,6 @@ const Search = styled('div')(({ theme }) => ({
         }
         return displaySearchIcon;
       };
-      
-    const classes = useStyles();
-
-    let navigate = useNavigate();
 
       return (
           <Search>
@@ -105,7 +127,7 @@ const Search = styled('div')(({ theme }) => ({
             {filteredResults?.map((el,id)=>{
               const regex = new RegExp(value,'gi'); 
               return (
-                    <Box key={`item-${id}`} style={{ border: "1px #eee solid"}} width = {"800px"} >
+                    <StyledBoxForSearch key={`item-${id}`}>
                       <ListItemButton 
                         key={`listitembutton-${id}`}  
                         display={"flex"} 
@@ -124,16 +146,15 @@ const Search = styled('div')(({ theme }) => ({
                               {setCategoryIcon(el.categories[0])[0]}
                             </CustomAvatar>
                             <Divider key={`divideritem-${id}`}  orientation="vertical" flexItem/>
-                              <ListItemText className={"searchList"} key={`listitem-${id}`} 
-                                style={{marginLeft: "1rem", fontSize: "0.8rem", fontWeight: "600"}}
+                              <StyledListItemText className={"searchList"} key={`listitem-${id}`} 
                                 primary= 
                                           {el.title.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
                           
                                               if (item.match(regex)) return (
-                                                <CustomTypography component="span" variantcolor= 'spanColor' className={classes.spanColor} key={`spancolortititem-${id}`}>{item}</CustomTypography>
+                                                <CustomTypography variant={"body2"} component="span" className={"titleSpan spanColor"} key={`spancolortititem-${id}`}>{item}</CustomTypography>
                                               )
                                               else return (
-                                                <Typography variantcolor= 'spanwithoutColor' key={`typotititem-${id}`} component="span">{item}</Typography>
+                                                <Typography className={"titleSpan spanwithoutColor"} key={`typotititem-${id}`} component="span">{item}</Typography>
                                               )
                                           })}
                                 
@@ -141,16 +162,16 @@ const Search = styled('div')(({ theme }) => ({
                                           {el.action_short_description.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
                                             
                                             if (item.match(regex)) return (
-                                              <CustomTypography variant="subtitle2" variantcolor= 'spanColor' component="span" className={classes.spanColor} key={`spancolordesc-${id}`}>{item}</CustomTypography>
+                                              <CustomTypography variant="subtitle2" component="span" className={"subtitleSpan spanColor"} key={`spancolordesc-${id}`}>{item}</CustomTypography>
                                             )
                                             else return (
-                                              <Typography variant="subtitle2" variantcolor= 'spanwithoutColor' key={`typodesc-${id}`} component="span" >{item}</Typography>
+                                              <Typography variant="subtitle2" className={"subtitleSpan spanwithoutColor"} key={`typodesc-${id}`} component="span" >{item}</Typography>
                                             )
                                         })}
                               >
-                              </ListItemText>
+                              </StyledListItemText>
                   </ListItemButton>
-                </Box>
+                </StyledBoxForSearch>
                 )
             })}
         </Search>

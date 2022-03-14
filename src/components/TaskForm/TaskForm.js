@@ -10,7 +10,6 @@ import CustomTypography from '../../theme/CustomTypography';
 import CustomButton from '../../theme/CustomButton';
 import { useSelector } from "react-redux";
 import { selectAllTasks } from '../../store/taskSlice';
-//import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -74,16 +73,6 @@ export default function TaskForm() {
          };  
 
     const categories = []; 
-
-    /*const notify = () => toast.success('Zadanie dodane!', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });*/
 
 return (
     <StyledTaskForm>
