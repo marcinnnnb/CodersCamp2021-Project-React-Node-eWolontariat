@@ -30,11 +30,9 @@ const AppHeader = () => {
     let navigate = useNavigate();
     let dispatch = useDispatch();
     const matches = useMediaQuery('(min-width:600px)', { noSsr: true });
-    const [loggedIn, setLoggedIn] = useState(useSelector(selectLoggedIn).system.loggedIn);
+    const loggedIn = useSelector(selectLoggedIn).system.loggedIn;
     let elementForNotLoggedIn;
     let buttons;
-
-    console.log(loggedIn)
 
     function getLogo() {
         
@@ -51,6 +49,7 @@ const AppHeader = () => {
      };
 
      function getAuthButton() {
+        matches ? (
         elementForNotLoggedIn = (
            (
                 <>
@@ -71,14 +70,14 @@ const AppHeader = () => {
                 </Button>
             </>
             )
-        );
+        )) : elementForNotLoggedIn = null;
         return elementForNotLoggedIn;
      }
 
-     function setAppBar() {
+     function setAppBar(marginT) {
               matches ? (
                 buttons = <><Button 
-                            style={{height: '2.5rem', marginTop:'1rem'}}
+                            style={{height: '2.5rem', marginTop: marginT}}
                             variant="contained" 
                             color='primary' 
                             size={'medium'} 
@@ -90,7 +89,6 @@ const AppHeader = () => {
                         >
                             Stwórz zadanie
                         </Button>
-                        {!loggedIn && getAuthButton()}
                         </>
 
         ) : buttons = null;
@@ -103,8 +101,10 @@ const AppHeader = () => {
             <Toolbar >
                     {getLogo()}
                     <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
-                        {setAppBar()}
-                        <PersistentDrawerRight />
+                        {loggedIn &&setAppBar("1rem")}
+                        {!loggedIn &&setAppBar("0")}
+                        {!loggedIn && getAuthButton()}
+                        {loggedIn && <PersistentDrawerRight />}
                     </Box>              
             </Toolbar>
         </StyledAppBar>
