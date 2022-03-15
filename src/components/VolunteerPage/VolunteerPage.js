@@ -2,8 +2,6 @@ import { Typography, Box, Card, Divider, CircularProgress } from "@material-ui/c
 import { Rating } from '@mui/material';
 import PersonIcon from '@material-ui/icons/Person';
 import CustomAvatar from "../../theme/CustomAvatar";
-//import { useSelector } from "react-redux";
-//import { selectAllVolunteers, selectVolunteerId} from '../../store/volunteerSlice';
 import { useParams } from 'react-router-dom';
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import CustomButton from "../../theme/CustomButton";
@@ -12,56 +10,52 @@ import { useEffect, useState } from "react";
 import Api from "../../store/Clients/ApiVolunteers";
 import axios from "axios";
 
+
+
 const StyledVolunteerPage = styled(Card)(({ theme }) => ({
-    width: '100%',
-    margin: '7rem 2rem', 
-    padding: '1rem',
+    height: "100%",
+    margin: '5rem 2rem', 
     display:'flex',  
     flexDirection: "row",
-    justifyContent:'center',  
+    padding: '3rem',
 
     [theme.breakpoints.down('md')]: {
         flexDirection: "column",
         padding: "0", 
-        margin: '2rem 0.2rem',
+        margin: '2rem 0.6rem',
         height: "auto",
+        textAlign: "center",
         alignItems: 'center',
         '& p': {
             fontSize: "1rem",
-            margin: "1rem 0.2rem",  //paragraph
-            paddingRight: "0",
+            margin: "1.5rem 0.6rem",  
         },
         '& .box-responsive': {
             display: "block",
-            padding: "1.4rem",      //class
-            textAlign: "center"
-        },
-        '& .main-img': {
-            padding: "1rem",
-            margin: "1rem"     //class
-        },
-        '& img': {
-            maxWidth: "60%",    //??
-            paddingLeft: "0",
+            padding: "1.4rem",      
         },
         '& span': {
-            fontSize: '0.8rem'     //nic
+            fontSize: '0.8rem'     
         },
-        '& .card-responsive': {
-            width:'150%',
-            display: "block",
-            padding: "1.4rem",
-            
+        '& .commetnts' :{
+            textAlign: "left",
         }
+    },
+    [theme.breakpoints.down('sm')]: {
+        margin: '1rem 0.3rem',
+        '& p': {
+            margin: "1rem 0.5rem",  
+        },
+        '& .box-responsive': {
+            padding: "0.6rem",      
+        },
     },
 }));
 
+
 const VolunteerPage = () => {
     const { volunteerId } = useParams();
-    //let id = parseInt({ volunteerId }.volunteerId);
     let id = volunteerId;
-    //const volunteersList = useSelector(selectAllVolunteers).volunteers;
-    //const volunteer = selectVolunteerId(volunteersList, id);
     const [volunteer, setVolunteer] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -104,7 +98,9 @@ const VolunteerPage = () => {
                     )};
     return (
         <StyledVolunteerPage> 
-            <Box className={"box-responsive"} style={{width: '60%', marginRight:'3rem'}}>
+        <Box className={"box-responsive"} 
+            sx={{display:"grid",gridTemplateColumns: {xl:"(3fr, 1fr)", xs:"1fr"}, gap: 2, justifyItems: 'center', alignItems: 'space-evenly', gridTemplateRows: 'auto',gridTemplateAreas: `"header sidebar ""main sidebar""comments comments"`}}>
+            <Box style={{gridArea: 'header' }}>
                 <Box style={{ display:'flex'}}>
                     <Box style={{display:'block', width:'30%', marginRight:"2rem", padding:'0'}}>
                         <Box 
@@ -129,7 +125,9 @@ const VolunteerPage = () => {
                             <Typography paragraph variant='h3'>{volunteer.shortDescription}</Typography>
                     </Box>
                 </Box>
-                <Typography paragraph style={{marginTop:'5rem'}}>{volunteer.description}</Typography>
+            </Box>
+                <Typography paragraph style={{marginTop:'5rem', gridArea: 'main'}}>{volunteer.description}</Typography>
+            <Box sx={{ gridArea:"comments", width:"90%"}}  mx='0.5rem'  >
                 <Typography paragraph variant="h2" style={{marginTop:'6rem', textAlign:'center'}}>Komentarze</Typography>
                 <Card raised={true} style={{ margin:'5rem', padding: '1rem 1rem', display:'flex', flexDirection:'column',   justifyContent:'space-between'}}>
                     <Box style={{ display:'flex'}}>
@@ -140,11 +138,11 @@ const VolunteerPage = () => {
                     </Box>
                 </Card>
             </Box>
-            <Box style={{width: '20%',margin: '0',padding: '0',}}>
+            <Box style={{gridArea:'sidebar' , display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around'}}>
                 <Typography paragraph variant='h4'>Zrealizowane przeze mnie zadania:</Typography>
                 {volunteer?.categories.map(cat=>(
                     volunteer.events.map(act=>(
-                    <Card  key={"card"+cat._id} className={"card-responsive"} style={{margin:'2rem'}}>
+                    <Card  key={"card"+cat._id} className={"card-responsive"} style={{margin:'3rem', width:'20rem'}}>
                         <CustomAvatar 
                             key={"button"+cat._id}
                             variant={"avatarBackground"} 
@@ -156,6 +154,7 @@ const VolunteerPage = () => {
                     </Card>
                 ))))}
             </Box>
+        </Box>
         </StyledVolunteerPage>
     )
 }

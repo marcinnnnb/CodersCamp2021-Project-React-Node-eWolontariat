@@ -1,7 +1,8 @@
 import { Button, Typography, Card, CardContent, CardActions } from "@material-ui/core";
 import CustomAvatar from "../../theme/CustomAvatar";
 import CustomTypography from "../../theme/CustomTypography";
-import { useNavigate } from 'react-router';
+//import { useNavigate } from 'react-router';
+import { Link } from "react-router-dom";
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import { styled } from '@mui/material/styles';
 
@@ -31,6 +32,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 }));
 
 function TaskCard(task){
+<<<<<<< HEAD
     let navigate = useNavigate();
     const taskIcon = setCategoryIcon(task.task.categories[0].name)[0];
     const iconColor = setCategoryIcon(task.task.categories[0].name)[1];
@@ -39,6 +41,16 @@ function TaskCard(task){
         e.preventDefault();
         navigate(`/TaskPage/${task.task._id}`);
     }
+=======
+    //let navigate = useNavigate();
+    const taskIcon = setCategoryIcon(task.task.categories[0])[0];
+    const iconColor = setCategoryIcon(task.task.categories[0])[1];
+
+    /*const handleClick = (e) => {
+        // e.preventDefault();
+        navigate(`/TaskPage/${task.task.id}`);
+    }*/
+>>>>>>> 3bd978f79d1cf65cef0b38c5e60b2903b7ae0791
 
     return(
             <StyledCard raised={true}>
@@ -71,14 +83,16 @@ function TaskCard(task){
                     </Typography>
                 </CardContent>    
                     <CardActions>
-                        <Button style={{
-                            position: "absolute", 
-                            left: "30%", 
-                            bottom: "40px"
+                        <Button
+                            component={Link}
+                            to={`/TaskPage/${task.task.id}`}
+                            style={{
+                                position: "absolute", 
+                                left: "30%", 
+                                bottom: "40px"
                             }} 
                             variant={"contained"} 
                             color={"secondary"} 
-                            onClick={handleClick}
                             >Pomagam
                         </Button>
                     </CardActions> 

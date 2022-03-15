@@ -19,6 +19,7 @@ const useStyles = makeStyles({
     marginBottom: 80,
   },
   mainBox: {
+    width:'inherit',
     display: 'flex',
     flexDirection: 'column',
     marginRight: 100,
@@ -61,7 +62,7 @@ export const OrganizationPage = () => {
         />
         <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems="center">
           <Typography variant="h2">{organization.title}</Typography>
-          <Typography variant="h6">Poszukuje do: 3 zadań</Typography>
+          <Typography variant="h4">Poszukuje do: 3 zadań</Typography>
         </Box>
         <Typography variant="h3">
         {organization.action_description}
@@ -69,15 +70,15 @@ export const OrganizationPage = () => {
       </Box>
 
       <Box className={classes.utworzenieZadania}>
-        <Typography onClick={() => navigate('/TaskForm')}>Utworzone zadania</Typography>
+        <Button onClick={() => navigate('/TaskForm')} variant="contained" color="primary">Utworzone zadania</Button>
         <Button onClick={() => navigate('/TaskForm')} variant="contained">
           Dodaj nowe zadanie
         </Button>
       </Box>
 
       <Box sx={{ flexGrow: 1, marginTop: 80, marginBottom: 80, border: 2 }}>
-        <Grid container spacing={6} justifyContent="space-around" alignItems="center">
-          <Grid xs="auto">
+        <Box display="flex" flexDirection="row" justifyContent="space-around" alignItems="center" flexWrap="wrap">
+          <Box display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" marginTop= "20px"  >
             <Box
               component="img"
               sx={{
@@ -88,8 +89,8 @@ export const OrganizationPage = () => {
             />
             <Typography variant="h3">Wyprowadzanie psów na spacery</Typography>
             <Typography variant="h3">Zgłosiło się: 2 z 5 wymaganych</Typography>
-          </Grid>
-          <Grid xs="auto">
+          </Box>
+          <Box  display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" marginTop= "20px">
             <Box
               component="img"
               sx={{
@@ -100,8 +101,8 @@ export const OrganizationPage = () => {
             />
             <Typography variant="h3">Pomoc w organizacji zbiórki karmy</Typography>
             <Typography variant="h3">Zgłosiło się: 0 z 1 wymaganych</Typography>
-          </Grid>
-          <Grid xs="auto">
+          </Box>
+          <Box display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" marginTop= "20px" >
             <Box
               component="img"
               sx={{
@@ -112,8 +113,8 @@ export const OrganizationPage = () => {
             />
             <Typography variant="h3">Pomoc przy budownie nowych boksów</Typography>
             <Typography variant="h3">Zgłosiło się: 1 z 3 wymaganych</Typography>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Box>
     </>
   );

@@ -6,7 +6,7 @@ import systemReducer from './systemSlice';
 import organizationReducer from './organizationSlice'
 //import { composeWithDevTools } from "@reduxjs/toolkit/dist/devtoolsExtension";
 
-//const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
+// const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
 
 export const store = configureStore({
     middleware: getDefaultMiddleware({

@@ -1,5 +1,5 @@
 import {useForm, Controller} from 'react-hook-form';
-import { Box, Typography, TextField, Container } from "@material-ui/core";
+import { Box, Typography, TextField, styled } from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import Select from 'react-select'
 import Categories from '../../assets/data/Categories';
@@ -11,6 +11,36 @@ import CustomButton from '../../theme/CustomButton';
 import { useSelector } from "react-redux";
 import { selectAllTasks } from '../../store/taskSlice';
 import 'react-toastify/dist/ReactToastify.css';
+
+
+const StyledTaskForm = styled(Box)(({ theme }) => ({
+    height: "100%",
+    margin: '3rem', 
+    display:'flex',  
+    flexDirection: "row",
+    
+
+    [theme.breakpoints.down('md')]: {
+        margin: '0.3rem 0.3rem',
+        height: "auto",
+        flexDirection: "column",
+        justifyContent:'center', 
+        alignItems: 'center',
+
+        '& p': {
+            fontSize: "1rem",  
+        },
+        '& span': {
+            fontSize: '0.8rem'     
+        },
+        '& h1': {
+            fontSize: "1.5rem",  
+        },
+        '& h3': {
+            fontSize: "0.8rem",  
+        },
+    },
+}));
  
 const amountValidation={
     required:true, pattern:[0-9], maxLength:1000
@@ -45,7 +75,7 @@ export default function TaskForm() {
     const categories = []; 
 
 return (
-    <Container>
+    <StyledTaskForm>
         <Box id={"section-task-form"}
             padding={"3rem 4rem"}
             my={2}
@@ -53,6 +83,7 @@ return (
             alignItems={"center"}
         >
         <form onSubmit={handleSubmit(onSubmit)}>
+            
             <Box style={{display:"grid", gridTemplateColumns: "3fr 2fr", gap: "1.6rem", justifyItems: 'center', alignItems: 'space-evenly', gridTemplateRows: 'auto',
                 gridTemplateAreas: `"header header"
                     "main img"
@@ -60,7 +91,11 @@ return (
                     ". button"
                     "footer footer"`}}>
                 <Box style={{ gridArea: 'header'}}> 
-                    <CustomTypography variantcolor={"typographycolor"} variant="h2" align="center" color="tertiary" style={{marginBottom: "4rem"}}>Tworzenie zadania dla wolontariusza </CustomTypography>
+                    <CustomTypography paragraph variantcolor={"typographycolor"} variant="h2" align="center" color="tertiary" style={{marginBottom: "4rem"}}>Tworzenie zadania dla wolontariusza </CustomTypography>
+                </Box>
+
+                <Box style={{ gridArea: 'img', alignItems:"center", justifyContent:"center",  backgroundColor: 'primary', p: 2, border: '1px dashed grey', height:"9rem"}}>
+                <input name="image" type="file" accept="image/png, image/jpeg" {...register('image')} />
                 </Box>
 
                 <Box style={{ gridArea: 'main', display:"flex",  flexDirection:"column", alignItems: 'stretch', justifyContent: 'space-around', width: '100%', marginLeft:"30px"}}>
@@ -69,14 +104,10 @@ return (
                     <TextField type="number" name="amount" fullWidth label="Ilu wolontariuszy potrzebujesz?" {...register('amount', amountValidation)} {...amountValidation}/>
                 </Box>
                 
-                <Box style={{ gridArea: 'img', alignItems:"center", justifyContent:"center",  backgroundColor: 'primary', p: 2, border: '1px dashed grey', height:"180px"}}>
-                <input name="image" type="file" accept="image/png, image/jpeg" {...register('image')} />
-                </Box>
-
                 <Box style={{ gridArea: 'main2', display:"flex", gap:3, flexDirection:"column", justifyContent: 'space-around', width:"97%"}}>
                     <TextField multiline rows={4} fullWidth label="Dodaj opis zadania" {...register("action_description")} />   
                     <TextField style={{marginBottom: "2rem"}} fullWidth multiline rows={2} label="Dodaj krótki opis widoczny na miniaturze" {...register("action_short_description")} />
-                    <Typography variant="body1">Wybierz kategorie: </Typography>
+                    <Typography paragraph variant="body1">Wybierz kategorie: </Typography>
                     <Controller
                         control={control}
                         defaultValue={categories[0]}
@@ -96,12 +127,12 @@ return (
                     {errors.title?.type ==='required' && "To pole jest wymagane"}
                 </Box>
                 <Box sx={{  gridArea: 'button', padding:"1rem 0"}}>
-                <CustomButton size="medium" type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary" > Opublikuj zadanie</CustomButton>          
+                <CustomButton type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary" > Opublikuj zadanie</CustomButton>          
             </Box>
         </Box>
         </form>
     </Box>
-  </Container>
+  </StyledTaskForm>
   
 )
     
