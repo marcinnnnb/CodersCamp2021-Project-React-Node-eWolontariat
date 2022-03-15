@@ -12,7 +12,7 @@ export const ZalozonyProfil = () => {
           <Typography
             variant="h3"
             align="center">
-            Załoyłeś profil!
+            Założyłeś profil!
           </Typography>
       </Box>
       <Box
@@ -20,6 +20,7 @@ export const ZalozonyProfil = () => {
         align="center">
           <Button
             variant="contained"
+            color="primary"
             onClick={() => dispatch(closeDialog())}>
             Zaczynamy!
           </Button>

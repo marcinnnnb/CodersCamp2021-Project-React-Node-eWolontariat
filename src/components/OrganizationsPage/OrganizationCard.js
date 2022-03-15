@@ -1,4 +1,4 @@
-import { Button, Typography, Card, CardMedia, CardContent, CardActions } from "@material-ui/core";
+import { Button, Typography, Card, CardContent, CardActions } from "@material-ui/core";
 import { useNavigate } from 'react-router';
 import { styled } from '@mui/material/styles';
 

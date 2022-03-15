@@ -1,8 +1,11 @@
-import { TextField, Button, Typography, Link } from '@material-ui/core';
+import { TextField, Button, Typography, Link, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { useState } from 'react';
 import { openDialog, FormType } from '../../store/dialogSlice';
 import { useDispatch } from 'react-redux';
+import ErrorIcon from '@mui/icons-material/Error';
+import axios from 'axios';
+import { login } from '../../../../../store/systemSlice';
 
 const useStyles = makeStyles({
   field: {
@@ -18,34 +21,79 @@ const useStyles = makeStyles({
 export const LoginDialog = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [login, setLogin] = useState('');
-  const [haslo, setDetails] = useState('');
+  const [content,setContent] = useState("");
+  const [data, setData] = useState({
+    login: "",
+    password: ""
+  });
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setData({
+      ...data,
+      [e.target.name.trim()]: value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      login: data.login,
+      password: data.password
+    };
+    
+      axios.post('https://whispering-oasis-16160.herokuapp.com/user/login', userData).then((response) => {
+        console.log(response.status);
+        if(response.status === 200) {
+          dispatch(openDialog({ formType: FormType.zalozonyProfil}));
+          dispatch(login({name: data.login }));
+          
+        };
+      }).catch((error) => {
+        if (error.response) {
+          setContent(
+            <Box display={"flex"} flexDirection={"row"}>
+                <ErrorIcon fontSize={"small"} color={"error"} style={{marginRight: "0.4rem"}}/> 
+                <div style={{color: "red", fontWeight:600, textTransform: "capitalize"}}>{error.response.data}!</div>
+            </Box>
+            );
+        } else if (error.request) {
+          setContent("Błąd sieci. Sprawdź swoje połączenie!");
+        } else {
+          console.log(error);
+        }
+      });
+  };
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
+      {content}
       <TextField
         className={classes.field}
-        id="outlined-basic"
+        type="login"
+        name="login"
         label="Login"
         variant="outlined"
         required
         fullWidth
-        error={login ? false : true}
-        onChange={(e) => setLogin(e.target.value.trim())}
+        error={data.login ? false : true}
+        value={data.login}
+        onChange={handleChange}
       />
 
       <TextField
         className={classes.field}
-        id="outlined-basic"
+        type="password"
+        name="password"
         label="Hasło"
         variant="outlined"
         required
         fullWidth
-        error={haslo ? false : true}
-        onChange={(e) => setDetails(e.target.value.trim())}
+        error={data.password ? false : true}
+        onChange={handleChange}
       />
 
-      <Button className={classes.field} type="submit" color="primary" variant="contained" fullWidth>
+      <Button type="submit" className={classes.field} color="primary" variant="contained" fullWidth>
         Zaloguj się
       </Button>
 
@@ -58,7 +106,7 @@ export const LoginDialog = () => {
           Nie masz jeszcze konta? Zarejestruj się!
         </Link>
       </Typography>
-    </>
+    </form>
   );
 };
 

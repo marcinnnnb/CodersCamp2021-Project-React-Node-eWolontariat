@@ -2,11 +2,14 @@ import { AppBar, Box, Button, Toolbar } from "@material-ui/core";
 import LogoPomocny from "../../assets/img/logo-pomocny.svg";
 import LogoSignet from "../../assets/img/hand-peace-solid.svg";
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openDialog, FormType } from '../common/Dialog/store/dialogSlice';
 import PersistentDrawerRight from "../Drawer/Drawer";
 import { styled } from '@mui/material/styles';
 import { useMediaQuery } from "@mui/material";
+import { useState } from "react";
+import { selectLoggedIn } from "../../store/systemSlice";
+
 
 const LogoBox = styled(Box)(({ theme }) => ({
     height: "46px",
@@ -27,8 +30,11 @@ const AppHeader = () => {
     let navigate = useNavigate();
     let dispatch = useDispatch();
     const matches = useMediaQuery('(min-width:600px)', { noSsr: true });
+    const [loggedIn, setLoggedIn] = useState(useSelector(selectLoggedIn).system.loggedIn);
+    let elementForNotLoggedIn;
     let buttons;
 
+    console.log(loggedIn)
 
     function getLogo() {
         
@@ -44,8 +50,32 @@ const AppHeader = () => {
         return logo;
      };
 
-     function setAppBar() {
+     function getAuthButton() {
+        elementForNotLoggedIn = (
+           (
+                <>
+                <Button 
+                    variant="text" 
+                    size={'medium'}
+                    type="button"
+                    onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))} 
+                >
+                    Zaloguj się
+                </Button>
+                <Button 
+                        variant="text" 
+                        size={'medium'}
+                        onClick={() => dispatch(openDialog({ formType: FormType.rejestracja }))}
+                >
+                        Zarejestruj się
+                </Button>
+            </>
+            )
+        );
+        return elementForNotLoggedIn;
+     }
 
+     function setAppBar() {
               matches ? (
                 buttons = <><Button 
                             style={{height: '2.5rem', marginTop:'1rem'}}
@@ -60,21 +90,7 @@ const AppHeader = () => {
                         >
                             Stwórz zadanie
                         </Button>
-                        <Button 
-                            variant="text" 
-                            size={'medium'}
-                            type="button"
-                            onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))} 
-                        >
-                            Zaloguj się
-                        </Button>
-                        <Button 
-                            variant="text" 
-                            size={'medium'}
-                            onClick={() => dispatch(openDialog({ formType: FormType.rejestracja }))}
-                        >
-                            Zarejestruj się
-                        </Button>
+                        {!loggedIn && getAuthButton()}
                         </>
 
         ) : buttons = null;

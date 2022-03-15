@@ -32,12 +32,12 @@ const StyledCard = styled(Card)(({ theme }) => ({
 
 function TaskCard(task){
     let navigate = useNavigate();
-    const taskIcon = setCategoryIcon(task.task.categories[0])[0];
-    const iconColor = setCategoryIcon(task.task.categories[0])[1];
+    const taskIcon = setCategoryIcon(task.task.categories[0].name)[0];
+    const iconColor = setCategoryIcon(task.task.categories[0].name)[1];
 
     const handleClick = (e) => {
         e.preventDefault();
-        navigate(`/TaskPage/${task.task.id}`);
+        navigate(`/TaskPage/${task.task._id}`);
     }
 
     return(
@@ -49,6 +49,7 @@ function TaskCard(task){
                 </CustomAvatar>
                 <CustomTypography 
                     variantcolor={"typographycolor"} 
+                    key={"id_cat"+task.task._id}
                     margin={"4rem 0"} 
                     color= {iconColor}
                     style={{
@@ -59,14 +60,14 @@ function TaskCard(task){
                         margin: "10px 0"
                         }}
                         >
-                        {task.task.categories}
+                        {task.task.categories[0].name}
                 </CustomTypography>
                 <CardContent>
                     <Typography variant='h4'>
                         {task.task.title}
                     </Typography>
                     <Typography className={"describe"} variant='caption' paragraph gutterBottom={true}>
-                        {task.task.action_short_description}
+                        {task.task.shortDescription}
                     </Typography>
                 </CardContent>    
                     <CardActions>

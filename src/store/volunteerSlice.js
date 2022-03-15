@@ -13,7 +13,7 @@ const volunteersSlice = createSlice({
     reducers: {
         sortVolunteers: (state,action) => {
             state.volunteers.map((volunteer, id)=>{
-              let par = volunteer.actions;
+              let par = volunteer.events;
               volunteer.numberActions= par.length;
               return volunteer;
               })
