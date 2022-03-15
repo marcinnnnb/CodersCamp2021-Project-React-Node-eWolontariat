@@ -1,4 +1,4 @@
-import { Box, Typography, Button, Grid } from '@material-ui/core';
+import { Box, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { useNavigate, useParams } from 'react-router-dom';
 import pies from '../../assets/img/tasks/pies.jpg';
