@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import ErrorIcon from '@mui/icons-material/Error';
 import axios from 'axios';
 import { login } from '../../../../../store/systemSlice';
+import { ContactSupportOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   field: {
@@ -47,6 +48,7 @@ export const LoginDialog = () => {
         if(response.status === 200) {
           dispatch(openDialog({ formType: FormType.zalogowany}));
           dispatch(login({name: data.login }));
+          console.log(response.data);
           
         };
       }).catch((error) => {
