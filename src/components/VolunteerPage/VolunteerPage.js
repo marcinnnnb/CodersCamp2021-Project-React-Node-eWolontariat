@@ -126,9 +126,9 @@ const VolunteerPage = () => {
                     </Box>
                 </Box>
             </Box>
-            <Typography paragraph style={{marginTop:'5rem', gridArea: 'main'}}>{volunteer.description}</Typography>
+            <Typography paragraph style={{marginTop:'5rem', gridArea: 'main', width: '90%'}}>{volunteer.description}</Typography>
 
-            <Box sx={{ gridArea:"comments", width:"90%"}}  mx='0.5rem'>
+            <Box sx={{ gridArea:"comments", width:"70%"}}  mx='0.5rem'>
                 <Typography paragraph variant="h2" style={{marginTop:'6rem', textAlign:'center'}}>Komentarze</Typography>
                 <Card className={"comments"} raised={true} style={{ margin:'1rem', padding: '0.6rem 0.8rem'}}>
                     <Typography  variant="body2" paragraph ><PersonIcon color='primary' style={{fontSize: '3rem'}}/>{volunteer.comments}</Typography>
