@@ -45,7 +45,7 @@ export const LoginDialog = () => {
       axios.post('https://whispering-oasis-16160.herokuapp.com/user/login', userData).then((response) => {
         console.log(response.status);
         if(response.status === 200) {
-          dispatch(openDialog({ formType: FormType.zalozonyProfil}));
+          dispatch(openDialog({ formType: FormType.zalogowany}));
           dispatch(login({name: data.login }));
           
         };
