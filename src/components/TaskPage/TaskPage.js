@@ -1,14 +1,15 @@
-import { Button, Typography, Box, TextField, Card, Divider } from "@material-ui/core";
+import { Button, Typography, Box, TextField, Card, Divider, CircularProgress } from "@material-ui/core";
 import ProgressBar from "./ProgressBar";
 import liscik from "../../assets/img/plane.svg";
 import skrzynka from "../../assets/img/mailbox.svg";
 import avatar from "../../assets/img/facet.png";
 import CustomButton from "../../theme/CustomButton";
-import { useSelector } from "react-redux";
-import { selectAllTasks, selectTasksId} from '../../store/taskSlice';
 import { useParams } from 'react-router-dom'
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import { styled } from '@mui/material/styles';
+import { useEffect, useState } from "react";
+import Api from "../../store/Clients/ApiTasks";
+import axios from "axios";
 
 const StyledTaskPage = styled(Card)(({ theme }) => ({
     height: "100%",
@@ -55,11 +56,52 @@ const StyledTaskPage = styled(Card)(({ theme }) => ({
 
 const TaskPage = () => {
     const { taskId } = useParams();
-    let id = parseInt({ taskId }.taskId);
-    const tasksList = useSelector(selectAllTasks).tasks;
-    const task = selectTasksId(tasksList, id);
+    let id = taskId;
+    const [task, setTask] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+    const [pictureId, setPictureId] = useState('');
+    const [previewImg, setPreviewImg] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await Api.getEventById(id);
+                const json = await response.json();
+                setTask(json);
+                setPictureId(task.picture);
+            } catch (e) {
+                setError(e.message || 'Unexpected error');
+            }
+            setLoading(false);
+        }
+            fetchData();
+        }, [id, task.picture]);
+
+    
+  useEffect(() => {
+    axios.get(`https://whispering-oasis-16160.herokuapp.com/picture/${pictureId}`).then((response) => {
+        setPreviewImg("data:image/png;base64," + response.data);
+    });
+  }, [pictureId]);
+        
+    if (loading) {
+            return (
+                <Box align={"center"}>
+                    <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
+                </Box>
+            )};
+        
+    if (error) {
+            return( 
+                  <Box align={"center"}>
+                      <div style={{color: 'red'}}>ERROR: {error}</div>
+                  </Box>
+            )};
+
 
     return (
+        
         <StyledTaskPage id={"task-page"}>
             <Box className={"box-responsive"} 
             sx={{display:"grid",gridTemplateColumns: {xl:"(3fr, 1fr)", xs:"1fr"}, gap: 2, justifyItems: 'center', alignItems: 'space-evenly', gridTemplateRows: 'auto',gridTemplateAreas: `"header header ""main sidebar""comments mailbox""footer footer"`}}>
@@ -69,23 +111,26 @@ const TaskPage = () => {
                 <Box sx={{ display:"flex", flexDirection:"column", gridArea: 'main', alignItems:"center", width:'90%', justifyContent:"center"}}>
                     <Box sx={{ display:"flex", flexDirection:"row", width:'90%'}}>
                         <Typography variant={"subtitle1"} paragraph>Kategorie: </Typography>
-                            {task.categories.map((cat)=>
-                                (<div key={cat.id}> 
+                            {task.categories?.map((cat)=>{
+                                return (
                                     <CustomButton 
+                                        key={"button"+cat._id}
                                         variant="contained" 
                                         style={{margin: "0.8rem"}}
-                                        color={setCategoryIcon(task.categories[0])[1]}
-                                        startIcon={setCategoryIcon(task.categories[0])[0]}                        
+                                        color={setCategoryIcon(task.categories[0].name)[1]}
+                                        startIcon={setCategoryIcon(task.categories[0].name)[0]}                        
                                     >
-                                        <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {cat.value || task.categories} 
+                                        <Divider key={"divider"+cat._id} orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> 
+                                        {cat.name} 
                                     </CustomButton>
-                                </div>))}
+                                )   
+                            })}
                     </Box>
                     <Box 
                         className={"main-img"}
-                        component="img"
+                        component={'img'}
                         padding={"2rem"}
-                        src={require(`../../assets/img/tasks/${task.image}.jpg`)}
+                        src={previewImg}
                         alt={`${task.title}`}
                         style = {{maxWidth:"80%"}}
                     />
@@ -109,7 +154,7 @@ const TaskPage = () => {
                     <Card  style={{ margin:'0.8rem', padding: '2rem'}}>
                         <Box >
                             <Typography variant="h3" align="center" paragraph>Ilu wolontariuszy potrzebujemy?</Typography>
-                            <Typography variant="body1" align={'center'} paragraph>{task.amount}</Typography>
+                            <Typography variant="body1" align={'center'} paragraph>{task.volunteersNeeded}</Typography>
                             <Typography variant="body1" align={'center'} paragraph>Ilu się zapisało: {task.sign}</Typography>
                             <ProgressBar const completed= {Math.floor(task.sign /task.amount*100)}/>
                             <Box style={{display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around'}} >

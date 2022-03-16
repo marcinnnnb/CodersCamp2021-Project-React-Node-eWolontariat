@@ -2,7 +2,7 @@ import { Typography, Button, Box } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { closeDialog } from "../../store/dialogSlice";
 
-export const ZalozonyProfil = () => {
+export const Zalogowany = () => {
   const dispatch = useDispatch();
 
   return (
@@ -12,7 +12,7 @@ export const ZalozonyProfil = () => {
           <Typography
             variant="h3"
             align="center">
-            Założyłeś profil!
+            Jesteś zalogowany!
           </Typography>
       </Box>
       <Box
@@ -29,4 +29,4 @@ export const ZalozonyProfil = () => {
   )
 }
 
-export default ZalozonyProfil;
+export default Zalogowany;

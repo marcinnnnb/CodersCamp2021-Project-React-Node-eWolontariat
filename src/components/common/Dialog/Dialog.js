@@ -30,7 +30,7 @@ const Dialogs = (props) => {
             justifyContent="center"
             alignItems="center">
               <Typography
-                variant="h5">
+                variant="h4">
                 {title}
               </Typography>
               <IconButton

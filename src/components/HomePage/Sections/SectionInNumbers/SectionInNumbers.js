@@ -5,6 +5,8 @@ import LogoSignet from "../../../../assets/img/hand-peace-solid.svg";
 import CustomButton from "../../../../theme/CustomButton";
 import BigNumber from "./BigNumber";
 import { styled } from '@mui/material/styles';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const StyledBox = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -39,7 +41,21 @@ const StyledTitle = styled(Typography)(({ theme }) => ({
 }));
 
 const SectionInNumbers = () => {
-   
+    const [eventsSucceededNumber, setEventsSucceededNumber] = useState(0);
+    const [volunteersNumber, setVolunteersNumber] = useState(0);
+
+    useEffect(() => {
+        axios.get('https://whispering-oasis-16160.herokuapp.com/event/count/true').then((response) => {
+            setEventsSucceededNumber(response.data.events);
+        });
+      }, []);
+
+    useEffect(() => {
+        axios.get('https://whispering-oasis-16160.herokuapp.com/volunteer/all/count').then((response) => {
+            setVolunteersNumber(response.data.volunteers);
+        });
+      }, []);
+  
     return(
         <Box id={"section-in-numbers"}
             display={"flex:"}
@@ -58,11 +74,11 @@ const SectionInNumbers = () => {
                     <Typography variant="body1">Tylu osobom pomogliśmy</Typography>
                 </Box>
                 <Box alignSelf={'center'} textAlign={'center'}>
-                    <BigNumber end={1230}/>
+                    <BigNumber end={eventsSucceededNumber}/>
                     <Typography variant="body1">Tyle zadań zakończyło się sukcesem</Typography>
                 </Box>
                 <Box alignSelf={'center'} textAlign={'center'}>
-                    <BigNumber end={560}/>
+                    <BigNumber end={volunteersNumber}/>
                     <Typography variant="body1">Tyle zgłosiło się wolontariuszy</Typography>
                 </Box>    
             </StyledBox>

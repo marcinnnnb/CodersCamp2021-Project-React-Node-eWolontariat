@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import Api from "./ApiOrganizations";
+import Api from "./Clients/ApiOrganizations";
 
 export const fetchOrganizations = createAsyncThunk('organizations/fetchOrganizations', async () => {
     const response = await Api.getData();

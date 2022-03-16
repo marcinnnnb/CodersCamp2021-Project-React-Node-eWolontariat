@@ -1,7 +1,7 @@
 import { Button, Typography, Card, CardContent, CardActions } from "@material-ui/core";
 import CustomAvatar from "../../theme/CustomAvatar";
 import CustomTypography from "../../theme/CustomTypography";
-//import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { Link } from "react-router-dom";
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import { styled } from '@mui/material/styles';
@@ -32,14 +32,14 @@ const StyledCard = styled(Card)(({ theme }) => ({
 }));
 
 function TaskCard(task){
-    //let navigate = useNavigate();
-    const taskIcon = setCategoryIcon(task.task.categories[0])[0];
-    const iconColor = setCategoryIcon(task.task.categories[0])[1];
+    let navigate = useNavigate();
+    const taskIcon = setCategoryIcon(task.task.categories[0].name)[0];
+    const iconColor = setCategoryIcon(task.task.categories[0].name)[1];
 
-    /*const handleClick = (e) => {
-        // e.preventDefault();
-        navigate(`/TaskPage/${task.task.id}`);
-    }*/
+    const handleClick = (e) => {
+        e.preventDefault();
+        navigate(`/TaskPage/${task.task._id}`);
+    }
 
     return(
             <StyledCard raised={true}>
@@ -50,6 +50,7 @@ function TaskCard(task){
                 </CustomAvatar>
                 <CustomTypography 
                     variantcolor={"typographycolor"} 
+                    key={"id_cat"+task.task._id}
                     margin={"4rem 0"} 
                     color= {iconColor}
                     style={{
@@ -60,20 +61,20 @@ function TaskCard(task){
                         margin: "10px 0"
                         }}
                         >
-                        {task.task.categories}
+                        {task.task.categories[0].name}
                 </CustomTypography>
                 <CardContent>
                     <Typography variant='h4'>
                         {task.task.title}
                     </Typography>
                     <Typography className={"describe"} variant='caption' paragraph gutterBottom={true}>
-                        {task.task.action_short_description}
+                        {task.task.shortDescription}
                     </Typography>
                 </CardContent>    
                     <CardActions>
                         <Button
                             component={Link}
-                            to={`/TaskPage/${task.task.id}`}
+                            to={`/TaskPage/${task.task._id}`}
                             style={{
                                 position: "absolute", 
                                 left: "30%", 
