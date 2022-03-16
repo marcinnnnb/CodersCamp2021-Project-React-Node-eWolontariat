@@ -18,6 +18,7 @@ import { createBrowserHistory } from "history";
 import CategoryPage from "../TasksPage/CategoryPage.js";
 import Dialog from '../common/Dialog/Dialog';
 import OrganizationsPage from '../OrganizationsPage/OrganizationsPage.js';
+
 export function App() {
 
     return (

@@ -8,6 +8,7 @@ import {BrowserRouter} from 'react-router-dom';
 import { fetchTasks } from './store/fetchTasks';
 import { fetchVolunteers } from './store/fetchVolunteers';
 import { fetchOrganizations } from './store/fetchOrganizations';
+import ScrollToTop from '../src/ScrollToTop '
 
 store.dispatch(fetchTasks());
 store.dispatch(fetchVolunteers());
@@ -17,6 +18,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store ={store}>
       <BrowserRouter>
+        <ScrollToTop/>
           <App />
         </BrowserRouter>
       </Provider>
