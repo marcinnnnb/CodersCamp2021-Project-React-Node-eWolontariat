@@ -56,4 +56,12 @@ export default class Api {
             method: 'DELETE'
         });
     };
+
+    static addVolunteerRate(id) {
+        const uri = `${this.baseUrl}volunteer/${id}/rate`;
+        return fetch(uri, {
+            method: 'POST'
+        });
+    };
+
  }
