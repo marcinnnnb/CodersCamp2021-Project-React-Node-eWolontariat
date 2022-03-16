@@ -6,11 +6,16 @@ function setVolunteersRatingButtons (volunteersList){
     const thePopularCategoriesButtons = (Categories.map(category=>{
         let rate=0;
         volunteersList.volunteers?.map(volunteer=>{
-            (volunteer.categories).forEach(volunteerCategory=>{
-                if(volunteerCategory===category.value){
-                    rate++;
-                }
-            });
+            if (volunteer.categories){
+                (volunteer?.categories).forEach(volunteerCategory=>{
+                    if(volunteerCategory===category.value){
+                        rate++;
+                    }
+                });
+            } else {
+                rate=null;
+            }
+            
             return rate;
         });
         category.rate=rate;

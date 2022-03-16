@@ -62,7 +62,7 @@ const VolunteersList = ({startSlice,endSlice}) => {
                     >
                     Wszystkie</CustomButton>
 
-                {thePopularCategoriesButtons.map((category,id)=>(
+                {thePopularCategoriesButtons?.map((category,id)=>(
                     
                     <CustomButton 
                         key={`item-${id}`} 

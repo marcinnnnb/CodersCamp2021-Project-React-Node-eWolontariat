@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   loggedIn: false,
-  name: undefined
+  name: undefined,
+  userId: undefined
 };
 
 const systemSlice = createSlice({
@@ -12,7 +13,7 @@ const systemSlice = createSlice({
     login: (state, action) => {
       state.loggedIn = true;
       state.name = action.payload.name;
-      console.log(state.loggedIn)
+      state.userId = action.payload.userId;
     },
     logout: (state) => {
       state.loggedIn = false;
