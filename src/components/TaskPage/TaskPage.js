@@ -2,7 +2,6 @@ import { Button, Typography, Box, TextField, Card, Divider, CircularProgress } f
 import ProgressBar from "./ProgressBar";
 import liscik from "../../assets/img/plane.svg";
 import skrzynka from "../../assets/img/mailbox.svg";
-import avatar from "../../assets/img/facet.png";
 import CustomButton from "../../theme/CustomButton";
 import { useParams } from 'react-router-dom'
 import setCategoryIcon from "../../theme/setCategoryIcon";
@@ -10,6 +9,7 @@ import { styled } from '@mui/material/styles';
 import { useEffect, useState } from "react";
 import Api from "../../store/Clients/ApiTasks";
 import axios from "axios";
+import PersonIcon from '@material-ui/icons/Person';
 
 const StyledTaskPage = styled(Card)(({ theme }) => ({
     height: "100%",
@@ -141,7 +141,7 @@ const TaskPage = () => {
                 <Box sx={{ gridArea:"comments", width:"90%"}}  mx='0.5rem'  >
                     <Typography variant="h2" align="center" paragraph>Komentarze</Typography>  
                     <Card className={"comments"} raised={true} style={{ margin:'1rem', padding: '0.6rem 0.8rem'}}>
-                        <Typography  variant="body2" paragraph ><img height="45rem" src={avatar} alt=""/>  {task.comments}</Typography>
+                        <Typography  variant="body2" paragraph ><PersonIcon color='primary' style={{fontSize: '3rem'}}/>{task.comments}</Typography>
                     </Card>
                     <Card raised={true} style={{ margin:'1rem', padding: '0.8rem 0.5rem'}}>
                         <TextField label="Napisz komentarz" multiline rows={2} fullWidth />

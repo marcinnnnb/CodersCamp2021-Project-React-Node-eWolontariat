@@ -1,4 +1,4 @@
-import { Typography, Box, Card, Divider, CircularProgress } from "@material-ui/core";
+import { Typography, Box, Card, Divider, CircularProgress,TextField } from "@material-ui/core";
 import { Rating } from '@mui/material';
 import PersonIcon from '@material-ui/icons/Person';
 import CustomAvatar from "../../theme/CustomAvatar";
@@ -126,18 +126,18 @@ const VolunteerPage = () => {
                     </Box>
                 </Box>
             </Box>
-                <Typography paragraph style={{marginTop:'5rem', gridArea: 'main'}}>{volunteer.description}</Typography>
-            <Box sx={{ gridArea:"comments", width:"90%"}}  mx='0.5rem'  >
-                <Typography paragraph variant="h2" style={{marginTop:'6rem', textAlign:'center'}}>Komentarze</Typography>
-                <Card raised={true} style={{ margin:'5rem', padding: '1rem 1rem', display:'flex', flexDirection:'column',   justifyContent:'space-between'}}>
-                    <Box style={{ display:'flex'}}>
-                        <PersonIcon color='primary' style={{fontSize: '3rem'}}/>
-                        <Box style={{paddingLeft:'1rem'}}>
+            <Typography paragraph style={{marginTop:'5rem', gridArea: 'main'}}>{volunteer.description}</Typography>
 
-                        </Box> 
-                    </Box>
+            <Box sx={{ gridArea:"comments", width:"90%"}}  mx='0.5rem'>
+                <Typography paragraph variant="h2" style={{marginTop:'6rem', textAlign:'center'}}>Komentarze</Typography>
+                <Card className={"comments"} raised={true} style={{ margin:'1rem', padding: '0.6rem 0.8rem'}}>
+                    <Typography  variant="body2" paragraph ><PersonIcon color='primary' style={{fontSize: '3rem'}}/>{volunteer.comments}</Typography>
+                </Card>
+                <Card raised={true} style={{ margin:'1rem', padding: '0.8rem 0.5rem'}}>
+                    <TextField label="Napisz komentarz" multiline rows={2} fullWidth />
                 </Card>
             </Box>
+
             <Box style={{gridArea:'sidebar' , display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around'}}>
                 <Typography paragraph variant='h4'>Zrealizowane przeze mnie zadania:</Typography>
                 {volunteer?.categories.map(cat=>(
