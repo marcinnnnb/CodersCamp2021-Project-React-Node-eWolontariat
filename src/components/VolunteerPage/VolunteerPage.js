@@ -43,10 +43,10 @@ const StyledVolunteerPage = styled(Card)(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
         margin: '1rem 0.3rem',
         '& p': {
-            margin: "1rem 0.5rem",  
+            margin: "0.8rem 0.5rem",  
         },
         '& .box-responsive': {
-            padding: "0.6rem",      
+            padding: "0.8rem",      
         },
     },
 }));
