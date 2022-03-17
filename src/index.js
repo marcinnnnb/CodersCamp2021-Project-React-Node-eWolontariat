@@ -5,9 +5,9 @@ import App from './components/App/App';
 import { Provider } from 'react-redux';
 import {store} from './store/store';
 import {BrowserRouter} from 'react-router-dom';
-import { fetchTasks } from './store/fetchTasks';
-import { fetchVolunteers } from './store/fetchVolunteers';
-import { fetchOrganizations } from './store/fetchOrganizations';
+import { fetchTasks } from './store/taskSlice';
+import { fetchVolunteers } from './store/volunteerSlice';
+import { fetchOrganizations } from './store/organizationSlice';
 import ScrollToTop from '../src/ScrollToTop '
 
 store.dispatch(fetchTasks());

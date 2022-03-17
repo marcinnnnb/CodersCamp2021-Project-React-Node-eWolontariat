@@ -5,19 +5,24 @@ function setVolunteersRatingButtons (volunteersList){
     
     const thePopularCategoriesButtons = (Categories.map(category=>{
         let rate=0;
-        volunteersList.volunteers?.map(volunteer=>{
-            if (volunteer.categories){
-                (volunteer?.categories).forEach(volunteerCategory=>{
-                    if(volunteerCategory===category.value){
-                        rate++;
-                    }
-                });
-            } else {
-                rate=null;
-            }
-            
-            return rate;
-        });
+        if(volunteersList.volunteers){
+            volunteersList.volunteers?.map(volunteer=>{
+                if (volunteer.categories){
+                    (volunteer?.categories).forEach(volunteerCategory=>{
+                        if(volunteerCategory===category.value){
+                            rate++;
+                        }
+                    });
+                } else {
+                    rate=null;
+                }
+                
+                return rate;
+            });
+        } else {
+            rate = 0;
+        }
+        
         category.rate=rate;
         category.buttonColor = setCategoryIcon(category.value)[1];
         category.icon = setCategoryIcon(category.value)[0];
