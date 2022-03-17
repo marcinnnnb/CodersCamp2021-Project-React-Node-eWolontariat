@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import OrganizationClient from "../services/client/OrganizationClient";
 
 const initialState = {
@@ -7,6 +6,14 @@ const initialState = {
     status: 'idle',
     error: null
   };
+
+export const fetchOrganizations = createAsyncThunk('organizations/fetchOrganizations', async () => {
+    const response = await OrganizationClient.getOrganizations().then((response) => {
+      return response;
+    });    
+    const json = response.data;
+    return json;
+});
 
 const organizationSlice = createSlice({
     name: 'organizations',
@@ -51,12 +58,3 @@ export const selectAllOrganizations = state => state.organization;
 
 export const selectOrganizationId = (state, organizationId) =>
   state.find(organization => organization.id === organizationId);
-
-export const fetchOrganizations = createAsyncThunk('organizations/fetchOrganizations', async () => {
-    //const response = await axios.get('https://whispering-oasis-16160.herokuapp.com/organization').then((response) => {
-    const response = await OrganizationClient.getVolunteers().then((response) => {
-      return response;
-    });    
-    const json = response.data;
-    return json;
-});

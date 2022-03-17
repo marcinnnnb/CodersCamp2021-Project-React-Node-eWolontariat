@@ -7,9 +7,9 @@ import { useParams } from 'react-router-dom'
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import { styled } from '@mui/material/styles';
 import { useEffect, useState } from "react";
-import Api from "../../services/client/ApiTasks";
-import axios from "axios";
 import PersonIcon from '@material-ui/icons/Person';
+import PictureClient from "../../services/client/PictureClient";
+import EventClient from "../../services/client/EventClient";
 
 const StyledTaskPage = styled(Card)(({ theme }) => ({
     height: "100%",
@@ -66,8 +66,10 @@ const TaskPage = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await Api.getEventById(id);
-                const json = await response.json();
+                const response = await EventClient.getEventById(id).then((response) => {
+                    return response.data;
+                });   
+                const json = await response;
                 setTask(json);
                 setPictureId(task.picture);
             } catch (e) {
@@ -77,10 +79,9 @@ const TaskPage = () => {
         }
             fetchData();
         }, [id, task.picture]);
-
     
   useEffect(() => {
-    axios.get(`https://whispering-oasis-16160.herokuapp.com/picture/${pictureId}`).then((response) => {
+    PictureClient.getPictureById(pictureId).then((response) => {
         setPreviewImg("data:image/png;base64," + response.data);
     });
   }, [pictureId]);

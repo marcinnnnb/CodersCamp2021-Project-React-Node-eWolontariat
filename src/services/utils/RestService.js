@@ -3,8 +3,7 @@ import { logout } from '../../store/systemSlice';
 const REQUEST_CONTENT_TYPE = "application/json";
 const X_REQUESTED_WITH = "XMLHttpRequest";
 
-export default class RestService {
-
+class RestService {
     constructor(){
         this.axiosInstance = RestService.InitAxiosInstance();
     };
@@ -30,7 +29,7 @@ export default class RestService {
           return axiosInstance;
     };
 
-    get(url, params, config) {
+    get(url, params, config){
         return this.axiosInstance.get(url);
       }
 
@@ -51,3 +50,5 @@ export default class RestService {
     };
     
 };
+
+export default new RestService();

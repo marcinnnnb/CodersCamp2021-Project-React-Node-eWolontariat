@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice, isRejectedWithValue } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import EventClient from "../services/client/EventClient";
 
 const initialState = {
@@ -7,6 +6,14 @@ const initialState = {
     status: 'idle',
     error: null
   };
+
+export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
+    const response = await EventClient.getEvents().then((response) => {
+      return response;
+  });    
+  const json = response.data.events;
+  return json; 
+});
 
 const taskSlice = createSlice({
     name: 'tasks',
@@ -27,7 +34,7 @@ const taskSlice = createSlice({
     extraReducers(builder) {
         builder
           .addCase(fetchTasks.pending, (state, action) => {
-            state.status = 'loading...'
+            state.status = 'loading...';
           })
           .addCase(fetchTasks.fulfilled, (state, action) => {
             state.status = 'succeeded (:';
@@ -45,13 +52,4 @@ export const { sortTasks, addNewTask } = taskSlice.actions;
 export default taskSlice.reducer;
 
 export const selectAllTasks = state => state.task;
-
-export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
-      const response = await EventClient.getEvents().then((response) => {
-      //const response = await axios.get('https://whispering-oasis-16160.herokuapp.com/event').then((response) => {
-        return response;
-    });    
-    const json = response.data.events;
-    return json; 
-});
 

@@ -7,10 +7,8 @@ import setCategoryIcon from "../../theme/setCategoryIcon";
 import CustomButton from "../../theme/CustomButton";
 import { styled } from '@mui/material/styles';
 import { useEffect, useState } from "react";
-import Api from "../../services/client/ApiVolunteers";
-import axios from "axios";
-
-
+import PictureClient from "../../services/client/PictureClient";
+import VolunteerClient from "../../services/client/VolunteerClient";
 
 const StyledVolunteerPage = styled(Card)(({ theme }) => ({
     height: "100%",
@@ -65,8 +63,10 @@ const VolunteerPage = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await Api.getVolunteerById(id);
-                const json = await response.json();
+                const response = await VolunteerClient.getVolunteerById(id).then((response) => {
+                    return response.data;
+                });  
+                const json = await response;
                 setVolunteer(json);
                 setPictureId(volunteer.avatar);
             } catch (e) {
@@ -78,7 +78,7 @@ const VolunteerPage = () => {
         }, [id, volunteer.avatar]);
     
     useEffect(() => {
-            axios.get(`https://whispering-oasis-16160.herokuapp.com/picture/${pictureId}`).then((response) => {
+        PictureClient.getPictureById(pictureId).then((response) => {
                 setPreviewImg("data:image/png;base64," + response.data);
             });
           }, [pictureId]);

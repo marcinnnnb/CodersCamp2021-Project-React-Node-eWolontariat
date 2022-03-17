@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { openDialog, FormType } from '../../store/dialogSlice';
 import { useDispatch } from 'react-redux';
 import ErrorIcon from '@mui/icons-material/Error';
-import axios from 'axios';
+import UserClient from '../../../../../services/client/UserClient';
 import { login } from '../../../../../store/systemSlice';
 
 const useStyles = makeStyles({
@@ -37,24 +37,20 @@ export const LoginDialog = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userData = {
-      login: data.login,
-      password: data.password
-    };
-    
-      axios.post('https://whispering-oasis-16160.herokuapp.com/user/login', userData).then((response) => {
+
+      UserClient.loginUser(data).then((response) => {
         console.log(response.status);
         if(response.status === 200) {
           dispatch(openDialog({ formType: FormType.zalogowany}));
           dispatch(login({name: data.login }));
-          console.log(response.headers);
+          const token = response.headers;
         };
       }).catch((error) => {
         if (error.response) {
           setContent(
             <Box display={"flex"} flexDirection={"row"}>
                 <ErrorIcon fontSize={"small"} color={"error"} style={{marginRight: "0.4rem"}}/> 
-                <div style={{color: "red", fontWeight:600, textTransform: "capitalize"}}>{error.response.data}!</div>
+                <div style={{color: "red", fontWeight:600, textTransform: "capitalize"}}>{error.response.data}</div>
             </Box>
             );
         } else if (error.request) {
@@ -79,6 +75,7 @@ export const LoginDialog = () => {
         error={data.login ? false : true}
         value={data.login}
         onChange={handleChange}
+        helperText="Co najmniej 4 znaki, jedna wielka litera i jedna cyfra."
       />
 
       <TextField
@@ -91,6 +88,7 @@ export const LoginDialog = () => {
         fullWidth
         error={data.password ? false : true}
         onChange={handleChange}
+        helperText="Co najmniej 8 znaków, jedna wielka litera i jedna cyfra."
       />
 
       <Button type="submit" className={classes.field} color="primary" variant="contained" fullWidth>

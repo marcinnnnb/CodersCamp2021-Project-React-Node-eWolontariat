@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import VolunteerClient from "../services/client/VolunteerClient";
 
 const initialState = {
@@ -7,6 +6,14 @@ const initialState = {
     status: 'idle',
     error: null
   };
+
+export const fetchVolunteers = createAsyncThunk('volunteers/fetchVolunteers', async () => {
+    const response = await VolunteerClient.getVolunteers().then((response) => {
+      return response;
+    });    
+    const json = response.data;
+    return json;
+});
 
 const volunteersSlice = createSlice({
     name: 'volunteers',
@@ -54,21 +61,7 @@ export const selectAllVolunteers = state => state.volunteers;
 
 export const selectVolunteerId = (state, volunteerId) =>
   state.find(volunteer => volunteer.id === volunteerId);
-
-export const fetchVolunteers = createAsyncThunk('volunteers/fetchVolunteers', async () => {
-    //const response = await axios.get('https://whispering-oasis-16160.herokuapp.com/volunteer').then((response) => {
-    const response = await VolunteerClient.getVolunteers().then((response) => {
-      return response;
-    });    
-    const json = response.data;
-    return json;
-});
-
-
-
-
-
-  
+ 
 function compare( a, b ) {
   if ( a.numberActions > b.numberActions ){
       return -1;
