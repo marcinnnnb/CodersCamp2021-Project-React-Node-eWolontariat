@@ -7,7 +7,6 @@ import { openDialog, FormType } from '../common/Dialog/store/dialogSlice';
 import PersistentDrawerRight from "../Drawer/Drawer";
 import { styled } from '@mui/material/styles';
 import { useMediaQuery } from "@mui/material";
-import { useState } from "react";
 import { selectLoggedIn } from "../../store/systemSlice";
 
 
@@ -35,7 +34,6 @@ const AppHeader = () => {
     let buttons;
 
     function getLogo() {
-        
         const logo = <LogoBox className="logo" component="img" alt="Logo pomocny.pl" type="button" 
                         src={ 
                             matches ?  LogoPomocny :  LogoSignet
@@ -112,3 +110,5 @@ const AppHeader = () => {
 )}
 
 export default AppHeader;
+
+

@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchOrganizations } from "./fetchOrganizations";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import OrganizationClient from "../services/client/OrganizationClient";
 
 const initialState = {
     organizations: [],
@@ -33,7 +34,7 @@ const organizationSlice = createSlice({
           })
           .addCase(fetchOrganizations.fulfilled, (state, action) => {
             state.status = 'succeeded (:'
-            state.organizations = action.payload;
+            state.organizations = Array.isArray ? action.payload : [];
           })
           .addCase(fetchOrganizations.rejected, (state, action) => {
             state.status = 'failed :('
@@ -50,3 +51,12 @@ export const selectAllOrganizations = state => state.organization;
 
 export const selectOrganizationId = (state, organizationId) =>
   state.find(organization => organization.id === organizationId);
+
+export const fetchOrganizations = createAsyncThunk('organizations/fetchOrganizations', async () => {
+    //const response = await axios.get('https://whispering-oasis-16160.herokuapp.com/organization').then((response) => {
+    const response = await OrganizationClient.getVolunteers().then((response) => {
+      return response;
+    });    
+    const json = response.data;
+    return json;
+});

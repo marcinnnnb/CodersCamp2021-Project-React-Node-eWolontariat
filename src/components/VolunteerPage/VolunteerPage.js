@@ -7,7 +7,7 @@ import setCategoryIcon from "../../theme/setCategoryIcon";
 import CustomButton from "../../theme/CustomButton";
 import { styled } from '@mui/material/styles';
 import { useEffect, useState } from "react";
-import Api from "../../store/Clients/ApiVolunteers";
+import Api from "../../services/client/ApiVolunteers";
 import axios from "axios";
 
 

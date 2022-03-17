@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import { styled } from '@mui/material/styles';
 import { useEffect, useState } from "react";
-import Api from "../../store/Clients/ApiTasks";
+import Api from "../../services/client/ApiTasks";
 import axios from "axios";
 import PersonIcon from '@material-ui/icons/Person';
 

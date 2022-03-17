@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchVolunteers } from "./fetchVolunteers";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import VolunteerClient from "../services/client/VolunteerClient";
 
 const initialState = {
     volunteers: [],
@@ -12,12 +13,14 @@ const volunteersSlice = createSlice({
     initialState,
     reducers: {
         sortVolunteers: (state,action) => {
+          if(state.volunteers){
             state.volunteers.map((volunteer, id)=>{
               let par = volunteer.events;
               volunteer.numberActions= par.length;
               return volunteer;
               })
-            state.volunteers.sort(compare);
+              state.volunteers.sort(compare);
+          } else return null;
             return state;
         },
         addNewVolunteer: (state, action) => {
@@ -34,7 +37,7 @@ const volunteersSlice = createSlice({
           })
           .addCase(fetchVolunteers.fulfilled, (state, action) => {
             state.status = 'succeeded (:'
-            state.volunteers = action.payload;
+            state.volunteers = Array.isArray ? action.payload : [];
           })
           .addCase(fetchVolunteers.rejected, (state, action) => {
             state.status = 'failed :('
@@ -49,9 +52,22 @@ export default volunteersSlice.reducer;
 
 export const selectAllVolunteers = state => state.volunteers;
 
-
 export const selectVolunteerId = (state, volunteerId) =>
   state.find(volunteer => volunteer.id === volunteerId);
+
+export const fetchVolunteers = createAsyncThunk('volunteers/fetchVolunteers', async () => {
+    //const response = await axios.get('https://whispering-oasis-16160.herokuapp.com/volunteer').then((response) => {
+    const response = await VolunteerClient.getVolunteers().then((response) => {
+      return response;
+    });    
+    const json = response.data;
+    return json;
+});
+
+
+
+
+
   
 function compare( a, b ) {
   if ( a.numberActions > b.numberActions ){

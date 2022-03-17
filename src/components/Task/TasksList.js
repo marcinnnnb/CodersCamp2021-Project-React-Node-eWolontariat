@@ -1,9 +1,9 @@
 import { Box, CircularProgress, Typography, Divider, MenuItem } from "@material-ui/core";
 import { useEffect, useState  } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { sortTasks,  selectAllTasks } from "../../store/taskSlice";
+import { selectAllTasks } from "../../store/taskSlice";
 import CustomButton from "../../theme/CustomButton";
-import { fetchTasks } from "../../store/fetchTasks";
+import { fetchTasks } from "../../store/taskSlice";
 import getTasksCards from "./getTasksCards";
 import SearchInputTasks from "../TasksPage/SearchInputTasks";
 import setTasksRatingButtons from "../TasksPage/setTasksRatingButtons";
@@ -20,7 +20,6 @@ const TasksList = ({startSlice,endSlice}) => {
   const [selectValue, setSelectValue] = useState('');
 
   let orderedTasks =[];
-
   useEffect(() => {
     if (tasksStatus === 'idle') {
       dispatch(fetchTasks())
@@ -36,7 +35,7 @@ const TasksList = ({startSlice,endSlice}) => {
         </Box>
       );
   } else if (tasksStatus === 'succeeded (:') {
-      orderedTasks = dispatch(sortTasks(tasksList.tasks)).payload;
+      orderedTasks = tasksList.tasks;
       searchInput = <SearchInputTasks/>;
       
   } else if (tasksStatus === 'failed :(') {
