@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { openDialog, FormType } from '../../store/dialogSlice';
 import { useDispatch } from 'react-redux';
 import ErrorIcon from '@mui/icons-material/Error';
-import UserClient from '../../../../../services/client/UserClient';
-import { login } from '../../../../../store/systemSlice';
+import UserClient from 'services/client/UserClient';
+import { login } from 'store/systemSlice';
 
 const useStyles = makeStyles({
   field: {

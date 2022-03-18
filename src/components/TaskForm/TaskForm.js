@@ -2,13 +2,13 @@ import {useForm, Controller} from 'react-hook-form';
 import { Box, Typography, TextField, styled } from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import Select from 'react-select'
-import Categories from '../../assets/data/Categories';
-import CustomTypography from '../../theme/CustomTypography';
-import CustomButton from '../../theme/CustomButton';
+import Categories from 'assets/data/Categories';
+import CustomTypography from 'theme/CustomTypography';
+import CustomButton from 'theme/CustomButton';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import ErrorIcon from '@mui/icons-material/Error';
-import EventClient from '../../services/client/EventClient';
+import EventClient from 'services/client/EventClient';
 
 
 const StyledTaskForm = styled(Box)(({ theme }) => ({
@@ -88,7 +88,7 @@ export default function TaskForm() {
       };
 
 
-    const{register,control, formState: { errors }} =useForm();
+    const{register,control, formState: { errors }} = useForm();
 
     const categories = []; 
 

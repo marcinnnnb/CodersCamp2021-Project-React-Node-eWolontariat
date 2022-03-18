@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import EventClient from "../services/client/EventClient";
+import EventClient from "services/client/EventClient";
 
 const initialState = {
     tasks: [],

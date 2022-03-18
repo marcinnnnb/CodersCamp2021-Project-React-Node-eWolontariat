@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { logout } from '../../store/systemSlice';
+import { logout } from 'store/systemSlice';
 
 const REQUEST_CONTENT_TYPE = "application/json";
 const X_REQUESTED_WITH = "XMLHttpRequest";

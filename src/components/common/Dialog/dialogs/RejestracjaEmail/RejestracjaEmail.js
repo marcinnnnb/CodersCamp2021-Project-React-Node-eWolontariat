@@ -1,11 +1,10 @@
 import { TextField, Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
-import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { openDialog, FormType } from '../../store/dialogSlice';
 import ErrorIcon from '@mui/icons-material/Error';
-import UserClient from '../../../../../services/client/UserClient';
+import UserClient from 'services/client/UserClient';
 
 const useStyles = makeStyles({
   field: {

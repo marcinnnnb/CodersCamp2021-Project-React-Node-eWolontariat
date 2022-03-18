@@ -1,13 +1,11 @@
 import { Button, Typography, Container, Box, Avatar } from '@material-ui/core'
 import { useNavigate } from 'react-router';
-import CustomButton from '../../theme/CustomButton';
-import { selectAllVolunteers, selectVolunteerId } from '../../store/volunteerSlice';
+import CustomButton from 'theme/CustomButton';
 import { useSelector } from "react-redux";
 import { ListItemButton } from '@mui/material';
-import CustomTypography from '../../theme/CustomTypography';
+import CustomTypography from 'theme/CustomTypography';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import UserClient from '../../services/client/UserClient';
+import UserClient from 'services/client/UserClient';
 
 const UserProfile = () => { 
   let navigate = useNavigate();
