@@ -3,7 +3,7 @@ import { logout } from '../../store/systemSlice';
 
 const REQUEST_CONTENT_TYPE = "application/json";
 const X_REQUESTED_WITH = "XMLHttpRequest";
-
+const ACCESS_CONTROL_ALLOW_ORIGIN = "*"
 class RestService {
     constructor(){
         this.axiosInstance = RestService.InitAxiosInstance();
@@ -13,6 +13,7 @@ class RestService {
             headers: {
                 "Content-Type": REQUEST_CONTENT_TYPE,
                 "X-Requested-With": X_REQUESTED_WITH,
+                "Access-Control-Allow-Origin": ACCESS_CONTROL_ALLOW_ORIGIN
               },
             baseURL: 'https://whispering-oasis-16160.herokuapp.com',
         });

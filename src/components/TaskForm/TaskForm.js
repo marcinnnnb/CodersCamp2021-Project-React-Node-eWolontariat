@@ -3,13 +3,8 @@ import { Box, Typography, TextField, styled } from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import Select from 'react-select'
 import Categories from '../../assets/data/Categories';
-import { useNavigate } from 'react-router-dom';
-import { addNewTask } from "../../store/taskSlice";
-import { useDispatch } from "react-redux";
 import CustomTypography from '../../theme/CustomTypography';
 import CustomButton from '../../theme/CustomButton';
-import { useSelector } from "react-redux";
-import { selectAllTasks } from '../../store/taskSlice';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import ErrorIcon from '@mui/icons-material/Error';
@@ -47,18 +42,14 @@ const amountValidation={
 } 
 
 export default function TaskForm() {
-    let navigate = useNavigate();
-    const dispatch = useDispatch();
-    const date = new Date();
-
     const [content,setContent] = useState("")
     const [data, setData] = useState({
         title: "",
         volunteersNeeded: "",
         description: "",
         shortDescription: "",
-        categories: "",
-        image:null
+        categories: ["622bba468ff7100016d06c86"],
+        picture: null
       });
     
       const handleChange = (e) => {
@@ -70,12 +61,14 @@ export default function TaskForm() {
       };
     
       const handleSubmit = (e) => {
-        // e.preventDefault();
+         e.preventDefault();
               
-        //   axios.post('https://whispering-oasis-16160.herokuapp.com/event', eventData).then((response) => {
             EventClient.addNewEvent(data).then((response) => {
             console.log(response.status);
-            if(response.status === 201) {dispatch(addNewTask(data))};
+                
+            console.log(categories)
+           
+            if(response.status === 201) { console.log(response.data)};
           }).catch((error) => {
             if (error.response) {
               setContent(
@@ -90,6 +83,8 @@ export default function TaskForm() {
               console.log(error);
             }
           });
+
+
       };
 
 
@@ -105,7 +100,7 @@ return (
             justifyContent={"center"}
             alignItems={"center"}
         >
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} enctype="multipart/form-data">
             {content}
             <Box style={{display:"grid", gridTemplateColumns: "3fr 2fr", gap: "1.6rem", justifyItems: 'center', alignItems: 'space-evenly', gridTemplateRows: 'auto',
                 gridTemplateAreas: `"header header"
@@ -118,18 +113,60 @@ return (
                 </Box>
 
                 <Box style={{ gridArea: 'img', alignItems:"center", justifyContent:"center",  backgroundColor: 'primary', height:"9rem"}}>
-                <input name="image" type="file" accept="image/png, image/jpeg" {...register('image')}  />
+                    <TextField
+                        name="image" 
+                        type="file"
+                        value={data.picture}
+                        accept="image/png, image/jpeg" 
+                        {...register('picture')}  
+                    />
                 </Box>
 
                 <Box style={{ gridArea: 'main', display:"flex",  flexDirection:"column", alignItems: 'stretch', justifyContent: 'space-around', width: '100%', marginLeft:"30px"}}>
-                    <TextField fullWidth label="Tytuł zadania" name="title" type="title" {...register('title', {required:true, minLength:'5'})} onChange={handleChange}/>
+                    <TextField 
+                        fullWidth 
+                        label="Tytuł zadania" 
+                        name="title" 
+                        type="title"
+                        value={data.title}
+                        {...register('title', {required:true, minLength:'5'})} 
+                        onChange={handleChange}
+                    />
                     {errors.title?.type ==='required' && "To pole jest wymagane. Minimalnie 5 znaków"}
-                    <TextField name="volunteersNeeded" type="number"  fullWidth label="Ilu wolontariuszy potrzebujesz?" {...register('volunteersNeeded', amountValidation)} {...amountValidation} onChange={handleChange}/>
+                    <TextField 
+                        name="volunteersNeeded" 
+                        type="number"  
+                        fullWidth 
+                        label="Ilu wolontariuszy potrzebujesz?" 
+                        {...register('volunteersNeeded', amountValidation)} 
+                        {...amountValidation} 
+                        onChange={handleChange}
+                        value={data.volunteersNeeded}    
+                    />
                 </Box>
                 
                 <Box style={{ gridArea: 'main2', display:"flex", gap:3, flexDirection:"column", justifyContent: 'space-around', width:"97%"}}>
-                    <TextField multiline rows={4} fullWidth label="Dodaj opis zadania" {...register("description")} onChange={handleChange}/>   
-                    <TextField type="description" name="description" style={{marginBottom: "2rem"}} fullWidth multiline rows={2} label="Dodaj krótki opis widoczny na miniaturze" {...register("shortDescription")} onChange={handleChange}/>
+                    <TextField 
+                        multiline 
+                        rows={4} 
+                        fullWidth 
+                        label="Dodaj opis zadania" 
+                        {...register("description")} 
+                        onChange={handleChange}
+                        value={data.description}    
+                    />   
+                    <TextField 
+                        type="description" 
+                        name="description" 
+                        style={{marginBottom: "2rem"}} 
+                        fullWidth 
+                        multiline 
+                        rows={2} 
+                        label="Dodaj krótki opis widoczny na miniaturze" 
+                        {...register("shortDescription")} 
+                        onChange={handleChange}
+                        value={data.shortDescription}                    
+                    />
                     <Typography paragraph variant="body1">Wybierz kategorie: </Typography>
                     <Controller
                         control={control}
