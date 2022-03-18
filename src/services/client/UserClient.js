@@ -8,7 +8,7 @@ export default class UserClient {
     };
 
     static registerUser(data) {
-        return RestService.post(`${this.baseUrl}/register`, {data});
+        return RestService.post(`${this.baseUrl}/register`, data);
     };
 
     static loginUser(data) {
@@ -16,7 +16,7 @@ export default class UserClient {
     };
 
     static updateUserById(id, data) {
-        return RestService.patch(`${this.baseUrl}/${id}`, {id}, {data});
+        return RestService.patch(`${this.baseUrl}/${id}`, {id}, data);
     };
 
     static getLoggedInUser(login){
