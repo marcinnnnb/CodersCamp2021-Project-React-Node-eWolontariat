@@ -11,8 +11,8 @@ export default class UserClient {
         return RestService.post(`${this.baseUrl}/register`, data);
     };
 
-    static loginUser(data) {
-        return RestService.post(`${this.baseUrl}/login`, data);
+    static loginUser(login) {
+        return RestService.post(`${this.baseUrl}/login`, {login});
     };
 
     static updateUserById(id, {data}) {

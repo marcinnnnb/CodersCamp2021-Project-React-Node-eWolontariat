@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { logout } from '../../store/systemSlice';
+
 const REQUEST_CONTENT_TYPE = "application/json";
 const X_REQUESTED_WITH = "XMLHttpRequest";
 
@@ -7,15 +8,20 @@ class RestService {
     constructor(){
         this.axiosInstance = RestService.InitAxiosInstance();
     };
-
     static InitAxiosInstance() {
         const axiosInstance = axios.create({
             headers: {
                 "Content-Type": REQUEST_CONTENT_TYPE,
-                "X-Requested-With": X_REQUESTED_WITH,
+                "X-Requested-With": X_REQUESTED_WITH
               },
             baseURL: 'https://whispering-oasis-16160.herokuapp.com',
         });
+
+        axiosInstance.interceptors.request.use(request => {
+          const token = localStorage.getItem('auth-token');
+          request.headers["Auth-Token"] = token;
+          return request;
+      });
 
         axiosInstance.interceptors.response.use(
             (response) => response,
@@ -37,15 +43,15 @@ class RestService {
         return this.axiosInstance.post(url, data, config);
     };
 
-    put(url, params, data){
+    put(url, params, data, config){
         return this.axiosInstance.put(url, data, {params});
     };
 
-    patch(url, data){
+    patch(url, data, config){
         return this.axiosInstance.patch(url, data);
     };
 
-    delete(url,params){
+    delete(url,params, config){
         return this.axiosInstance.delete(url, {params});
     };
     

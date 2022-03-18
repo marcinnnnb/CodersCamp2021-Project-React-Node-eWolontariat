@@ -11,12 +11,12 @@ export default class OrganizationClient {
         return RestService.get(`${this.baseUrl}/${id}`, {id});
     };
 
-    static addNewOrganization(){
-        return RestService.post(this.baseUrl, {})
+    static addNewOrganization(data){
+        return RestService.post(this.baseUrl, data)
     };
 
-    static updateOrganization(id){
-        return RestService.patch(`${this.baseUrl}/${id}`, {id}, {})
+    static updateOrganization(id, data){
+        return RestService.patch(`${this.baseUrl}/${id}`, {id}, data)
     };
 
     static getOrganizationsAllEvent(id){

@@ -39,11 +39,11 @@ export const LoginDialog = () => {
     e.preventDefault();
 
       UserClient.loginUser(data).then((response) => {
-        console.log(response.status);
         if(response.status === 200) {
           dispatch(openDialog({ formType: FormType.zalogowany}));
-          dispatch(login({name: data.login }));
-          const token = response.headers;
+          dispatch(login({ name: data.login }));
+          const token = response.headers["auth-token"]
+          localStorage.setItem("auth-token", token);
         };
       }).catch((error) => {
         if (error.response) {
@@ -54,7 +54,10 @@ export const LoginDialog = () => {
             </Box>
             );
         } else if (error.request) {
-          setContent("Błąd sieci. Sprawdź swoje połączenie!");
+          <Box display={"flex"} flexDirection={"row"}>
+                <ErrorIcon fontSize={"small"} color={"error"} style={{marginRight: "0.4rem"}}/> 
+                <div style={{color: "red", fontWeight:600, textTransform: "capitalize"}}>"Błąd sieci. Sprawdź swoje połączenie!"</div>
+          </Box>
         } else {
           console.log(error);
         }

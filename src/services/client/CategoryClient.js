@@ -11,7 +11,7 @@ export default class CategoryClient {
         return RestService.get(this.baseUrl);
     };
 
-    static addNewCategory() {
-        return RestService.post(this.baseUrl, {});
+    static addNewCategory(data) {
+        return RestService.post(this.baseUrl, data);
     };
 };
