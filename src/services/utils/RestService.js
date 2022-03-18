@@ -12,7 +12,7 @@ class RestService {
         const axiosInstance = axios.create({
             headers: {
                 "Content-Type": REQUEST_CONTENT_TYPE,
-                "X-Requested-With": X_REQUESTED_WITH
+                "X-Requested-With": X_REQUESTED_WITH,
               },
             baseURL: 'https://whispering-oasis-16160.herokuapp.com',
         });
