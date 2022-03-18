@@ -11,12 +11,12 @@ export default class VolunteerClient {
         return RestService.get(`${this.baseUrl}/${id}`, {id});
     };
 
-    static updateVolunteer(id) {
-        return RestService.patch(`${this.baseUrl}/${id}`, {id}, {});
+    static updateVolunteer(id, data) {
+        return RestService.patch(`${this.baseUrl}/${id}`, {id}, data);
     };
 
-    static addNewVolunteer() {
-        return RestService.post(this.baseUrl, {});
+    static addNewVolunteer(data) {
+        return RestService.post(this.baseUrl, data);
     };
 
     static getVolunteerComments(id) {

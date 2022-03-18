@@ -7,7 +7,7 @@ export default class CommentsClient {
         return RestService.get(`${this.baseUrl}/${id}`);
     };
 
-    static updateCommentById(id) {
-        return RestService.put(`${this.baseUrl}/${id}`, {id}, {});
+    static updateCommentById(id, data) {
+        return RestService.put(`${this.baseUrl}/${id}`, {id}, data);
     };
 };

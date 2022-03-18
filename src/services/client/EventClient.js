@@ -8,16 +8,16 @@ export default class EventClient {
         return RestService.get(this.baseUrl);
     };
 
-    static addNewEvent() {
-        return RestService.post(this.baseUrl, {});
+    static addNewEvent(data) {
+        return RestService.post(this.baseUrl, data);
     };
 
     static getEventById(id) {
         return RestService.get(`${this.baseUrl}/${id}`, {id});
     }; 
 
-    static updateEvent(id) {
-        return RestService.put(`${this.baseUrl}/${id}`, {id}, {});
+    static updateEvent(id, data) {
+        return RestService.put(`${this.baseUrl}/${id}`, {id}, data);
     };
 
     static getEventsSucceeded() {
@@ -32,8 +32,8 @@ export default class EventClient {
         return RestService.get(`${this.baseUrl}/${id}/comments`, {id});
     };
 
-    static addNewEventComment(id) {
-        return RestService.post(`${this.baseUrl}/${id}/comments`, {});
+    static addNewEventComment(id, data) {
+        return RestService.post(`${this.baseUrl}/${id}/comments`, data);
     };
 
     static deleteEventComment(id, commentId) {
