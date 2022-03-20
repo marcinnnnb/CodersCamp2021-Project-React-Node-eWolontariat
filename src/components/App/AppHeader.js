@@ -8,9 +8,6 @@ import PersistentDrawerRight from "components/Drawer/Drawer";
 import { styled } from '@mui/material/styles';
 import { useMediaQuery } from "@mui/material";
 import { selectLoggedIn } from "store/systemSlice";
-import MoreIcon from '@mui/icons-material/MoreVert';
-import { IconButton } from "@material-ui/core";
-import { useState } from "react";
 import ResponsiveMenu from "components/Drawer/ResponsiveMenu";
 
 const LogoBox = styled(Box)(({ theme }) => ({

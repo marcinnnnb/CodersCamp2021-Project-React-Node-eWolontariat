@@ -7,7 +7,8 @@ import OrganizationCard from "../OrganizationsPage/OrganizationCard";
 
 const OrganizationList = ({startSlice,endSlice}) => {
   const dispatch = useDispatch();
-  const organizationsList = useSelector(selectAllOrganizations);
+  //const organizationsList = useSelector(selectAllOrganizations);
+  const organizationsList = [];
   const organizationsStatus = useSelector(state => state.organization.status);
   const error = useSelector(state => state.organization.error);
 

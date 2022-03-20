@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App/App';
+import 'index.css';
+import App from 'components/App/App';
 import { Provider } from 'react-redux';
-import {store} from './store/store';
+import {store} from 'store/store';
 import {BrowserRouter} from 'react-router-dom';
-import { fetchTasks } from './store/taskSlice';
-import { fetchVolunteers } from './store/volunteerSlice';
-import { fetchOrganizations } from './store/organizationSlice';
-import ScrollToTop from '../src/ScrollToTop '
+import { fetchTasks } from 'store/tasksListSlice';
+import { fetchVolunteers } from 'store/volunteerSlice';
+import { fetchOrganizations } from 'store/organizationSlice';
+import ScrollToTop from 'ScrollToTop '
 
 store.dispatch(fetchTasks());
 store.dispatch(fetchVolunteers());
