@@ -1,15 +1,17 @@
-import { AppBar, Box, Button, Toolbar } from "@material-ui/core";
-import LogoPomocny from "../../assets/img/logo-pomocny.svg";
-import LogoSignet from "../../assets/img/hand-peace-solid.svg";
+import { AppBar, Box, Button, Menu, MenuItem, Toolbar } from "@material-ui/core";
+import LogoPomocny from "assets/img/logo-pomocny.svg";
+import LogoSignet from "assets/img/hand-peace-solid.svg";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { openDialog, FormType } from '../common/Dialog/store/dialogSlice';
-import PersistentDrawerRight from "../Drawer/Drawer";
+import { openDialog, FormType } from 'components/common/Dialog/store/dialogSlice';
+import PersistentDrawerRight from "components/Drawer/Drawer";
 import { styled } from '@mui/material/styles';
 import { useMediaQuery } from "@mui/material";
+import { selectLoggedIn } from "store/systemSlice";
+import MoreIcon from '@mui/icons-material/MoreVert';
+import { IconButton } from "@material-ui/core";
 import { useState } from "react";
-import { selectLoggedIn } from "../../store/systemSlice";
-
+import ResponsiveMenu from "components/Drawer/ResponsiveMenu";
 
 const LogoBox = styled(Box)(({ theme }) => ({
     height: "46px",
@@ -35,8 +37,7 @@ const AppHeader = () => {
     let buttons;
 
     function getLogo() {
-        
-        const logo = <LogoBox className="logo" component="img" alt="Logo pomocny.pl" type="button" 
+        const logo = <LogoBox className="logo" component="img" alt="Logo pomocny.pl" type="button"
                         src={ 
                             matches ?  LogoPomocny :  LogoSignet
                         }                     
@@ -70,7 +71,8 @@ const AppHeader = () => {
                 </Button>
             </>
             )
-        )) : elementForNotLoggedIn = null;
+        )) : elementForNotLoggedIn =  <ResponsiveMenu/>;
+
         return elementForNotLoggedIn;
      }
 
@@ -101,14 +103,16 @@ const AppHeader = () => {
             <Toolbar >
                     {getLogo()}
                     <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
-                        {loggedIn &&setAppBar("1rem")}
-                        {!loggedIn &&setAppBar("0")}
+                        {loggedIn && setAppBar("1rem")}
+                        {!loggedIn && setAppBar("0")}
                         {!loggedIn && getAuthButton()}
                         {loggedIn && <PersistentDrawerRight />}
-                    </Box>              
+                    </Box>            
             </Toolbar>
         </StyledAppBar>
     </header>
 )}
 
 export default AppHeader;
+
+

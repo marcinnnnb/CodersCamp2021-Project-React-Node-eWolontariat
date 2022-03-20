@@ -6,7 +6,8 @@ import CustomButton from "../../../../theme/CustomButton";
 import BigNumber from "./BigNumber";
 import { styled } from '@mui/material/styles';
 import { useEffect, useState } from "react";
-import axios from "axios";
+import VolunteerClient from "../../../../services/client/VolunteerClient";
+import EventClient from "../../../../services/client/EventClient";
 
 const StyledBox = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -45,13 +46,13 @@ const SectionInNumbers = () => {
     const [volunteersNumber, setVolunteersNumber] = useState(0);
 
     useEffect(() => {
-        axios.get('https://whispering-oasis-16160.herokuapp.com/event/count/true').then((response) => {
+        EventClient.getEventsSucceeded().then((response) => {
             setEventsSucceededNumber(response.data.events);
         });
       }, []);
 
     useEffect(() => {
-        axios.get('https://whispering-oasis-16160.herokuapp.com/volunteer/all/count').then((response) => {
+        VolunteerClient.getVolunteersCount().then((response) => {
             setVolunteersNumber(response.data.volunteers);
         });
       }, []);

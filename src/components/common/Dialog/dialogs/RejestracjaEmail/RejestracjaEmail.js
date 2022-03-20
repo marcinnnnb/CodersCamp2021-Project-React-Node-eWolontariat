@@ -1,10 +1,10 @@
 import { TextField, Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
-import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { openDialog, FormType } from '../../store/dialogSlice';
 import ErrorIcon from '@mui/icons-material/Error';
+import UserClient from 'services/client/UserClient';
 
 const useStyles = makeStyles({
   field: {
@@ -36,15 +36,8 @@ export const RejestracjaEmail = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userData = {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      login: data.login,
-      email: data.email,
-      password: data.password
-    };
     
-      axios.post('https://whispering-oasis-16160.herokuapp.com/user/register', userData).then((response) => {
+     UserClient.registerUser(data).then((response) => {
         console.log(response.status);
         if(response.status === 201) {dispatch(openDialog({ formType: FormType.zalozonyProfil }))};
       }).catch((error) => {
@@ -77,6 +70,7 @@ export const RejestracjaEmail = () => {
         error={data.firstName ? data.firstName.trim().length < 3 : true}
         value={data.firstName}
         onChange={handleChange}
+        helperText="Co najmniej 3 litery,w tym jedna wielka."
       />
 
       <TextField
@@ -90,6 +84,7 @@ export const RejestracjaEmail = () => {
         error={data.lastName ? false : true}
         value={data.lastName}
         onChange={handleChange}
+        helperText="Co najmniej 3 litery,w tym jedna wielka."
       />
 
       <TextField
@@ -103,6 +98,7 @@ export const RejestracjaEmail = () => {
         error={data.login ? false : true}
         value={data.login}
         onChange={handleChange}
+        helperText="Co najmniej 4 znaki, jedna wielka litera i jedna cyfra."
       />
 
       <TextField
@@ -129,6 +125,7 @@ export const RejestracjaEmail = () => {
         error={data.password? data.password.trim().length < 5 : true}
         value={data.password}
         onChange={handleChange}
+        helperText="Co najmniej 8 znaków, jedna wielka litera i jedna cyfra."
       />
 
       <Button

@@ -1,12 +1,11 @@
 import { Button, Typography, Container, Box, Avatar } from '@material-ui/core'
 import { useNavigate } from 'react-router';
-import CustomButton from '../../theme/CustomButton';
-import { selectAllVolunteers, selectVolunteerId } from '../../store/volunteerSlice';
+import CustomButton from 'theme/CustomButton';
 import { useSelector } from "react-redux";
 import { ListItemButton } from '@mui/material';
-import CustomTypography from '../../theme/CustomTypography';
+import CustomTypography from 'theme/CustomTypography';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import UserClient from 'services/client/UserClient';
 
 const UserProfile = () => { 
   let navigate = useNavigate();
@@ -14,20 +13,20 @@ const UserProfile = () => {
   const userLogin = useSelector((state) => state.system.name);
   let avatar;
 
-  console.log(userLogin)
-
   useEffect(() => {
-    axios.get(`https://whispering-oasis-16160.herokuapp.com/user/login/${userLogin}`).then((response) => {
+    UserClient.getLoggedInUser(userLogin).then((response) => {
         setUser(response.data);
     });
   }, [userLogin]);
+
+  console.log(user)
     return (
 
       <Container style={{display: 'flex',justifyContent: 'center',paddingTop: '4rem',width: '100%'}}>
         <Box style={{width: '20%',margin: '0',padding: '0',}}>
             <Avatar
                     src={avatar}
-                    alt={`${user.name}`}
+                    alt={`${user.firstName}`}
                     style = {{borderRadius:"50%", width:"200px", height: "200px", marginBottom: "2rem"}}
                     />
           <Button variant="outlined" disabled style={{marginLeft:'1.6rem'}}>Edytuj zdjęcie</Button>
