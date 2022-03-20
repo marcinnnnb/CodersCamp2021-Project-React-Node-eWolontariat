@@ -78,7 +78,7 @@ const TaskPage = () => {
     }, [taskStatus, dispatch, id, data, pictureId]);
 
     useEffect(() => {
-        if (pictureId && pictureStatus === 'idle') {
+        if (pictureId != '' && pictureStatus === 'idle') {
             dispatch(fetchPicture(pictureId));
           }
         setPreviewImg(picture);

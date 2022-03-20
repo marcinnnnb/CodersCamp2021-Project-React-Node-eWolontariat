@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { logout } from 'store/systemSlice';
 
-const REQUEST_CONTENT_TYPE = "application/json, image/*";
+const REQUEST_CONTENT_TYPE = "application/json";
 const ACCEPT= "application/json, image/*";
 const X_REQUESTED_WITH = "XMLHttpRequest";
 const ACCESS_CONTROL_ALLOW_ORIGIN = "*";
@@ -33,7 +34,9 @@ class RestService {
             (response) => response,
             (error) => {
               if (error.response?.status === 401) {
-                import("../../store/systemSlice").then((store) => store.dispatch(logout()));
+                import("store/systemSlice").then((store) => store.dispatch(logout()));
+              } else if (error.request) {
+                toast.error("Błąd sieci. Sprawdź swoje połączenie!");
               }
               return Promise.reject(error);
             }
