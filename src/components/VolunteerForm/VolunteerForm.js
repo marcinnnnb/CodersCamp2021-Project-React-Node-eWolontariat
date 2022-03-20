@@ -34,9 +34,12 @@ const StyledSelect = styled(Select)(({ theme }) => ({
 const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiInputLabel-root': {
         fontWeight: "600", 
-        letterSpacing: "0.1rem", 
-        fontSize: "1.2rem"
-    }
+        fontSize: "2rem",
+        [theme.breakpoints.down('md')]: {
+            fontSize: '1rem'
+        }
+    },
+    
 }));
 
 const StyledVolunteerForm = styled(Box)(({ theme }) => ({
