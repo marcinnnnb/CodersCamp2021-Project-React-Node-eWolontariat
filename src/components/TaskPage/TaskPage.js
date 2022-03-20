@@ -12,6 +12,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPicture, selectPicture, selectPictureStatus, loadPicture, selectPictureId } from "store/pictureSlice";
 import { fetchTask, selectTask, selectTaskError, selectTaskStatus } from "store/taskSlice";
 
+const StyledTextField = styled(TextField)(({ theme }) => ({
+    '& .MuiFormLabel-root': {
+        [theme.breakpoints.down('md')]: {
+            fontSize: '0.8rem'
+        }
+    },
+    
+}));
+
 const StyledTaskPage = styled(Card)(({ theme }) => ({
     height: "100%",
     margin: '5rem', 
@@ -128,7 +137,7 @@ const TaskPage = () => {
                         <Typography  variant="body2" paragraph ><PersonIcon color='primary' style={{fontSize: '3rem'}}/>{task.comments}</Typography>
                     </Card>
                     <Card raised={true} style={{ margin:'1rem', padding: '0.8rem 0.5rem'}}>
-                        <TextField label="Napisz komentarz" multiline rows={2} fullWidth />
+                        <StyledTextField label="Napisz komentarz" multiline rows={2} fullWidth />
                     </Card>
                 </Box>
                 <Box  style={{gridArea:'sidebar' , display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around', maxHeight:'40rem'}}>

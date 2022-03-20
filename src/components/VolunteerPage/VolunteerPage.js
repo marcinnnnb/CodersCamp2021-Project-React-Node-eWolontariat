@@ -10,6 +10,15 @@ import { useEffect, useState } from "react";
 import PictureClient from "../../services/client/PictureClient";
 import VolunteerClient from "../../services/client/VolunteerClient";
 
+const StyledTextField = styled(TextField)(({ theme }) => ({
+    '& .MuiFormLabel-root': {
+        [theme.breakpoints.down('md')]: {
+            fontSize: '0.8rem'
+        }
+    },
+    
+}));
+
 const StyledVolunteerPage = styled(Card)(({ theme }) => ({
     height: "100%",
     margin: '5rem 2rem', 
@@ -35,7 +44,7 @@ const StyledVolunteerPage = styled(Card)(({ theme }) => ({
         '& span': {
             fontSize: '0.8rem'     
         },
-        '& .commetnts' :{
+        '& .comments' :{
             textAlign: "left",
         }
     },
@@ -134,7 +143,7 @@ const VolunteerPage = () => {
                     <Typography  variant="body2" paragraph ><PersonIcon color='primary' style={{fontSize: '3rem'}}/>{volunteer.comments}</Typography>
                 </Card>
                 <Card raised={true} style={{ margin:'1rem', padding: '0.8rem 0.5rem'}}>
-                    <TextField label="Napisz komentarz" multiline rows={2} fullWidth />
+                    <StyledTextField label="Napisz komentarz" multiline rows={2} fullWidth />
                 </Card>
             </Box>
 
