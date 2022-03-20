@@ -1,4 +1,4 @@
-import { Button, Typography, Container, Box, Avatar } from '@material-ui/core'
+import { Button, Typography, Container, Box, Avatar, CircularProgress } from '@material-ui/core'
 import { useNavigate } from 'react-router';
 import CustomButton from 'theme/CustomButton';
 import { useSelector } from "react-redux";
@@ -6,12 +6,22 @@ import { ListItemButton } from '@mui/material';
 import CustomTypography from 'theme/CustomTypography';
 import { useEffect, useState } from 'react';
 import UserClient from 'services/client/UserClient';
+//import { useParams } from 'react-router-dom';
+//import EventClient from "../../services/client/EventClient";
+//import PictureClient from "../../services/client/PictureClient";
 
 const UserProfile = () => { 
+  //const { taskId } = useParams();
+  //let id = taskId;
   let navigate = useNavigate();
   const [user, setUser] = useState([]);
   const userLogin = useSelector((state) => state.system.name);
   let avatar;
+  //const [task, setTask] = useState([]);
+  //const [loading, setLoading] = useState(true);
+  //const [error, setError] = useState('');
+  //const [pictureId, setPictureId] = useState('');
+  //const [previewImg, setPreviewImg] = useState(null);
 
   useEffect(() => {
     UserClient.getLoggedInUser(userLogin).then((response) => {
@@ -19,11 +29,48 @@ const UserProfile = () => {
     });
   }, [userLogin]);
 
+  /*useEffect(() => {
+    async function fetchData() {
+        try {
+            const response = await EventClient.getEventById(id).then((response) => {
+                return response.data;
+            });   
+            const json = await response;
+            setTask(json);
+            //setPictureId(task.picture);
+        } catch (e) {
+            setError(e.message || 'Unexpected error');
+        }
+        setLoading(false);
+    }
+        fetchData();
+    }, [id, task.picture]);
+
+    useEffect(() => {
+      PictureClient.getPictureById(pictureId).then((response) => {
+          setPreviewImg("data:image/png;base64," + response.data);
+      });
+    }, [pictureId]);
+          
+      if (loading) {
+              return (
+                  <Box align={"center"}>
+                      <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
+                  </Box>
+              )};
+          
+      if (error) {
+              return( 
+                    <Box align={"center"}>
+                        <div style={{color: 'red'}}>ERROR: {error}</div>
+                    </Box>
+              )};*/
+
   console.log(user)
     return (
 
-      <Container style={{display: 'flex',justifyContent: 'center',paddingTop: '4rem',width: '100%'}}>
-        <Box style={{width: '20%',margin: '0',padding: '0',}}>
+      <Container style={{display: 'flex', justifyContent: 'center', paddingTop: '4rem', width: '100%'}}>
+        <Box style={{width: '20%', margin: '0', padding: '0'}}>
             <Avatar
                     src={avatar}
                     alt={`${user.firstName}`}
@@ -63,8 +110,8 @@ const UserProfile = () => {
               ))}
                 
             </Typography>
-            <Button variant="outlined" style={{ margin: '2rem 0',}} disabled>Załaduj więcej</Button>
-            <Typography variant='h3' style={{color: '#868686', marginBottom: '2rem',}}>Aby dołączyć do jakieś akcji musisz założyć profil wolontariusza</Typography>
+            <Button variant="outlined" style={{ margin: '2rem 0'}} disabled>Załaduj więcej</Button>
+            <Typography variant='h3' style={{color: '#868686', marginBottom: '2rem'}}>Aby dołączyć do jakieś akcji musisz założyć profil wolontariusza</Typography>
              <Button style={{marginBottom:'1rem'}} variant="contained" color="secondary" onClick={()=>{navigate("/VolunteerForm")}}>Zakładam sobie profil wolontariusza</Button>
         
           </Box>
