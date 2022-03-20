@@ -36,7 +36,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
         fontWeight: "600", 
         fontSize: "2rem",
         [theme.breakpoints.down('md')]: {
-            fontSize: '1rem'
+            fontSize: '0.8rem'
         }
     },
     

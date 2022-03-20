@@ -43,7 +43,7 @@ function OrganizationCard(organization){
                         {organization.organization.title}
                     </Typography>
                     <Typography paragraph className='describe'>
-                        {organization.organization.action_description.slice(0,100)+"..."}
+                        {organization.organization.action_description}
                     </Typography>
                 </CardContent>    
                     <CardActions>
