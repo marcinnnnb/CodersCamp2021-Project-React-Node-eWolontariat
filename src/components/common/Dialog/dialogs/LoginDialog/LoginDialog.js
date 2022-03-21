@@ -46,7 +46,7 @@ export const LoginDialog = () => {
     dispatch(fetchLoginData(data));   
   };
 
-  if(responseStatus === 'succeeded (:') {
+  if(responseStatus === 'succeeded log in (:') {
     dispatch(login({ user: data.login }));
     dispatch(openDialog({ formType: FormType.zalogowany}));
   }  

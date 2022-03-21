@@ -35,9 +35,7 @@ class RestService {
             (error) => {
               if (error.response?.status === 401) {
                 import("store/systemSlice").then((store) => store.dispatch(logout()));
-              } else if (error.request) {
-                toast.error("Błąd sieci. Sprawdź swoje połączenie!");
-              }
+              } 
               return Promise.reject(error);
             }
           );

@@ -112,9 +112,10 @@ export default function PersistentDrawerRight() {
           </ListItemButton>
           <ListItemButton onClick={(e) => {
              e.preventDefault();
-             dispatch(logout());
-             navigate(`/`);
-             handleDrawerClose();
+             dispatch(logout()).then(() => {
+                navigate(`/`);
+                handleDrawerClose();
+             });
              }}
            >
             <ListItemIcon>

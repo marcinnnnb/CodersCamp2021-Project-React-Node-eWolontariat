@@ -5,8 +5,9 @@ export const rtkQueryErrorLogger = (api) => (next) => (action) => {
 
   if (isRejectedWithValue(action)){
     toast.warn(action.payload.message);
-  }
-  else if (action.error){
+  } else if (action.payload && action.payload.status===400){
+    toast.error("Błąd sieci. Sprawdź swoje połączenie!");
+  } else if (action.error){
     toast.error(action.error.message);
   }
 
