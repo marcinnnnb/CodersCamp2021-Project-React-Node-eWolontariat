@@ -91,11 +91,11 @@ useEffect(() => {
 
       const handleSubmit = (e) => {
          e.preventDefault();
-
             EventClient.addNewEvent(data).then((response) => {
             console.log(response.status);
            
-            if(response.status === 201) { console.log(response.data)};
+            if(response.status === 201) { console.log(response.data)
+                alert('Dodano zadanie dla wolontariusza!');};
           }).catch((error) => {
             if (error.response) {
               setContent(
