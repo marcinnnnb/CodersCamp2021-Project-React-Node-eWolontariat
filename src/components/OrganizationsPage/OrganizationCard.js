@@ -40,7 +40,7 @@ function OrganizationCard(organization) {
     <StyledCard raised={true}>
       <CardContent>
         <Typography component="div" variant="h4" className="cardTitle">
-          {organization.organization.title}
+          {organization.organization.name}
         </Typography>
         <Typography paragraph className="describe">
           {organization.organization.description.slice(0, 100) + '...'}
