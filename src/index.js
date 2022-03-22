@@ -8,11 +8,13 @@ import {BrowserRouter} from 'react-router-dom';
 import { fetchTasks } from 'store/tasksListSlice';
 import { fetchVolunteers } from 'store/volunteerSlice';
 import { fetchOrganizations } from 'store/organizationSlice';
+import { fetchCategories } from 'store/categorySlice';
 import ScrollToTop from 'ScrollToTop '
 
 store.dispatch(fetchTasks());
 store.dispatch(fetchVolunteers());
 store.dispatch(fetchOrganizations());
+store.dispatch(fetchCategories());
 
 ReactDOM.render(
   <React.StrictMode>
