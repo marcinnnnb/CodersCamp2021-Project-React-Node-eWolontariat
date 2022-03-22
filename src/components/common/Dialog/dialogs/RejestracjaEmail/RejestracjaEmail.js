@@ -1,21 +1,27 @@
-import { TextField, Button, Box } from '@material-ui/core';
+import { TextField, Button, styled } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { openDialog, FormType } from '../../store/dialogSlice';
-import ErrorIcon from '@mui/icons-material/Error';
-import UserClient from 'services/client/UserClient';
+import { fetchRegistrationData, selectResponseStatus } from 'store/systemSlice';
 
 const useStyles = makeStyles({
   field: {
     marginTop: 15,
     marginBottom: 20,
-  },
+  }
 });
+
+const StyledTextField = styled(TextField)(({ theme }) => ({
+  '& .MuiOutlinedInput-input:autofill': {
+      boxShadow: 'none',
+      textFillColor: '#e9626a',
+  }
+}));
 
 export const RejestracjaEmail = () => {
   const dispatch = useDispatch();
-  const [content,setContent] = useState("");
+  const responseStatus = useSelector(selectResponseStatus);
 
   const classes = useStyles();
   const [data, setData] = useState({
@@ -36,32 +42,18 @@ export const RejestracjaEmail = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-     UserClient.registerUser(data).then((response) => {
-        console.log(response.status);
-        if(response.status === 201) {dispatch(openDialog({ formType: FormType.zalozonyProfil }))};
-      }).catch((error) => {
-        if (error.response) {
-          setContent(
-            <Box display={"flex"} flexDirection={"row"}>
-                <ErrorIcon fontSize={"small"} color={"error"} style={{marginRight: "0.4rem"}}/> 
-                <div style={{color: "red", fontWeight:600, textTransform: "capitalize"}}>{error.response.data.message}!</div>
-            </Box>
-            );
-        } else if (error.request) {
-          setContent("Błąd sieci. Sprawdź swoje połączenie!");
-        } else {
-          console.log(error);
-        }
-      });
+    dispatch(fetchRegistrationData(data));
+  };
+
+  if(responseStatus === 'succeeded register (:') {
+    dispatch(openDialog({ formType: FormType.zalozonyProfil }));
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {content}
-      <TextField
+      <StyledTextField 
         className={classes.field}
-        type="firstName"
+        type="text"
         name="firstName"
         label="Imię"
         variant="outlined"
@@ -73,9 +65,9 @@ export const RejestracjaEmail = () => {
         helperText="Co najmniej 3 litery,w tym jedna wielka."
       />
 
-      <TextField
+      <StyledTextField 
         className={classes.field}
-        type="lastName"
+        type="text"
         name="lastName"
         label="Nazwisko"
         variant="outlined"
@@ -87,9 +79,9 @@ export const RejestracjaEmail = () => {
         helperText="Co najmniej 3 litery,w tym jedna wielka."
       />
 
-      <TextField
+      <StyledTextField 
         className={classes.field}
-        type="login"
+        type="text"
         name="login"
         label="Login"
         variant="outlined"
@@ -101,7 +93,7 @@ export const RejestracjaEmail = () => {
         helperText="Co najmniej 4 znaki, jedna wielka litera i jedna cyfra."
       />
 
-      <TextField
+      <StyledTextField 
         className={classes.field}
         type="email"
         name="email"
@@ -114,7 +106,7 @@ export const RejestracjaEmail = () => {
         onChange={handleChange}
       />
 
-      <TextField
+      <StyledTextField 
         className={classes.field}
         type="password"
         name="password"

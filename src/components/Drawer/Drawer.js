@@ -6,21 +6,22 @@ import {
   Divider,
   IconButton,
   List,
-  ListItem,
   ListItemText,
   ListItemIcon,
-  Avatar,
   Typography,
 } from '@material-ui/core';
+import Avatar from '@mui/material/Avatar';
 import MenuIcon from '@mui/icons-material/Menu';
-import EmailIcon from '@mui/icons-material/Email';
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import PeopleIcon from '@mui/icons-material/People';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CloseIcon from '@mui/icons-material/Close';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { logout, selectLoggedInUser } from 'store/systemSlice';
+import { ListItemButton } from '@mui/material';
+import { selectResponseStatus } from 'store/systemSlice';
 
 const drawerWidth = 250;
 
@@ -34,9 +35,11 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerRight() {
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const name = useSelector((state) => state.system.name);
+  const name = useSelector(selectLoggedInUser);
+  const status = useSelector(selectResponseStatus);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -80,38 +83,46 @@ export default function PersistentDrawerRight() {
           <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" margin={2}>
           <Avatar
                alt="userAvatar"
-               style={{cursor: "pointer"}} 
+               backgroundColor='primary'
+               sx={{ cursor: "pointer", bgcolor: '#868AE0' }}
                onClick={(e)=>{
                     e.preventDefault();
                     navigate(`/UserProfile`);
                }}/>
-            <Typography>{name}</Typography>
+            <Typography color='secondary' style={{fontWeight: '600', marginTop:'1rem'}} >{name}</Typography>
           </Box>
           <Divider />
-          <ListItem button>
+          <ListItemButton onClick={(e)=>{
+                    e.preventDefault();
+                    navigate(`/TasksPage`);
+               }}>
             <ListItemIcon>
-              <EmailIcon />
-            </ListItemIcon>
-            <ListItemText primary="Wiadomości" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <FormatListNumberedIcon />
+              <FormatListNumberedIcon  sx={{ color: '#FF7A82' }}/>
             </ListItemIcon>
             <ListItemText primary="Przeglądaj zadania" />
-          </ListItem>
-          <ListItem button>
+          </ListItemButton>
+          <ListItemButton onClick={(e)=>{
+                    e.preventDefault();
+                    navigate(`/VolunteersPage`);
+               }}>
             <ListItemIcon>
-              <PeopleIcon />
+              <PeopleIcon  sx={{ color: '#FF7A82' }}/>
             </ListItemIcon>
             <ListItemText primary="Znajdź wolontariusza" />
-          </ListItem>
-          <ListItem button>
+          </ListItemButton>
+          <ListItemButton onClick={(e) => {
+             e.preventDefault();
+             dispatch(logout()).then(() => {
+                navigate(`/`);
+                handleDrawerClose();
+             });
+             }}
+           >
             <ListItemIcon>
-              <LogoutIcon />
+              <LogoutIcon sx={{ color: '#FF7A82' }}/>
             </ListItemIcon>
             <ListItemText primary="Wyloguj" />
-          </ListItem>
+            </ListItemButton>
         </List>
       </Drawer>
     </Box>

@@ -3,12 +3,12 @@ import { styled } from '@mui/material/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import React, { useState } from 'react';
 import { Box, Divider, Typography, ListItemText } from '@material-ui/core';
-import CustomAvatar from '../../theme/CustomAvatar';
+import CustomAvatar from 'theme/CustomAvatar';
 import { ListItemButton } from '@mui/material';
 import { useSelector } from "react-redux";
-import { selectAllTasks } from '../../store/taskSlice';
-import CustomTypography from '../../theme/CustomTypography';
-import setCategoryIcon from '../../theme/setCategoryIcon';
+import { selectTasksList } from 'store/tasksListSlice';
+import CustomTypography from 'theme/CustomTypography';
+import setCategoryIcon from 'theme/setCategoryIcon';
 import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
@@ -78,7 +78,7 @@ const Search = styled('div')(({ theme }) => ({
   }));
 
   const SearchInputTasks = () => {
-    const tasksList = useSelector(selectAllTasks);
+    const tasksList = useSelector(selectTasksList);
     const [value, setValue] = useState('');
     const [filteredResults, setFilteredResults] = useState();
     const [displaySearchIcon, setdisplaySearchIcon] = useState(true);

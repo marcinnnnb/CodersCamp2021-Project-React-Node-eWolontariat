@@ -1,27 +1,34 @@
-import { Button, Typography, Container, Box, Avatar, CircularProgress } from '@material-ui/core'
+import { Button, Typography, Container, Box, Avatar } from '@material-ui/core'
 import { useNavigate } from 'react-router';
 import CustomButton from 'theme/CustomButton';
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import { ListItemButton } from '@mui/material';
 import CustomTypography from 'theme/CustomTypography';
 import { useEffect, useState } from 'react';
 import UserClient from 'services/client/UserClient';
-//import { useParams } from 'react-router-dom';
-//import EventClient from "../../services/client/EventClient";
-//import PictureClient from "../../services/client/PictureClient";
+import { selectLoggedInUser } from 'store/systemSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTask, selectTask,  selectTaskStatus } from "store/taskSlice";
+import { useParams } from 'react-router-dom'
+//import EventClient from 'services/client/EventClient';
+
 
 const UserProfile = () => { 
-  //const { taskId } = useParams();
-  //let id = taskId;
+  const dispatch = useDispatch();
+    const { taskId } = useParams();
+    let id = taskId;
+    const taskStatus = useSelector(selectTaskStatus);
+    const data = useSelector(selectTask);
+    
+    const [task, setTask] = useState([]);
+    //const [previewImg, setPreviewImg] = useState(null);
+    //const [signedVolunteers,setSignedVolunteers]=useState()
+
   let navigate = useNavigate();
   const [user, setUser] = useState([]);
-  const userLogin = useSelector((state) => state.system.name);
+  const userLogin = useSelector(selectLoggedInUser);
   let avatar;
-  //const [task, setTask] = useState([]);
-  //const [loading, setLoading] = useState(true);
-  //const [error, setError] = useState('');
-  //const [pictureId, setPictureId] = useState('');
-  //const [previewImg, setPreviewImg] = useState(null);
+ 
 
   useEffect(() => {
     UserClient.getLoggedInUser(userLogin).then((response) => {
@@ -29,44 +36,18 @@ const UserProfile = () => {
     });
   }, [userLogin]);
 
-  /*useEffect(() => {
-    async function fetchData() {
-        try {
-            const response = await EventClient.getEventById(id).then((response) => {
-                return response.data;
-            });   
-            const json = await response;
-            setTask(json);
-            //setPictureId(task.picture);
-        } catch (e) {
-            setError(e.message || 'Unexpected error');
-        }
-        setLoading(false);
-    }
-        fetchData();
-    }, [id, task.picture]);
+  useEffect(() => {
+    if (taskStatus === 'idle') {
+        dispatch(fetchTask(id));
+      }
+    setTask(data) ;
+}, [taskStatus, dispatch, id, data]);
 
-    useEffect(() => {
-      PictureClient.getPictureById(pictureId).then((response) => {
-          setPreviewImg("data:image/png;base64," + response.data);
-      });
-    }, [pictureId]);
-          
-      if (loading) {
-              return (
-                  <Box align={"center"}>
-                      <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
-                  </Box>
-              )};
-          
-      if (error) {
-              return( 
-                    <Box align={"center"}>
-                        <div style={{color: 'red'}}>ERROR: {error}</div>
-                    </Box>
-              )};*/
 
-  console.log(user)
+
+  
+console.log(task)
+ 
     return (
 
       <Container style={{display: 'flex', justifyContent: 'center', paddingTop: '4rem', width: '100%'}}>

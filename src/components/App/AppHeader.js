@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Menu, MenuItem, Toolbar } from "@material-ui/core";
+import { AppBar, Box, Button, Toolbar } from "@material-ui/core";
 import LogoPomocny from "assets/img/logo-pomocny.svg";
 import LogoSignet from "assets/img/hand-peace-solid.svg";
 import { useNavigate } from 'react-router-dom';
@@ -7,10 +7,7 @@ import { openDialog, FormType } from 'components/common/Dialog/store/dialogSlice
 import PersistentDrawerRight from "components/Drawer/Drawer";
 import { styled } from '@mui/material/styles';
 import { useMediaQuery } from "@mui/material";
-import { selectLoggedIn } from "store/systemSlice";
-import MoreIcon from '@mui/icons-material/MoreVert';
-import { IconButton } from "@material-ui/core";
-import { useState } from "react";
+import { selectIsLoggedIn } from "store/systemSlice";
 import ResponsiveMenu from "components/Drawer/ResponsiveMenu";
 
 const LogoBox = styled(Box)(({ theme }) => ({
@@ -32,7 +29,8 @@ const AppHeader = () => {
     let navigate = useNavigate();
     let dispatch = useDispatch();
     const matches = useMediaQuery('(min-width:600px)', { noSsr: true });
-    const loggedIn = useSelector(selectLoggedIn).system.loggedIn;
+    const loggedIn = useSelector(selectIsLoggedIn);
+
     let elementForNotLoggedIn;
     let buttons;
 
@@ -104,7 +102,6 @@ const AppHeader = () => {
                     {getLogo()}
                     <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1.4rem"}>
                         {loggedIn && setAppBar("1rem")}
-                        {!loggedIn && setAppBar("0")}
                         {!loggedIn && getAuthButton()}
                         {loggedIn && <PersistentDrawerRight />}
                     </Box>            
