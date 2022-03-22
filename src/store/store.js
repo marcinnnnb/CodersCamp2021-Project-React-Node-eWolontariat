@@ -7,6 +7,7 @@ import systemReducer from 'store/systemSlice';
 import pictureReducer from 'store/pictureSlice'
 import organizationReducer from 'store/organizationSlice';
 import searchReducer from 'store/searchSlice';
+import categoriesReducer from 'store/categorySlice'
 import { rtkQueryErrorLogger } from 'store/ErrorCatchingMiddleware';
 
 export const store = configureStore({
@@ -18,7 +19,8 @@ export const store = configureStore({
         tasksList: tasksListReducer,
         organization: organizationReducer,
         picture: pictureReducer,
-        searchedData: searchReducer
+        searchedData: searchReducer,
+        categories: categoriesReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false

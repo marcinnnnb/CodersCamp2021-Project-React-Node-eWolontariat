@@ -1,15 +1,17 @@
 import {useForm, Controller} from 'react-hook-form';
 import { Box, Typography, TextField, styled } from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
-import Select from 'react-select'
-import Categories from 'assets/data/Categories';
+import Select from '@mui/material/Select'
 import CustomTypography from 'theme/CustomTypography';
 import CustomButton from 'theme/CustomButton';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ErrorIcon from '@mui/icons-material/Error';
 import EventClient from 'services/client/EventClient';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategories } from 'store/categorySlice';
 
+import MenuItem from '@mui/material/MenuItem';
 
 const StyledTaskForm = styled(Box)(({ theme }) => ({
     height: "100%",
@@ -43,14 +45,28 @@ const amountValidation={
 
 export default function TaskForm() {
     const [content,setContent] = useState("")
+    const dispatch=useDispatch();
+    const [categories, setCategories] = useState([]);
+    const categoriesList = useSelector((state)=>state.categories.categories);
+    const categoriesStatus = useSelector( state => state.categories.status);
+    const [allCategories, setAllCategories]= useState([])
     const [data, setData] = useState({
         title: "",
         volunteersNeeded: "",
         description: "",
         shortDescription: "",
-        categories: ["622bba468ff7100016d06c86"],
+        categories: [],
         picture: null
       });
+
+
+useEffect(() => {
+  if (categoriesStatus === 'idle') {
+    dispatch(fetchCategories());
+  };
+  setAllCategories(categoriesList);
+}, [categoriesStatus,categoriesList]);
+
     
       const handleChange = (e) => {
         const value = e.target.value;
@@ -60,15 +76,26 @@ export default function TaskForm() {
         });
       };
     
+      
+      const handleChangeSelect = (event) => {
+        const {
+          target: { value },
+        } = event;
+        setCategories(
+            typeof value === 'string' ? value.split(',') : value,
+        );
+
+        data.categories=value
+        
+      };
+
       const handleSubmit = (e) => {
          e.preventDefault();
-              
             EventClient.addNewEvent(data).then((response) => {
             console.log(response.status);
-                
-            console.log(categories)
            
-            if(response.status === 201) { console.log(response.data)};
+            if(response.status === 201) { console.log(response.data)
+                alert('Dodano zadanie dla wolontariusza!');};
           }).catch((error) => {
             if (error.response) {
               setContent(
@@ -85,12 +112,10 @@ export default function TaskForm() {
           });
 
 
-      };
-
+      };        
+       
 
     const{register,control, formState: { errors }} = useForm();
-
-    const categories = []; 
 
 return (
     <StyledTaskForm>
@@ -168,32 +193,43 @@ return (
                         value={data.shortDescription}                    
                     />
                     <Typography paragraph variant="body1">Wybierz kategorie: </Typography>
+         
+
+
+
                     <Controller
-                        control={control}
-                        defaultValue={categories[0]}
-                        name='categories'
-                        render={({ field: { onChange, value, ref } }) => (
-                        <Select
-                            {...register('categories', {required:true})}
-                            label='Kategorie'
-                            options={Categories}
-                            value={value}
-                            onChange={onChange}
-                            isMulti
-                            isSearchable
-                        />
-                        )}
-                    />
-                    {errors.title?.type ==='required' && "To pole jest wymagane"}
-                </Box>
-                <Box sx={{  gridArea: 'button', padding:"1rem 0"}}>
-                <CustomButton type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary" > Opublikuj zadanie</CustomButton>          
+                    control={control}
+                    defaultValue=""
+                    name='categories'
+                    render={({ field: {  value } }) => (
+<Select
+      labelId="categories"
+      multiple
+      value={categories}
+      onChange={handleChangeSelect}
+    >
+      {allCategories.map((category) => (
+        <MenuItem
+          key={category._id}
+          value={category}
+        >
+          {category.name}
+          </MenuItem>
+          ))}
+          </Select>
+                    )} />
+
+              {errors.title?.type ==='required' && "To pole jest wymagane"}
+              
+              </Box>
+              <Box sx={{  gridArea: 'button', padding:"1rem 0"}}>
+              <CustomButton type="submit" variant="contained" endIcon={<SendIcon />} color="tertiary" > Opublikuj zadanie</CustomButton>          
+              
             </Box>
         </Box>
         </form>
     </Box>
-  </StyledTaskForm>
-  
-)
+    </StyledTaskForm>
     
+    )  
 }

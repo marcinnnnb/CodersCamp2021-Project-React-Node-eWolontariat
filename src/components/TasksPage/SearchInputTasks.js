@@ -6,6 +6,7 @@ import { Box, Divider, Typography, ListItemText } from '@material-ui/core';
 import CustomAvatar from 'theme/CustomAvatar';
 import { ListItemButton } from '@mui/material';
 import { useDispatch, useSelector } from "react-redux";
+import { fetchTasks, fetchTasksBySearch, filterTasksList, selectTasksList, selectTasksListStatus } from 'store/tasksListSlice';
 import CustomTypography from 'theme/CustomTypography';
 import setCategoryIcon from 'theme/setCategoryIcon';
 import { useNavigate } from 'react-router-dom';
@@ -85,8 +86,15 @@ const Search = styled('div')(({ theme }) => ({
     const tasksListStatus = useSelector(selectSearchedDataStatus);
     const [value, setValue] = useState(null);
     const [tasks, setTasks] = useState([]);
+    const [filteredResults, setFilteredResults] = useState([]);
     const [displaySearchIcon, setdisplaySearchIcon] = useState(true);
+
+    console.log(tasksList);
+    console.log(tasksListStatus);
+    console.log(tasks)
+    console.log(value)
    
+      
       function  findMatches(wordToMatch) {
         return( tasks.tasks?.filter((task)=>{
           const regex = new RegExp(wordToMatch,"gi");
@@ -98,9 +106,10 @@ const Search = styled('div')(({ theme }) => ({
         if (value && value.length > 1) {
           setdisplaySearchIcon('none');
           const matchArray = findMatches(value,data);
-          setTasks(matchArray);
+          setFilteredResults(matchArray);
         } else {
           setdisplaySearchIcon('flex');
+          setFilteredResults([]);
           setTasks([]);
         }
         return displaySearchIcon;

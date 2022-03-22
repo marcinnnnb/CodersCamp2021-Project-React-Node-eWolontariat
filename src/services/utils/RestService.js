@@ -43,7 +43,7 @@ class RestService {
     };
 
     get(url, params, config){
-        return this.axiosInstance.get(url, {params}, config);
+        return this.axiosInstance.get(url, params, config);
       }
 
     post(url, data, config){
