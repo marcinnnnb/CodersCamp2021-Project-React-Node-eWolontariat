@@ -1,23 +1,24 @@
-import { Button, Typography, Box, TextField, Card, Divider, CircularProgress } from "@material-ui/core";
+import { Button, Typography, Box, TextField, Card, Divider } from "@material-ui/core";
 import ProgressBar from "./ProgressBar";
-import liscik from "../../assets/img/plane.svg";
-import skrzynka from "../../assets/img/mailbox.svg";
-import CustomButton from "../../theme/CustomButton";
+import liscik from "assets/img/plane.svg";
+import skrzynka from "assets/img/mailbox.svg";
+import CustomButton from "theme/CustomButton";
 import { useParams } from 'react-router-dom'
-import setCategoryIcon from "../../theme/setCategoryIcon";
+import setCategoryIcon from "theme/setCategoryIcon";
 import { styled } from '@mui/material/styles';
 import { useEffect, useState } from "react";
 import PersonIcon from '@material-ui/icons/Person';
-import PictureClient from "../../services/client/PictureClient";
-import EventClient from "../../services/client/EventClient";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPicture, selectPicture, selectPictureStatus, loadPicture, selectPictureId } from "store/pictureSlice";
+import { fetchTask, selectTask, selectTaskError, selectTaskStatus } from "store/taskSlice";
 
 const StyledTaskPage = styled(Card)(({ theme }) => ({
     height: "100%",
     margin: '5rem', 
-    display:'flex',  
-    flexDirection: "row",
-    justifyContent:'center', 
-    alignItems: 'center', 
+    // display:'flex',  
+    // flexDirection: "row",
+    // justifyContent:'center', 
+    // alignItems: 'center', 
 
     [theme.breakpoints.down('md')]: {
         flexDirection: "column",
@@ -55,51 +56,35 @@ const StyledTaskPage = styled(Card)(({ theme }) => ({
 }));
 
 const TaskPage = () => {
+    const dispatch = useDispatch();
     const { taskId } = useParams();
     let id = taskId;
+    const taskStatus = useSelector(selectTaskStatus);
+    const data = useSelector(selectTask);
+    const error = useSelector(selectTaskError);
+    const pictureStatus = useSelector(selectPictureStatus);
+    const picture = useSelector(selectPicture);
+    const pictureId = useSelector(selectPictureId);
+    
     const [task, setTask] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
-    const [pictureId, setPictureId] = useState('');
     const [previewImg, setPreviewImg] = useState(null);
+    const [signedVolunteers,setSignedVolunteers]=useState()
+    useEffect(() => {
+            if (taskStatus === 'idle') {
+                dispatch(fetchTask(id));
+              }
+            setTask(data) ;
+           if (data.volunteers ? setSignedVolunteers(data.volunteers.length) : 0);
+
+            dispatch(loadPicture({pictureId: data.picture, status: 'idle'}));
+    }, [taskStatus, dispatch, id, data, pictureId]);
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await EventClient.getEventById(id).then((response) => {
-                    return response.data;
-                });   
-                const json = await response;
-                setTask(json);
-                setPictureId(task.picture);
-            } catch (e) {
-                setError(e.message || 'Unexpected error');
-            }
-            setLoading(false);
-        }
-            fetchData();
-        }, [id, task.picture]);
-    
-  useEffect(() => {
-    PictureClient.getPictureById(pictureId).then((response) => {
-        setPreviewImg("data:image/png;base64," + response.data);
-    });
-  }, [pictureId]);
-        
-    if (loading) {
-            return (
-                <Box align={"center"}>
-                    <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
-                </Box>
-            )};
-        
-    if (error) {
-            return( 
-                  <Box align={"center"}>
-                      <div style={{color: 'red'}}>ERROR: {error}</div>
-                  </Box>
-            )};
-
+        if (pictureId != '' && pictureStatus === 'idle') {
+            dispatch(fetchPicture(pictureId));
+          }
+        setPreviewImg(picture);
+}, [pictureStatus, dispatch, id, pictureId, picture]);
 
     return (
         
@@ -127,7 +112,7 @@ const TaskPage = () => {
                                 )   
                             })}
                     </Box>
-                    <Box 
+                    <Box
                         className={"main-img"}
                         component={'img'}
                         padding={"2rem"}
@@ -157,7 +142,7 @@ const TaskPage = () => {
                             <Typography variant="h3" align="center" paragraph>Ilu wolontariuszy potrzebujemy?</Typography>
                             <Typography variant="body1" align={'center'} paragraph>{task.volunteersNeeded}</Typography>
                             <Typography variant="body1" align={'center'} paragraph>Ilu się zapisało: {task.sign}</Typography>
-                            <ProgressBar const completed= {Math.floor(task.sign /task.amount*100)}/>
+                            <ProgressBar const completed= {Math.floor(signedVolunteers /task.volunteersNeeded*100)}/>
                             <Box style={{display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around'}} >
                                 <CustomButton variant="outlined" color="primary" >Udostępnij</CustomButton>
                                 <Button  variant="contained" color="secondary" style={{marginTop: '1rem'}}> Pomagam </Button>
@@ -167,8 +152,8 @@ const TaskPage = () => {
 
                     <Card  raised={true} style={{ margin: '0.8rem', padding: '0.8rem 1.5rem'}}>
                         <Box>
-                            <Typography style={{ margin: '1rem'}}variant="h5" align="center" paragraph>Zgłoszeni wolontariusze</Typography>
-                            <Button  mb="1rem" variant="outlined" align="center">Kasia z Gdańska</Button>
+                            <Typography style={{ margin: '1rem'}}variant="h4" align="center" paragraph>Zgłoszeni wolontariusze</Typography>
+                            <Button  mb="1rem" variant="outlined" align="center">{task.volunteers}</Button>
                         </Box>
                     </Card>
                 </Box>

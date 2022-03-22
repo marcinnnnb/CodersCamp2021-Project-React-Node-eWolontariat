@@ -1,44 +1,42 @@
 import { Box, CircularProgress, Typography, Divider, MenuItem } from "@material-ui/core";
 import { useEffect, useState  } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllTasks } from "../../store/taskSlice";
-import CustomButton from "../../theme/CustomButton";
-import { fetchTasks } from "../../store/taskSlice";
-import getTasksCards from "./getTasksCards";
-import SearchInputTasks from "../TasksPage/SearchInputTasks";
-import setTasksRatingButtons from "../TasksPage/setTasksRatingButtons";
+import { selectTasksList, selectTasksListStatus, selectTasksListError  } from "store/tasksListSlice";
+import CustomButton from "theme/CustomButton";
+import { fetchTasks } from "store/tasksListSlice";
+import SearchInputTasks from "components/TasksPage/SearchInputTasks";
+import setTasksRatingButtons from "components/TasksPage/setTasksRatingButtons";
 import { FormControl, InputLabel, Select } from "@mui/material";
-import Categories from "../../assets/data/Categories";
+import Categories from "assets/data/Categories";
+import TaskCard from "components/TasksPage/TaskCard";
 
 const TasksList = ({startSlice,endSlice}) => {
   const dispatch = useDispatch();
-  const tasksList = useSelector(selectAllTasks);
-  const tasksStatus = useSelector(state => state.task.status);
-  const error = useSelector(state => state.task.error);
-  const [filteredTasks, setTasks] = useState([]);
+  const tasksList = useSelector(selectTasksList);
+  const tasksListStatus = useSelector(selectTasksListStatus);
+  const error = useSelector(selectTasksListError);
+
+  const [tasks, setTasks] = useState([]);
   const [isFilterTasks, setFilterTasks] = useState(false);
   const [selectValue, setSelectValue] = useState('');
 
-  let orderedTasks =[];
   useEffect(() => {
-    if (tasksStatus === 'idle') {
-      dispatch(fetchTasks())
-    }
-  }, [tasksStatus, dispatch]);
+    if (tasksListStatus === 'idle') {
+      dispatch(fetchTasks());
+    };
+    setTasks(tasksList)
+  }, [tasksList, tasksListStatus, dispatch]);
 
-  let content, searchInput;
+  let content;
 
-  if (tasksStatus === 'loading...') {
+  if (tasksListStatus === 'loading...') {
        content = (
-        <Box style={{color: 'red'}} padding={2} align={"center"}>
+        <Box padding={2} align={"center"}>
             <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
         </Box>
       );
-  } else if (tasksStatus === 'succeeded (:') {
-      orderedTasks = tasksList.tasks;
-      searchInput = <SearchInputTasks/>;
       
-  } else if (tasksStatus === 'failed :(') {
+  } else if (tasksListStatus === 'failed :(') {
        content = <Box style={{color: 'red'}} padding={2} align={"center"}>ERROR: {error}</Box>;
   }  
   
@@ -49,13 +47,13 @@ const TasksList = ({startSlice,endSlice}) => {
           )
     };
 
-  let thePopularCategoriesButtons = setTasksRatingButtons(orderedTasks).slice(0,4);
+  let thePopularCategoriesButtons = setTasksRatingButtons(tasksList).slice(0,4);
 
     return (
 
       <Box>
         <Box display={"flex"} justifyContent={"center"} style={{margin: "4rem 0 1rem"}}>
-              {searchInput}
+          <SearchInputTasks/>
         </Box>
         <Typography variant="subtitle2" align={"center"} style={{marginTop: "1rem"}}>Najpopularniejsze kategorie:</Typography>
         <Box id="filtering-buttons" display={"flex"} justifyContent={'center'}  gridColumnGap={"2rem"} padding={"0 0 2rem 0"} margin={"1rem"} alignItems={"center"} flexWrap={"wrap"}>
@@ -118,7 +116,9 @@ const TasksList = ({startSlice,endSlice}) => {
             </Box>
               {content}
               <Box display={'flex'} flexDirection={"row"} flexWrap={"wrap"} padding={'0 2rem 4rem 2rem'} justifyContent={'center'}>
-                  {getTasksCards(isFilterTasks, orderedTasks, selectValue, filteredTasks, startSlice, endSlice)}
+                {tasks?.slice(startSlice,endSlice).map((task,id) =>{
+                  return <TaskCard key={`item-${task._id}`} task={task} id={task._id}/>
+                })}
               </Box>
          </Box>
     )

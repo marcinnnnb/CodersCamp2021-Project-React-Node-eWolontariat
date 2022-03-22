@@ -2,9 +2,20 @@ import RestService from "../utils/RestService";
 
 export default class PictureClient {
     static baseUrl = '/picture';
+    
 
     static getPictureById(id) {
-        return RestService.get(`${this.baseUrl}/${id}`, {id});
+        return RestService.get(`${this.baseUrl}/${id}`, {id}, {
+            filename: `image-${id}`,
+          },
+          {
+            headers: {
+                "Content-Type": "image/jpeg",
+            },
+          },
+          {
+            responseType: "blob",
+          });
     };
 
     static addNewPicture(image) {

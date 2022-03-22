@@ -6,11 +6,12 @@ import { ListItemButton } from '@mui/material';
 import CustomTypography from 'theme/CustomTypography';
 import { useEffect, useState } from 'react';
 import UserClient from 'services/client/UserClient';
+import { selectLoggedInUser } from 'store/systemSlice';
 
 const UserProfile = () => { 
   let navigate = useNavigate();
   const [user, setUser] = useState([]);
-  const userLogin = useSelector((state) => state.system.name);
+  const userLogin = useSelector(selectLoggedInUser);
   let avatar;
 
   useEffect(() => {

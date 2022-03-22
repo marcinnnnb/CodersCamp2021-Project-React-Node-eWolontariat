@@ -1,16 +1,16 @@
 import { Box, Container, Grid, Link, List, Typography } from "@material-ui/core";
-import LogoPomocny from "../../assets/img/logo-pomocny.svg";
-import CodersCampLogo from "../../assets/img/coder-camp.svg";
-import GitHubLogo from "../../assets/img/github-logo.png";
-import setTasksRatingButtons from "../TasksPage/setTasksRatingButtons";
+import LogoPomocny from "assets/img/logo-pomocny.svg";
+import CodersCampLogo from "assets/img/coder-camp.svg";
+import GitHubLogo from "assets/img/github-logo.png";
+import setTasksRatingButtons from "components/TasksPage/setTasksRatingButtons";
 import { useSelector } from "react-redux";
-import { selectAllTasks } from "../../store/taskSlice";
+import { selectTasksList } from "store/tasksListSlice";
 import { useNavigate } from "react-router-dom";
 import { ListItemButton } from "@mui/material";
 
 const AppFooter = () => {
     let navigate = useNavigate();
-    const tasksList = useSelector(selectAllTasks).tasks;
+    const tasksList = useSelector(selectTasksList);
     const thePopularCategoriesArray = setTasksRatingButtons(tasksList).slice(0,10);
  
     return (
