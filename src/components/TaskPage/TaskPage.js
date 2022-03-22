@@ -15,10 +15,10 @@ import { fetchTask, selectTask, selectTaskError, selectTaskStatus } from "store/
 const StyledTaskPage = styled(Card)(({ theme }) => ({
     height: "100%",
     margin: '5rem', 
-    display:'flex',  
-    flexDirection: "row",
-    justifyContent:'center', 
-    alignItems: 'center', 
+    // display:'flex',  
+    // flexDirection: "row",
+    // justifyContent:'center', 
+    // alignItems: 'center', 
 
     [theme.breakpoints.down('md')]: {
         flexDirection: "column",
@@ -68,12 +68,14 @@ const TaskPage = () => {
     
     const [task, setTask] = useState([]);
     const [previewImg, setPreviewImg] = useState(null);
-  
+    const [signedVolunteers,setSignedVolunteers]=useState()
     useEffect(() => {
             if (taskStatus === 'idle') {
                 dispatch(fetchTask(id));
               }
             setTask(data) ;
+           if (data.volunteers ? setSignedVolunteers(data.volunteers.length) : 0);
+
             dispatch(loadPicture({pictureId: data.picture, status: 'idle'}));
     }, [taskStatus, dispatch, id, data, pictureId]);
 
@@ -140,7 +142,7 @@ const TaskPage = () => {
                             <Typography variant="h3" align="center" paragraph>Ilu wolontariuszy potrzebujemy?</Typography>
                             <Typography variant="body1" align={'center'} paragraph>{task.volunteersNeeded}</Typography>
                             <Typography variant="body1" align={'center'} paragraph>Ilu się zapisało: {task.sign}</Typography>
-                            <ProgressBar const completed= {Math.floor(task.sign /task.amount*100)}/>
+                            <ProgressBar const completed= {Math.floor(signedVolunteers /task.volunteersNeeded*100)}/>
                             <Box style={{display:"flex", flexDirection:"column", alignItems: 'center', justifyContent: 'space-around'}} >
                                 <CustomButton variant="outlined" color="primary" >Udostępnij</CustomButton>
                                 <Button  variant="contained" color="secondary" style={{marginTop: '1rem'}}> Pomagam </Button>
@@ -150,8 +152,8 @@ const TaskPage = () => {
 
                     <Card  raised={true} style={{ margin: '0.8rem', padding: '0.8rem 1.5rem'}}>
                         <Box>
-                            <Typography style={{ margin: '1rem'}}variant="h5" align="center" paragraph>Zgłoszeni wolontariusze</Typography>
-                            <Button  mb="1rem" variant="outlined" align="center">Kasia z Gdańska</Button>
+                            <Typography style={{ margin: '1rem'}}variant="h4" align="center" paragraph>Zgłoszeni wolontariusze</Typography>
+                            <Button  mb="1rem" variant="outlined" align="center">{task.volunteers}</Button>
                         </Box>
                     </Card>
                 </Box>
