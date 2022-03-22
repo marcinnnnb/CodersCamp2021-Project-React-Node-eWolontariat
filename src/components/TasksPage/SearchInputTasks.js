@@ -1,15 +1,15 @@
 import InputBase from '@mui/material/InputBase';
 import { styled } from '@mui/material/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Divider, Typography, ListItemText } from '@material-ui/core';
 import CustomAvatar from 'theme/CustomAvatar';
 import { ListItemButton } from '@mui/material';
-import { useSelector } from "react-redux";
-import { selectTasksList } from 'store/tasksListSlice';
+import { useDispatch, useSelector } from "react-redux";
 import CustomTypography from 'theme/CustomTypography';
 import setCategoryIcon from 'theme/setCategoryIcon';
 import { useNavigate } from 'react-router-dom';
+import { fetchSearchedTasks, filterList, selectSearchedData, selectSearchedDataStatus } from 'store/searchSlice';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -78,16 +78,19 @@ const Search = styled('div')(({ theme }) => ({
   }));
 
   const SearchInputTasks = () => {
-    const tasksList = useSelector(selectTasksList);
-    const [value, setValue] = useState('');
-    const [filteredResults, setFilteredResults] = useState();
-    const [displaySearchIcon, setdisplaySearchIcon] = useState(true);
+    const dispatch = useDispatch();
     let navigate = useNavigate();
-      
+
+    const tasksList = useSelector(selectSearchedData);
+    const tasksListStatus = useSelector(selectSearchedDataStatus);
+    const [value, setValue] = useState(null);
+    const [tasks, setTasks] = useState([]);
+    const [displaySearchIcon, setdisplaySearchIcon] = useState(true);
+   
       function  findMatches(wordToMatch) {
-        return( tasksList.tasks?.filter((task)=>{
+        return( tasks.tasks?.filter((task)=>{
           const regex = new RegExp(wordToMatch,"gi");
-          return task.title.toLowerCase().match(regex) || task.action_short_description.toLowerCase().match(regex)
+          return task.title.toLowerCase().match(regex) || task.shortDescription.toLowerCase().match(regex)
         }));
       };
 
@@ -95,13 +98,26 @@ const Search = styled('div')(({ theme }) => ({
         if (value && value.length > 1) {
           setdisplaySearchIcon('none');
           const matchArray = findMatches(value,data);
-          setFilteredResults(matchArray);
+          setTasks(matchArray);
         } else {
           setdisplaySearchIcon('flex');
-          setFilteredResults([]);
+          setTasks([]);
         }
         return displaySearchIcon;
       };
+
+      let limit=6
+      useEffect(() => {
+        const params = new URLSearchParams({
+          'search': value,
+          'limit': 30
+        });
+        if (tasksListStatus === 'idle') {
+          dispatch(fetchSearchedTasks(params));
+        };
+        setTasks(tasksList);
+        
+      }, [tasksList, tasksListStatus, dispatch, value, limit]);
 
       return (
           <Search>
@@ -116,15 +132,17 @@ const Search = styled('div')(({ theme }) => ({
                 onChange={(e)=>{
                   setValue(e.target.value);
                   displayMatches({value,tasksList});
+                  dispatch(filterList());
                 }}
                 onKeyUp={(e)=>{
                   setValue(e.target.value);
                   displayMatches({value,tasksList});
+                  dispatch(filterList());
                 }}
                 value={value}
                 >
             </StyledInputBase>
-            {filteredResults?.map((el,id)=>{
+            {tasks?.map((el,id)=>{
               const regex = new RegExp(value,'gi'); 
               return (
                     <StyledBoxForSearch key={`item-${id}`}>
@@ -159,7 +177,7 @@ const Search = styled('div')(({ theme }) => ({
                                           })}
                                 
                                 secondary=
-                                          {el.action_short_description.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
+                                          {el.shortDescription.replace(regex, `<span>${value}<span>`).split('<span>').map((item,id)=>{
                                             
                                             if (item.match(regex)) return (
                                               <CustomTypography variant="subtitle2" component="span" className={"subtitleSpan spanColor"} key={`spancolordesc-${id}`}>{item}</CustomTypography>

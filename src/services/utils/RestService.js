@@ -43,7 +43,7 @@ class RestService {
     };
 
     get(url, params, config){
-        return this.axiosInstance.get(url, params, config);
+        return this.axiosInstance.get(url, {params}, config);
       }
 
     post(url, data, config){
@@ -58,8 +58,8 @@ class RestService {
         return this.axiosInstance.patch(url, data, config);
     };
 
-    delete(url,params, config){
-        return this.axiosInstance.delete(url, {params}, config);
+    delete(url,config){
+        return this.axiosInstance.delete(url, config);
     };
     
 };

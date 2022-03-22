@@ -1,7 +1,7 @@
-import { Box, CircularProgress, Typography, Divider, MenuItem } from "@material-ui/core";
+import { Box, Typography, Divider, MenuItem } from "@material-ui/core";
 import { useEffect, useState  } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectTasksList, selectTasksListStatus, selectTasksListError  } from "store/tasksListSlice";
+import { selectTasksList, selectTasksListStatus, selectTasksListError, filterTasksList  } from "store/tasksListSlice";
 import CustomButton from "theme/CustomButton";
 import { fetchTasks } from "store/tasksListSlice";
 import SearchInputTasks from "components/TasksPage/SearchInputTasks";
@@ -10,6 +10,7 @@ import { FormControl, InputLabel, Select } from "@mui/material";
 import Categories from "assets/data/Categories";
 import TaskCard from "components/TasksPage/TaskCard";
 
+
 const TasksList = ({startSlice,endSlice}) => {
   const dispatch = useDispatch();
   const tasksList = useSelector(selectTasksList);
@@ -17,36 +18,23 @@ const TasksList = ({startSlice,endSlice}) => {
   const error = useSelector(selectTasksListError);
 
   const [tasks, setTasks] = useState([]);
-  const [isFilterTasks, setFilterTasks] = useState(false);
+  const [category, setCategory] = useState('');
   const [selectValue, setSelectValue] = useState('');
+  let limit = 6;
+  
 
   useEffect(() => {
+    const params = new URLSearchParams({
+      'category': category,
+      'limit': limit
+    });
     if (tasksListStatus === 'idle') {
-      dispatch(fetchTasks());
+      dispatch(fetchTasks(params));
     };
     setTasks(tasksList)
-  }, [tasksList, tasksListStatus, dispatch]);
+  }, [tasksList, tasksListStatus, dispatch, category]);
 
   let content;
-
-  if (tasksListStatus === 'loading...') {
-       content = (
-        <Box padding={2} align={"center"}>
-            <CircularProgress style={{margin: "2rem"}} align={"center"} color={"secondary"}/>
-        </Box>
-      );
-      
-  } else if (tasksListStatus === 'failed :(') {
-       content = <Box style={{color: 'red'}} padding={2} align={"center"}>ERROR: {error}</Box>;
-  }  
-  
-  const getFilteredTextFromButton=(text)=> {
-    return (
-        tasksList.tasks?.filter(element => 
-              element.categories.includes(text))
-          )
-    };
-
   let thePopularCategoriesButtons = setTasksRatingButtons(tasksList).slice(0,4);
 
     return (
@@ -62,8 +50,9 @@ const TasksList = ({startSlice,endSlice}) => {
                         style={{marginTop: "1rem"}}
                         color={"primary"}  
                         onClick={()=>{
-                          setFilterTasks(false);
-                          setSelectValue("");
+                            setCategory('');
+                            setSelectValue("");
+                            dispatch(filterTasksList());
                         }}        
                     >
                     Wszystkie</CustomButton>
@@ -76,14 +65,13 @@ const TasksList = ({startSlice,endSlice}) => {
                         color={category.buttonColor}
                         startIcon={category.icon}
                         onClick={()=>{
-                            setTasks(getFilteredTextFromButton(category.value));
-                            setFilterTasks(true);
+                            dispatch(filterTasksList());
+                            setCategory(category.value);
                             setSelectValue(category.value);
-                        }}                           
+                          }}                       
                     >
                         <Divider orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {category.value}
                     </CustomButton>
-                    
                 ))}
             </Box>
             <Box display={"flex"} justifyContent={"space-evenly"} alignItems={"center"} flexWrap={"wrap"}>
@@ -93,9 +81,9 @@ const TasksList = ({startSlice,endSlice}) => {
                 <Select
                   value = {selectValue}
                   onChange={(e)=> {
+                    dispatch(filterTasksList());
                     setSelectValue(e.target.value);
-                    setTasks(getFilteredTextFromButton(e.target.value));
-                    setFilterTasks(true);
+                    setCategory(e.target.value);
                   }}
                 label="Wybierz kategorię"
                 style={{width: "260px", fontSize: "1rem" }}
@@ -125,3 +113,5 @@ const TasksList = ({startSlice,endSlice}) => {
 }
 
 export default TasksList;
+
+

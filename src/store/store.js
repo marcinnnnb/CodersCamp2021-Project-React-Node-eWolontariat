@@ -6,6 +6,7 @@ import dialogReducer from "components/common/Dialog/store/dialogSlice";
 import systemReducer from 'store/systemSlice';
 import pictureReducer from 'store/pictureSlice'
 import organizationReducer from 'store/organizationSlice';
+import searchReducer from 'store/searchSlice';
 import { rtkQueryErrorLogger } from 'store/ErrorCatchingMiddleware';
 
 export const store = configureStore({
@@ -16,7 +17,8 @@ export const store = configureStore({
         task: taskReducer,
         tasksList: tasksListReducer,
         organization: organizationReducer,
-        picture: pictureReducer
+        picture: pictureReducer,
+        searchedData: searchReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false

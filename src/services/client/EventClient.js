@@ -3,9 +3,8 @@ import RestService from "../utils/RestService";
 export default class EventClient {
     static baseUrl = '/event';
 
-    static getEvents() {
-        //return RestService.get(`${this.baseUrl}?category=${category}&search=${search}`, {category, search});
-        return RestService.get(this.baseUrl);
+    static getEvents(params) {
+        return RestService.get(this.baseUrl, { params });
     };
 
     static addNewEvent(data) {

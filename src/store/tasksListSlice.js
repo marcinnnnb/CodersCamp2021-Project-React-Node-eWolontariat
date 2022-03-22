@@ -7,26 +7,11 @@ const initialState = {
     error: null
   };
 
-export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
-    const response = await EventClient.getEvents().then((response) => {
+export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async (params) => {
+    const response = await EventClient.getEvents(params).then((response) => {
       return response;
-  });    
-  const json = response.data.events;
-  return json; 
-});
-
-export const fetchTasksBySearch = createAsyncThunk('tasks/fetchTasksBySearch', async () => {
-    const response = await EventClient.getEvents().then((response) => {
-      return response;
-  });    
-  const json = response.data.events;
-  return json; 
-});
-
-export const fetchTasksByCategory = createAsyncThunk('tasks/fetchTasksByCategory', async () => {
-    const response = await EventClient.getEvents().then((response) => {
-      return response;
-  });    
+      });   
+  
   const json = response.data.events;
   return json; 
 });
@@ -35,8 +20,8 @@ const tasksListSlice = createSlice({
     name: 'tasks',
     initialState,
     reducers: {
-        addNewTask: (state, action) => {
-         state.tasks.push(action.payload);
+        filterTasksList: (state, action) => {
+          state.status = 'idle';
         }
     },
     extraReducers(builder) {
@@ -52,32 +37,10 @@ const tasksListSlice = createSlice({
             state.status = 'failed :('
             state.error = action.error.message
           })
-          .addCase(fetchTasksBySearch.pending, (state, action) => {
-            state.status = 'loading...';
-          })
-          .addCase(fetchTasksBySearch.fulfilled, (state, action) => {
-            state.status = 'succeeded (:';
-            state.tasks = action.payload;
-          })
-          .addCase(fetchTasksBySearch.rejected, (state, action) => {
-            state.status = 'failed :('
-            state.error = action.error.message
-          })
-          .addCase(fetchTasksByCategory.pending, (state, action) => {
-            state.status = 'loading...';
-          })
-          .addCase(fetchTasksByCategory.fulfilled, (state, action) => {
-            state.status = 'succeeded (:';
-            state.tasks = action.payload;
-          })
-          .addCase(fetchTasksByCategory.rejected, (state, action) => {
-            state.status = 'failed :('
-            state.error = action.error.message
-          })
       }
 });
 
-export const { addNewTasks } = tasksListSlice.actions;
+export const { filterTasksList } = tasksListSlice.actions;
 
 export default tasksListSlice.reducer;
 
