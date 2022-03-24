@@ -76,10 +76,11 @@ const TaskPage = () => {
             dispatch(fetchTask(id));
           }
         setTask(data) ;
+        dispatch(loadPicture({pictureId: data.picture, status: 'idle'}));
 
        if (data.volunteers ? setSignedVolunteers(data.volunteers.length) : 0);
 
-        dispatch(loadPicture({pictureId: data.picture, status: 'idle'}));
+        
 }, [taskStatus, dispatch, id, task, data, pictureId]);
 
 useEffect(() => {
