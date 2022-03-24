@@ -11,10 +11,10 @@ import { fetchOrganizations } from 'store/organizationSlice';
 import { fetchCategories } from 'store/categorySlice';
 import ScrollToTop from 'ScrollToTop '
 
+store.dispatch(fetchCategories());
 store.dispatch(fetchTasks());
 store.dispatch(fetchVolunteers());
 store.dispatch(fetchOrganizations());
-store.dispatch(fetchCategories());
 
 ReactDOM.render(
   <React.StrictMode>

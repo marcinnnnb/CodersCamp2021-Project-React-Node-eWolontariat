@@ -145,7 +145,6 @@ const Search = styled('div')(({ theme }) => ({
                   dispatch(filterList());
                 }}
                 value={value}
-                onFocus={()=>{setValue('')}}
                 >
             </StyledInputBase>
             {tasks?.map((el,id)=>{
@@ -163,11 +162,11 @@ const Search = styled('div')(({ theme }) => ({
                         }}>
                           <CustomAvatar 
                             variant={"avatarBackground"} 
-                            backgroundcolor={setCategoryIcon(el?.categories[0].name)[1]}
+                            backgroundcolor={setCategoryIcon(el?.categories[0]?.name)[1]}
                             style={{margin: "0.8rem"}}
                             key={`item-${id}`} 
                             >
-                              {setCategoryIcon(el?.categories[0].name)[0]}
+                              {setCategoryIcon(el?.categories[0]?.name)[0]}
                             </CustomAvatar>
                             <Divider key={`divideritem-${id}`}  orientation="vertical" flexItem/>
                               <StyledListItemText className={"searchList"} key={`listitem-${id}`} 

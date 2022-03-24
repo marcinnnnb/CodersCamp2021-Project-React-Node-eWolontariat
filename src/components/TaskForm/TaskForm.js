@@ -13,6 +13,8 @@ import { fetchCategories } from 'store/categorySlice';
 
 import MenuItem from '@mui/material/MenuItem';
 import { FormType, openDialog } from 'components/common/Dialog/store/dialogSlice';
+import { toHaveAccessibleDescription } from '@testing-library/jest-dom/dist/matchers';
+import { toast } from 'react-toastify';
 
 const StyledTaskForm = styled(Box)(({ theme }) => ({
     height: "100%",
@@ -96,7 +98,7 @@ useEffect(() => {
             console.log(response.status);
            
             if(response.status === 201) { console.log(response.data)
-                alert('Dodano zadanie dla wolontariusza!');};
+                toast.success('Dodano zadanie dla wolontariusza!');};
           }).catch((error) => {
             if (error.response) {
               setContent(

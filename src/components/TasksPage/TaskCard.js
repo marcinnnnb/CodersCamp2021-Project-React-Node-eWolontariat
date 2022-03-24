@@ -34,15 +34,10 @@ const StyledCard = styled(Card)(({ theme }) => ({
 }));
 
 function TaskCard(task){
+    let dispatch = useDispatch();
     let navigate = useNavigate();
     const taskIcon = setCategoryIcon(task.task.categories[0].name)[0];
     const iconColor = setCategoryIcon(task.task.categories[0].name)[1];
-
-    const handleClick = (e) => {
-        e.preventDefault();
-        navigate(`/TaskPage/${task.task._id}`);
-        
-    }
 
     return(
             <StyledCard raised={true}>
@@ -76,8 +71,11 @@ function TaskCard(task){
                 </CardContent>    
                     <CardActions>
                         <Button
-                            component={Link}
-                            to={`/TaskPage/${task.task._id}`}
+                            
+                            onClick={(e)=>{
+                        e.preventDefault();
+                        navigate(`/TaskPage/${task.task._id}`);
+                    }}
                             style={{
                                 position: "absolute", 
                                 left: "30%", 

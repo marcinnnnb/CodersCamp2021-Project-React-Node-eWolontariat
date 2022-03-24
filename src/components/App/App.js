@@ -41,7 +41,7 @@ export function App() {
                                 <Route path="/CategoryPage/:category" element={<CategoryPage/>} />
                                 <Route path="/UserProfile" element={<UserProfile/>} />
                                 <Route path="/VolunteerForm" element={<VolunteerForm/>} />
-                                <Route path="/VolunteerPage/:volunteerId" element={<VolunteerPage/>} />
+                                <Route path="/VolunteerPage/:volunteerId/:volunteerName" element={<VolunteerPage/>} />
                                 <Route path="/VolunteersPage" element={<VolunteersPage/>} />
                                 <Route path="*" element={<Navigate to="/"/>}/>
                             </Routes>

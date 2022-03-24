@@ -71,27 +71,24 @@ const TaskPage = () => {
     const [previewImg, setPreviewImg] = useState(null);
     const [signedVolunteers, setSignedVolunteers]=useState()
 
-    console.log(id)
-    console.log(task)
-
     useEffect(() => {
-            if (taskStatus === 'idle') {
-                dispatch(fetchTask(id));
-              }
-            setTask(data) ;
-           if (data.volunteers ? setSignedVolunteers(data.volunteers.length) : 0);
-
-            dispatch(loadPicture({pictureId: data.picture, status: 'idle'}));
-    }, [taskStatus, dispatch, id, task, data]);
-
-    useEffect(() => {
-
-        if ( pictureStatus === 'idle' && pictureId) {
-            dispatch(fetchPicture(pictureId));    
+        if (taskStatus === 'idle') {
+            dispatch(fetchTask(id));
           }
-          setPreviewImg(picture);
-}, [pictureStatus, dispatch, id, pictureId, picture, previewImg]);
+        setTask(data) ;
 
+       if (data.volunteers ? setSignedVolunteers(data.volunteers.length) : 0);
+
+        dispatch(loadPicture({pictureId: data.picture, status: 'idle'}));
+}, [taskStatus, dispatch, id, task, data, pictureId]);
+
+useEffect(() => {
+
+    if ( pictureStatus === 'idle' && pictureId) {
+        dispatch(fetchPicture(pictureId));    
+      }
+      setPreviewImg(picture);
+}, [pictureStatus, dispatch, id, pictureId, picture, previewImg]);
 
     return (
         
@@ -127,7 +124,7 @@ const TaskPage = () => {
                         alt={`${task.title}`}
                         style = {{maxWidth:"80%"}}
                     />
-                        <Typography variant="body1" paragraph>{task.action_description}</Typography>  
+                        <Typography variant="body1" paragraph>{task.description}</Typography>  
                         <img width="250rem" height="200rempx" src={liscik} alt=""/>
 
                 </Box>
