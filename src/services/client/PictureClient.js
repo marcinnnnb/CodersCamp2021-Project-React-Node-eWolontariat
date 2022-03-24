@@ -26,6 +26,17 @@ export default class PictureClient {
           });
     };
 
+    static getUsersPictures(userId) {
+      return RestService.get(`${this.baseUrl}/user/${userId}/pictures`, {userId}, {
+          headers: {
+              "Content-Type": "image/jpeg",
+          },
+        },
+        {
+          responseType: "blob",
+        });
+    };
+
     static deletePicture(id) {
         return RestService.delete(`${this.baseUrl}/${id}`, {id});
     };

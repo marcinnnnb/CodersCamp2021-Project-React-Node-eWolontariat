@@ -20,7 +20,6 @@ const UserProfile = () => {
     });
   }, [userLogin]);
 
-  console.log(user)
     return (
 
       <Container style={{display: 'flex',justifyContent: 'center',paddingTop: '4rem',width: '100%'}}>

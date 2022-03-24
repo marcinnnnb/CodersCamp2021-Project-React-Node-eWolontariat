@@ -1,5 +1,5 @@
 import {useForm, Controller} from 'react-hook-form';
-import { Box, Typography, TextField, styled } from "@material-ui/core";
+import { Box, Typography, TextField, styled, Button } from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import Select from '@mui/material/Select'
 import CustomTypography from 'theme/CustomTypography';
@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from 'store/categorySlice';
 
 import MenuItem from '@mui/material/MenuItem';
+import { FormType, openDialog } from 'components/common/Dialog/store/dialogSlice';
 
 const StyledTaskForm = styled(Box)(({ theme }) => ({
     height: "100%",
@@ -65,7 +66,7 @@ useEffect(() => {
     dispatch(fetchCategories());
   };
   setAllCategories(categoriesList);
-}, [categoriesStatus,categoriesList]);
+}, [categoriesStatus,dispatch]);
 
     
       const handleChange = (e) => {
@@ -125,7 +126,7 @@ return (
             justifyContent={"center"}
             alignItems={"center"}
         >
-        <form onSubmit={handleSubmit} enctype="multipart/form-data">
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
             {content}
             <Box style={{display:"grid", gridTemplateColumns: "3fr 2fr", gap: "1.6rem", justifyItems: 'center', alignItems: 'space-evenly', gridTemplateRows: 'auto',
                 gridTemplateAreas: `"header header"
@@ -137,14 +138,15 @@ return (
                     <CustomTypography paragraph variantcolor={"typographycolor"} variant="h2" align="center" color="tertiary" style={{marginBottom: "4rem"}}>Tworzenie zadania dla wolontariusza </CustomTypography>
                 </Box>
 
+               
+
                 <Box style={{ gridArea: 'img', alignItems:"center", justifyContent:"center",  backgroundColor: 'primary', height:"9rem"}}>
-                    <TextField
-                        name="image" 
-                        type="file"
-                        value={data.picture}
-                        accept="image/png, image/jpeg" 
-                        {...register('picture')}  
-                    />
+                    
+                    <Button 
+                    variant="contained" 
+                    color="secondary" 
+                    onClick={() => dispatch(openDialog({ formType: FormType.imagePicker }))} 
+                    >Wybierz obrazek</Button>
                 </Box>
 
                 <Box style={{ gridArea: 'main', display:"flex",  flexDirection:"column", alignItems: 'stretch', justifyContent: 'space-around', width: '100%', marginLeft:"30px"}}>

@@ -5,7 +5,8 @@ export const FormType = Object.freeze({
   zalozonyProfil: 'zalozonyProfil',
   loginDialog: 'loginDialog',
   rejestracjaEmail: 'rejestracjaEmail',
-  zalogowany: 'zalogowany'
+  zalogowany: 'zalogowany',
+  imagePicker: 'imagePicker'
 });
 
 const initialState = {

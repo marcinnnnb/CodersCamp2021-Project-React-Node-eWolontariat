@@ -11,6 +11,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPicture, selectPicture, selectPictureStatus, loadPicture, selectPictureId } from "store/pictureSlice";
 import { fetchTask, selectTask, selectTaskError, selectTaskStatus } from "store/taskSlice";
+import { Buffer } from "buffer";
 
 const StyledTaskPage = styled(Card)(({ theme }) => ({
     height: "100%",
@@ -68,7 +69,9 @@ const TaskPage = () => {
     
     const [task, setTask] = useState([]);
     const [previewImg, setPreviewImg] = useState(null);
-    const [signedVolunteers,setSignedVolunteers]=useState()
+    const [signedVolunteers, setSignedVolunteers]=useState()
+
+
     useEffect(() => {
             if (taskStatus === 'idle') {
                 dispatch(fetchTask(id));
@@ -80,11 +83,13 @@ const TaskPage = () => {
     }, [taskStatus, dispatch, id, data, pictureId]);
 
     useEffect(() => {
-        if (pictureId != '' && pictureStatus === 'idle') {
-            dispatch(fetchPicture(pictureId));
+
+        if ( pictureStatus === 'idle' && pictureId) {
+            dispatch(fetchPicture(pictureId));    
           }
-        setPreviewImg(picture);
-}, [pictureStatus, dispatch, id, pictureId, picture]);
+          setPreviewImg(picture);
+}, [pictureStatus, dispatch, id, pictureId, picture, previewImg]);
+
 
     return (
         
@@ -116,7 +121,7 @@ const TaskPage = () => {
                         className={"main-img"}
                         component={'img'}
                         padding={"2rem"}
-                        src={previewImg}
+                        src={`data:image/jpeg;base64,${previewImg}`}
                         alt={`${task.title}`}
                         style = {{maxWidth:"80%"}}
                     />

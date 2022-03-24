@@ -6,7 +6,6 @@ import { Box, Divider, Typography, ListItemText } from '@material-ui/core';
 import CustomAvatar from 'theme/CustomAvatar';
 import { ListItemButton } from '@mui/material';
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTasks, fetchTasksBySearch, filterTasksList, selectTasksList, selectTasksListStatus } from 'store/tasksListSlice';
 import CustomTypography from 'theme/CustomTypography';
 import setCategoryIcon from 'theme/setCategoryIcon';
 import { useNavigate } from 'react-router-dom';
@@ -57,7 +56,7 @@ const Search = styled('div')(({ theme }) => ({
     [theme.breakpoints.down('md')]: {
       '& .titleSpan': {
         fontWeight: 600,
-        fontSize: "1rem",
+        fontSize: "0.8rem",
       }
     },
   }));
@@ -84,21 +83,14 @@ const Search = styled('div')(({ theme }) => ({
 
     const tasksList = useSelector(selectSearchedData);
     const tasksListStatus = useSelector(selectSearchedDataStatus);
-    const [value, setValue] = useState(null);
+    const [value, setValue] = useState('');
     const [tasks, setTasks] = useState([]);
-    const [filteredResults, setFilteredResults] = useState([]);
     const [displaySearchIcon, setdisplaySearchIcon] = useState(true);
-
-    console.log(tasksList);
-    console.log(tasksListStatus);
-    console.log(tasks)
-    console.log(value)
-   
       
       function  findMatches(wordToMatch) {
         return( tasks.tasks?.filter((task)=>{
           const regex = new RegExp(wordToMatch,"gi");
-          return task.title.toLowerCase().match(regex) || task.shortDescription.toLowerCase().match(regex)
+          return task.title.toLowerCase().match(regex) || task.shortDescription.toLowerCase().match(regex) || task.description.toLowerCase().match(regex)
         }));
       };
 
@@ -106,25 +98,29 @@ const Search = styled('div')(({ theme }) => ({
         if (value && value.length > 1) {
           setdisplaySearchIcon('none');
           const matchArray = findMatches(value,data);
-          setFilteredResults(matchArray);
+          setTasks(matchArray);
         } else {
           setdisplaySearchIcon('flex');
-          setFilteredResults([]);
-          setTasks([]);
         }
         return displaySearchIcon;
       };
 
       let limit=6
+
       useEffect(() => {
+
         const params = new URLSearchParams({
           'search': value,
           'limit': 30
         });
-        if (tasksListStatus === 'idle') {
+
+        if (value==='') setTasks([]);
+        
+        if (tasksListStatus === 'idle' && value ) {
           dispatch(fetchSearchedTasks(params));
+          setTasks(tasksList);
         };
-        setTasks(tasksList);
+        
         
       }, [tasksList, tasksListStatus, dispatch, value, limit]);
 
@@ -140,19 +136,20 @@ const Search = styled('div')(({ theme }) => ({
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={(e)=>{
                   setValue(e.target.value);
-                  displayMatches({value,tasksList});
+                  displayMatches({value,tasks});
                   dispatch(filterList());
                 }}
                 onKeyUp={(e)=>{
                   setValue(e.target.value);
-                  displayMatches({value,tasksList});
+                  displayMatches({value,tasks});
                   dispatch(filterList());
                 }}
                 value={value}
+                onFocus={()=>{setValue('')}}
                 >
             </StyledInputBase>
             {tasks?.map((el,id)=>{
-              const regex = new RegExp(value,'gi'); 
+              const regex = new RegExp(value,'gi');
               return (
                     <StyledBoxForSearch key={`item-${id}`}>
                       <ListItemButton 
@@ -166,11 +163,11 @@ const Search = styled('div')(({ theme }) => ({
                         }}>
                           <CustomAvatar 
                             variant={"avatarBackground"} 
-                            backgroundcolor={setCategoryIcon(el.categories[0])[1]}
+                            backgroundcolor={setCategoryIcon(el?.categories[0].name)[1]}
                             style={{margin: "0.8rem"}}
                             key={`item-${id}`} 
                             >
-                              {setCategoryIcon(el.categories[0])[0]}
+                              {setCategoryIcon(el?.categories[0].name)[0]}
                             </CustomAvatar>
                             <Divider key={`divideritem-${id}`}  orientation="vertical" flexItem/>
                               <StyledListItemText className={"searchList"} key={`listitem-${id}`} 

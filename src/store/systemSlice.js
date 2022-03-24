@@ -12,13 +12,14 @@ const initialState = {
 export const fetchLoginData = createAsyncThunk('user/fetchLoginData ', async (data, { rejectWithValue }) => {
   const response = await UserClient.loginUser(data)
   .then((response) => {
+    const token = response.headers["auth-token"];
+    localStorage.setItem("auth-token", token); 
     return response;
   })
   .catch((error) => {
-    return rejectWithValue(response.data);
+    return rejectWithValue(error);
   });
-  const token = response.headers["auth-token"];
-  localStorage.setItem("auth-token", token); 
+  
   return response; 
 });
 
@@ -27,7 +28,7 @@ export const fetchRegistrationData = createAsyncThunk('user/fetchRegistrationDat
     return response;
   })
   .catch((error) => {
-    return rejectWithValue(response.data);
+    return rejectWithValue(error);
   });
   return response; 
 });
