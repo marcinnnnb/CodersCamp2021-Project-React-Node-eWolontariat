@@ -110,17 +110,17 @@ const VolunteerPage = () => {
                             <Rating name="half-rating-read" defaultValue={3.5} precision={0.5}  style={{color:"#F0D43F", fontSize: "1.7rem"}} />
                         </Box>
                         <Box>
-                            {volunteer?.categories.map((cat,catId)=>(
+                            {(volunteer.categories)? (volunteer.categories?.map((cat,catId)=>(
                                 <CustomButton 
                                 key={`button-${catId}`} 
                                 variant="contained" 
-                                color={setCategoryIcon(volunteer.categories[0].name)[1]}
-                                startIcon={setCategoryIcon(volunteer.categories[0].name)[0]}  
+                                color={setCategoryIcon(volunteer?.categories[0].name)[1]}
+                                startIcon={setCategoryIcon(volunteer?.categories[0].name)[0]}  
                                 style={{margin:'0 1rem 2rem 0'}}                          
                                 >
                                 <Divider key={`div-${catId}`}  orientation="vertical" flexItem style={{backgroundColor: "#eee", marginRight:"10px"}} /> {cat.name}
                                 </CustomButton>  
-                            ))}
+                            ))): null}
                             <Typography paragraph gutterBottom variant="h2">{volunteer.firstName.concat(" ", volunteer.lastName)}</Typography>
                             <Typography paragraph variant='h3'>{volunteer.shortDescription}</Typography>
                     </Box>

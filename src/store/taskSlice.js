@@ -20,6 +20,9 @@ const taskSlice = createSlice({
     name: 'task',
     initialState,
     reducers: {
+      loadTask: (state, action) => {
+        state.status = action.payload.status;
+      }
     },
     extraReducers(builder) {
         builder
@@ -37,7 +40,7 @@ const taskSlice = createSlice({
       }
 });
 
-//export const {  } = taskSlice.actions;
+export const {loadTask} = taskSlice.actions;
 
 export default taskSlice.reducer;
 

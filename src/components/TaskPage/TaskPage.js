@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import PersonIcon from '@material-ui/icons/Person';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPicture, selectPicture, selectPictureStatus, loadPicture, selectPictureId } from "store/pictureSlice";
-import { fetchTask, selectTask, selectTaskError, selectTaskStatus } from "store/taskSlice";
+import { fetchTask, loadTask, selectTask, selectTaskError, selectTaskStatus } from "store/taskSlice";
 import { Buffer } from "buffer";
 
 const StyledTaskPage = styled(Card)(({ theme }) => ({
@@ -71,6 +71,8 @@ const TaskPage = () => {
     const [previewImg, setPreviewImg] = useState(null);
     const [signedVolunteers, setSignedVolunteers]=useState()
 
+    console.log(id)
+    console.log(task)
 
     useEffect(() => {
             if (taskStatus === 'idle') {
@@ -80,7 +82,7 @@ const TaskPage = () => {
            if (data.volunteers ? setSignedVolunteers(data.volunteers.length) : 0);
 
             dispatch(loadPicture({pictureId: data.picture, status: 'idle'}));
-    }, [taskStatus, dispatch, id, data, pictureId]);
+    }, [taskStatus, dispatch, id, task, data]);
 
     useEffect(() => {
 

@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router';
 import { Link } from "react-router-dom";
 import setCategoryIcon from "../../theme/setCategoryIcon";
 import { styled } from '@mui/material/styles';
+import { loadTask } from "store/taskSlice";
+import { useDispatch } from "react-redux";
 
 const StyledCard = styled(Card)(({ theme }) => ({
     position: "relative", 
@@ -39,6 +41,7 @@ function TaskCard(task){
     const handleClick = (e) => {
         e.preventDefault();
         navigate(`/TaskPage/${task.task._id}`);
+        
     }
 
     return(

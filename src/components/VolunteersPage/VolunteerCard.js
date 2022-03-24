@@ -60,7 +60,7 @@ function VolunteerCard(volunteer){
                     color='tertiary' 
                     onClick={(e)=>{
                         e.preventDefault();
-                        navigate(`/VolunteerPage/${volunteer.volunteer._id}/${volunteer.volunteer.firstName}+${volunteer.volunteer.lastName}`);
+                        navigate(`/VolunteerPage/${volunteer.volunteer._id}`);
                     }}
                     >Zobacz profil</CustomButton>
             </CardActions>
