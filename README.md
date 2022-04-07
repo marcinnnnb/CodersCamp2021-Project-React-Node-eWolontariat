@@ -28,7 +28,7 @@ Aplikację została wykonana przez uczestników kursu pod okiem dwóch mentorów
 
 - [Marcin Barszcz](https://github.com/marcinnnnb)
 - [Agnieszka Bury](https://github.com/angbur)
-- [Agnieszka Kapelańczyk](https://github.com/MysiaPysia16)
+- [Agnieszka Kapelańczyk](https://github.com/AgnieszkaKapelanczyk)
 - [Marta Pejkowska](https://github.com/MartaPejkowska)
 
 ## E-Wolontariat
